@@ -1,0 +1,12 @@
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::selection {
+    background-color: rgba(15, 118, 110, 0.18);
+    color: #0f172a;
+  }
+}

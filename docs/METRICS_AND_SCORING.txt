@@ -1,0 +1,193 @@
+GeoScore AI — Metrics & Scoring Reference (MVP)
+================================================
+Generated for offline review. Source of truth: backend Python under
+`backend/app/services/` (especially `scoring.py`, `analyze_site.py`,
+`overpass.py`, `census.py`).
+
+
+1. DATA PIPELINE (WHAT FEEDS THE SCORES)
+----------------------------------------
+
+1.1 Geocoding
+  - Address → lat/lon via Nominatim, then Photon fallback.
+  - File: `backend/app/services/geocode.py`
+
+1.2 Nearby places (OSM / Overpass)
+  - POIs within a search radius in meters: request body `radius_m` (100–2000) when calling
+    POST /analyze-site, otherwise `overpass_radius_m` from server config (default 500).
+  - Shops, amenities, stations, platforms, bus stops, etc.
+  - File: `backend/app/services/overpass.py` → `fetch_nearby_pois()`
+
+1.3 Census tract demographics (ACS 5-year)
+  - Lat/lon → tract GEOID (Census Geocoder).
+  - Tract-level ACS variables: population, median household income, median age,
+    bachelor's+ %, vacancy %, commute % public transit, etc.
+  - File: `backend/app/services/census.py`
+
+1.4 Assembly into RawSignals
+  - File: `backend/app/services/analyze_site.py`
+  - RawSignals fields used for scoring:
+      population              → ACS B01003 (tract)
+      median_income           → ACS B19013
+      median_age              → ACS B01002
+      pct_college_educated    → derived from B15003 (bachelor's+ / 25+ total)
+      vacancy_pct             → vacant units / total units (B25004 / B25002)
+      competitor_count        → len(competitors) after classify_poi (max 25 returned)
+      complementary_count     → len(complementary) (informational; not in demand formula)
+      commercial_poi_count    → count of POIs with shop OR amenity, excluding transit role
+      subway_within_800m      → see _count_transit()
+      bus_within_400m         → see _count_transit()
+      nearest_subway_m        → min distance (m) to “subway-like” features within 800m
+      monthly_budget          → optional request field; drives cost_fit only
+
+
+2. TRANSIT COUNTS (_count_transit in analyze_site.py)
+-------------------------------------------------------
+
+  “Subway-like” (counts toward subway_within_800m and nearest_subway_m if d ≤ 800m):
+    - railway=station, OR railway=subway_entrance, OR amenity=subway_entrance,
+      OR tags.station == "subway"
+
+  Bus / surface access (counts toward bus_within_400m if d ≤ 400m):
+    - highway=bus_stop, OR
+    - public_transport=platform AND not classified as the subway-like case above
+
+  Notes: OSM tagging is imperfect; treat as a directional proxy, not ground truth.
+
+
+3. COMPETITORS VS COMPLEMENTARY (classify_poi in overpass.py)
+------------------------------------------------------------
+
+  Heuristic rules on amenity/shop tags vs keywords in `business_type`.
+  Examples (non-exhaustive):
+    - Coffee/cafe concepts: amenity cafe / some restaurants → competitor or complement.
+    - Retail / gym / salon: similar keyword-based mappings.
+  POIs that do not match any rule may be omitted from both lists (not counted as
+  commercial for competition if they lack shop/amenity).
+
+
+4. SUB-SCORES (0–100 EACH) — scoring.py
+----------------------------------------
+
+4.1 Demand
+  pop_score     = min(100, max(0, int((population / 8000) * 100)))
+                  (tract pop ~8k → 100)
+  activity      = min(100, commercial_poi_count * 8)
+  If vacancy_pct > 15: activity = max(0, activity - 15)
+  demand          = round(0.55 * pop_score + 0.45 * activity)
+
+4.2 Competition  (HIGHER = FEWER mapped direct competitors)
+  c = competitor_count
+    c == 0        → 92
+    c <= 2        → 78
+    c <= 5        → 62
+    c <= 10       → 48
+    else          → max(25, 55 - c * 3)
+
+4.3 Accessibility
+  pts = 0
+  pts += min(55, subway_within_800m * 18)
+  pts += min(35, bus_within_400m * 4)
+  If nearest_subway_m is set:
+    < 250m  → +15
+    < 450m  → +10
+    < 800m  → +5
+  accessibility = min(100, round(pts))
+
+4.4 Demographic fit
+  Blends three heuristics (income / education / age vs business_type keywords):
+
+  income_score (default 50 if no income):
+    If business_type contains coffee|cafe|fast casual|bakery:
+      min(100, max(20, int((income - 35000) / 900)))
+    elif luxury|jewelry|fine dining:
+      min(100, max(15, int((income - 70000) / 1200)))
+    else:
+      min(100, max(25, int((income - 40000) / 1000)))
+
+  edu_score (default 55):
+    If pct_bachelors_or_higher known:
+      min(100, max(20, int(pct * 1.2)))
+
+  age_score (default 60):
+    If median_age known:
+      If business_type contains coffee|gym|fast food|bubble:
+        100 - min(40, abs(median_age - 34) * 2)
+      Else:
+        100 - min(35, abs(median_age - 42) * 1.8)
+
+  demographic_fit = round(0.45 * income_score + 0.30 * edu_score + 0.25 * age_score)
+
+4.5 Cost fit (only if monthly budget provided)
+  If budget is null/omitted → cost_fit is None (excluded from weighted total).
+  affordable = median_income * 0.003   (very coarse “monthly capacity” proxy)
+  ratio      = affordable / max(budget, 1)
+    ratio >= 1.4 → 88
+    ratio >= 1.0 → 72
+    ratio >= 0.7 → 55
+    else         → 38
+
+
+5. TOTAL SCORE & RECOMMENDATION — scoring.py (aggregate_scores)
+---------------------------------------------------------------
+
+5.1 Weights WITHOUT budget
+  demand           0.28
+  competition      0.24
+  accessibility    0.22
+  demographic_fit  0.26
+
+5.2 Weights WITH budget
+  demand           0.24
+  competition      0.20
+  accessibility    0.18
+  demographic_fit  0.22
+  cost_fit         0.16
+
+5.3 Total
+  total_score = round(weighted sum), clamped to [0, 100]
+
+5.4 Recommendation (bands on total_score)
+  total >= 72 → strong
+  total >= 52 → medium
+  else        → weak
+
+
+6. API “DISPLAY” FIELDS (NOT SEPARATE MODEL SCORES)
+--------------------------------------------------
+
+6.1 demographics block
+  Mostly raw or lightly formatted ACS + tract id + human summary string
+  (`_demo_summary` in analyze_site.py).
+
+6.2 transit block
+  Counts + nearest distance + templated summary (`_transit_summary`).
+
+6.3 summary (bullet strings)
+  From `build_summary_bullets()` — fixed thresholds on population, competitor
+  count, transit counts, income, cost_fit; max 5 bullets.
+
+6.4 Frontend “Risks & opportunities”
+  In `frontend/src/lib/components/RiskOpportunity.svelte` — rules on the
+  sub-scores only (not new backend metrics).
+
+
+7. LIMITATIONS (FOR REVIEW CONTEXT)
+-----------------------------------
+
+  - OSM completeness varies; missing POIs ≠ no competition.
+  - Census is tract-level, not storefront catchment.
+  - Transit is inferred from OSM tags; entrances may be mis-tagged.
+  - Cost fit is a toy heuristic; not a substitute for real rent comps.
+
+
+8. FILES TO READ IN ORDER
+-------------------------
+
+  backend/app/services/scoring.py       — formulas & weights
+  backend/app/services/analyze_site.py — signal assembly, transit counts
+  backend/app/services/overpass.py     — POI fetch + classify_poi
+  backend/app/services/census.py       — ACS variables & derived %
+
+
+End of document.

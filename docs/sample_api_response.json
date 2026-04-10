@@ -1,0 +1,71 @@
+{
+  "location": {
+    "label": "86-16 208th Street, Queens Village, New York",
+    "lat": 40.7391,
+    "lon": -73.7456,
+    "display_name": "86-16, 208th Street, Queens Village, Queens, New York, 11428, United States",
+    "census_tract": "50100",
+    "county": "081",
+    "state": "36"
+  },
+  "total_score": 78,
+  "recommendation": "strong",
+  "scores": {
+    "demand": 82,
+    "competition": 68,
+    "accessibility": 84,
+    "demographic_fit": 77,
+    "cost_fit": 70
+  },
+  "competitors": [
+    {
+      "name": "Neighborhood Cafe",
+      "category": "cafe",
+      "lat": 40.7395,
+      "lon": -73.7449,
+      "distance_m": 120.4,
+      "osm_type": "node",
+      "osm_id": 1001
+    }
+  ],
+  "complementary_businesses": [
+    {
+      "name": "Corner Bakery",
+      "category": "bakery",
+      "lat": 40.7386,
+      "lon": -73.7462,
+      "distance_m": 210.8,
+      "osm_type": "node",
+      "osm_id": 1002
+    }
+  ],
+  "demographics": {
+    "tract_id": "36081050100",
+    "population": 6124,
+    "median_household_income": 81250,
+    "median_age": 39.1,
+    "pct_bachelors_or_higher": 31.2,
+    "commute_pct_public_transit": 52.4,
+    "vacancy_rate_pct": 5.8,
+    "summary": "Tract population ~6,124. Median household income ~$81,250. About 52.4% of commuters report public transit."
+  },
+  "transit": {
+    "subway_stops_within_800m": 2,
+    "bus_or_light_rail_stops_within_400m": 6,
+    "nearest_subway_distance_m": 410.2,
+    "summary": "2 subway-linked station node(s) within ~800m; nearest about 410m. 6 bus/platform stops within ~400m."
+  },
+  "summary": [
+    "Residential density in the tract is relatively strong for local foot traffic.",
+    "Competition looks moderate based on nearby mapped similar businesses.",
+    "Transit access is a plus for customer reach and staffing commutes.",
+    "Household income is mid-market—value and consistency typically carry the day.",
+    "Budget signal is workable under our coarse affordability check (still verify real leases)."
+  ],
+  "data_sources": {
+    "geocoder": "nominatim",
+    "pois": "overpass",
+    "demographics": "census_acs5",
+    "radius_m": 500
+  }
+}
