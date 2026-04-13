@@ -18,5 +18,9 @@ class Settings(BaseSettings):
     address_suggest_cache_max: int = 200
     address_suggest_min_chars: int = 3
 
+    # LLM Configuration for Intelligence Layer
+    openai_api_key: str = ""
+    ai_model: str = "gpt-4o"
+
 
 settings = Settings()
