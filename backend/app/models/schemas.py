@@ -66,11 +66,24 @@ class ScoreBreakdown(BaseModel):
     cost_fit: int | None = None
 
 
+class AIInsight(BaseModel):
+    strategic_overview: str
+    the_edge: str
+    the_blindspot: str
+    the_power_move: str
+
+
+class AIInsights(BaseModel):
+    insights: AIInsight
+    confidence_score: float
+
+
 class AnalyzeSiteResponse(BaseModel):
     location: LocationInfo
     total_score: int
     recommendation: str
     scores: ScoreBreakdown
+    ai_insights: AIInsights | None = None
     competitors: list[BusinessMarker]
     complementary_businesses: list[BusinessMarker]
     demographics: DemographicsBlock

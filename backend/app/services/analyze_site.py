@@ -12,6 +12,7 @@ from app.models.schemas import (
     TransitBlock,
 )
 from app.services import census, geocode, overpass
+from app.services.ai_consultant import get_ai_consultant_insights
 from app.services.mock_data import mock_response
 from app.services.overpass import classify_poi, poi_category, poi_display_name
 from app.services.scoring import (
@@ -191,6 +192,8 @@ async def _analyze_site_live(
 
     scores = ScoreBreakdown(demand=d, competition=c, accessibility=a, demographic_fit=df, cost_fit=cf)
 
+    ai_insights = await get_ai_consultant_insights(signals, business_type, total, rec)
+
     bullets = build_summary_bullets(signals, scores.model_dump(), business_type)
 
     loc = LocationInfo(
@@ -208,6 +211,7 @@ async def _analyze_site_live(
         total_score=total,
         recommendation=rec,
         scores=scores,
+        ai_insights=ai_insights,
         competitors=competitors,
         complementary_businesses=complementary,
         demographics=demo_block,
