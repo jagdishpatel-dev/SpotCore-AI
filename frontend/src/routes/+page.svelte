@@ -4,6 +4,7 @@
   import RiskOpportunity from '$lib/components/RiskOpportunity.svelte';
   import ScoreCard from '$lib/components/ScoreCard.svelte';
   import SiteMap from '$lib/components/SiteMap.svelte';
+  import ConsultantCorner from '$lib/components/ConsultantCorner.svelte';
   import type { AnalyzeSiteResponse, Recommendation, TrendsKeywordsResponse, TrendsTimeframe } from '$lib/types';
 
   let address = '86-16 208th St, Queens Village, NY';
@@ -436,6 +437,11 @@
           />
         {/if}
       </section>
+
+      <ConsultantCorner 
+        insights={result.ai_insights?.insights} 
+        confidence={result.ai_insights?.confidence_score ?? 0} 
+      />
 
       <section class="mt-12 grid gap-10 lg:grid-cols-2">
         <div>
