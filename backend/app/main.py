@@ -1,10 +1,19 @@
 import logging
+import asyncio
 
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.models.schemas import AddressSuggestResponse, AddressSuggestion, AnalyzeSiteRequest, AnalyzeSiteResponse
+from app.models.schemas import (
+    AddressSuggestResponse,
+    AddressSuggestion,
+    AnalyzeSiteRequest,
+    AnalyzeSiteResponse,
+    CompareSitesRequest,
+    CompareSitesResponse,
+)
 from app.routers import trends as trends_router
+from app.services import ai_consultant
 from app.services.address_suggest import suggest_addresses
 from app.services.analyze_site import analyze_site
 
@@ -43,3 +52,25 @@ async def get_suggest_address(
 @app.post("/analyze-site", response_model=AnalyzeSiteResponse)
 async def post_analyze_site(body: AnalyzeSiteRequest) -> AnalyzeSiteResponse:
     return await analyze_site(body.address, body.business_type, body.budget, body.radius_m)
+
+
+@app.post("/compare-sites", response_model=CompareSitesResponse)
+async def post_compare_sites(body: CompareSitesRequest) -> CompareSitesResponse:
+    # Run both analyses concurrently for speed
+    site_a_task = analyze_site(body.address_a, body.business_type, body.budget, body.radius_m)
+    site_b_task = analyze_site(body.address_b, body.business_type, body.budget, body.radius_m)
+    
+    site_a, site_b = await asyncio.gather(site_a_task, site_b_task)
+    
+    # Determine winner by total score
+    winner_address = site_a.location.label if site_a.total_score >= site_b.total_score else site_b.location.label
+    
+    # Get AI-driven reason for the win
+    reason = await ai_consultant.get_comparison_insight(site_a, site_b, body.business_type)
+    
+    return CompareSitesResponse(
+        site_a=site_a,
+        site_b=site_b,
+        comparison_winner=winner_address,
+        winner_reason=reason
+    )

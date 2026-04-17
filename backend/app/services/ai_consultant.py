@@ -80,3 +80,48 @@ async def get_ai_consultant_insights(
     except Exception as e:
         logger.error(f"AI Consultant error: {e}")
         return None
+
+async def get_comparison_insight(
+    site_a: AnalyzeSiteResponse,
+    site_b: AnalyzeSiteResponse,
+    business_type: str
+) -> str:
+    \"\"\"
+    Compares two analyzed sites and provides a concise, strategic reason 
+    why one is superior to the other for the given business type.
+    \"\"\"
+    if not settings.openai_api_key:
+        return "Unable to generate AI comparison at this time."
+
+    client = OpenAI(api_key=settings.openai_api_key)
+
+    prompt = f\"\"\"
+    Compare two potential business locations for a {business_type}.
+    
+    SITE A:
+    - Total Score: {site_a.total_score}/100
+    - Recommendation: {site_a.recommendation}
+    - Competitors: {len(site_a.competitors)}
+    - Demographics: {site_a.demographics.summary}
+    - Transit: {site_a.transit.summary}
+    
+    SITE B:
+    - Total Score: {site_b.total_score}/100
+    - Recommendation: {site_b.recommendation}
+    - Competitors: {len(site_b.competitors)}
+    - Demographics: {site_b.demographics.summary}
+    - Transit: {site_b.transit.summary}
+    
+    Which site is objectively better? Provide a concise (2-3 sentence) explanation focusing on the most critical differentiator (e.g., 'Site A wins due to significantly higher foot traffic and fewer competitors, despite a slightly lower income bracket').
+    \"\"\"
+
+    try:
+        response = client.chat.completions.create(
+            model=settings.ai_model,
+            messages=[{"role": "system", "content": "You are a professional urban planner and site selection expert."},
+                      {"role": "user", "content": prompt}]
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        logger.error(f"AI Comparison error: {e}")
+        return "Comparison data available, but AI synthesis failed."

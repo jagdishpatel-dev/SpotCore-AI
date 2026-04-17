@@ -15,6 +15,14 @@ class AnalyzeSiteRequest(BaseModel):
     )
 
 
+class CompareSitesRequest(BaseModel):
+    address_a: str = Field(..., min_length=3, max_length=500)
+    address_b: str = Field(..., min_length=3, max_length=500)
+    business_type: str = Field(..., min_length=2, max_length=120)
+    budget: float | None = Field(default=None, ge=0)
+    radius_m: int | None = Field(default=None, ge=100, le=2000)
+
+
 class LatLon(BaseModel):
     lat: float
     lon: float
@@ -90,6 +98,13 @@ class AnalyzeSiteResponse(BaseModel):
     transit: TransitBlock
     summary: list[str]
     data_sources: dict[str, Any] = Field(default_factory=dict)
+
+
+class CompareSitesResponse(BaseModel):
+    site_a: AnalyzeSiteResponse
+    site_b: AnalyzeSiteResponse
+    comparison_winner: str = Field(..., description="The address of the winning site")
+    winner_reason: str = Field(..., description="AI-generated explanation of why site A or B is better")
 
 
 class AddressSuggestion(BaseModel):
