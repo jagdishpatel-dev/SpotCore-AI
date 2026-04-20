@@ -4,6 +4,7 @@ from pydantic import BaseModel, Field
 from openai import OpenAI
 from app.config import settings
 from app.services.scoring import RawSignals
+from app.models.schemas import AnalyzeSiteResponse
 
 logger = logging.getLogger(__name__)
 
@@ -27,11 +28,10 @@ async def get_ai_consultant_insights(
     Acts as a world-class urban planner and business strategist to provide
     nuanced, actionable insights based on the site's raw signals.
     """
-    if not settings.openai_api_key:
-        logger.warning("OpenAI API key not configured. Skipping AI insights.")
-        return None
-
-    client = OpenAI(api_key=settings.openai_api_key)
+    client = OpenAI(
+        api_key="ollama", 
+        base_url=settings.ollama_base_url
+    )
 
     # Construct a high-density prompt
     prompt = f"""
@@ -86,16 +86,16 @@ async def get_comparison_insight(
     site_b: AnalyzeSiteResponse,
     business_type: str
 ) -> str:
-    \"\"\"
+    """
     Compares two analyzed sites and provides a concise, strategic reason 
     why one is superior to the other for the given business type.
-    \"\"\"
-    if not settings.openai_api_key:
-        return "Unable to generate AI comparison at this time."
+    """
+    client = OpenAI(
+        api_key="ollama", 
+        base_url=settings.ollama_base_url
+    )
 
-    client = OpenAI(api_key=settings.openai_api_key)
-
-    prompt = f\"\"\"
+    prompt = f"""
     Compare two potential business locations for a {business_type}.
     
     SITE A:
@@ -113,7 +113,7 @@ async def get_comparison_insight(
     - Transit: {site_b.transit.summary}
     
     Which site is objectively better? Provide a concise (2-3 sentence) explanation focusing on the most critical differentiator (e.g., 'Site A wins due to significantly higher foot traffic and fewer competitors, despite a slightly lower income bracket').
-    \"\"\"
+    """
 
     try:
         response = client.chat.completions.create(

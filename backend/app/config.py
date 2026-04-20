@@ -19,8 +19,8 @@ class Settings(BaseSettings):
     address_suggest_min_chars: int = 3
 
     # LLM Configuration for Intelligence Layer
-    openai_api_key: str = ""
-    ai_model: str = "gpt-4o"
+    ollama_base_url: str = "http://localhost:11434/v1"
+    ai_model: str = "gemma4:31b"
 
 
 settings = Settings()

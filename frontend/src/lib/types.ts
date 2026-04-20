@@ -59,11 +59,24 @@ export interface AddressSuggestResponse {
   source: string;
 }
 
+export interface AIInsight {
+  strategic_overview: string;
+  the_edge: string;
+  the_blindspot: string;
+  the_power_move: string;
+}
+
+export interface AIInsights {
+  insights: AIInsight;
+  confidence_score: number;
+}
+
 export interface AnalyzeSiteResponse {
   location: LocationInfo;
   total_score: number;
   recommendation: Recommendation;
   scores: ScoreBreakdown;
+  ai_insights?: AIInsights | null;
   competitors: BusinessMarker[];
   complementary_businesses: BusinessMarker[];
   demographics: DemographicsBlock;
