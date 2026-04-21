@@ -47,6 +47,31 @@ export async function analyzeSite(payload: {
   return res.json() as Promise<AnalyzeSiteResponse>;
 }
 
+export async function analyzeCompare(payload: {
+  address_a: string;
+  address_b: string;
+  business_type: string;
+  budget?: number | null;
+  radius_m?: number | null;
+}): Promise<CompareSitesResponse> {
+  const res = await fetch(`${baseUrl()}/compare-sites`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      address_a: payload.address_a,
+      address_b: payload.address_b,
+      business_type: payload.business_type,
+      budget: payload.budget ?? null,
+      radius_m: payload.radius_m ?? null,
+    }),
+  });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(text || `Comparison failed (${res.status})`);
+  }
+  return res.json() as Promise<CompareSitesResponse>;
+}
+
 export async function trendsAreaDemand(payload: {
   address: string;
   keywords: string[];

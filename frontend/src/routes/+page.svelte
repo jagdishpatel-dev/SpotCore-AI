@@ -5,16 +5,21 @@
   import ScoreCard from '$lib/components/ScoreCard.svelte';
   import SiteMap from '$lib/components/SiteMap.svelte';
   import ConsultantCorner from '$lib/components/ConsultantCorner.svelte';
-  import type { AnalyzeSiteResponse, Recommendation, TrendsKeywordsResponse, TrendsTimeframe } from '$lib/types';
+  import ComparisonView from '$lib/components/ComparisonView.svelte';
+  import LoadingOverlay from '$lib/components/LoadingOverlay.svelte';
+  import type { AnalyzeSiteResponse, Recommendation, TrendsKeywordsResponse, TrendsTimeframe, CompareSitesResponse } from '$lib/types';
 
   let address = '86-16 208th St, Queens Village, NY';
+  let addressB = '86-002 208th Street, New York, New York, 11427';
   let businessType = 'coffee shop';
   let radiusInput = '500';
   let budgetInput = '';
 
+  let mode: 'analyze' | 'compare' = 'analyze';
   let loading = false;
   let error: string | null = null;
   let result: AnalyzeSiteResponse | null = null;
+  let compareResult: CompareSitesResponse | null = null;
 
   let trendsKeywordsInput = 'coffee, pizza';
   let trendsTimeframe: TrendsTimeframe = 'today 3-m';
@@ -38,6 +43,7 @@
     loading = true;
     error = null;
     result = null;
+    compareResult = null;
     try {
       const budget = budgetInput.trim() === '' ? null : Number(budgetInput);
       if (budget !== null && (Number.isNaN(budget) || budget < 0)) {
@@ -51,12 +57,26 @@
       if (radius_m < 100 || radius_m > 2000) {
         throw new Error('Search radius must be between 100 and 2000 meters.');
       }
-      result = await analyzeSite({
-        address,
-        business_type: businessType,
-        budget,
-        radius_m,
-      });
+      
+      if (mode === 'analyze') {
+        result = await analyzeSite({
+          address,
+          business_type: businessType,
+          budget,
+          radius_m,
+        });
+      } else {
+        // Comparison mode logic
+        // Note: We assume analyzeCompare exists in $lib/api, I will add it next
+        const r = await analyzeCompare({
+          address_a: address,
+          address_b: addressB,
+          business_type: businessType,
+          budget,
+          radius_m,
+        });
+        compareResult = r;
+      }
     } catch (e) {
       error = e instanceof Error ? e.message : 'Something went wrong.';
     } finally {
@@ -96,7 +116,7 @@
   }
 </script>
 
-<div class="min-h-screen bg-canvas">
+<div class="min-h-screen bg-canvas text-ink">
   <header
     class="sticky top-0 z-40 border-b border-line/80 bg-surface/75 shadow-nav backdrop-blur-xl backdrop-saturate-150"
   >
@@ -124,7 +144,9 @@
   </header>
 
   <main class="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-14">
-    {#if !result}
+    {#if loading}
+      <LoadingOverlay active={true} />
+    {:else if !result && !compareResult}
       <section class="grid gap-8 md:grid-cols-[1.05fr_0.95fr] md:items-start md:gap-10">
         <div
           class="rounded-2xl border border-line/90 bg-surface/70 p-6 shadow-card ring-1 ring-white/60 backdrop-blur-md backdrop-saturate-150 md:p-8"
@@ -242,12 +264,36 @@
       <section
         class="mt-14 rounded-2xl border border-line/90 bg-surface/80 p-6 shadow-card ring-1 ring-white/50 backdrop-blur-md md:p-8"
       >
-        <h2 class="text-lg font-semibold tracking-tight text-ink">Keyword demand (Google Trends)</h2>
-        <p class="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
-          Uses the <strong class="text-ink">same address</strong> as above. Google Geocoding resolves the location;
-          the backend derives a Trends-compatible region (not your street), then returns
-          <strong class="text-ink">relative 0–100</strong> scores by area — not search counts or foot traffic.
-        </p>
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-lg font-semibold tracking-tight text-ink">Comparison Mode</h2>
+          <button 
+            on:click={() => mode = mode === 'analyze' ? 'compare' : 'analyze'}
+            class="px-3 py-1 text-xs font-medium rounded-full border border-line bg-surface hover:bg-accent hover:text-white transition-colors"
+          >
+            Switch to {mode === 'analyze' ? 'Compare' : 'Analyze'}
+          </button>
+        </div>
+
+        {#if mode === 'analyze'}
+          <div class="text-sm text-muted italic">
+            Analyzing a single site for viability.
+          </div>
+        {:else}
+          <div class="grid gap-4 md:grid-cols-2 items-end">
+            <div>
+              <label class="text-sm font-medium text-ink" for="addr-a">Address A</label>
+              <AddressAutocomplete id="addr-a" bind:value={address} required />
+            </div>
+            <div>
+              <label class="text-sm font-medium text-ink" for="addr-b">Address B</label>
+              <AddressAutocomplete id="addr-b" bind:value={addressB} required />
+            </div>
+          </div>
+          <p class="mt-3 text-xs text-muted">
+            Compare two locations side-by-side to find the objective winner.
+          </p>
+        {/if}
+      </section>
 
         <div class="mt-5 grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
           <div>
