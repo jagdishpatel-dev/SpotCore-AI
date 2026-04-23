@@ -144,10 +144,30 @@
   </header>
 
   <main class="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-14">
-    {#if loading}
-      <LoadingOverlay active={true} />
-    {:else if !result && !compareResult}
-      <section class="grid gap-8 md:grid-cols-[1.05fr_0.95fr] md:items-start md:gap-10">
+      {#if loading}
+        <LoadingOverlay active={true} />
+      {:else if compareResult}
+        <div class="flex flex-col gap-8 animate-fade-in-up">
+          <ComparisonView 
+            siteA={compareResult.site_a} 
+            siteB={compareResult.site_b} 
+            winner={compareResult.comparison_winner} 
+            reason={compareResult.winner_reason} 
+          />
+        </div>
+      {:else if result}
+        <div class="flex flex-col gap-8 animate-fade-in-up">
+          <ScoreCard
+            title="Overall Viability"
+            score={result.total_score}
+            accent="teal"
+            hint={result.recommendation}
+          />
+          
+          <ConsultantCorner 
+            insights={result.ai_insights?.insights} 
+            confidence={result.ai_insights?.confidence_score ?? 0} 
+          />
         <div
           class="rounded-2xl border border-line/90 bg-surface/70 p-6 shadow-card ring-1 ring-white/60 backdrop-blur-md backdrop-saturate-150 md:p-8"
         >
