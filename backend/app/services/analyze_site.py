@@ -192,7 +192,11 @@ async def _analyze_site_live(
 
     scores = ScoreBreakdown(demand=d, competition=c, accessibility=a, demographic_fit=df, cost_fit=cf)
 
-    ai_insights = await get_ai_consultant_insights(signals, business_type, total, rec)
+    try:
+        ai_insights = await get_ai_consultant_insights(signals, business_type, total, rec)
+    except Exception as e:
+        logger.warning("AI Consultant failed or timed out: %s. Returning score without insights.", e)
+        ai_insights = None
 
     bullets = build_summary_bullets(signals, scores.model_dump(), business_type)
 

@@ -20,7 +20,7 @@ class Settings(BaseSettings):
 
     # LLM Configuration for Intelligence Layer
     ollama_base_url: str = "http://localhost:11434/v1"
-    ai_model: str = "gemma4:31b"
+    ai_model: str = "gemma4:31b-cloud"
 
 
 settings = Settings()

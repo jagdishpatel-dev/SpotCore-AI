@@ -143,15 +143,14 @@
   {#if open && suggestions.length > 0}
     <ul
       id={`${id}-listbox`}
-      class="absolute left-0 right-0 z-[200] mt-2 max-h-64 w-full overflow-auto rounded-xl border border-line bg-[#FFFFFF] py-1 shadow-[0_12px_40px_-8px_rgba(15,23,42,0.18)] ring-1 ring-slate-900/[0.06]"
+      class="absolute left-0 right-0 z-[200] mt-2 max-h-64 w-full overflow-auto rounded-xl border border-line bg-surface py-1 shadow-lg ring-1 ring-slate-900/[0.06]"
       role="listbox"
     >
       {#each suggestions as s, i}
         <li role="presentation">
           <button
             type="button"
-            class="flex w-full items-start gap-3 px-3 py-2.5 text-left text-sm font-medium text-ink transition-colors hover:bg-[#F1F5F9]"
-            class:bg-[#E2E8F0]={i === active}
+            class="flex w-full items-start gap-3 px-3 py-2.5 text-left text-sm font-medium text-ink transition-colors hover:bg-canvas/50 {i === active ? 'bg-canvas/20' : ''}"
             on:mousedown|preventDefault={() => pick(s)}
             role="option"
             aria-selected={i === active}
