@@ -1,10 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./src/**/*.{html,js,svelte,ts}'],
+module.exports = {
+  content: ['./src/**/*.{html,js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['Instrument Serif', 'Georgia', 'serif'],
       },
       colors: {
         canvas: 'var(--color-canvas)',
@@ -32,10 +33,15 @@ export default {
           '0%, 100%': { opacity: '0.5', filter: 'brightness(1)' },
           '50%': { opacity: '0.8', filter: 'brightness(1.2)' },
         },
+        'fall': {
+          from: { transform: 'translateY(-10vh)', opacity: '0' },
+          to: { transform: 'translateY(110vh)', opacity: '1' },
+        },
       },
       animation: {
         'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
         'glow': 'glow 3s ease-in-out infinite',
+        'fall': 'fall linear infinite',
       },
     },
   },

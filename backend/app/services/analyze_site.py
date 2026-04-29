@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import logging
 
 from app.config import settings
@@ -91,12 +92,17 @@ async def _analyze_site_live(
     lat, lon = geo["lat"], geo["lon"]
     label = geocode.extract_location_label(geo.get("display_name"), geo.get("address") or {})
 
-    tract_info = await census.coordinates_to_tract(lat, lon)
-    demo_raw: dict | None = None
-    if tract_info and tract_info.get("geoid"):
-        demo_raw = await census.fetch_acs_tract_demographics(tract_info["geoid"])
+    async def _get_census():
+        tract = await census.coordinates_to_tract(lat, lon)
+        if tract and tract.get("geoid"):
+            demo = await census.fetch_acs_tract_demographics(tract["geoid"])
+            return tract, demo
+        return tract, None
 
-    pois = await overpass.fetch_nearby_pois(lat, lon, effective_radius)
+    (tract_info, demo_raw), pois = await asyncio.gather(
+        _get_census(),
+        overpass.fetch_nearby_pois(lat, lon, effective_radius),
+    )
 
     competitors: list[BusinessMarker] = []
     complementary: list[BusinessMarker] = []
@@ -193,7 +199,10 @@ async def _analyze_site_live(
     scores = ScoreBreakdown(demand=d, competition=c, accessibility=a, demographic_fit=df, cost_fit=cf)
 
     try:
-        ai_insights = await get_ai_consultant_insights(signals, business_type, total, rec)
+        ai_insights = await asyncio.wait_for(
+            get_ai_consultant_insights(signals, business_type, total, rec),
+            timeout=25.0,
+        )
     except Exception as e:
         logger.warning("AI Consultant failed or timed out: %s. Returning score without insights.", e)
         ai_insights = None

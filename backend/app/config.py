@@ -19,8 +19,9 @@ class Settings(BaseSettings):
     address_suggest_min_chars: int = 3
 
     # LLM Configuration for Intelligence Layer
-    ollama_base_url: str = "http://localhost:11434/v1"
-    ai_model: str = "gemma4:31b-cloud"
+    gemini_api_key: str = ""
+    gemini_base_url: str = "https://generativelanguage.googleapis.com/v1beta/openai/"
+    ai_model: str = "models/gemma-4-26b-a4b-it"
 
 
 settings = Settings()
