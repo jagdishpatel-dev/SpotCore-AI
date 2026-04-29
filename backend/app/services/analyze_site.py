@@ -200,7 +200,14 @@ async def _analyze_site_live(
 
     try:
         ai_insights = await asyncio.wait_for(
-            get_ai_consultant_insights(signals, business_type, total, rec),
+            get_ai_consultant_insights(
+                signals,
+                business_type,
+                total,
+                rec,
+                address=address,
+                scores=scores,
+            ),
             timeout=25.0,
         )
     except Exception as e:
