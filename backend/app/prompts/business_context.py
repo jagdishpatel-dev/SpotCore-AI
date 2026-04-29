@@ -46,7 +46,7 @@ def business_context_system_prompt_v1(
     business_type: str,
     concept_notes: str = "",
 ) -> str:
-    """
+    f"""
     Returns the system prompt with optional runtime substitutions.
 
     Parameters
@@ -70,6 +70,7 @@ def business_context_system_prompt_v1(
             business_type=business_type,
             concept_notes=concept_notes,
         )
+        
         messages = [
             {"role": "system", "content": system_msg},
             {"role": "user",   "content": site_analysis_prompt_v1(...)},

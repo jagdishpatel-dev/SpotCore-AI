@@ -20,7 +20,7 @@ async def geocode_address(address: str) -> dict | None:
 
 
 async def _geocode_nominatim(q: str) -> dict | None:
-    url = "https://nominatim.openstreetmap.org/spythearch"
+    url = "https://nominatim.openstreetmap.org/search"
     params = {
         "q": q,
         "format": "json",

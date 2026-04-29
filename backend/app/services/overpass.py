@@ -107,6 +107,7 @@ def classify_poi(tags: dict, business_type: str) -> str | None:
         return "transit"
     if pt == "platform" or highway == "bus_stop":
         return "transit"
+    
 
     # Coffee / cafe
     if any(x in bt for x in ("coffee", "cafe", "café", "espresso")):
@@ -135,7 +136,7 @@ def classify_poi(tags: dict, business_type: str) -> str | None:
         if shop in ("jewelry", "beauty", "hairdresser", "cosmetics"):
             return "complementary"
 
-    # Gym / fitness
+    # Gym / fitnessd
     if any(x in bt for x in ("gym", "fitness", "yoga", "pilates")):
         if amenity in ("gym", "fitness_centre"):
             return "competitor"
