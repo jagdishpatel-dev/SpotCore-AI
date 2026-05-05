@@ -4,9 +4,138 @@
 @tailwind components;
 @tailwind utilities;
 
+/* GeoScore Dark — premium executive intelligence theme */
+:root {
+  --color-canvas: #020617;
+  --color-surface: #020a1a;
+  --color-surface-2: #050f24;
+  --color-ink: #e5e7eb;
+  --color-muted: #9ca3af;
+  --color-muted-2: #6b7280;
+  --color-line: rgba(148, 163, 184, 0.18);
+
+  --gs-accent: #22d3ee;
+  --gs-accent-2: #38bdf8;
+  --gs-glow-cyan: rgba(34, 211, 238, 0.12);
+  --gs-glow-blue: rgba(56, 189, 248, 0.16);
+}
+
 @layer base {
+  html,
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+  }
   ::selection {
-    background-color: rgba(15, 118, 110, 0.18);
-    color: #0f172a;
+    background-color: rgba(34, 211, 238, 0.22);
+    color: #f8fafc;
+  }
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .gs-page-bg {
+    background:
+      radial-gradient(1100px 600px at 50% -10%, rgba(34, 211, 238, 0.08), transparent 60%),
+      radial-gradient(900px 500px at 100% 10%, rgba(56, 189, 248, 0.06), transparent 60%),
+      radial-gradient(700px 600px at 0% 30%, rgba(2, 6, 23, 0.6), transparent 60%),
+      var(--color-canvas);
+  }
+  .gs-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.0))
+      var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: 22px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 18px 60px -24px rgba(2, 6, 23, 0.9);
+  }
+  .gs-card-2 {
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-line);
+    border-radius: 18px;
+  }
+  .gs-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-ink);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-line);
+    backdrop-filter: blur(8px);
+  }
+  .gs-divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(148, 163, 184, 0.28),
+      transparent
+    );
+  }
+  .gs-num {
+    font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+  }
+  .gs-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted-2);
+  }
+  .gs-grad-text {
+    background: linear-gradient(180deg, #f1f5f9 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .gs-cyan-text {
+    background: linear-gradient(180deg, #67e8f9, #22d3ee 60%, #0891b2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .gs-card-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+  .gs-card-hover:hover {
+    transform: translateY(-4px);
+    border-color: rgba(34, 211, 238, 0.35);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 28px 80px -28px rgba(34, 211, 238, 0.22);
+  }
+}
+
+/* Subtle scrollbar in dark theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.18);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.32);
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }

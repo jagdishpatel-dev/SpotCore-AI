@@ -1,6 +1,10 @@
+import logging
+
 import httpx
 
 from app.config import settings
+
+logger = logging.getLogger(__name__)
 
 
 async def coordinates_to_tract(lat: float, lon: float) -> dict | None:
@@ -14,8 +18,18 @@ async def coordinates_to_tract(lat: float, lon: float) -> dict | None:
         "format": "json",
     }
     async with httpx.AsyncClient(timeout=25.0) as client:
-        r = await client.get(url, params=params)
-        r.raise_for_status()
+        try:
+            r = await client.get(url, params=params)
+            r.raise_for_status()
+        except httpx.HTTPStatusError as e:
+            logger.warning(
+                "Census geocoder HTTP %s for tract lookup; continuing without tract demographics",
+                e.response.status_code,
+            )
+            return None
+        except httpx.RequestError as e:
+            logger.warning("Census geocoder request failed: %s", e)
+            return None
         body = r.json()
     matches = body.get("result", {}).get("geographies", {}).get("Census Tracts") or []
     if not matches:
