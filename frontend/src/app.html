@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark" style="color-scheme: dark;">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,11 +8,26 @@
       content="GeoScore — premium location intelligence for serious operators. Decide where to put a store with an executive-grade report."
     />
     <meta name="theme-color" content="#020617" />
+    <script>
+      // Inline theme bootstrap to avoid flash of incorrect theme.
+      (function () {
+        try {
+          var stored = localStorage.getItem('geoscore-theme');
+          var theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
+          var root = document.documentElement;
+          root.classList.toggle('dark', theme === 'dark');
+          root.classList.toggle('light', theme === 'light');
+          root.style.colorScheme = theme;
+        } catch (e) {
+          /* noop */
+        }
+      })();
+    </script>
     %sveltekit.head%
   </head>
   <body
     data-sveltekit-preload-data="hover"
-    class="bg-canvas text-ink antialiased font-sans"
+    class="antialiased font-sans"
   >
     <div style="display: contents">%sveltekit.body%</div>
   </body>

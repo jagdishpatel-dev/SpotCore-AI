@@ -1,5 +1,7 @@
 <script lang="ts">
   import '../app.css';
+  import AppChrome from '$lib/components/AppChrome.svelte';
+  import AppFooter from '$lib/components/AppFooter.svelte';
 </script>
 
 <svelte:head>
@@ -12,4 +14,10 @@
   <title>GeoScore — Location Intelligence</title>
 </svelte:head>
 
-<slot />
+<div class="gs-page-bg flex min-h-screen flex-col text-ink">
+  <AppChrome />
+  <main class="flex flex-1 flex-col">
+    <slot />
+  </main>
+  <AppFooter />
+</div>

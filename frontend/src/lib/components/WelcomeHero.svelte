@@ -4,7 +4,9 @@
   import ProductPreview from '$lib/components/ProductPreview.svelte';
   import { onMount } from 'svelte';
 
-  export let onStart: () => void;
+  /** If set, primary CTAs navigate here (e.g. `/analyze`). Else `onStart` is used. */
+  export let startHref: string | null = '/analyze';
+  export let onStart: (() => void) | null = null;
 
   let scrollY = 0;
   let viewportHeight = 0;
@@ -88,13 +90,23 @@
         in:fly={{ y: 30, duration: 1000, delay: 600, easing: quintOut }}
         class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8"
       >
-        <button 
-          on:click={onStart}
-          class="group relative px-12 py-6 bg-slate-900 text-white rounded-full font-bold text-xl transition-all hover:scale-105 active:scale-95 shadow-2xl hover:shadow-teal-500/40"
-        >
-          Get Your Site Score
-          <div class="absolute inset-0 rounded-full bg-gradient-to-r from-teal-500 to-blue-500 opacity-0 group-hover:opacity-20 transition-opacity"></div>
-        </button>
+        {#if startHref}
+          <a
+            href={startHref}
+            class="group relative inline-flex px-12 py-6 bg-slate-900 text-white rounded-full font-bold text-xl transition-all hover:scale-105 active:scale-95 shadow-2xl hover:shadow-teal-500/40"
+          >
+            Get Your Site Score
+            <span class="absolute inset-0 rounded-full bg-gradient-to-r from-teal-500 to-blue-500 opacity-0 group-hover:opacity-20 transition-opacity"></span>
+          </a>
+        {:else if onStart}
+          <button 
+            on:click={onStart}
+            class="group relative px-12 py-6 bg-slate-900 text-white rounded-full font-bold text-xl transition-all hover:scale-105 active:scale-95 shadow-2xl hover:shadow-teal-500/40"
+          >
+            Get Your Site Score
+            <div class="absolute inset-0 rounded-full bg-gradient-to-r from-teal-500 to-blue-500 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+          </button>
+        {/if}
       </div>
     </div>
   </div>
@@ -186,11 +198,20 @@
       Ready to find your <br />
       <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">perfect location?</span>
     </h2>
-    <button 
-      on:click={onStart}
-      class="px-12 py-6 bg-slate-900 text-white rounded-full font-bold text-xl transition-all hover:scale-105 active:scale-95 shadow-2xl hover:shadow-teal-500/40"
-    >
-      Start Analyzing Now
-    </button>
+    {#if startHref}
+      <a
+        href={startHref}
+        class="inline-flex px-12 py-6 bg-slate-900 text-white rounded-full font-bold text-xl transition-all hover:scale-105 active:scale-95 shadow-2xl hover:shadow-teal-500/40"
+      >
+        Start Analyzing Now
+      </a>
+    {:else if onStart}
+      <button 
+        on:click={onStart}
+        class="px-12 py-6 bg-slate-900 text-white rounded-full font-bold text-xl transition-all hover:scale-105 active:scale-95 shadow-2xl hover:shadow-teal-500/40"
+      >
+        Start Analyzing Now
+      </button>
+    {/if}
   </div>
 </div>

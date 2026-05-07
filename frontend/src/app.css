@@ -4,8 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 
-/* GeoScore Dark — premium executive intelligence theme */
-:root {
+/* ──────────────────────────────────────────────────────────────────────────
+ * GeoScore — premium location intelligence theme
+ *
+ * Two-mode (light + dark) token system. The legacy `--color-*` tokens are
+ * retained so analyze/report routes keep working unchanged. The new
+ * `--bg-*`, `--text-*`, and `--accent-*` tokens drive the redesigned
+ * homepage and any future surface.
+ * ───────────────────────────────────────────────────────────────────── */
+
+:root,
+:root.dark {
+  /* legacy aliases consumed by analyze + report routes */
   --color-canvas: #020617;
   --color-surface: #020a1a;
   --color-surface-2: #050f24;
@@ -14,18 +24,77 @@
   --color-muted-2: #6b7280;
   --color-line: rgba(148, 163, 184, 0.18);
 
-  --gs-accent: #22d3ee;
-  --gs-accent-2: #38bdf8;
-  --gs-glow-cyan: rgba(34, 211, 238, 0.12);
-  --gs-glow-blue: rgba(56, 189, 248, 0.16);
+  /* homepage-facing tokens — dark (default) */
+  --bg-base: #020617;
+  --bg-surface: #020a1a;
+  --bg-surface-2: #050f24;
+  --border-soft: rgba(148, 163, 184, 0.15);
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --text-muted: #4b5563;
+
+  --accent-cyan: #22d3ee;
+  --accent-blue: #38bdf8;
+  --accent-purple: #818cf8;
+  --positive: #22c55e;
+  --warning: #f97316;
+  --danger: #ef4444;
+
+  --glow-cyan: rgba(34, 211, 238, 0.12);
+  --glow-blue: rgba(56, 189, 248, 0.16);
+
+  /* gradient endpoint hex variants used inside CSS gradients */
+  --mesh-1: #061226;
+  --mesh-2: #0b2746;
+  --mesh-3: #0c1a3a;
+  --mesh-4: #08172e;
+}
+
+:root.light {
+  /* keep legacy tokens reasonable in light mode (they only render on
+     analyze/report routes which weren't redesigned, so we let them stay
+     dark — but on the homepage we exclusively read --bg-* tokens) */
+  --color-canvas: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f5f9;
+  --color-ink: #0f172a;
+  --color-muted: #475569;
+  --color-muted-2: #64748b;
+  --color-line: rgba(15, 23, 42, 0.1);
+
+  --bg-base: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-2: #f1f5f9;
+  --border-soft: rgba(15, 23, 42, 0.1);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --accent-cyan: #0891b2;
+  --accent-blue: #0284c7;
+  --accent-purple: #6366f1;
+  --positive: #16a34a;
+  --warning: #ea580c;
+  --danger: #dc2626;
+
+  --glow-cyan: rgba(8, 145, 178, 0.06);
+  --glow-blue: rgba(2, 132, 199, 0.06);
+
+  --mesh-1: #eef2ff;
+  --mesh-2: #e0f2fe;
+  --mesh-3: #ecfeff;
+  --mesh-4: #f1f5f9;
 }
 
 @layer base {
   html,
   body {
-    background: var(--color-canvas);
-    color: var(--color-ink);
+    background: var(--bg-base);
+    color: var(--text-primary);
     font-feature-settings: 'cv11', 'ss01', 'ss03';
+    transition:
+      background-color 400ms ease,
+      color 300ms ease;
   }
   ::selection {
     background-color: rgba(34, 211, 238, 0.22);
@@ -33,28 +102,44 @@
   }
   body {
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.02em;
+    line-height: 1.1;
   }
 }
 
 @layer components {
+  /* Legacy chrome retained for analyze + report screens. */
   .gs-page-bg {
     background:
       radial-gradient(1100px 600px at 50% -10%, rgba(34, 211, 238, 0.08), transparent 60%),
       radial-gradient(900px 500px at 100% 10%, rgba(56, 189, 248, 0.06), transparent 60%),
       radial-gradient(700px 600px at 0% 30%, rgba(2, 6, 23, 0.6), transparent 60%),
-      var(--color-canvas);
+      var(--bg-base);
   }
   .gs-card {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.0))
-      var(--color-surface);
-    border: 1px solid var(--color-line);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0))
+      var(--bg-surface);
+    border: 1px solid var(--border-soft);
     border-radius: 22px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
       0 18px 60px -24px rgba(2, 6, 23, 0.9);
   }
+  :root.light .gs-card {
+    background: var(--bg-surface);
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.04),
+      0 12px 40px -28px rgba(15, 23, 42, 0.18);
+  }
   .gs-card-2 {
-    background: var(--color-surface-2);
-    border: 1px solid var(--color-line);
+    background: var(--bg-surface-2);
+    border: 1px solid var(--border-soft);
     border-radius: 18px;
   }
   .gs-pill {
@@ -65,10 +150,13 @@
     padding: 0.35rem 0.7rem;
     font-size: 0.75rem;
     font-weight: 500;
-    color: var(--color-ink);
+    color: var(--text-primary);
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--color-line);
+    border: 1px solid var(--border-soft);
     backdrop-filter: blur(8px);
+  }
+  :root.light .gs-pill {
+    background: rgba(15, 23, 42, 0.03);
   }
   .gs-divider {
     height: 1px;
@@ -88,10 +176,16 @@
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-muted-2);
+    color: var(--text-muted);
   }
   .gs-grad-text {
     background: linear-gradient(180deg, #f1f5f9 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  :root.light .gs-grad-text {
+    background: linear-gradient(180deg, #0f172a 0%, #475569 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -103,17 +197,176 @@
     color: transparent;
   }
   .gs-card-hover {
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
   }
   .gs-card-hover:hover {
     transform: translateY(-4px);
     border-color: rgba(34, 211, 238, 0.35);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
       0 28px 80px -28px rgba(34, 211, 238, 0.22);
+  }
+
+  /* ── Homepage helpers ───────────────────────────────────────────────── */
+
+  .home-bg {
+    background: var(--bg-base);
+  }
+
+  /* Glass surface for floating cards / tab panels */
+  .glass {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.01)
+    );
+    border: 1px solid var(--border-soft);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+  :root.light .glass {
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Animated mesh gradient used behind the hero */
+  .mesh-bg {
+    background:
+      radial-gradient(60% 60% at 20% 30%, var(--mesh-2) 0%, transparent 60%),
+      radial-gradient(50% 50% at 80% 20%, var(--mesh-3) 0%, transparent 60%),
+      radial-gradient(70% 70% at 70% 80%, var(--mesh-4) 0%, transparent 60%),
+      radial-gradient(50% 60% at 30% 80%, var(--mesh-1) 0%, transparent 60%);
+    filter: saturate(115%);
+  }
+  :root.light .mesh-bg {
+    filter: saturate(108%) brightness(102%);
+  }
+
+  /* Shimmer applied to the accent word in the hero headline */
+  .shimmer-text {
+    background-image: linear-gradient(
+      90deg,
+      var(--accent-cyan) 0%,
+      var(--accent-blue) 25%,
+      #a5f3fc 50%,
+      var(--accent-blue) 75%,
+      var(--accent-cyan) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer-x 6s linear infinite;
+  }
+  :root.light .shimmer-text {
+    background-image: linear-gradient(
+      90deg,
+      var(--accent-cyan) 0%,
+      var(--accent-blue) 25%,
+      #0e7490 50%,
+      var(--accent-blue) 75%,
+      var(--accent-cyan) 100%
+    );
+  }
+
+  /* Hero entrance: drives a CSS-only fade + translate that fires on every
+     page load (including hydration), avoiding the Svelte `intro` gating
+     dance. Apply `.hero-enter` to the element and `.delay-Xms` via inline
+     style. */
+  .hero-enter {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+    animation: hero-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--enter-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  .hero-enter.from-right-x {
+    transform: translate3d(40px, 0, 0);
+  }
+  .hero-enter.from-left-x {
+    transform: translate3d(-32px, 0, 0);
+  }
+  .hero-enter.scale-up {
+    transform: scale(0.96);
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  /* Reveal action: starts hidden, fades + lifts when .revealed */
+  .reveal-init {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition:
+      opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-init.revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  .reveal-init.from-left {
+    transform: translate3d(-32px, 0, 0);
+  }
+  .reveal-init.from-right {
+    transform: translate3d(32px, 0, 0);
+  }
+  .reveal-init.from-top {
+    transform: translate3d(0, -16px, 0);
+  }
+  .reveal-init.scale-in {
+    transform: scale(0.94);
+  }
+  .reveal-init.scale-in.revealed {
+    transform: scale(1);
+  }
+
+  .home-section {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Animated dotted connector used in How-It-Works */
+  .connector-line {
+    background-image: linear-gradient(
+      90deg,
+      var(--border-soft) 50%,
+      transparent 50%
+    );
+    background-size: 14px 1px;
+    background-repeat: repeat-x;
+    background-position: 0 50%;
+    height: 1px;
+  }
+
+  .connector-dot {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background: var(--accent-cyan);
+    box-shadow: 0 0 0 4px var(--glow-cyan);
+    transform: translate(0, -50%);
+    transition: left 1400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .connector-dot.run {
+    left: calc(100% - 10px);
   }
 }
 
-/* Subtle scrollbar in dark theme */
+/* Subtle scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -125,11 +378,14 @@
   background: rgba(148, 163, 184, 0.18);
   border-radius: 9999px;
 }
+:root.light ::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.18);
+}
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(148, 163, 184, 0.32);
 }
 
-/* Reduced motion respect */
+/* Reduced motion: kill non-essential motion globally */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -137,5 +393,10 @@
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+  .reveal-init,
+  .hero-enter {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
