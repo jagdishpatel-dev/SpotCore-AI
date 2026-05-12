@@ -6,7 +6,7 @@
 
   export let startHref = '/analyze';
 
-  const headlineWords = ['Know', 'before', 'you'];
+  const headlineWords = ['Stop', 'guessing'];
 </script>
 
 <section
@@ -42,7 +42,7 @@
 
       <h1
         id="hero-headline"
-        class="mt-6 font-display text-[44px] font-bold leading-[1.05] tracking-[-0.02em] text-text-primary sm:text-[58px] md:text-[64px] lg:text-[72px]"
+        class="mt-6 font-display text-[44px] font-bold leading-[1.02] tracking-[-0.025em] text-text-primary sm:text-[58px] md:text-[64px] lg:text-[72px]"
       >
         <span class="block">
           {#each headlineWords as word, i}
@@ -58,17 +58,16 @@
           class="hero-enter block shimmer-text"
           style="--enter-delay: 420ms;"
         >
-          invest.
+          where to grow.
         </span>
       </h1>
 
       <p
-        class="hero-enter mt-6 max-w-[580px] text-[17px] leading-[1.65] text-text-secondary md:text-lg"
+        class="hero-enter mt-5 max-w-[540px] text-[17px] leading-[1.6] text-text-secondary md:text-[18px]"
         style="--enter-delay: 600ms;"
       >
-        Find out whether a location is right for your business by combining
-        demand, competition, demographics, and site quality into one clear
-        decision.
+        GeoScore turns scattered location signals into a clear read on
+        opportunity, risk, and fit.
       </p>
 
       <div

@@ -3,6 +3,7 @@
   import TrustBar from '$lib/components/home/TrustBar.svelte';
   import HowItWorks from '$lib/components/home/HowItWorks.svelte';
   import OldVsNew from '$lib/components/home/OldVsNew.svelte';
+  import Services from '$lib/components/home/Services.svelte';
   import WhatYouGet from '$lib/components/home/WhatYouGet.svelte';
   import DataSignals from '$lib/components/home/DataSignals.svelte';
   import UseCases from '$lib/components/home/UseCases.svelte';
@@ -17,6 +18,7 @@
   <TrustBar />
   <HowItWorks />
   <OldVsNew />
+  <Services />
   <WhatYouGet />
   <DataSignals />
   <UseCases {startHref} />

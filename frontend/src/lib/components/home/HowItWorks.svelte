@@ -60,15 +60,23 @@
   aria-labelledby="how-heading"
 >
   <div class="mx-auto max-w-7xl px-6 lg:px-10">
-    <div class="mx-auto max-w-2xl text-center">
+    <div class="relative mx-auto max-w-3xl text-center">
+      <!-- soft radial glow behind heading -->
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[260px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-60 blur-3xl"
+        style="background: radial-gradient(closest-side, var(--glow-cyan), transparent 70%);"
+      ></div>
+
       <Badge variant="outline">Simple Process</Badge>
       <h2
         id="how-heading"
-        class="mt-5 font-display text-3xl font-bold tracking-[-0.02em] text-text-primary md:text-4xl"
+        class="mt-5 font-display text-[40px] font-bold leading-[1.05] tracking-[-0.02em] text-text-primary sm:text-[52px] md:text-[64px] lg:text-[72px]"
       >
-        Three steps to a clear decision
+        Three steps to a
+        <span class="block shimmer-text">clear decision.</span>
       </h2>
-      <p class="mx-auto mt-4 max-w-xl text-base text-text-secondary md:text-lg">
+      <p class="mx-auto mt-6 max-w-xl text-base text-text-secondary md:text-lg">
         From an address to a strategic readout — without spreadsheets, broker
         calls, or guesswork.
       </p>

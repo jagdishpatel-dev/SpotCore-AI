@@ -336,6 +336,26 @@
     isolation: isolate;
   }
 
+  /* Services accordion: rows fade + lift in with a staggered delay once
+     the list intersects the viewport. Stagger index is set inline via
+     --svc-i (0..N). */
+  .svc-list .svc-row {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+    transition:
+      opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 200ms ease-out,
+      background-color 200ms ease-out,
+      box-shadow 200ms ease-out;
+    transition-delay: calc(var(--svc-i, 0) * 70ms);
+    will-change: opacity, transform;
+  }
+  .svc-list.svc-revealed .svc-row {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
   /* Animated dotted connector used in How-It-Works */
   .connector-line {
     background-image: linear-gradient(
@@ -395,7 +415,8 @@
     transition-duration: 0.001ms !important;
   }
   .reveal-init,
-  .hero-enter {
+  .hero-enter,
+  .svc-list .svc-row {
     opacity: 1 !important;
     transform: none !important;
   }
