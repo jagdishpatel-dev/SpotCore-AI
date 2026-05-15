@@ -68,19 +68,19 @@ async def fetch_acs_tract_demographics(geoid: str) -> dict | None:
     """
     year = settings.census_year
     variables = [
-        "NAME",
-        "B01003_001E",
-        "B19013_001E",
-        "B01002_001E",
-        "B25004_001E",  # vacant
-        "B25002_001E",  # total units
-        "B08301_010E",  # public transportation (excluding taxicab)
-        "B08301_001E",  # total workers for commute
-        "B15003_001E",  # education total 25+
-        "B15003_022E",
-        "B15003_023E",
-        "B15003_024E",
-        "B15003_025E",
+        "NAME",  # tract/area label from Census
+        "B01003_001E",  # total population
+        "B19013_001E",  # median household income (past 12 months, inflation-adjusted)
+        "B01002_001E",  # median age of population
+        "B25004_001E",  # vacant housing units
+        "B25002_001E",  # total housing units (occupied + vacant)
+        "B08301_010E",  # workers 16+ who commute via public transit (excl. taxicab)
+        "B08301_001E",  # workers 16+ with a commute (denominator for transit %)
+        "B15003_001E",  # population 25+ (denominator for education %)
+        "B15003_022E",  # bachelor's degree
+        "B15003_023E",  # master's degree
+        "B15003_024E",  # professional school degree
+        "B15003_025E",  # doctorate degree
     ]
     url = _acs_var_url(geoid, year, variables)
     async with httpx.AsyncClient(timeout=30.0) as client:

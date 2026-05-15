@@ -356,6 +356,274 @@
     transform: translate3d(0, 0, 0);
   }
 
+  /* ── Demo / Progress / Results — homepage live walkthrough ──────────── */
+
+  /* Large premium panel used by the demo + progress + result sections.
+     Stronger inset highlight and softer ambient shadow than the baseline
+     `.gs-card` so it can carry a full product moment. */
+  .gs-panel-xl {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(255, 255, 255, 0.005)
+      ),
+      var(--bg-surface);
+    border: 1px solid var(--border-soft);
+    border-radius: clamp(20px, 2vw, 28px);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 0 0 1px rgba(255, 255, 255, 0.015) inset,
+      0 36px 90px -32px rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+  :root.light .gs-panel-xl {
+    background: var(--bg-surface);
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.04),
+      0 30px 80px -34px rgba(15, 23, 42, 0.22);
+  }
+
+  /* Premium text input used by DemoInput */
+  .gs-input {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid var(--border-soft);
+    background: var(--bg-surface-2);
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.4;
+    padding: 14px 16px 14px 44px;
+    transition:
+      border-color 200ms ease,
+      box-shadow 200ms ease,
+      background-color 200ms ease;
+  }
+  .gs-input::placeholder {
+    color: var(--text-muted);
+  }
+  .gs-input:hover {
+    border-color: rgba(34, 211, 238, 0.28);
+  }
+  .gs-input:focus {
+    outline: none;
+    border-color: rgba(34, 211, 238, 0.55);
+    box-shadow:
+      0 0 0 4px rgba(34, 211, 238, 0.12),
+      0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  }
+
+  /* Selectable chip used for concept / radius / profile */
+  .gs-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 9999px;
+    border: 1px solid var(--border-soft);
+    background: var(--bg-surface-2);
+    color: var(--text-secondary);
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      border-color 180ms ease,
+      color 180ms ease,
+      background-color 180ms ease,
+      transform 180ms ease;
+  }
+  .gs-chip:hover {
+    color: var(--text-primary);
+    border-color: rgba(34, 211, 238, 0.32);
+  }
+  .gs-chip[aria-pressed='true'] {
+    color: #0e7490;
+    background: rgba(34, 211, 238, 0.18);
+    border-color: rgba(34, 211, 238, 0.55);
+  }
+  :root.dark .gs-chip[aria-pressed='true'],
+  :root:not(.light) .gs-chip[aria-pressed='true'] {
+    color: var(--accent-cyan);
+    background: rgba(34, 211, 238, 0.14);
+  }
+
+  /* Progress rail step row used in AnalysisProgress */
+  .progress-row {
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 4px;
+    border-radius: 12px;
+    transition:
+      background-color 240ms ease,
+      color 240ms ease;
+  }
+  .progress-row[data-state='active'] {
+    background: linear-gradient(
+      90deg,
+      rgba(34, 211, 238, 0.06),
+      transparent 70%
+    );
+  }
+  .progress-row[data-state='done'] .progress-label {
+    color: var(--text-primary);
+  }
+  .progress-label {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.4;
+    transition: color 240ms ease;
+  }
+  .progress-row[data-state='active'] .progress-label {
+    color: var(--text-primary);
+  }
+
+  .progress-marker {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    border-radius: 9999px;
+    border: 1px solid var(--border-soft);
+    background: var(--bg-surface-2);
+    display: grid;
+    place-items: center;
+    color: var(--text-muted);
+    transition:
+      border-color 240ms ease,
+      color 240ms ease,
+      background-color 240ms ease;
+  }
+  .progress-row[data-state='active'] .progress-marker {
+    border-color: rgba(34, 211, 238, 0.55);
+    color: var(--accent-cyan);
+    background: rgba(34, 211, 238, 0.1);
+  }
+  .progress-row[data-state='active'] .progress-marker::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 9999px;
+    background: rgba(34, 211, 238, 0.18);
+    animation: gs-pulse-soft 1.4s ease-in-out infinite;
+    z-index: -1;
+  }
+  .progress-row[data-state='done'] .progress-marker {
+    border-color: rgba(34, 211, 238, 0.5);
+    background: rgba(34, 211, 238, 0.16);
+    color: var(--accent-cyan);
+  }
+
+  @keyframes gs-pulse-soft {
+    0%,
+    100% {
+      transform: scale(0.94);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.08);
+      opacity: 0;
+    }
+  }
+
+  /* Linear progress bar used by AnalysisProgress */
+  .gs-progress-track {
+    position: relative;
+    height: 6px;
+    width: 100%;
+    border-radius: 9999px;
+    background: var(--bg-surface-2);
+    overflow: hidden;
+  }
+  .gs-progress-fill {
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      90deg,
+      var(--accent-cyan),
+      var(--accent-blue)
+    );
+    box-shadow: 0 0 18px -4px rgba(34, 211, 238, 0.55);
+    transition: width 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .gs-progress-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.45),
+      transparent
+    );
+    transform: translateX(-100%);
+    animation: gs-progress-shimmer 2.2s ease-in-out infinite;
+  }
+  :root.light .gs-progress-fill::after {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.65),
+      transparent
+    );
+  }
+  @keyframes gs-progress-shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Result preview tab pill row (richer than the generic Tabs UI) */
+  .gs-tab-rail {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 9999px;
+    border: 1px solid var(--border-soft);
+    background: var(--bg-surface-2);
+  }
+  .gs-tab {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 9999px;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition:
+      color 180ms ease,
+      background-color 180ms ease;
+  }
+  .gs-tab:hover {
+    color: var(--text-primary);
+  }
+  .gs-tab[aria-selected='true'] {
+    color: var(--text-primary);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      rgba(255, 255, 255, 0.015)
+    );
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 6px 18px -10px rgba(34, 211, 238, 0.5);
+  }
+  :root.light .gs-tab[aria-selected='true'] {
+    background: var(--bg-surface);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.7) inset,
+      0 4px 14px -8px rgba(15, 23, 42, 0.18);
+  }
+
   /* Animated dotted connector used in How-It-Works */
   .connector-line {
     background-image: linear-gradient(
@@ -419,5 +687,9 @@
   .svc-list .svc-row {
     opacity: 1 !important;
     transform: none !important;
+  }
+  .progress-row[data-state='active'] .progress-marker::after,
+  .gs-progress-fill::after {
+    animation: none !important;
   }
 }

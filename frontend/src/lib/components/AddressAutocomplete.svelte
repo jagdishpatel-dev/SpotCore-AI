@@ -7,6 +7,8 @@
   export let id: string;
   export let required = false;
   export let disabled = false;
+  export let inputClass =
+    'mt-1 w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink shadow-sm ring-1 ring-slate-900/[0.02] placeholder:text-muted/45 transition focus:border-teal-600/40 focus:outline-none focus:ring-4 focus:ring-teal-600/15 disabled:cursor-not-allowed disabled:opacity-50';
 
   let open = false;
   let loading = false;
@@ -19,9 +21,6 @@
 
   const DEBOUNCE_MS = 320;
   const MIN_CHARS = 3;
-
-  const inputClass =
-    'mt-1 w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink shadow-sm ring-1 ring-slate-900/[0.02] placeholder:text-muted/45 transition focus:border-teal-600/40 focus:outline-none focus:ring-4 focus:ring-teal-600/15 disabled:cursor-not-allowed disabled:opacity-50';
 
   function close() {
     open = false;

@@ -2,8 +2,14 @@
   import Button from '$lib/components/ui/Button.svelte';
   import { reveal } from '$lib/actions/reveal';
   import { Sparkles } from 'lucide-svelte';
+  import { replayDemo } from '$lib/stores/demoFlow';
 
   export let startHref = '/analyze';
+
+  function onReplay(e: MouseEvent) {
+    e.preventDefault();
+    replayDemo();
+  }
 </script>
 
 <section
@@ -25,10 +31,12 @@
       id="final-cta-heading"
       class="font-display text-4xl font-bold tracking-[-0.02em] text-text-primary md:text-[48px]"
     >
-      Know before you <span class="shimmer-text">invest.</span>
+      Ready to run GeoScore on a{' '}
+      <span class="shimmer-text">real address?</span>
     </h2>
     <p class="mx-auto mt-5 max-w-xl text-base text-text-secondary md:text-lg">
-      Enter any address and business type. Get your report in minutes.
+      Get the same decision-ready readout—demand, competition, demographics, and
+      an AI strategic summary—from live signals, not a static demo.
     </p>
     <div class="mt-10 flex flex-col items-center gap-4">
       <Button
@@ -40,9 +48,18 @@
         Analyze a Location
         <Sparkles class="h-4 w-4" />
       </Button>
-      <p class="text-[13px] text-text-muted">
-        No account needed. No credit card.
-      </p>
+      <div class="flex flex-col items-center gap-2">
+        <p class="text-[13px] text-text-muted">
+          No account needed. No credit card.
+        </p>
+        <a
+          href="#demo"
+          class="text-[13px] font-medium text-accent-cyan transition-colors hover:text-accent-blue"
+          on:click={onReplay}
+        >
+          Replay the homepage walkthrough
+        </a>
+      </div>
     </div>
   </div>
 </section>
