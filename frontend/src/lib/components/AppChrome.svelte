@@ -60,7 +60,7 @@
         GS
       </div>
       <div class="leading-tight">
-        <p class="text-sm font-semibold tracking-tight text-text-primary">
+        <p class="text-sm font-medium tracking-tight text-text-primary">
           GeoScore
         </p>
         <p class="text-[11px] tracking-wide text-text-muted">

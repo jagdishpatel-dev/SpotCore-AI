@@ -36,11 +36,11 @@
         aria-hidden="true"
       >
         <div class="grid h-[4.25rem] w-[4.25rem] place-items-center rounded-full bg-geoscorer-surface">
-          <span class="font-display text-2xl font-semibold text-geoscorer-accent">82</span>
+          <span class="font-sans text-2xl font-medium tabular-nums tracking-tight text-geoscorer-accent">82</span>
         </div>
       </div>
       <div>
-        <p class="font-display text-xl font-semibold text-geoscorer-text">Strong fit</p>
+        <p class="font-sans text-xl font-medium tracking-tight text-geoscorer-text">Strong fit</p>
         <p class="mt-0.5 text-sm text-geoscorer-text-muted">Site score · 82 / 100</p>
       </div>
     </div>

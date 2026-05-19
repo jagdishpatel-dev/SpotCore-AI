@@ -30,7 +30,7 @@
             <div>
               <div class="flex items-center justify-between text-xs text-geoscorer-text-muted">
                 <span>{m.label}</span>
-                <span class="font-display font-semibold text-geoscorer-text">{m.value}</span>
+                <span class="font-sans font-medium tabular-nums text-geoscorer-text">{m.value}</span>
               </div>
               <div class="mt-1.5 h-1.5 overflow-hidden rounded-full bg-geoscorer-surface-soft">
                 <span class="block h-full rounded-full bg-geoscorer-accent" style="width: {m.bar}%"></span>

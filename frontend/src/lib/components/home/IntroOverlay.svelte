@@ -9,14 +9,10 @@
   const FADE_OUT_MS = 420;
   const REDUCED_HOLD_MS = 400;
 
-  interface Props {
-    oncomplete?: () => void;
-  }
+  export let oncomplete: (() => void) | undefined = undefined;
 
-  let { oncomplete }: Props = $props();
-
-  let showOverlay = $state(false);
-  let exiting = $state(false);
+  let showOverlay = false;
+  let exiting = false;
 
   function finishIntro() {
     oncomplete?.();
@@ -68,7 +64,7 @@
     role="presentation"
   >
     <div class="intro-overlay__inner">
-      <p class="intro-overlay__wordmark font-display text-2xl font-semibold tracking-tight text-geoscorer-text md:text-3xl">
+      <p class="intro-overlay__wordmark font-sans text-2xl font-medium tracking-heading text-geoscorer-text md:text-3xl">
         GeoScorer
       </p>
 

@@ -41,8 +41,8 @@
     <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {#each steps as step}
         <article class="reveal-init geo-card p-5 hover:!translate-y-0" data-reveal-child>
-          <p class="font-display text-sm font-semibold text-geoscorer-accent">{step.n}</p>
-          <h3 class="mt-3 text-lg font-semibold text-geoscorer-text">{step.title}</h3>
+          <p class="font-sans text-sm font-medium tabular-nums text-geoscorer-accent">{step.n}</p>
+          <h3 class="mt-3 text-lg font-medium tracking-heading text-geoscorer-text">{step.title}</h3>
           <p class="mt-2 text-sm leading-relaxed text-geoscorer-text-muted">{step.body}</p>
         </article>
       {/each}

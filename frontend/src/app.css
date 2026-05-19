@@ -1,5 +1,6 @@
 @import '../node_modules/geist-svelte/dist/font/sans.css';
 @import '../node_modules/geist-svelte/dist/font/mono.css';
+@import './lib/fonts/false.css';
 @import 'leaflet/dist/leaflet.css';
 
 @tailwind base;
@@ -16,13 +17,12 @@
  * ───────────────────────────────────────────────────────────────────── */
 
 :root {
-  --font-display: var(--font-geist-sans);
-
   /* GeoScorer marketing palette (homepage + shared utilities) */
   --gs-bg: #f7f4ee;
   --gs-surface: #ffffff;
   --gs-surface-soft: #f2efe8;
   --gs-text: #1f2937;
+  --gs-text-lead: #4b5563;
   --gs-text-muted: #6b7280;
   --gs-accent: #0f766e;
   --gs-accent-soft: #d1fae5;
@@ -135,25 +135,48 @@ html {
     color: #f8fafc;
   }
   body {
-    @apply font-sans font-normal;
-    line-height: 1.6;
+    @apply font-sans font-normal text-[15px] leading-[1.65] tracking-body;
+    font-weight: 400;
   }
   h1,
   h2,
   h3,
   h4 {
-    @apply font-display;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    @apply font-sans font-medium tracking-heading;
+    line-height: 1.15;
+    font-weight: 500;
   }
 }
 
 @layer utilities {
-  .type-display {
-    @apply font-display font-semibold tracking-tight;
+  /* Hero H1 — False display accent (homepage only) */
+  .type-hero {
+    @apply font-display font-medium tracking-hero text-geoscorer-text;
+    line-height: 1.12;
+    font-weight: 500;
   }
+
+  /* Section headings — Geist, restrained hierarchy */
+  .type-display {
+    @apply font-sans font-medium tracking-heading text-geoscorer-text;
+    line-height: 1.18;
+    font-weight: 500;
+  }
+
   .type-body {
-    @apply font-sans font-normal;
+    @apply font-sans font-normal tracking-body;
+    line-height: 1.65;
+  }
+
+  .type-lead {
+    @apply font-sans font-normal text-lead text-geoscorer-text-lead tracking-body;
+    max-width: 36rem;
+  }
+
+  @media (min-width: 768px) {
+    .type-lead {
+      @apply text-lead-md;
+    }
   }
 }
 
@@ -342,7 +365,8 @@ html {
     border-radius: 9999px;
     padding: 0.625rem 1.25rem;
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 500;
+    letter-spacing: -0.01em;
     color: #fff;
     background: var(--gs-accent);
     border: 0;
@@ -366,7 +390,8 @@ html {
     border-radius: 9999px;
     padding: 0.625rem 1.25rem;
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 500;
+    letter-spacing: -0.01em;
     color: var(--gs-text);
     background: transparent;
     border: 1px solid var(--gs-border);
@@ -399,21 +424,24 @@ html {
 
   .geo-label {
     font-size: 0.6875rem;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--gs-text-muted);
   }
 
   .geo-section-title {
-    @apply font-display font-semibold tracking-tight;
+    @apply font-sans font-medium tracking-heading;
     font-size: 1.5rem;
-    line-height: 1.15;
+    line-height: 1.2;
+    font-weight: 500;
     color: var(--gs-text);
   }
   @media (min-width: 768px) {
     .geo-section-title {
-      font-size: 1.875rem;
+      font-size: 1.75rem;
+      line-height: 1.18;
+      letter-spacing: -0.022em;
     }
   }
 

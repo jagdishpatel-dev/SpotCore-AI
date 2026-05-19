@@ -6,10 +6,38 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        sans: [
+          'var(--font-geist-sans)',
+          'Geist',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'sans-serif',
+        ],
+        display: [
+          'var(--font-false)',
+          'False',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'sans-serif',
+        ],
         mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
-        score: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        score: [
+          'var(--font-geist-sans)',
+          'Geist',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'sans-serif',
+        ],
+      },
+      fontSize: {
+        'hero-sm': ['2.375rem', { lineHeight: '1.14', letterSpacing: '-0.03em' }],
+        hero: ['2.75rem', { lineHeight: '1.12', letterSpacing: '-0.032em' }],
+        'hero-lg': ['3.25rem', { lineHeight: '1.1', letterSpacing: '-0.035em' }],
+        lead: ['1.0625rem', { lineHeight: '1.7', letterSpacing: '-0.008em' }],
+        'lead-md': ['1.125rem', { lineHeight: '1.68', letterSpacing: '-0.01em' }],
       },
       colors: {
         // Legacy tokens retained (consumed by analyze/report routes)
@@ -52,6 +80,7 @@ module.exports = {
           'surface-soft': 'var(--gs-surface-soft)',
           text: 'var(--gs-text)',
           'text-muted': 'var(--gs-text-muted)',
+          'text-lead': 'var(--gs-text-lead)',
           accent: 'var(--gs-accent)',
           'accent-soft': 'var(--gs-accent-soft)',
           'accent-2': 'var(--gs-accent-2)',
@@ -151,6 +180,9 @@ module.exports = {
       letterSpacing: {
         micro: '0.14em',
         display: '-0.02em',
+        hero: '-0.032em',
+        heading: '-0.02em',
+        body: '-0.006em',
       },
     },
   },

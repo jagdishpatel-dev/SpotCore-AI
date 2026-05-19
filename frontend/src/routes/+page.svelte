@@ -13,7 +13,7 @@
 
   const startHref = '/analyze';
 
-  let heroRevealReady = $state(false);
+  let heroRevealReady = false;
 
   function onIntroComplete() {
     heroRevealReady = true;

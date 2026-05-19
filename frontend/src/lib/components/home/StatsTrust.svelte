@@ -14,7 +14,7 @@
     <div class="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
       {#each stats as s}
         <div class="reveal-init geo-metric-card text-center md:text-left" data-reveal-child>
-          <p class="font-display text-2xl font-semibold text-geoscorer-accent md:text-3xl">{s.value}</p>
+          <p class="font-sans text-2xl font-medium tabular-nums tracking-tight text-geoscorer-accent md:text-3xl">{s.value}</p>
           <p class="mt-1 text-sm text-geoscorer-text-muted">{s.label}</p>
         </div>
       {/each}
