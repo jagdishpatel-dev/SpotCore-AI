@@ -6,10 +6,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"Space Grotesk"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        score: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
+        score: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
       },
       colors: {
         // Legacy tokens retained (consumed by analyze/report routes)
@@ -44,8 +44,23 @@ module.exports = {
 
         // Legacy alias retained
         success: 'var(--positive)',
+
+        // GeoScorer marketing homepage (maps to --gs-* on .marketing-page)
+        geoscorer: {
+          bg: 'var(--gs-bg)',
+          surface: 'var(--gs-surface)',
+          'surface-soft': 'var(--gs-surface-soft)',
+          text: 'var(--gs-text)',
+          'text-muted': 'var(--gs-text-muted)',
+          accent: 'var(--gs-accent)',
+          'accent-soft': 'var(--gs-accent-soft)',
+          'accent-2': 'var(--gs-accent-2)',
+          border: 'var(--gs-border)',
+        },
       },
       boxShadow: {
+        'gs-hero': '0 12px 40px rgba(15, 118, 110, 0.08)',
+        'gs-glass': '0 14px 40px rgba(15, 118, 110, 0.10)',
         card: '0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 40px -12px rgba(2, 6, 23, 0.7)',
         'card-hover':
           '0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 18px 60px -16px rgba(34, 211, 238, 0.18)',

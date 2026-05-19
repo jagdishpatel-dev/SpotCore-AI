@@ -1,26 +1,36 @@
 <script lang="ts">
+  import IntroOverlay from '$lib/components/home/IntroOverlay.svelte';
   import Hero from '$lib/components/home/Hero.svelte';
-  import TrustBar from '$lib/components/home/TrustBar.svelte';
-  import OldVsNew from '$lib/components/home/OldVsNew.svelte';
-  import Services from '$lib/components/home/Services.svelte';
-  import DataSignals from '$lib/components/home/DataSignals.svelte';
+  import StatsTrust from '$lib/components/home/StatsTrust.svelte';
+  import DemoSection from '$lib/components/home/DemoSection.svelte';
+  import HowItWorks from '$lib/components/home/HowItWorks.svelte';
+  import InsightCategories from '$lib/components/home/InsightCategories.svelte';
   import UseCases from '$lib/components/home/UseCases.svelte';
+  import SampleReport from '$lib/components/home/SampleReport.svelte';
+  import Testimonials from '$lib/components/home/Testimonials.svelte';
   import FAQ from '$lib/components/home/FAQ.svelte';
   import FinalCTA from '$lib/components/home/FinalCTA.svelte';
 
   const startHref = '/analyze';
+
+  let heroRevealReady = $state(false);
+
+  function onIntroComplete() {
+    heroRevealReady = true;
+  }
 </script>
 
-<div class="home-bg flex flex-col">
-  <!-- Promise + interactive demo (single hero band) -->
-  <Hero {startHref} />
+<div class="marketing-page flex min-h-full flex-col">
+  <IntroOverlay oncomplete={onIntroComplete} />
 
-  <!-- Expansion + trust-building -->
-  <TrustBar />
-  <OldVsNew />
-  <Services />
-  <DataSignals />
+  <Hero {startHref} revealReady={heroRevealReady} />
+  <StatsTrust />
+  <DemoSection />
+  <HowItWorks />
+  <InsightCategories />
   <UseCases {startHref} />
+  <SampleReport {startHref} />
+  <Testimonials />
   <FAQ />
   <FinalCTA {startHref} />
 </div>

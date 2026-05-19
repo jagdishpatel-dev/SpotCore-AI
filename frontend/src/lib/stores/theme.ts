@@ -13,7 +13,7 @@ function readInitial(): Theme {
   } catch {
     /* ignore */
   }
-  return 'dark';
+  return 'light';
 }
 
 function applyToDom(value: Theme) {

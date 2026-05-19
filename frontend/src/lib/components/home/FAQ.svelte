@@ -1,61 +1,51 @@
 <script lang="ts">
-  import Badge from '$lib/components/ui/Badge.svelte';
-  import Accordion, {
-    type AccordionItem,
-  } from '$lib/components/ui/Accordion.svelte';
+  import Accordion, { type AccordionItem } from '$lib/components/ui/Accordion.svelte';
   import { reveal } from '$lib/actions/reveal';
 
   const items: AccordionItem[] = [
     {
       id: 'q1',
-      question: 'How is the viability score calculated?',
+      question: 'How does GeoScorer calculate a site score?',
       answer:
-        "We blend signals across four pillars — demand, demographics, competition, and site quality — using a calibrated weighting that emphasises decision-relevant factors. Each input is normalised against comparable trade areas and re-weighted by your business type, so a 'high' score for a coffee shop reflects different evidence than for a fitness studio.",
+        'We blend demand, competition, demographic fit, and site-quality signals—normalized for your business type and trade area. Each pillar is weighted for decision relevance, then combined into a single viability score with explainable drivers.',
     },
     {
       id: 'q2',
-      question: 'Is this only for retail?',
+      question: 'What data sources do you use?',
       answer:
-        'No. GeoScore is built for any consumer-facing concept where physical place matters — retail, F&B, fitness, services, healthcare, salons, daycares, and franchise brands. The signal stack is tuned per category so the scoring stays meaningful across formats.',
+        'US Census demographics, OpenStreetMap POIs, Google Trends category demand, mobility-derived foot traffic, review sentiment, and proprietary trade-area geometry. Sources are named in every report.',
     },
     {
       id: 'q3',
-      question: 'What data sources does GeoScore use?',
+      question: 'Who is GeoScorer for?',
       answer:
-        'US Census (ACS) demographics and income, OpenStreetMap POI and competition mapping, Google Trends for category demand, mobility-derived foot traffic patterns, web review sentiment, and a proprietary trade-area model. All sources are named in your report.',
+        'Retail, restaurant, franchise, clinic, and service brands—and the advisors and brokers who support them—whenever a physical site has to justify rent, buildout, or territory investment.',
     },
     {
       id: 'q4',
-      question: 'How accurate is the demand forecast?',
+      question: 'Can I compare multiple locations?',
       answer:
-        'The 12-month outlook is a directional projection — useful for ranking and risk, not a hard sales forecast. We surface confidence intervals alongside every signal so you can weigh the projection appropriately for the decision.',
+        'Yes. Run analyses for each address and compare scores, drivers, and risks side by side so stakeholders see an apples-to-apples ranking.',
     },
     {
       id: 'q5',
-      question: 'Can I compare multiple locations?',
+      question: 'Is this a one-time tool or ongoing?',
       answer:
-        'Yes. Run an analysis for each address and you get an apples-to-apples comparison view: scores, drivers, demand outlook, and risks lined up side-by-side so you can defend the pick to a partner, lender, or board.',
+        'Use GeoScorer for one-off diligence or ongoing expansion workflows. Many teams run every shortlist address through the same report format before IC or franchise review.',
     },
   ];
 </script>
 
 <section
-  class="home-section bg-[var(--bg-surface)]/40 py-24"
-  use:reveal
+  id="faq"
+  class="scroll-mt-24 bg-geoscorer-surface-soft"
   aria-labelledby="faq-heading"
+  use:reveal
 >
-  <div class="mx-auto max-w-3xl px-6 lg:px-10">
-    <div class="flex flex-col items-start gap-4">
-      <Badge variant="outline">FAQ</Badge>
-      <h2
-        id="faq-heading"
-        class="font-display text-3xl font-bold tracking-[-0.02em] text-text-primary md:text-4xl"
-      >
-        Common questions
-      </h2>
-    </div>
-
-    <div class="mt-10">
+  <div class="geo-section">
+    <p class="geo-label">FAQ</p>
+    <h2 id="faq-heading" class="geo-section-title mt-3">Common questions</h2>
+    <div class="mt-8 rounded-2xl border border-geoscorer-border bg-geoscorer-surface px-2 py-1 md:px-4">
       <Accordion {items} />
     </div>
   </div>

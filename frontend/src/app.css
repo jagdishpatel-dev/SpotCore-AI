@@ -1,3 +1,5 @@
+@import '../node_modules/geist-svelte/dist/font/sans.css';
+@import '../node_modules/geist-svelte/dist/font/mono.css';
 @import 'leaflet/dist/leaflet.css';
 
 @tailwind base;
@@ -12,6 +14,21 @@
  * `--bg-*`, `--text-*`, and `--accent-*` tokens drive the redesigned
  * homepage and any future surface.
  * ───────────────────────────────────────────────────────────────────── */
+
+:root {
+  --font-display: var(--font-geist-sans);
+
+  /* GeoScorer marketing palette (homepage + shared utilities) */
+  --gs-bg: #f7f4ee;
+  --gs-surface: #ffffff;
+  --gs-surface-soft: #f2efe8;
+  --gs-text: #1f2937;
+  --gs-text-muted: #6b7280;
+  --gs-accent: #0f766e;
+  --gs-accent-soft: #d1fae5;
+  --gs-accent-2: #2563eb;
+  --gs-border: #e5e7eb;
+}
 
 :root,
 :root.dark {
@@ -86,7 +103,24 @@
   --mesh-4: #f1f5f9;
 }
 
+/* Native in-page anchor scrolling (nav section links). */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 @layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
   html,
   body {
     background: var(--bg-base);
@@ -101,15 +135,25 @@
     color: #f8fafc;
   }
   body {
-    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    @apply font-sans font-normal;
     line-height: 1.6;
   }
   h1,
   h2,
   h3,
   h4 {
+    @apply font-display;
     letter-spacing: -0.02em;
     line-height: 1.1;
+  }
+}
+
+@layer utilities {
+  .type-display {
+    @apply font-display font-semibold tracking-tight;
+  }
+  .type-body {
+    @apply font-sans font-normal;
   }
 }
 
@@ -168,7 +212,7 @@
     );
   }
   .gs-num {
-    font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    @apply font-sans;
     font-feature-settings: 'tnum' 1, 'lnum' 1;
   }
   .gs-label {
@@ -214,6 +258,233 @@
 
   .home-bg {
     background: var(--bg-base);
+  }
+
+  /* ── GeoScorer marketing design system ─────────────────────────────── */
+
+  .marketing-page {
+    --bg-base: var(--gs-bg);
+    --bg-surface: var(--gs-surface);
+    --bg-surface-2: var(--gs-surface-soft);
+    --text-primary: var(--gs-text);
+    --text-secondary: var(--gs-text-muted);
+    --text-muted: #9ca3af;
+    --border-soft: var(--gs-border);
+    --accent-cyan: var(--gs-accent);
+    --accent-blue: var(--gs-accent-2);
+    --glow-cyan: rgba(15, 118, 110, 0.08);
+    --glow-blue: rgba(37, 99, 235, 0.06);
+    --positive: #059669;
+    background: var(--gs-bg);
+    color: var(--gs-text);
+  }
+
+  .geo-section {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  @media (min-width: 768px) {
+    .geo-section {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  .geo-card {
+    border-radius: 1rem;
+    background: var(--gs-surface);
+    border: 1px solid var(--gs-border);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+  .geo-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--gs-accent) 28%, var(--gs-border));
+    box-shadow: 0 12px 32px -16px rgba(15, 118, 110, 0.14);
+  }
+
+  .geo-metric-card {
+    border-radius: 0.75rem;
+    background: var(--gs-surface);
+    border: 1px solid var(--gs-border);
+    padding: 0.75rem 1rem;
+  }
+
+  .geo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--gs-text);
+    background: var(--gs-surface-soft);
+    border: 1px solid var(--gs-border);
+  }
+
+  .geo-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--gs-accent);
+    border: 0;
+    box-shadow: 0 8px 24px -8px rgba(15, 118, 110, 0.45);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease;
+  }
+  .geo-btn-primary:hover {
+    transform: translateY(-1px);
+    background: #0d6b64;
+    box-shadow: 0 12px 28px -8px rgba(15, 118, 110, 0.5);
+  }
+
+  .geo-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gs-text);
+    background: transparent;
+    border: 1px solid var(--gs-border);
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+  }
+  .geo-btn-ghost:hover {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--gs-accent) 35%, var(--gs-border));
+    background: var(--gs-surface-soft);
+  }
+
+  .geo-glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 14px 40px rgba(15, 118, 110, 0.1);
+  }
+
+  .geo-glass-soft {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 32px rgba(15, 118, 110, 0.08);
+  }
+
+  .geo-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gs-text-muted);
+  }
+
+  .geo-section-title {
+    @apply font-display font-semibold tracking-tight;
+    font-size: 1.5rem;
+    line-height: 1.15;
+    color: var(--gs-text);
+  }
+  @media (min-width: 768px) {
+    .geo-section-title {
+      font-size: 1.875rem;
+    }
+  }
+
+  /* ── Intro overlay (first visit) ─────────────────────────────────────── */
+  @keyframes intro-overlay-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes intro-overlay-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes intro-wordmark-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 10px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes intro-city-in {
+    from {
+      opacity: 0;
+      transform: perspective(520px) rotateX(18deg) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: perspective(520px) rotateX(14deg) scale(1);
+    }
+  }
+
+  .intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gs-bg);
+    opacity: 0;
+    animation: intro-overlay-in 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .intro-overlay--exit {
+    animation: intro-overlay-out 520ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  .intro-overlay__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+  }
+  .intro-overlay__wordmark {
+    opacity: 0;
+    animation: intro-wordmark-in 620ms cubic-bezier(0.22, 1, 0.36, 1) 100ms forwards;
+  }
+  .intro-overlay__city {
+    margin-top: 2.5rem;
+    padding-inline: 1.5rem;
+    opacity: 0;
+    transform-origin: center top;
+    animation: intro-city-in 760ms cubic-bezier(0.22, 1, 0.36, 1) 180ms forwards;
   }
 
   /* Glass surface for floating cards / tab panels */
@@ -271,30 +542,36 @@
     );
   }
 
-  /* Hero entrance: drives a CSS-only fade + translate that fires on every
-     page load (including hydration), avoiding the Svelte `intro` gating
-     dance. Apply `.hero-enter` to the element and `.delay-Xms` via inline
-     style. */
-  .hero-enter {
+  /* Hero stagger reveal — waits for `.hero-reveal-ready` on #hero (after intro). */
+  .hero-reveal-item {
     opacity: 0;
     transform: translate3d(0, 16px, 0);
-    animation: hero-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay: var(--enter-delay, 0ms);
     will-change: opacity, transform;
   }
-  .hero-enter.from-right-x {
-    transform: translate3d(40px, 0, 0);
+  #hero.hero-reveal-ready .hero-reveal-item {
+    animation: hero-reveal-rise 680ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--reveal-delay, 0ms);
   }
-  .hero-enter.from-left-x {
-    transform: translate3d(-32px, 0, 0);
-  }
-  .hero-enter.scale-up {
-    transform: scale(0.96);
+  #hero.hero-reveal-ready .hero-reveal-item--visual {
+    transform: translate3d(0, 16px, 0) scale(0.985);
+    animation-name: hero-reveal-visual;
+    animation-duration: 720ms;
   }
 
-  @keyframes hero-rise {
+  @keyframes hero-reveal-rise {
     from {
       opacity: 0;
+      transform: translate3d(0, 16px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes hero-reveal-visual {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 16px, 0) scale(0.985);
     }
     to {
       opacity: 1;
@@ -683,7 +960,10 @@
     transition-duration: 0.001ms !important;
   }
   .reveal-init,
-  .hero-enter,
+  .hero-reveal-item,
+  .intro-overlay,
+  .intro-overlay__wordmark,
+  .intro-overlay__city,
   .svc-list .svc-row {
     opacity: 1 !important;
     transform: none !important;

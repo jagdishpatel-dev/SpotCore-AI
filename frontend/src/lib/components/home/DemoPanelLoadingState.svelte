@@ -166,7 +166,7 @@
 
   .demo-loading__title {
     margin: 0;
-    font-family: var(--font-display, 'Space Grotesk', ui-sans-serif, system-ui, sans-serif);
+    font-family: var(--font-display, var(--font-geist-sans), system-ui, sans-serif);
     font-size: clamp(1.15rem, 2.2vw, 1.35rem);
     font-weight: 600;
     letter-spacing: -0.03em;
@@ -185,7 +185,7 @@
   }
 
   .demo-loading__pct {
-    font-family: var(--font-display, 'Space Grotesk', sans-serif);
+    font-family: var(--font-display, var(--font-geist-sans), system-ui, sans-serif);
     font-size: 14px;
     font-weight: 600;
     color: var(--text-primary);

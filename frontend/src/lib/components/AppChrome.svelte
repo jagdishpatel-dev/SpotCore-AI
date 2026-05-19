@@ -13,6 +13,18 @@
   }
 
   $: path = $page.url.pathname;
+  $: hash = $page.url.hash;
+
+  /** In-page section links: same-route hashes on `/`, root-prefixed elsewhere. */
+  function sectionHref(id: string) {
+    return path === '/' ? `#${id}` : `/#${id}`;
+  }
+
+  const sectionLinks = [
+    { id: 'how-it-works', label: 'How it works' },
+    { id: 'insights', label: 'Insights' },
+    { id: 'faq', label: 'FAQ' },
+  ] as const;
 
   let scrolled = false;
   onMount(() => {
@@ -58,6 +70,24 @@
     </a>
 
     <nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
+      {#each sectionLinks as link}
+        {@const href = sectionHref(link.id)}
+        {@const active = path === '/' && hash === `#${link.id}`}
+        <a
+          {href}
+          class="group relative rounded-md px-3 py-1.5 text-sm font-medium transition-colors {active
+            ? 'text-text-primary'
+            : 'text-text-secondary hover:text-text-primary'}"
+        >
+          {link.label}
+          <span
+            class="pointer-events-none absolute inset-x-3 bottom-1 h-px origin-left scale-x-0 rounded bg-accent-cyan transition-transform duration-200 group-hover:scale-x-100 {active
+              ? 'scale-x-100 bg-accent-cyan'
+              : ''}"
+            aria-hidden="true"
+          ></span>
+        </a>
+      {/each}
       {#each links as link}
         {@const active = path === link.href}
         <a

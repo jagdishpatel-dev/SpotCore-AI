@@ -57,22 +57,14 @@
 <svelte:element
   this={embedded ? 'div' : 'section'}
   id="demo"
-  class="demo-product-section relative overflow-visible scroll-mt-[calc(72px+0.75rem)] {embedded
+  class="demo-product-section relative overflow-visible scroll-mt-24 {embedded
     ? 'demo-product-section--embedded'
-    : 'home-section py-14 md:py-20'}"
+    : ''}"
   aria-label="GeoScore interactive preview"
 >
-  {#if !embedded}
+  <div class="relative mx-auto max-w-xl">
     <div
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[320px]"
-      style="background: radial-gradient(900px 220px at 50% 0%, var(--glow-blue), transparent 72%);"
-    ></div>
-  {/if}
-
-  <div class="relative mx-auto max-w-6xl {embedded ? '' : 'px-6 lg:px-10'}">
-    <div
-      class="demo-product-shell gs-panel-xl demo-product-stage {embedded ? 'demo-product-stage--embedded' : ''}"
+      class="demo-product-shell geo-glass-soft demo-product-stage rounded-2xl {embedded ? 'demo-product-stage--embedded' : ''}"
       aria-busy={$phase === 'running'}
     >
       {#if $phase === 'idle'}
@@ -118,18 +110,10 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    min-height: clamp(420px, 52vh, 720px);
+    min-height: clamp(380px, 48vh, 560px);
     display: flex;
     flex-direction: column;
-    background:
-      linear-gradient(
-        145deg,
-        rgba(34, 211, 238, 0.045),
-        rgba(56, 189, 248, 0.02) 38%,
-        transparent 62%
-      ),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.012)),
-      var(--bg-surface);
+    background: transparent;
   }
 
   .demo-product-stage--embedded {

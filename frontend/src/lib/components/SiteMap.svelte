@@ -157,7 +157,7 @@
   }
 
   :global(.gs-map-frame .leaflet-container) {
-    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
     background: #020a1a;
   }
   :global(.gs-map-frame .leaflet-control-attribution) {
