@@ -125,14 +125,15 @@
 </script>
 
 <form class="demo-panel-input" on:submit={onSubmit}>
-  <header class="demo-panel-input__chrome">
-    <span class="demo-panel-input__live">
-      <span class="demo-panel-input__live-dot" aria-hidden="true"></span>
+  <header class="demo-panel-chrome">
+    <span class="demo-panel-chrome__live">
+      <span class="demo-panel-chrome__dot" aria-hidden="true"></span>
       Live workspace
     </span>
   </header>
 
-  <div class="demo-panel-input__grid">
+  <div class="demo-panel-grid">
+    <div class="demo-panel-col demo-panel-input__col">
     <label class="demo-panel-input__field">
       <span class="gs-label">Address</span>
       <span class="demo-panel-input__input-wrap">
@@ -212,8 +213,10 @@
         {/if}
       </div>
     </div>
+    </div>
 
-    <fieldset class="demo-panel-input__field sm:col-span-2">
+    <div class="demo-panel-col demo-panel-input__col demo-panel-input__col--right">
+    <fieldset class="demo-panel-input__field">
       <legend class="gs-label">Trade area</legend>
       <div class="mt-2 flex flex-wrap gap-2">
         {#each RADII as r}
@@ -229,7 +232,7 @@
       </div>
     </fieldset>
 
-    <fieldset class="demo-panel-input__field sm:col-span-2">
+    <fieldset class="demo-panel-input__field">
       <legend class="gs-label">Target customer</legend>
       <div class="mt-2 flex flex-wrap gap-2">
         {#each PROFILES as p}
@@ -244,20 +247,21 @@
         {/each}
       </div>
     </fieldset>
-  </div>
 
-  <div class="demo-panel-input__actions">
-    <button
-      type="submit"
-      class="group demo-panel-input__submit"
-      disabled={isRunning}
-    >
-      <Sparkles class="h-4 w-4" />
-      {isRunning ? 'Running…' : 'Run GeoScore Analysis'}
-      {#if !isRunning}
-        <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-      {/if}
-    </button>
+    <div class="demo-panel-input__actions">
+      <button
+        type="submit"
+        class="group demo-panel-input__submit"
+        disabled={isRunning}
+      >
+        <Sparkles class="h-4 w-4" />
+        {isRunning ? 'Running…' : 'Run GeoScore Analysis'}
+        {#if !isRunning}
+          <ArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        {/if}
+      </button>
+    </div>
+    </div>
   </div>
 </form>
 
@@ -265,64 +269,21 @@
   .demo-panel-input {
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    height: 100%;
+    min-height: 0;
   }
 
-  .demo-panel-input__chrome {
-    display: flex;
-    align-items: center;
+  .demo-panel-input__col {
+    gap: 1rem;
+  }
+
+  .demo-panel-input__col--right {
     justify-content: space-between;
-    padding-bottom: 1rem;
-    margin-bottom: 0.25rem;
-    border-bottom: 1px solid var(--demo-panel-divider, var(--border-soft));
   }
 
-  .demo-panel-input__live {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    letter-spacing: 0.02em;
-  }
-
-  .demo-panel-input__live-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 9999px;
-    background: var(--accent-cyan);
-    box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.15);
-    animation: demo-live-pulse 2s ease-in-out infinite;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .demo-panel-input__live-dot {
-      animation: none;
-    }
-  }
-
-  @keyframes demo-live-pulse {
-    0%,
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.65;
-      transform: scale(0.92);
-    }
-  }
-
-  .demo-panel-input__grid {
-    display: grid;
-    gap: 1.5rem;
-  }
-
-  @media (min-width: 640px) {
-    .demo-panel-input__grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem 1.5rem;
+  @media (max-width: 899px) {
+    .demo-panel-input__col--right {
+      margin-top: 0.25rem;
     }
   }
 
@@ -450,7 +411,7 @@
   }
 
   .demo-panel-input__options {
-    max-height: 220px;
+    max-height: 140px;
     overflow-y: auto;
     padding: 0.35rem;
     margin: 0;
@@ -490,7 +451,8 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
-    padding-top: 0.25rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
   }
 
   .demo-panel-input__submit {

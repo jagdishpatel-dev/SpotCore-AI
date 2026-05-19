@@ -32,27 +32,10 @@
           ? 'Finalizing…'
           : 'Starting…'
       : '';
-
-  const heatCells = Array.from({ length: 30 }, (_, i) => i);
-
-  $: heatReach =
-    $phase === 'idle'
-      ? 0
-      : $phase === 'done'
-        ? 1
-        : Math.min(1, Math.max(0, $currentStep) / STEPS.length);
-
-  function cellOpacity(i: number, reach: number): number {
-    if (reach === 0) return 0.06;
-    const cellPos = (i % 10) / 10 + Math.floor(i / 10) * 0.02;
-    return cellPos < reach ? 0.45 - (i % 5) * 0.05 : 0.07;
-  }
-
-  const bars = [38, 62, 48, 74, 55, 82, 44];
 </script>
 
 <div class="demo-loading">
-  <div class="demo-loading__header">
+  <header class="demo-loading__top">
     <div>
       <p class="demo-loading__title">Analyzing this address</p>
       <p class="demo-loading__context">
@@ -63,9 +46,9 @@
       </p>
     </div>
     <span class="demo-loading__pct tabular-nums">{percent}%</span>
-  </div>
+  </header>
 
-  <div class="mt-5 gs-progress-track">
+  <div class="gs-progress-track demo-loading__progress">
     <div class="gs-progress-fill" style="width: {percent}%;"></div>
   </div>
 
@@ -78,75 +61,66 @@
     {/key}
   </div>
 
-  <div class="demo-loading__split">
-    <div class="demo-loading__steps">
-      {#each STEPS as label, i}
-        <div class="progress-row" data-state={stepStates[i]}>
-          <span class="progress-marker" aria-hidden="true">
-            {#if stepStates[i] === 'done'}
-              <Check class="h-3 w-3" strokeWidth={3} />
-            {:else}
-              <span class="text-[10px] font-semibold tabular-nums">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-            {/if}
-          </span>
-          <span class="progress-label">{label}</span>
-          <span
-            class="text-[11px] font-semibold uppercase tracking-[0.16em] {stepStates[i] === 'done'
-              ? 'text-accent-cyan'
-              : 'text-text-muted'}"
-          >
-            {stepStates[i] === 'done'
-              ? 'Done'
-              : stepStates[i] === 'active'
-                ? 'Running'
-                : 'Queued'}
-          </span>
-        </div>
-      {/each}
+  <div class="demo-panel-grid demo-loading__grid">
+    <div class="demo-panel-col demo-loading__left">
+      <div class="demo-loading__score-sk" aria-hidden="true">
+        <div class="demo-sk demo-loading__sk-score"></div>
+        <div class="demo-sk demo-loading__sk-bar"></div>
+      </div>
+
+      <div class="demo-loading__pillars" aria-hidden="true">
+        {#each Array(4) as _}
+          <div class="demo-loading__pillar">
+            <div class="demo-sk demo-loading__sk-label"></div>
+            <div class="demo-sk demo-loading__sk-value"></div>
+            <div class="demo-sk demo-loading__sk-meter"></div>
+          </div>
+        {/each}
+      </div>
+
+      <div class="demo-sk demo-loading__sk-chart" aria-hidden="true"></div>
+
+      <div class="demo-loading__steps">
+        {#each STEPS as label, i}
+          <div class="progress-row progress-row--compact" data-state={stepStates[i]}>
+            <span class="progress-marker" aria-hidden="true">
+              {#if stepStates[i] === 'done'}
+                <Check class="h-3 w-3" strokeWidth={3} />
+              {:else}
+                <span class="text-[10px] font-semibold tabular-nums">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              {/if}
+            </span>
+            <span class="progress-label">{label}</span>
+          </div>
+        {/each}
+      </div>
     </div>
 
-    <aside class="demo-loading__viz" aria-hidden="true">
-      <div class="demo-loading__viz-head">
-        <span class="gs-label">Coverage</span>
-        <span class="demo-loading__streaming">
-          <span class="demo-loading__stream-dot"></span>
-          Live
-        </span>
+    <aside class="demo-panel-col demo-loading__right" aria-hidden="true">
+      <div class="demo-loading__signals">
+        <div class="demo-sk demo-loading__sk-section-title"></div>
+        <div class="demo-loading__chips">
+          {#each Array(6) as _, i}
+            <div class="demo-sk demo-loading__sk-chip" style="width: {52 + (i % 3) * 18}px;"></div>
+          {/each}
+        </div>
       </div>
 
-      <div class="demo-loading__map">
-        <div class="demo-loading__map-grid"></div>
-        <div
-          class="demo-loading__map-ring"
-          style="opacity: {0.35 + heatReach * 0.5};"
-        ></div>
-        <div class="demo-loading__map-pin">P</div>
+      <div class="demo-loading__metrics">
+        <div class="demo-sk demo-loading__sk-section-title"></div>
+        <div class="demo-loading__metric-grid">
+          {#each Array(6) as _}
+            <div class="demo-loading__metric-cell">
+              <div class="demo-sk demo-loading__sk-metric-label"></div>
+              <div class="demo-sk demo-loading__sk-metric-value"></div>
+            </div>
+          {/each}
+        </div>
       </div>
 
-      <div class="demo-loading__bars">
-        {#each bars as h, bi}
-          <span
-            class="demo-loading__bar"
-            style="height: {Math.max(
-              22,
-              h * (0.35 + heatReach * 0.65) + (stepStates[Math.min(bi, STEPS.length - 1)] === 'done'
-                ? 8
-                : 0)
-            )}%;"
-          ></span>
-        {/each}
-      </div>
-
-      <div class="demo-loading__heatmap">
-        {#each heatCells as cell}
-          <span
-            class="demo-loading__heat-cell"
-            style="opacity: {cellOpacity(cell, heatReach)};"
-          ></span>
-        {/each}
-      </div>
+      <div class="demo-sk demo-loading__sk-map"></div>
     </aside>
   </div>
 </div>
@@ -155,246 +129,213 @@
   .demo-loading {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    min-height: 0;
   }
 
-  .demo-loading__header {
+  .demo-loading__top {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
+    flex-shrink: 0;
   }
 
   .demo-loading__title {
     margin: 0;
     font-family: var(--font-geist-sans), system-ui, sans-serif;
-    font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+    font-size: 1.05rem;
     font-weight: 600;
     letter-spacing: -0.03em;
     color: var(--text-primary);
   }
 
   .demo-loading__context {
-    margin: 0.45rem 0 0;
+    margin: 0.35rem 0 0;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 0.35rem;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--text-secondary);
-    line-height: 1.45;
+    line-height: 1.4;
   }
 
   .demo-loading__pct {
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--text-primary);
   }
 
-  .demo-loading__status {
+  .demo-loading__progress {
     margin-top: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  .demo-loading__status {
+    margin-top: 0.45rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    min-height: 1.5rem;
-    font-size: 13px;
+    min-height: 1.25rem;
+    font-size: 12px;
     color: var(--text-secondary);
+    flex-shrink: 0;
   }
 
-  .demo-loading__split {
-    margin-top: 1.75rem;
+  .demo-loading__grid {
+    margin-top: 0.85rem;
+  }
+
+  .demo-loading__left {
+    gap: 0.65rem;
+  }
+
+  .demo-loading__score-sk {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .demo-loading__sk-score {
+    height: 2.75rem;
+    width: 5.5rem;
+    border-radius: 12px;
+  }
+
+  .demo-loading__sk-bar {
+    height: 6px;
+    width: 100%;
+    max-width: 14rem;
+    border-radius: 9999px;
+  }
+
+  .demo-loading__pillars {
     display: grid;
-    gap: 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
   }
 
-  @media (min-width: 900px) {
-    .demo-loading__split {
-      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: start;
-    }
+  .demo-loading__pillar {
+    border-radius: 12px;
+    border: 1px solid var(--border-soft);
+    background: color-mix(in srgb, var(--bg-surface-2) 55%, transparent);
+    padding: 0.55rem 0.65rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .demo-loading__sk-label {
+    height: 8px;
+    width: 55%;
+  }
+
+  .demo-loading__sk-value {
+    height: 14px;
+    width: 35%;
+  }
+
+  .demo-loading__sk-meter {
+    height: 4px;
+    width: 100%;
+    border-radius: 9999px;
+  }
+
+  .demo-loading__sk-chart {
+    height: 4.5rem;
+    width: 100%;
+    border-radius: 12px;
+    flex-shrink: 0;
   }
 
   .demo-loading__steps {
+    margin-top: auto;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 0;
+    min-height: 0;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
   }
 
-  .demo-loading__viz {
+  :global(.progress-row--compact) {
+    padding: 7px 2px !important;
+    gap: 10px !important;
+  }
+
+  :global(.progress-row--compact .progress-label) {
+    font-size: 12px !important;
+  }
+
+  .demo-loading__right {
+    gap: 0.75rem;
     border-radius: 16px;
     border: 1px solid var(--border-soft);
     background: linear-gradient(
       165deg,
-      rgba(34, 211, 238, 0.06),
+      rgba(34, 211, 238, 0.05),
       rgba(56, 189, 248, 0.02) 40%,
       var(--bg-surface-2) 100%
     );
-    padding: 1rem 1rem 1.1rem;
+    padding: 0.85rem 0.9rem;
+  }
+
+  .demo-loading__sk-section-title {
+    height: 10px;
+    width: 4.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .demo-loading__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .demo-loading__sk-chip {
+    height: 1.5rem;
+    border-radius: 9999px;
+  }
+
+  .demo-loading__metric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem;
+  }
+
+  .demo-loading__metric-cell {
+    border-radius: 10px;
+    border: 1px solid var(--border-soft);
+    background: color-mix(in srgb, var(--bg-surface-2) 50%, transparent);
+    padding: 0.5rem 0.55rem;
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
-  }
-
-  .demo-loading__viz-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-  }
-
-  .demo-loading__streaming {
-    display: inline-flex;
-    align-items: center;
     gap: 0.35rem;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    padding: 0.35rem 0.55rem;
-    border-radius: 9999px;
-    border: 1px solid var(--border-soft);
-    background: rgba(15, 23, 42, 0.35);
   }
 
-  :global(.light) .demo-loading__streaming {
-    background: rgba(241, 245, 249, 0.9);
+  .demo-loading__sk-metric-label {
+    height: 7px;
+    width: 70%;
   }
 
-  .demo-loading__stream-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 9999px;
-    background: var(--accent-cyan);
-    animation: demo-stream-dot 1.4s ease-in-out infinite;
+  .demo-loading__sk-metric-value {
+    height: 12px;
+    width: 45%;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .demo-loading__stream-dot {
-      animation: none;
-    }
-  }
-
-  @keyframes demo-stream-dot {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.35;
-    }
-  }
-
-  .demo-loading__map {
-    position: relative;
-    aspect-ratio: 16 / 9;
+  .demo-loading__sk-map {
+    margin-top: auto;
+    height: 3.5rem;
     border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--border-soft);
-    background: var(--bg-base);
+    flex-shrink: 0;
   }
 
-  .demo-loading__map-grid {
-    position: absolute;
-    inset: 0;
-    opacity: 0.35;
-    background-image:
-      linear-gradient(var(--border-soft) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  .demo-loading__map-ring {
-    position: absolute;
-    left: 50%;
-    top: 52%;
-    width: 42%;
-    height: 48%;
-    transform: translate(-50%, -50%);
-    border-radius: 9999px;
-    border: 1px solid rgba(34, 211, 238, 0.35);
-    background: radial-gradient(
-      closest-side,
-      rgba(34, 211, 238, 0.16),
-      transparent 72%
-    );
-    transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .demo-loading__map-pin {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 26px;
-    height: 26px;
-    border-radius: 9999px;
-    display: grid;
-    place-items: center;
-    font-size: 10px;
-    font-weight: 800;
-    color: #020617;
-    background: var(--accent-cyan);
-    border: 2px solid var(--bg-base);
-    box-shadow: 0 8px 24px -8px rgba(34, 211, 238, 0.65);
-  }
-
-  .demo-loading__map-pin::after {
-    content: '';
-    position: absolute;
-    inset: -10px;
-    border-radius: 9999px;
-    border: 1px solid rgba(34, 211, 238, 0.35);
-    animation: demo-map-pulse 2s ease-out infinite;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .demo-loading__map-pin::after {
-      animation: none;
-      opacity: 0;
+  @media (max-width: 899px) {
+    .demo-loading__steps {
+      mask-image: none;
+      max-height: 7.5rem;
+      overflow-y: auto;
     }
-  }
-
-  @keyframes demo-map-pulse {
-    0% {
-      transform: scale(0.85);
-      opacity: 0.55;
-    }
-    100% {
-      transform: scale(1.35);
-      opacity: 0;
-    }
-  }
-
-  .demo-loading__bars {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 5px;
-    height: 52px;
-    padding: 0 2px;
-  }
-
-  .demo-loading__bar {
-    flex: 1;
-    border-radius: 4px 4px 2px 2px;
-    background: linear-gradient(180deg, var(--accent-cyan), var(--accent-blue));
-    opacity: 0.85;
-    min-height: 18%;
-    transition: height 480ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .demo-loading__heatmap {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 5px;
-  }
-
-  .demo-loading__heat-cell {
-    aspect-ratio: 1;
-    border-radius: 3px;
-    background: var(--accent-cyan);
-    transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 </style>

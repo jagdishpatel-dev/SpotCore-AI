@@ -51,47 +51,32 @@
     return () => clearTimers();
   });
 
-  $: fadeMs = prefersReducedMotion() ? 0 : 260;
+  $: fadeMs = prefersReducedMotion() ? 0 : 220;
 </script>
 
 <svelte:element
   this={embedded ? 'div' : 'section'}
   id="demo"
-  class="demo-product-section relative overflow-visible scroll-mt-24 {embedded
-    ? 'demo-product-section--embedded'
-    : ''}"
+  class="demo-product-section relative scroll-mt-24 {embedded ? 'demo-product-section--embedded' : ''}"
   aria-label="GeoScore interactive preview"
 >
-  <div class="relative mx-auto max-w-xl">
-    <div
-      class="demo-product-shell geo-glass-soft demo-product-stage rounded-2xl {embedded ? 'demo-product-stage--embedded' : ''}"
-      aria-busy={$phase === 'running'}
-    >
-      {#if $phase === 'idle'}
-        <div
-          class="demo-state-pad"
-          in:fade={{ duration: fadeMs }}
-          out:fade={{ duration: fadeMs }}
-        >
-          <DemoPanelInputState onEngage={engage} />
-        </div>
-      {:else if $phase === 'running'}
-        <div
-          class="demo-state-pad"
-          in:fade={{ duration: fadeMs }}
-          out:fade={{ duration: fadeMs }}
-        >
-          <DemoPanelLoadingState />
-        </div>
-      {:else}
-        <div
-          class="demo-state-pad demo-state-pad--results"
-          in:fade={{ duration: fadeMs }}
-          out:fade={{ duration: fadeMs }}
-        >
-          <DemoPanelResultState />
-        </div>
-      {/if}
+  <div class="demo-product-wrap relative mx-auto w-full max-w-5xl">
+    <div class="demo-product-shell geo-glass-soft rounded-2xl" aria-busy={$phase === 'running'}>
+      <div class="demo-product-body">
+        {#if $phase === 'idle'}
+          <div class="demo-state-layer" in:fade={{ duration: fadeMs }} out:fade={{ duration: fadeMs }}>
+            <DemoPanelInputState onEngage={engage} />
+          </div>
+        {:else if $phase === 'running'}
+          <div class="demo-state-layer" in:fade={{ duration: fadeMs }} out:fade={{ duration: fadeMs }}>
+            <DemoPanelLoadingState />
+          </div>
+        {:else}
+          <div class="demo-state-layer" in:fade={{ duration: fadeMs }} out:fade={{ duration: fadeMs }}>
+            <DemoPanelResultState />
+          </div>
+        {/if}
+      </div>
     </div>
   </div>
 </svelte:element>
@@ -99,59 +84,155 @@
 <style>
   :global(:root) {
     --demo-panel-divider: color-mix(in srgb, var(--border-soft) 85%, transparent);
+    --demo-shell-height: clamp(420px, 36vw, 480px);
+    --demo-shell-pad: clamp(1.1rem, 2.2vw, 1.65rem);
   }
 
   .demo-product-section--embedded {
-    padding-bottom: 0;
     margin-top: 0;
+    padding-bottom: 0;
   }
 
-  .demo-product-stage {
+  .demo-product-shell {
     position: relative;
-    overflow: hidden;
     width: 100%;
-    min-height: clamp(380px, 48vh, 560px);
+    height: var(--demo-shell-height);
+    min-height: var(--demo-shell-height);
+    max-height: var(--demo-shell-height);
+    overflow: hidden;
+    border-radius: clamp(22px, 2.4vw, 30px);
     display: flex;
     flex-direction: column;
     background: transparent;
   }
 
-  .demo-product-stage--embedded {
-    /*
-     * Reserve enough vertical space for the largest state (results) so the
-     * homepage doesn't reflow as the demo advances from input -> loading -> result.
-     * This keeps the viewport steady even if the user is reading sections below.
-     */
-    min-height: clamp(780px, 78vh, 940px);
-  }
-
-  .demo-product-shell {
-    --demo-shell-radius: clamp(22px, 2.4vw, 30px);
-    border-radius: var(--demo-shell-radius);
-    width: 100%;
-  }
-
-  .demo-state-pad {
+  .demo-product-body {
+    position: relative;
     flex: 1;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .demo-state-layer {
+    position: absolute;
+    inset: 0;
     display: flex;
     flex-direction: column;
-    padding: clamp(1.25rem, 3vw, 2.25rem);
-    min-height: inherit;
+    padding: var(--demo-shell-pad);
+    overflow: hidden;
   }
 
-  .demo-state-pad--results {
-    padding-top: clamp(1.15rem, 2.5vw, 1.75rem);
+  /* Shared two-column report grid (desktop) */
+  :global(.demo-panel-grid) {
+    display: grid;
+    flex: 1;
+    min-height: 0;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    align-content: stretch;
   }
 
-  @media (max-width: 1023px) {
-    .demo-product-stage--embedded {
-      min-height: clamp(720px, 92vw, 860px);
+  @media (min-width: 900px) {
+    :global(.demo-panel-grid) {
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: clamp(1.25rem, 2.4vw, 2rem);
     }
   }
 
-  @media (max-width: 767px) {
-    .demo-product-stage--embedded {
-      min-height: auto;
+  :global(.demo-panel-col) {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+  }
+
+  :global(.demo-panel-chrome) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    padding-bottom: 0.85rem;
+    margin-bottom: 0.85rem;
+    border-bottom: 1px solid var(--demo-panel-divider, var(--border-soft));
+  }
+
+  :global(.demo-panel-chrome__live) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+  }
+
+  :global(.demo-panel-chrome__dot) {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: var(--accent-cyan);
+    box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.15);
+    animation: demo-live-pulse 2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.demo-panel-chrome__dot) {
+      animation: none;
+    }
+  }
+
+  @keyframes demo-live-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.65;
+      transform: scale(0.92);
+    }
+  }
+
+  :global(.demo-sk) {
+    border-radius: 10px;
+    background: linear-gradient(
+      110deg,
+      var(--bg-surface-2) 0%,
+      color-mix(in srgb, var(--bg-surface-2) 70%, var(--accent-cyan) 8%) 45%,
+      var(--bg-surface-2) 90%
+    );
+    background-size: 220% 100%;
+    animation: demo-sk-shimmer 1.5s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.demo-sk) {
+      animation: none;
+    }
+  }
+
+  @keyframes demo-sk-shimmer {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .demo-state-layer:has(:global(.demo-panel-input)) {
+      overflow: visible;
+    }
+  }
+
+  @media (max-width: 899px) {
+    :global(:root) {
+      --demo-shell-height: clamp(540px, 92vw, 620px);
+    }
+
+    .demo-state-layer {
+      overflow-y: auto;
+      overscroll-behavior: contain;
     }
   }
 </style>

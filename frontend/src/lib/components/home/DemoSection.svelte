@@ -5,7 +5,7 @@
 
 <section aria-labelledby="demo-section-heading" use:reveal>
   <div class="geo-section">
-    <div class="reveal-init mx-auto max-w-xl text-center" data-reveal-child>
+    <div class="reveal-init mx-auto max-w-3xl text-center" data-reveal-child>
       <p class="geo-label">Live preview</p>
       <h2 id="demo-section-heading" class="geo-section-title mt-3">
         See how a site gets scored
