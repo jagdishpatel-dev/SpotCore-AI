@@ -4,8 +4,10 @@ import {
   FLUID_GLASS_BAR_INITIAL,
   type FluidGlassBarProps,
 } from './chrome/fluidGlassDefaults';
-import { syncGlassCssVars } from './chrome/syncGlassCssVars';
 import { clearReportSession } from '$lib/reportSession';
+import { syncGlassCssVars } from './chrome/syncGlassCssVars';
+import ChromeErrorBoundary from './react/ChromeErrorBoundary';
+import FluidGlassBarCanvas from './react/FluidGlassBarCanvas';
 import './app-chrome.css';
 
 const sectionLinks = [
@@ -95,17 +97,27 @@ export default function AppChrome({
   return (
     <header className="chrome-header pointer-events-none sticky top-0 z-50 bg-transparent px-3 pt-3 sm:px-4 md:px-6 lg:px-8">
       <div
-        className={`chrome-bar pointer-events-auto relative mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-3 overflow-hidden rounded-2xl px-3 sm:h-[60px] sm:gap-4 sm:px-4 md:px-5 ${
+        className={`chrome-bar chrome-bar--fluid-glass pointer-events-auto relative mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-3 overflow-hidden rounded-2xl px-3 sm:h-[60px] sm:gap-4 sm:px-4 md:px-5 ${
           scrolled ? 'chrome-bar--scrolled' : ''
         }`}
       >
-        <div aria-hidden className="chrome-bar-glass pointer-events-none absolute inset-0 rounded-[inherit]" />
+        <div aria-hidden className="chrome-bar-backdrop" />
+        <ChromeErrorBoundary
+          fallback={
+            <div
+              aria-hidden
+              className="chrome-bar-glass pointer-events-none absolute inset-0 z-[1] rounded-[inherit]"
+            />
+          }
+        >
+          <FluidGlassBarCanvas barProps={barProps} />
+        </ChromeErrorBoundary>
 
         <Link
           to="/"
           className="group relative z-10 flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3"
         >
-          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-accent-cyan/40 bg-gradient-to-b from-cyan-300 to-cyan-600 text-[11px] font-bold tracking-tight text-slate-950 shadow-[0_0_0_1px_rgba(34,211,238,0.25),0_8px_24px_-8px_rgba(34,211,238,0.5)] transition-transform duration-300 group-hover:scale-[1.03]">
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-geoscorer-accent/35 bg-gradient-to-b from-geoscorer-accent-soft to-geoscorer-accent text-[11px] font-bold tracking-tight text-white shadow-[0_0_0_1px_rgba(15,124,117,0.2),0_8px_24px_-8px_rgba(15,124,117,0.35)] transition-transform duration-300 group-hover:scale-[1.03]">
             GS
           </div>
           <div className="hidden leading-tight lg:block">
@@ -155,13 +167,13 @@ export default function AppChrome({
             <>
               <Link
                 to="/analyze"
-                className="hidden h-9 items-center justify-center rounded-full bg-accent-cyan px-4 text-sm font-semibold text-slate-950 shadow-[0_18px_50px_-18px_rgba(34,211,238,0.55)] transition-all hover:scale-[1.02] sm:inline-flex"
+                className="hidden h-9 items-center justify-center rounded-full bg-geoscorer-accent px-4 text-sm font-semibold text-white shadow-[0_18px_50px_-18px_rgba(15,124,117,0.38)] transition-all hover:scale-[1.02] hover:bg-geoscorer-accent-hover sm:inline-flex"
               >
                 Analyze Address
               </Link>
               <Link
                 to="/analyze"
-                className="inline-flex h-9 items-center justify-center rounded-full bg-accent-cyan px-3 text-sm font-semibold text-slate-950 shadow-[0_18px_50px_-18px_rgba(34,211,238,0.55)] sm:hidden"
+                className="inline-flex h-9 items-center justify-center rounded-full bg-geoscorer-accent px-3 text-sm font-semibold text-white shadow-[0_18px_50px_-18px_rgba(15,124,117,0.38)] hover:bg-geoscorer-accent-hover sm:hidden"
               >
                 Analyze
               </Link>

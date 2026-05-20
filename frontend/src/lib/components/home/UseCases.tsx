@@ -24,7 +24,7 @@ export default function UseCases({ startHref = '/analyze' }: UseCasesProps) {
             <article key={c.title} className="reveal-init geo-card p-5" data-reveal-child>
               <h3 className="text-lg font-semibold text-geoscorer-text">{c.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-geoscorer-text-muted">{c.body}</p>
-              <a href={startHref} className="mt-4 inline-block text-sm font-semibold text-geoscorer-accent hover:text-geoscorer-accent-2">Start analyzing →</a>
+              <a href={startHref} className="mt-4 inline-block text-sm font-semibold text-geoscorer-accent hover:text-geoscorer-accent-hover">Start analyzing →</a>
             </article>
           ))}
         </div>

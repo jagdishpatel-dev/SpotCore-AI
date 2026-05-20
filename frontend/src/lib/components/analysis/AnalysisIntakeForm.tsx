@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
+import { ArrowUpRight, ChevronDown } from 'lucide-react';
 import AddressAutocomplete from '$lib/components/AddressAutocomplete';
 import { cn } from '$lib/utils/cn';
 import {
@@ -13,8 +13,7 @@ import {
 } from './analysisIntakeFormConfig';
 import './analysis-intake-form.css';
 
-const premiumInputClass =
-  'analysis-form__control mt-0 w-full rounded-2xl border border-[var(--border-soft)] bg-[var(--bg-surface-2)] px-4 py-3.5 text-[15px] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] shadow-none ring-0 transition focus:border-accent-cyan/55 focus:outline-none focus:ring-4 focus:ring-accent-cyan/12 disabled:cursor-not-allowed disabled:opacity-60';
+const premiumInputClass = 'analysis-form__control mt-0 w-full border-0 shadow-none ring-0';
 
 const broadTargetTerms = new Set([
   'everyone',
@@ -276,7 +275,8 @@ export default function AnalysisIntakeForm({
                   disabled={loading}
                   onClick={() => togglePriorityFactor(option.value)}
                 >
-                  {option.label}
+                  <span className="analysis-form__chip-dot" aria-hidden="true" />
+                  <span>{option.label}</span>
                 </button>
               ))}
             </div>
@@ -346,7 +346,7 @@ export default function AnalysisIntakeForm({
       ) : null}
 
       <div className="analysis-form__footer">
-        <div>
+        <div className="analysis-form__footer-main">
           <button type="submit" className="analysis-form__submit group" disabled={loading}>
             {loading ? (
               <>
@@ -355,12 +355,14 @@ export default function AnalysisIntakeForm({
               </>
             ) : (
               <>
-                <Sparkles className="h-4 w-4" />
                 Run GeoScore Analysis
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </>
             )}
           </button>
+          <p className="analysis-form__consent">
+            By submitting, you agree to our <strong>terms of service</strong>.
+          </p>
           <p className="analysis-form__footer-copy">
             We&apos;ll turn your inputs into a decision-ready readout.
           </p>

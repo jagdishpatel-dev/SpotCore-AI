@@ -89,7 +89,7 @@
     height: 8px;
     border-radius: 9999px;
     background: var(--accent-cyan);
-    box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.15);
+    box-shadow: 0 0 0 6px rgba(15, 124, 117, 0.15);
     animation: demo-live-pulse 2s ease-in-out infinite;
   }
 
@@ -245,14 +245,14 @@
   }
 
   .demo-panel-input__select-trigger:hover {
-    border-color: rgba(34, 211, 238, 0.28);
+    border-color: rgba(15, 124, 117, 0.28);
   }
 
   .demo-panel-input__select-trigger:focus-visible {
     outline: none;
-    border-color: rgba(34, 211, 238, 0.55);
+    border-color: rgba(15, 124, 117, 0.55);
     box-shadow:
-      0 0 0 4px rgba(34, 211, 238, 0.12),
+      0 0 0 4px rgba(15, 124, 117, 0.12),
       0 1px 0 rgba(255, 255, 255, 0.04) inset;
   }
 
@@ -330,13 +330,13 @@
   .demo-panel-input__option:hover,
   .demo-panel-input__option:focus-visible {
     outline: none;
-    background: rgba(34, 211, 238, 0.08);
+    background: rgba(15, 124, 117, 0.08);
     color: var(--text-primary);
   }
 
   .demo-panel-input__option[aria-selected='true'] {
     color: var(--accent-cyan);
-    background: rgba(34, 211, 238, 0.1);
+    background: rgba(15, 124, 117, 0.1);
   }
 
   .demo-panel-input__actions {
@@ -360,11 +360,11 @@
     font-size: 14px;
     font-weight: 600;
     letter-spacing: -0.01em;
-    color: #0f172a;
-    background: linear-gradient(180deg, #5eead4 0%, var(--accent-cyan) 100%);
+    color: #fff;
+    background: var(--gs-accent, var(--accent-cyan));
     box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.35) inset,
-      0 18px 48px -18px rgba(34, 211, 238, 0.55);
+      0 1px 0 rgba(255, 255, 255, 0.2) inset,
+      0 18px 48px -18px rgba(15, 124, 117, 0.38);
     cursor: pointer;
     transition:
       transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -374,9 +374,10 @@
 
   .demo-panel-input__submit:hover:not(:disabled) {
     transform: translateY(-1px);
+    background: var(--gs-accent-hover, #0c615c);
     box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.4) inset,
-      0 22px 56px -18px rgba(34, 211, 238, 0.65);
+      0 1px 0 rgba(255, 255, 255, 0.25) inset,
+      0 22px 56px -18px rgba(15, 124, 117, 0.42);
   }
 
   .demo-panel-input__submit:active:not(:disabled) {
@@ -545,8 +546,8 @@
     border: 1px solid var(--border-soft);
     background: linear-gradient(
       165deg,
-      rgba(34, 211, 238, 0.05),
-      rgba(56, 189, 248, 0.02) 40%,
+      rgba(15, 124, 117, 0.05),
+      rgba(216, 238, 233, 0.35) 40%,
       var(--bg-surface-2) 100%
     );
     padding: 0.85rem 0.9rem;
@@ -815,7 +816,7 @@
   }
 
   .light .demo-result__right {
-    background-color: rgba(241, 245, 249, 0.65);
+    background-color: color-mix(in srgb, var(--bg-surface-2) 75%, white);
   }
 
   .demo-result__chips {
@@ -885,8 +886,8 @@
     justify-content: center;
     gap: 0.4rem;
     border-radius: 9999px;
-    border: 1px solid rgba(34, 211, 238, 0.4);
-    background: rgba(34, 211, 238, 0.1);
+    border: 1px solid rgba(15, 124, 117, 0.4);
+    background: rgba(15, 124, 117, 0.1);
     font-size: 12px;
     font-weight: 600;
     color: var(--accent-cyan);
@@ -897,9 +898,9 @@
   }
 
   .demo-result__cta-btn:hover {
-    background: var(--accent-cyan);
-    color: #0f172a;
-    box-shadow: 0 18px 50px -18px rgba(34, 211, 238, 0.55);
+    background: var(--gs-accent-hover, var(--accent-cyan));
+    color: #fff;
+    box-shadow: 0 18px 50px -18px rgba(15, 124, 117, 0.38);
   }
 
   @media (max-width: 899px) {
@@ -978,7 +979,7 @@
   .gs-pin-subject {
     width: 16px;
     height: 16px;
-    box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.25), 0 0 22px var(--g);
+    box-shadow: 0 0 0 2px rgba(15, 124, 117, 0.25), 0 0 22px var(--g);
   }
   @keyframes gs-pin-pop {
     from {

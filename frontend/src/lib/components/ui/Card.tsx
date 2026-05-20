@@ -26,7 +26,7 @@ export default function Card({
   children,
 }: CardProps) {
   const interactiveClasses = interactive
-    ? 'hover:-translate-y-1 hover:border-accent-cyan/35 hover:shadow-[0_30px_80px_-30px_rgba(34,211,238,0.22)]'
+    ? 'hover:-translate-y-1 hover:border-geoscorer-accent/35 hover:shadow-[0_30px_80px_-30px_rgba(15,124,117,0.16)]'
     : '';
 
   return (

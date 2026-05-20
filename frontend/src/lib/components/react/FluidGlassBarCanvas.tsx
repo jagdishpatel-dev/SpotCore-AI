@@ -13,7 +13,7 @@ import type { FluidGlassBarProps } from '../chrome/fluidGlassDefaults';
 
 const GLB = '/assets/3d/bar.glb';
 const GEOMETRY_KEY = 'Cube';
-const PAGE_BG = '#f7f4ee';
+const PAGE_BG = '#f6f2ea';
 
 useGLTF.preload(GLB);
 
@@ -44,28 +44,8 @@ const HeaderBarGlass = memo(function HeaderBarGlass({
     geoWidthRef.current = geo.boundingBox!.max.x - geo.boundingBox!.min.x || 1;
   }, [nodes]);
 
-  useFrame((state, delta) => {
-    const { gl, viewport, camera } = state;
-    const v = viewport.getCurrentViewport(camera, [0, 0, 15]);
-
-    // Pin glass bar to the bottom edge of the header strip (react-bits `lockToBottom`).
-    const destY = -v.height / 2 + 0.14;
-    easing.damp3(ref.current.position, [0, destY, 15], 0.15, delta);
-
-    const maxWorld = v.width * 0.98;
-    const desired = maxWorld / geoWidthRef.current;
-    const s = Math.min(0.11, desired);
-    ref.current.scale.set(s, s, s);
-
-    gl.setRenderTarget(buffer);
-    gl.setClearColor(0x000000, 0);
-    gl.render(scene, camera);
-    gl.setRenderTarget(null);
-    gl.setClearColor(0x000000, 0);
-  });
-
   const {
-    scale,
+    scale: scaleProp,
     ior = 1.15,
     thickness = 10,
     anisotropy = 0.01,
@@ -79,13 +59,34 @@ const HeaderBarGlass = memo(function HeaderBarGlass({
     ...rest
   } = modeProps;
 
+  useFrame((state, delta) => {
+    const { gl, viewport, camera } = state;
+    const v = viewport.getCurrentViewport(camera, [0, 0, 15]);
+
+    // Pin glass bar to the bottom edge of the header strip (react-bits `lockToBottom`).
+    const destY = -v.height / 2 + 0.14;
+    easing.damp3(ref.current.position, [0, destY, 15], 0.15, delta);
+
+    const maxWorld = v.width * 0.98;
+    const desired = maxWorld / geoWidthRef.current;
+    const autoS = Math.min(0.11, desired);
+    const s = scaleProp ?? autoS;
+    ref.current.scale.set(s, s, s);
+
+    gl.setRenderTarget(buffer);
+    gl.setClearColor(0x000000, 0);
+    gl.render(scene, camera);
+    gl.setRenderTarget(null);
+    gl.setClearColor(0x000000, 0);
+  });
+
   return (
     <>
       {createPortal(children, scene)}
       {/* Only the refractive bar — no fullscreen buffer plane (that caused the gray center block). */}
       <mesh
         ref={ref}
-        scale={scale ?? 0.11}
+        scale={scaleProp ?? 0.11}
         rotation-x={Math.PI / 2}
         geometry={(nodes[GEOMETRY_KEY] as THREE.Mesh)?.geometry}
         {...props}
@@ -110,21 +111,8 @@ const HeaderBarGlass = memo(function HeaderBarGlass({
 });
 
 function BarScene({ modeProps }: { modeProps: FluidGlassBarProps }) {
-  const merged: FluidGlassBarProps = {
-    transmission: 1,
-    roughness: 0,
-    thickness: 10,
-    ior: 1.15,
-    color: '#ffffff',
-    attenuationColor: '#ffffff',
-    attenuationDistance: 0.25,
-    chromaticAberration: 0.1,
-    anisotropy: 0.01,
-    ...modeProps,
-  };
-
   return (
-    <HeaderBarGlass modeProps={merged}>
+    <HeaderBarGlass modeProps={modeProps}>
       <mesh position={[0, 0, -8]}>
         <planeGeometry args={[32, 32]} />
         <meshBasicMaterial color={PAGE_BG} />

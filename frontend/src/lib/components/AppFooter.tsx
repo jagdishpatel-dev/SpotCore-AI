@@ -18,7 +18,7 @@ export default function AppFooter() {
       <div className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-10">
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <Link to="/" className="group flex items-center gap-3">
-            <div className="grid h-8 w-8 place-items-center rounded-lg border border-accent-cyan/40 bg-gradient-to-b from-cyan-300 to-cyan-600 text-[10px] font-bold tracking-tight text-slate-950 shadow-[0_0_0_1px_rgba(34,211,238,0.2)]">
+            <div className="grid h-8 w-8 place-items-center rounded-lg border border-geoscorer-accent/35 bg-gradient-to-b from-geoscorer-accent-soft to-geoscorer-accent text-[10px] font-bold tracking-tight text-white shadow-[0_0_0_1px_rgba(15,124,117,0.2)]">
               GS
             </div>
             <div className="leading-tight">

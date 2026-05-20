@@ -87,14 +87,15 @@ module.exports = {
           'text-muted': 'var(--gs-text-muted)',
           'text-lead': 'var(--gs-text-lead)',
           accent: 'var(--gs-accent)',
+          'accent-hover': 'var(--gs-accent-hover)',
           'accent-soft': 'var(--gs-accent-soft)',
           'accent-2': 'var(--gs-accent-2)',
           border: 'var(--gs-border)',
         },
       },
       boxShadow: {
-        'gs-hero': '0 12px 40px rgba(15, 118, 110, 0.08)',
-        'gs-glass': '0 14px 40px rgba(15, 118, 110, 0.10)',
+        'gs-hero': '0 12px 40px rgba(15, 124, 117, 0.08)',
+        'gs-glass': '0 14px 40px rgba(15, 124, 117, 0.10)',
         card: '0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 40px -12px rgba(2, 6, 23, 0.7)',
         'card-hover':
           '0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 18px 60px -16px rgba(34, 211, 238, 0.18)',

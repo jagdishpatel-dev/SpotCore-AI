@@ -1,4 +1,4 @@
-/** React Bits FluidGlass `bar` mode material props (framework-agnostic). */
+/** React Bits FluidGlass `bar` mode material props. */
 export interface FluidGlassBarProps {
   transmission?: number;
   roughness?: number;
@@ -13,12 +13,18 @@ export interface FluidGlassBarProps {
   attenuationDistance?: number;
 }
 
-/** Edit to tune the glass bar — used by React AppChrome. */
-/** Matches React Bits FluidGlass `bar` mode defaults (applied via CSS on `.chrome-bar`). */
+/**
+ * Navbar glass tuning (edit here, save, HMR refreshes).
+ *
+ * - **Scroll-through frost** (hero text blurring under the bar): `transmission`,
+ *   `roughness`, `thickness` → CSS `backdrop-filter` on `.chrome-bar-backdrop`.
+ * - **3D bar refraction** (React Bits mesh): same props → `MeshTransmissionMaterial`.
+ *   The WebGL buffer only sees a flat scene, not live DOM — so scroll blur is CSS.
+ */
 export const FLUID_GLASS_BAR_INITIAL: FluidGlassBarProps = {
   transmission: 1,
-  roughness: 0,
-  thickness: 10,
+  roughness: 0.4,
+  thickness: 5,
   ior: 1.15,
   color: '#ffffff',
   attenuationColor: '#ffffff',
