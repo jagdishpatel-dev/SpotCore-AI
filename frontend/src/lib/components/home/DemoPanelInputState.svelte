@@ -269,7 +269,7 @@
   .demo-panel-input {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: auto;
     min-height: 0;
   }
 
@@ -282,8 +282,18 @@
   }
 
   @media (max-width: 899px) {
+    .demo-panel-input {
+      height: auto;
+      min-height: 0;
+    }
+
     .demo-panel-input__col--right {
       margin-top: 0.25rem;
+      justify-content: flex-start;
+    }
+
+    .demo-panel-input__actions {
+      margin-top: 0.5rem;
     }
   }
 

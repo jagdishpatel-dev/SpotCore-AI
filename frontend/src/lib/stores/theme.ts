@@ -1,45 +1,35 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
-export type Theme = 'light' | 'dark';
+export type Theme = 'light';
 
 const STORAGE_KEY = 'geoscore-theme';
 
-function readInitial(): Theme {
-  if (!browser) return 'dark';
-  try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === 'light' || stored === 'dark') return stored;
-  } catch {
-    /* ignore */
-  }
-  return 'light';
-}
-
-function applyToDom(value: Theme) {
+function applyToDom() {
   if (!browser) return;
   const root = document.documentElement;
-  root.classList.toggle('dark', value === 'dark');
-  root.classList.toggle('light', value === 'light');
-  root.style.colorScheme = value;
+  root.classList.add('light');
+  root.classList.remove('dark');
+  root.style.colorScheme = 'light';
 }
 
-const internal = writable<Theme>(readInitial());
+const internal = writable<Theme>('light');
 
 if (browser) {
-  internal.subscribe((value) => {
-    applyToDom(value);
+  applyToDom();
+  internal.subscribe(() => {
+    applyToDom();
     try {
-      window.localStorage.setItem(STORAGE_KEY, value);
+      window.localStorage.setItem(STORAGE_KEY, 'light');
     } catch {
       /* ignore */
     }
   });
 }
 
+/** Light-only theme store (dark mode disabled). */
 export const theme = {
   subscribe: internal.subscribe,
-  set: (value: Theme) => internal.set(value),
-  toggle: () =>
-    internal.update((current) => (current === 'dark' ? 'light' : 'dark')),
+  set: () => internal.set('light'),
+  toggle: () => internal.set('light'),
 };

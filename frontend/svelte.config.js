@@ -10,6 +10,17 @@ const config = {
   kit: {
     adapter: adapter(),
   },
+  vitePlugin: {
+    /** @threlte/core v8 is authored with runes; app components stay legacy. */
+    dynamicCompileOptions({ filename }) {
+      if (filename.includes('node_modules/@threlte')) {
+        return { runes: true };
+      }
+      if (filename.includes('/chrome/FluidGlass')) {
+        return { runes: true };
+      }
+    },
+  },
 };
 
 export default config;

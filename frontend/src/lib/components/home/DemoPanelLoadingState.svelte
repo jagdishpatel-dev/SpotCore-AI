@@ -129,7 +129,7 @@
   .demo-loading {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: auto;
     min-height: 0;
   }
 
@@ -250,13 +250,10 @@
   }
 
   .demo-loading__steps {
-    margin-top: auto;
+    margin-top: 0.75rem;
     display: flex;
     flex-direction: column;
     gap: 0;
-    min-height: 0;
-    overflow: hidden;
-    mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
   }
 
   :global(.progress-row--compact) {
@@ -325,17 +322,38 @@
   }
 
   .demo-loading__sk-map {
-    margin-top: auto;
+    margin-top: 0.75rem;
     height: 3.5rem;
     border-radius: 12px;
     flex-shrink: 0;
   }
 
   @media (max-width: 899px) {
+    .demo-loading {
+      height: auto;
+      min-height: 0;
+    }
+
+    .demo-loading__grid {
+      flex: none;
+      min-height: 0;
+    }
+
+    .demo-loading__left,
+    .demo-loading__right {
+      flex: none;
+      min-height: auto;
+    }
+
     .demo-loading__steps {
+      margin-top: 0.5rem;
       mask-image: none;
-      max-height: 7.5rem;
-      overflow-y: auto;
+      max-height: none;
+      overflow: visible;
+    }
+
+    .demo-loading__sk-map {
+      margin-top: 0.75rem;
     }
   }
 </style>

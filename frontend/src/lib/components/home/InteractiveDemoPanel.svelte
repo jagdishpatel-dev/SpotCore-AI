@@ -84,7 +84,7 @@
 <style>
   :global(:root) {
     --demo-panel-divider: color-mix(in srgb, var(--border-soft) 85%, transparent);
-    --demo-shell-height: clamp(420px, 36vw, 480px);
+    --demo-shell-min-height: clamp(380px, 34vw, 440px);
     --demo-shell-pad: clamp(1.1rem, 2.2vw, 1.65rem);
   }
 
@@ -96,10 +96,9 @@
   .demo-product-shell {
     position: relative;
     width: 100%;
-    height: var(--demo-shell-height);
-    min-height: var(--demo-shell-height);
-    max-height: var(--demo-shell-height);
-    overflow: hidden;
+    height: auto;
+    min-height: var(--demo-shell-min-height);
+    overflow: visible;
     border-radius: clamp(22px, 2.4vw, 30px);
     display: flex;
     flex-direction: column;
@@ -109,26 +108,29 @@
   .demo-product-body {
     position: relative;
     flex: 1;
-    min-height: 0;
-    height: 100%;
+    min-height: var(--demo-shell-min-height);
+    height: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .demo-state-layer {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    inset: auto;
     display: flex;
     flex-direction: column;
+    flex: 1;
     padding: var(--demo-shell-pad);
-    overflow: hidden;
+    overflow: visible;
   }
 
   /* Shared two-column report grid (desktop) */
   :global(.demo-panel-grid) {
     display: grid;
-    flex: 1;
+    flex: none;
     min-height: 0;
     gap: clamp(1rem, 2vw, 1.5rem);
-    align-content: stretch;
+    align-content: start;
   }
 
   @media (min-width: 900px) {
@@ -141,7 +143,7 @@
   :global(.demo-panel-col) {
     display: flex;
     flex-direction: column;
-    min-height: 0;
+    min-height: auto;
     min-width: 0;
   }
 
@@ -219,20 +221,13 @@
     }
   }
 
-  @media (min-width: 900px) {
-    .demo-state-layer:has(:global(.demo-panel-input)) {
-      overflow: visible;
-    }
-  }
-
   @media (max-width: 899px) {
     :global(:root) {
-      --demo-shell-height: clamp(540px, 92vw, 620px);
+      --demo-shell-min-height: 0;
     }
 
-    .demo-state-layer {
-      overflow-y: auto;
-      overscroll-behavior: contain;
+    :global(.demo-panel-grid) {
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 </style>

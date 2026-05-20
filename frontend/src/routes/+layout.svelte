@@ -9,7 +9,7 @@
   <title>GeoScore — Location Intelligence</title>
 </svelte:head>
 
-<div class="flex min-h-screen flex-col text-ink {$page.url.pathname === '/' ? 'bg-geoscorer-bg' : 'gs-page-bg'}">
+<div class="flex min-h-screen flex-col bg-geoscorer-bg text-geoscorer-text">
   <AppChrome />
   <main class="flex flex-1 flex-col">
     <slot />

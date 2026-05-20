@@ -33,9 +33,10 @@ module.exports = {
         ],
       },
       fontSize: {
-        'hero-sm': ['2.375rem', { lineHeight: '1.14', letterSpacing: '-0.03em' }],
-        hero: ['2.75rem', { lineHeight: '1.12', letterSpacing: '-0.032em' }],
-        'hero-lg': ['3.25rem', { lineHeight: '1.1', letterSpacing: '-0.035em' }],
+        'hero-sm': ['2.75rem', { lineHeight: '1.1', letterSpacing: '-0.032em' }],
+        hero: ['3.25rem', { lineHeight: '1.08', letterSpacing: '-0.034em' }],
+        'hero-lg': ['3.75rem', { lineHeight: '1.06', letterSpacing: '-0.036em' }],
+        'hero-xl': ['4.5rem', { lineHeight: '1.04', letterSpacing: '-0.038em' }],
         lead: ['1.0625rem', { lineHeight: '1.7', letterSpacing: '-0.008em' }],
         'lead-md': ['1.125rem', { lineHeight: '1.68', letterSpacing: '-0.01em' }],
       },

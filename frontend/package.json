@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "clean:dupes": "sh scripts/clean-macos-duplicates.sh",
+    "postinstall": "mkdir -p node_modules .svelte-kit && : > node_modules/.nosync && : > .svelte-kit/.nosync",
     "dev": "npm run clean:dupes && vite dev",
     "build": "vite build",
     "preview": "vite preview",
@@ -16,6 +17,7 @@
     "@sveltejs/vite-plugin-svelte": "^4.0.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
+    "shadcn": "^4.7.0",
     "svelte": "^5.11.0",
     "svelte-check": "^4.1.1",
     "tailwindcss": "^3.4.15",
@@ -24,10 +26,15 @@
     "vite": "^5.4.11"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@threlte/core": "^8.5.14",
+    "@threlte/extras": "^9.19.0",
     "geist-svelte": "^1.0.2",
     "gsap": "^3.15.0",
     "leaflet": "^1.9.4",
     "lucide-svelte": "^1.0.1",
-    "tailwind-merge": "^3.5.0"
+    "maath": "^0.10.8",
+    "tailwind-merge": "^3.5.0",
+    "three": "^0.184.0"
   }
 }

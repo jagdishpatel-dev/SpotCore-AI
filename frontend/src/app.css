@@ -31,46 +31,8 @@
 }
 
 :root,
-:root.dark {
-  /* legacy aliases consumed by analyze + report routes */
-  --color-canvas: #020617;
-  --color-surface: #020a1a;
-  --color-surface-2: #050f24;
-  --color-ink: #e5e7eb;
-  --color-muted: #9ca3af;
-  --color-muted-2: #6b7280;
-  --color-line: rgba(148, 163, 184, 0.18);
-
-  /* homepage-facing tokens — dark (default) */
-  --bg-base: #020617;
-  --bg-surface: #020a1a;
-  --bg-surface-2: #050f24;
-  --border-soft: rgba(148, 163, 184, 0.15);
-  --text-primary: #e5e7eb;
-  --text-secondary: #9ca3af;
-  --text-muted: #4b5563;
-
-  --accent-cyan: #22d3ee;
-  --accent-blue: #38bdf8;
-  --accent-purple: #818cf8;
-  --positive: #22c55e;
-  --warning: #f97316;
-  --danger: #ef4444;
-
-  --glow-cyan: rgba(34, 211, 238, 0.12);
-  --glow-blue: rgba(56, 189, 248, 0.16);
-
-  /* gradient endpoint hex variants used inside CSS gradients */
-  --mesh-1: #061226;
-  --mesh-2: #0b2746;
-  --mesh-3: #0c1a3a;
-  --mesh-4: #08172e;
-}
-
 :root.light {
-  /* keep legacy tokens reasonable in light mode (they only render on
-     analyze/report routes which weren't redesigned, so we let them stay
-     dark — but on the homepage we exclusively read --bg-* tokens) */
+  /* legacy aliases consumed by analyze + report routes */
   --color-canvas: #f8fafc;
   --color-surface: #ffffff;
   --color-surface-2: #f1f5f9;
@@ -79,23 +41,23 @@
   --color-muted-2: #64748b;
   --color-line: rgba(15, 23, 42, 0.1);
 
-  --bg-base: #f8fafc;
+  --bg-base: #f7f4ee;
   --bg-surface: #ffffff;
-  --bg-surface-2: #f1f5f9;
+  --bg-surface-2: #f2efe8;
   --border-soft: rgba(15, 23, 42, 0.1);
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
 
-  --accent-cyan: #0891b2;
-  --accent-blue: #0284c7;
+  --accent-cyan: #0f766e;
+  --accent-blue: #2563eb;
   --accent-purple: #6366f1;
   --positive: #16a34a;
   --warning: #ea580c;
   --danger: #dc2626;
 
-  --glow-cyan: rgba(8, 145, 178, 0.06);
-  --glow-blue: rgba(2, 132, 199, 0.06);
+  --glow-cyan: rgba(15, 118, 110, 0.08);
+  --glow-blue: rgba(37, 99, 235, 0.06);
 
   --mesh-1: #eef2ff;
   --mesh-2: #e0f2fe;
@@ -580,12 +542,6 @@ html {
     animation: hero-reveal-rise 680ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: var(--reveal-delay, 0ms);
   }
-  #hero.hero-reveal-ready .hero-reveal-item--visual {
-    transform: translate3d(0, 16px, 0) scale(0.985);
-    animation-name: hero-reveal-visual;
-    animation-duration: 720ms;
-  }
-
   @keyframes hero-reveal-rise {
     from {
       opacity: 0;
@@ -596,17 +552,6 @@ html {
       transform: translate3d(0, 0, 0);
     }
   }
-  @keyframes hero-reveal-visual {
-    from {
-      opacity: 0;
-      transform: translate3d(0, 16px, 0) scale(0.985);
-    }
-    to {
-      opacity: 1;
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-  }
-
   /* Reveal action: starts hidden, fades + lifts when .revealed */
   .reveal-init {
     opacity: 0;
