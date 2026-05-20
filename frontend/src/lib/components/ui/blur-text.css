@@ -1,0 +1,73 @@
+.blur-text {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+}
+
+.blur-text__segment {
+  display: inline-block;
+  will-change: transform, filter, opacity;
+  filter: blur(10px);
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+.blur-text--bottom .blur-text__segment {
+  transform: translateY(50px);
+}
+
+.blur-text__segment--active {
+  animation: blur-text-from-top var(--blur-duration, 700ms) ease forwards;
+  animation-delay: var(--blur-delay, 0s);
+}
+
+.blur-text--bottom .blur-text__segment--active {
+  animation-name: blur-text-from-bottom;
+}
+
+@keyframes blur-text-from-top {
+  0% {
+    filter: blur(10px);
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  50% {
+    filter: blur(5px);
+    opacity: 0.5;
+    transform: translateY(5px);
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blur-text-from-bottom {
+  0% {
+    filter: blur(10px);
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  50% {
+    filter: blur(5px);
+    opacity: 0.5;
+    transform: translateY(-5px);
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blur-text__segment,
+  .blur-text__segment--active {
+    animation: none;
+    filter: none;
+    opacity: 1;
+    transform: none;
+  }
+}

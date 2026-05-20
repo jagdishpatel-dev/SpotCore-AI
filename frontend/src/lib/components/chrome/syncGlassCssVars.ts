@@ -1,4 +1,4 @@
-import type { FluidGlassBarProps } from './fluidGlassTypes';
+import type { FluidGlassBarProps } from './fluidGlassDefaults';
 
 /** Mirror glass props to CSS so every tweak is visible (WebGL + frosted bar). */
 export function syncGlassCssVars(p: FluidGlassBarProps) {

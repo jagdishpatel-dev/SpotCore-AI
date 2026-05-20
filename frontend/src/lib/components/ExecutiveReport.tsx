@@ -1,4 +1,3 @@
-'use client';
 
 import type { AnalyzeSiteResponse, Recommendation, ScoreBreakdown } from '@/lib/types';
 

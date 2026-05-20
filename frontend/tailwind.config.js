@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   // Must include `.svelte` or Tailwind purges almost all utilities used in components.
-  content: ['./src/**/*.{html,js,svelte,ts}'],
+  content: ['./index.html', './src/**/*.{html,js,ts,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -41,6 +41,10 @@ module.exports = {
         'lead-md': ['1.125rem', { lineHeight: '1.68', letterSpacing: '-0.01em' }],
       },
       colors: {
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        border: 'var(--border)',
+        ring: 'var(--ring)',
         // Legacy tokens retained (consumed by analyze/report routes)
         canvas: 'var(--color-canvas)',
         surface: 'var(--color-surface)',
