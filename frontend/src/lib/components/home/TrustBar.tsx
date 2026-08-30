@@ -15,7 +15,7 @@ export default function TrustBar() {
       <div className="mx-auto grid max-w-7xl grid-cols-2 items-stretch divide-[var(--border-soft)] px-6 py-6 md:grid-cols-4 md:divide-x md:py-5 lg:px-10">
         {items.map((item) => (
           <div key={item.label} className="reveal-init flex items-center justify-center gap-2.5 px-2 py-3 md:px-6" data-reveal-child>
-            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md border border-geoscorer-accent/25 bg-geoscorer-accent-soft text-geoscorer-accent">
+            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md border border-spotcore-accent/25 bg-spotcore-accent-soft text-spotcore-accent">
               <item.Icon className="h-4 w-4" />
             </span>
             <span className="text-[13px] font-medium leading-tight text-text-secondary">{item.label}</span>

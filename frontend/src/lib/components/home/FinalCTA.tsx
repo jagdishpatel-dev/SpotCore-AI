@@ -12,8 +12,8 @@ export default function FinalCTA({ startHref = '/analyze' }: FinalCTAProps) {
         <h2 id="final-cta-heading" className="type-display mx-auto max-w-[22ch] text-2xl md:text-[1.75rem]">
           Know what a site is really worth before you invest.
         </h2>
-        <p className="type-lead mx-auto mt-5 max-w-xl text-geoscorer-text-lead">
-          Use GeoScorer to evaluate locations with demand, competition, and demographic insight before
+        <p className="type-lead mx-auto mt-5 max-w-xl text-spotcore-text-lead">
+          Use SpotCore to evaluate locations with demand, competition, and demographic insight before
           you sign anything.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

@@ -1,7 +1,7 @@
-# Cursor Project Rules – GeoScore
+# Cursor Project Rules – SpotCore
 
 ## Purpose
-GeoScore is an AI-powered location intelligence product. The app analyzes an address + business type and returns a premium, executive-style location report for people deciding whether to buy or open a store.
+SpotCore is an AI-powered location intelligence product. The app analyzes an address + business type and returns a premium, executive-style location report for people deciding whether to buy or open a store.
 
 ## General rules
 - Do NOT break or change core data logic, scoring logic, or external API calls unless explicitly asked.

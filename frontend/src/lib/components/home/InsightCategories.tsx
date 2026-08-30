@@ -16,15 +16,15 @@ export default function InsightCategories() {
       <div className="geo-section">
         <p className="geo-label">What you get</p>
         <h2 id="insights-heading" className="geo-section-title mt-3">Insight categories in every report</h2>
-        <p className="mt-3 max-w-2xl text-base text-geoscorer-text-muted">
+        <p className="mt-3 max-w-2xl text-base text-spotcore-text-muted">
           Each section answers a specific question expansion teams ask before committing capital to a site.
         </p>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {insights.map((item) => (
             <article key={item.title} className="reveal-init geo-card group p-5" data-reveal-child>
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-geoscorer-accent" aria-hidden="true" />
-              <h3 className="mt-3 text-lg font-semibold text-geoscorer-text">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-geoscorer-text-muted">{item.body}</p>
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-spotcore-accent" aria-hidden="true" />
+              <h3 className="mt-3 text-lg font-semibold text-spotcore-text">{item.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-spotcore-text-muted">{item.body}</p>
             </article>
           ))}
         </div>

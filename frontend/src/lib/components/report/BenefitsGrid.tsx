@@ -37,7 +37,7 @@ export default function BenefitsGrid() {
             <AccentIcon name="sparkle" />
           </span>
           <h2 className="text-lg font-semibold tracking-tight text-ink md:text-xl">
-            What you get with GeoScore
+            What you get with SpotCore
           </h2>
         </div>
       </Reveal>

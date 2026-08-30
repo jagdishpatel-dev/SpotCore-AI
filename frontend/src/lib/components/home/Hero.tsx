@@ -59,11 +59,11 @@ export default function Hero({
         </div>
 
         <p
-          className="hero-reveal-item mt-4 text-sm text-geoscorer-text-muted"
+          className="hero-reveal-item mt-4 text-sm text-spotcore-text-muted"
           style={{ '--reveal-delay': '420ms' } as React.CSSProperties}
         >
           No credit card.{' '}
-          <a href="#demo" className="font-normal text-geoscorer-accent underline-offset-2 hover:underline">
+          <a href="#demo" className="font-normal text-spotcore-accent underline-offset-2 hover:underline">
             Try a sample location
           </a>
         </p>

@@ -40,12 +40,12 @@ function NavLink({
   router?: boolean;
 }) {
   const classes = `group relative inline-flex shrink-0 items-center whitespace-nowrap rounded-lg px-2 py-1.5 text-xs font-medium transition-colors sm:px-2.5 sm:text-sm lg:px-3 ${className} ${
-    active ? 'text-geoscorer-text' : 'text-geoscorer-text-muted hover:text-geoscorer-text'
+    active ? 'text-spotcore-text' : 'text-spotcore-text-muted hover:text-spotcore-text'
   }`;
 
   const underline = (
     <span
-      className={`pointer-events-none absolute inset-x-2.5 bottom-1 h-px origin-left rounded bg-geoscorer-accent transition-transform duration-200 group-hover:scale-x-100 lg:inset-x-3 ${
+      className={`pointer-events-none absolute inset-x-2.5 bottom-1 h-px origin-left rounded bg-spotcore-accent transition-transform duration-200 group-hover:scale-x-100 lg:inset-x-3 ${
         active ? 'scale-x-100' : 'scale-x-0'
       }`}
       aria-hidden
@@ -117,12 +117,12 @@ export default function AppChrome({
           to="/"
           className="group relative z-10 flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3"
         >
-          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-geoscorer-accent/35 bg-gradient-to-b from-geoscorer-accent-soft to-geoscorer-accent text-[11px] font-bold tracking-tight text-white shadow-[0_0_0_1px_rgba(15,124,117,0.2),0_8px_24px_-8px_rgba(15,124,117,0.35)] transition-transform duration-300 group-hover:scale-[1.03]">
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-spotcore-accent/35 bg-gradient-to-b from-spotcore-accent-soft to-spotcore-accent text-[11px] font-bold tracking-tight text-white shadow-[0_0_0_1px_rgba(15,124,117,0.2),0_8px_24px_-8px_rgba(15,124,117,0.35)] transition-transform duration-300 group-hover:scale-[1.03]">
             GS
           </div>
           <div className="hidden leading-tight lg:block">
-            <p className="text-sm font-medium tracking-tight text-geoscorer-text">GeoScore</p>
-            <p className="text-[11px] tracking-wide text-geoscorer-text-muted">
+            <p className="text-sm font-medium tracking-tight text-spotcore-text">SpotCore</p>
+            <p className="text-[11px] tracking-wide text-spotcore-text-muted">
               Location intelligence for operators
             </p>
           </div>
@@ -159,7 +159,7 @@ export default function AppChrome({
             <button
               type="button"
               onClick={newAnalysis}
-              className="inline-flex h-9 items-center justify-center rounded-full border border-[var(--border-soft)] bg-transparent px-4 text-sm font-semibold text-geoscorer-text transition-colors hover:border-accent-cyan/40"
+              className="inline-flex h-9 items-center justify-center rounded-full border border-[var(--border-soft)] bg-transparent px-4 text-sm font-semibold text-spotcore-text transition-colors hover:border-accent-cyan/40"
             >
               New analysis
             </button>
@@ -167,13 +167,13 @@ export default function AppChrome({
             <>
               <Link
                 to="/analyze"
-                className="hidden h-9 items-center justify-center rounded-full bg-geoscorer-accent px-4 text-sm font-semibold text-white shadow-[0_18px_50px_-18px_rgba(15,124,117,0.38)] transition-all hover:scale-[1.02] hover:bg-geoscorer-accent-hover sm:inline-flex"
+                className="hidden h-9 items-center justify-center rounded-full bg-spotcore-accent px-4 text-sm font-semibold text-white shadow-[0_18px_50px_-18px_rgba(15,124,117,0.38)] transition-all hover:scale-[1.02] hover:bg-spotcore-accent-hover sm:inline-flex"
               >
                 Analyze Address
               </Link>
               <Link
                 to="/analyze"
-                className="inline-flex h-9 items-center justify-center rounded-full bg-geoscorer-accent px-3 text-sm font-semibold text-white shadow-[0_18px_50px_-18px_rgba(15,124,117,0.38)] hover:bg-geoscorer-accent-hover sm:hidden"
+                className="inline-flex h-9 items-center justify-center rounded-full bg-spotcore-accent px-3 text-sm font-semibold text-white shadow-[0_18px_50px_-18px_rgba(15,124,117,0.38)] hover:bg-spotcore-accent-hover sm:hidden"
               >
                 Analyze
               </Link>

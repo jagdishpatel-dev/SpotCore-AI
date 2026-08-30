@@ -29,7 +29,7 @@ export const SAMPLE_ANALYZE_SITE_RESPONSE: AnalyzeSiteResponse = {
       the_edge:
         'Strong pedestrian circulation within 500m of subway access and a cluster of complementary food retailers.',
       the_blindspot:
-        'Lease economics and tenant improvement costs are not in GeoScore—confirm rent and CAM with a broker.',
+        'Lease economics and tenant improvement costs are not in SpotCore—confirm rent and CAM with a broker.',
       the_power_move:
         'Pilot weekday breakfast + lunch dayparts before committing to evening hours; measure repeat visits for 60 days.',
     },

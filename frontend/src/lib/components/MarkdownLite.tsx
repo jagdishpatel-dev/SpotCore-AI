@@ -2,7 +2,7 @@
 import type { ReactNode } from 'react';
 
 /**
- * Minimal, dependency-free renderer for the LLM-generated prose GeoScore
+ * Minimal, dependency-free renderer for the LLM-generated prose SpotCore
  * shows verbatim (zoning Q&A answers, etc.) — handles the subset of markdown
  * these responses actually use: paragraphs, **bold**, *italic*, and
  * "- "/"1. " list blocks. Deliberately NOT a general markdown parser and

@@ -52,7 +52,7 @@ export default function DataSignals() {
             <div key={s.title} className="reveal-init scale-in" data-reveal-child>
               <Card className="group h-full p-5" interactive>
                 <div className="flex items-start gap-3">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[var(--border-soft)] bg-[var(--bg-surface-2)]/60 text-text-secondary transition-colors group-hover:border-geoscorer-accent/40 group-hover:bg-geoscorer-accent-soft group-hover:text-geoscorer-accent">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[var(--border-soft)] bg-[var(--bg-surface-2)]/60 text-text-secondary transition-colors group-hover:border-spotcore-accent/40 group-hover:bg-spotcore-accent-soft group-hover:text-spotcore-accent">
                     <s.Icon className="h-4.5 w-4.5" />
                   </span>
                   <div className="min-w-0">

@@ -59,7 +59,7 @@ export default function BusinessSnapshot({
   const prettyType = startCase(type);
   const factors = successFactors(type, result);
   const description =
-    `GeoScore is reading this block through the lens of a ${prettyType.toLowerCase()}. The score weighs ` +
+    `SpotCore is reading this block through the lens of a ${prettyType.toLowerCase()}. The score weighs ` +
     `who actually walks past the door, what sits within its trade area, and how easy it is to reach by ` +
     `transit and on foot — not just a generic walkability number.`;
 

@@ -6,8 +6,8 @@ class Settings(BaseSettings):
 
     census_api_key: str = ""
     google_geocoding_api_key: str = ""
-    nominatim_user_agent: str = "GeoScoreAI/1.0 (contact@example.com)"
-    overpass_user_agent: str = "GeoScoreAI/1.0 (site-analysis; contact@example.com)"
+    nominatim_user_agent: str = "SpotCoreAI/1.0 (contact@example.com)"
+    overpass_user_agent: str = "SpotCoreAI/1.0 (site-analysis; contact@example.com)"
     overpass_referer: str = "http://127.0.0.1:5173/"
     overpass_url: str = "https://overpass.kumi.systems/api/interpreter"
     overpass_radius_m: int = 500

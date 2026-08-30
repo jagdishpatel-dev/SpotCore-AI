@@ -12,7 +12,7 @@ export default function InquiryVisualPanel({ className = '' }: InquiryVisualPane
   return (
     <aside
       className={cn('inquiry-visual', className)}
-      aria-label="GeoScore location intelligence"
+      aria-label="SpotCore location intelligence"
     >
       {/* Layer 1 — warm cream base gradient */}
       <div className="inquiry-visual__layer inquiry-visual__layer--base" aria-hidden="true" />

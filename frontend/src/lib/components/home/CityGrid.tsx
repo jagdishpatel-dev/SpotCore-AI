@@ -34,11 +34,11 @@ export default function CityGrid({
           className={cn(
             'rounded-sm',
             cellClass,
-            cell.tone === 'surface' && 'bg-geoscorer-surface',
-            cell.tone === 'soft' && 'bg-geoscorer-surface-soft',
-            cell.tone === 'accent-soft' && 'bg-geoscorer-accent-soft',
-            cell.tone === 'accent' && 'bg-geoscorer-accent opacity-90',
-            cell.accent && 'border border-geoscorer-accent',
+            cell.tone === 'surface' && 'bg-spotcore-surface',
+            cell.tone === 'soft' && 'bg-spotcore-surface-soft',
+            cell.tone === 'accent-soft' && 'bg-spotcore-accent-soft',
+            cell.tone === 'accent' && 'bg-spotcore-accent opacity-90',
+            cell.accent && 'border border-spotcore-accent',
           )}
           style={cell.tone === 'accent' ? { opacity: 0.35 } : undefined}
         />

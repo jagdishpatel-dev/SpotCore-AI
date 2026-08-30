@@ -4,7 +4,7 @@ import AppFooter from '$lib/components/AppFooter';
 
 export default function RootLayout() {
   return (
-    <div className="flex min-h-screen flex-col bg-geoscorer-bg text-geoscorer-text">
+    <div className="flex min-h-screen flex-col bg-spotcore-bg text-spotcore-text">
       <AppChrome />
       <main className="flex flex-1 flex-col">
         <Outlet />

@@ -1,6 +1,6 @@
-# GeoScore AI (MVP)
+# SpotCore AI (MVP)
 
-GeoScore AI is a small **rules-based** web tool that helps answer:
+SpotCore AI is a small **rules-based** web tool that helps answer:
 
 > “Is this location good for opening this type of business?”
 
@@ -9,7 +9,7 @@ It combines **OpenStreetMap / Overpass** (nearby businesses + transit proxies), 
 ## Repo layout
 
 ```
-geoscore-ai/
+spotcore-ai/
   backend/          # FastAPI service
   frontend/         # SvelteKit + Tailwind + Leaflet UI
   docs/
@@ -74,7 +74,7 @@ In dev, the UI calls the API through a Vite proxy (`/api` → `http://127.0.0.1:
 
 ### `GET /health`
 
-Returns `{ "status": "ok", "service": "geoscore-ai" }`.
+Returns `{ "status": "ok", "service": "spotcore-ai" }`.
 
 ### `GET /suggest-address`
 

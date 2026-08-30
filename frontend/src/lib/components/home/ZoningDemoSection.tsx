@@ -12,8 +12,8 @@ export default function ZoningDemoSection() {
           <h2 id="zoning-demo-heading" className="geo-section-title mt-3">
             Ask what you can actually build
           </h2>
-          <p className="mt-3 text-base text-geoscorer-text-muted">
-            GeoScore reads the real Austin, TX zoning code — not a generic answer. Every claim
+          <p className="mt-3 text-base text-spotcore-text-muted">
+            SpotCore reads the real Austin, TX zoning code — not a generic answer. Every claim
             traces back to a section number, and permitted/conditional/prohibited status comes
             from the actual use table, not a guess.
           </p>

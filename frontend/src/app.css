@@ -19,7 +19,7 @@
 @tailwind utilities;
 
 /* ──────────────────────────────────────────────────────────────────────────
- * GeoScore — premium location intelligence theme
+ * SpotCore — premium location intelligence theme
  *
  * Two-mode (light + dark) token system. The legacy `--color-*` tokens are
  * retained so analyze/report routes keep working unchanged. The new
@@ -28,7 +28,7 @@
  * ───────────────────────────────────────────────────────────────────── */
 
 :root {
-  /* GeoScorer marketing palette (homepage + shared utilities) */
+  /* SpotCore marketing palette (homepage + shared utilities) */
   --gs-bg: #f6f2ea;
   --gs-surface: #ffffff;
   --gs-surface-soft: #f1ece4;
@@ -201,14 +201,14 @@ html {
 @layer utilities {
   /* Hero H1 — False display accent (homepage only) */
   .type-hero {
-    @apply font-display font-medium tracking-hero text-geoscorer-text;
+    @apply font-display font-medium tracking-hero text-spotcore-text;
     line-height: 1.12;
     font-weight: 500;
   }
 
   /* Section headings — Geist, restrained hierarchy */
   .type-display {
-    @apply font-sans font-medium tracking-heading text-geoscorer-text;
+    @apply font-sans font-medium tracking-heading text-spotcore-text;
     line-height: 1.18;
     font-weight: 500;
   }
@@ -219,7 +219,7 @@ html {
   }
 
   .type-lead {
-    @apply font-sans font-normal text-lead text-geoscorer-text-lead tracking-body;
+    @apply font-sans font-normal text-lead text-spotcore-text-lead tracking-body;
     max-width: 36rem;
   }
 
@@ -333,7 +333,7 @@ html {
     background: var(--bg-base);
   }
 
-  /* ── GeoScorer marketing design system ─────────────────────────────── */
+  /* ── SpotCore marketing design system ─────────────────────────────── */
 
   .marketing-page {
     --bg-base: var(--gs-bg);

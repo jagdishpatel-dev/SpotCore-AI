@@ -78,8 +78,8 @@ module.exports = {
         // Legacy alias retained
         success: 'var(--positive)',
 
-        // GeoScorer marketing homepage (maps to --gs-* on .marketing-page)
-        geoscorer: {
+        // SpotCore marketing homepage (maps to --gs-* on .marketing-page)
+        spotcore: {
           bg: 'var(--gs-bg)',
           surface: 'var(--gs-surface)',
           'surface-soft': 'var(--gs-surface-soft)',

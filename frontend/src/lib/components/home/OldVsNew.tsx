@@ -36,7 +36,7 @@ export default function OldVsNew() {
             className="reveal-init from-left relative md:pr-10 lg:pr-14"
           >
             <div className="rounded-3xl border border-danger/15 bg-gradient-to-br from-danger/10 via-[var(--bg-surface-2)] to-transparent p-8 lg:p-10">
-              <Badge variant="destructive">Before GeoScore</Badge>
+              <Badge variant="destructive">Before SpotCore</Badge>
               <h3 className="mt-5 font-display text-3xl font-bold tracking-[-0.02em] text-text-primary md:text-4xl">
                 Guesswork and broker hunch
               </h3>
@@ -61,7 +61,7 @@ export default function OldVsNew() {
             className="pointer-events-none absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 md:block"
             aria-hidden="true"
           >
-            <span className="grid h-14 w-14 place-items-center rounded-full border border-geoscorer-accent/35 bg-[var(--bg-base)] font-display text-sm font-bold tracking-wider text-geoscorer-accent shadow-[0_0_0_6px_rgba(15,124,117,0.08),0_24px_60px_-20px_rgba(15,124,117,0.28)]">
+            <span className="grid h-14 w-14 place-items-center rounded-full border border-spotcore-accent/35 bg-[var(--bg-base)] font-display text-sm font-bold tracking-wider text-spotcore-accent shadow-[0_0_0_6px_rgba(15,124,117,0.08),0_24px_60px_-20px_rgba(15,124,117,0.28)]">
               VS
             </span>
           </div>
@@ -70,8 +70,8 @@ export default function OldVsNew() {
             ref={rightRef}
             className="reveal-init from-right relative md:pl-10 lg:pl-14"
           >
-            <div className="rounded-3xl border border-geoscorer-accent/25 bg-gradient-to-br from-geoscorer-accent-soft via-[var(--bg-surface-2)] to-transparent p-8 lg:p-10">
-              <Badge variant="success">With GeoScore</Badge>
+            <div className="rounded-3xl border border-spotcore-accent/25 bg-gradient-to-br from-spotcore-accent-soft via-[var(--bg-surface-2)] to-transparent p-8 lg:p-10">
+              <Badge variant="success">With SpotCore</Badge>
               <h3 className="mt-5 font-display text-3xl font-bold tracking-[-0.02em] text-text-primary md:text-4xl">
                 Data-backed location decisions
               </h3>
@@ -82,7 +82,7 @@ export default function OldVsNew() {
               <ul className="mt-7 space-y-3">
                 {newWay.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-geoscorer-accent/30 bg-geoscorer-accent-soft text-geoscorer-accent">
+                    <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-spotcore-accent/30 bg-spotcore-accent-soft text-spotcore-accent">
                       <Check className="h-3.5 w-3.5" />
                     </span>
                     <span className="text-[15px] leading-[1.55] text-text-primary/90">{item}</span>

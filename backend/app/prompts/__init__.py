@@ -1,5 +1,5 @@
 """
-GeoScore — LLM Prompt Registry
+SpotCore — LLM Prompt Registry
 ================================
 All prompt strings and template functions live in this package.
 Import ONLY from backend services / API handlers — never from the frontend.

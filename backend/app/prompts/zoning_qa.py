@@ -37,7 +37,7 @@ _AUSTIN_DISTRICT_COLUMNS = (
 )
 
 ZONING_QA_SYSTEM_PROMPT_V1: str = f"""\
-You are a zoning code research assistant for GeoScore AI. You answer questions
+You are a zoning code research assistant for SpotCore AI. You answer questions
 about what can be built or operated on a property, grounded ONLY in the
 retrieved zoning code excerpts provided in the user message.
 

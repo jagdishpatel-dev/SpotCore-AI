@@ -126,7 +126,7 @@ export const ANALYSIS_FORM_FIELDS: readonly AnalysisFieldDefinition[] = [
     label: 'What are you trying to decide?',
     required: true,
     placeholder: 'e.g. New site selection',
-    helperText: 'Tell us what decision you want GeoScore to help with.',
+    helperText: 'Tell us what decision you want SpotCore to help with.',
     type: 'select',
     section: 'core',
     options: DECISION_GOAL_OPTIONS,

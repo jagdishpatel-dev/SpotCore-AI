@@ -91,7 +91,7 @@ export default function AnalyzePage() {
               Build a sharper location brief in under a minute.
             </h1>
             <p className="analyze-page__lead mt-3 max-w-2xl text-base leading-relaxed md:text-[15.5px]">
-              Tell GeoScore what business you are evaluating, where the site is, who you want to attract,
+              Tell SpotCore what business you are evaluating, where the site is, who you want to attract,
               and what decision you are trying to make. We will turn that into a clean location readout
               across demand, competition, demographics, accessibility, and site quality.
             </p>

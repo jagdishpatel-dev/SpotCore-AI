@@ -74,7 +74,7 @@ export default function InteractiveDemoPanel({ embedded = false }: InteractiveDe
         'demo-product-section relative scroll-mt-24',
         embedded && 'demo-product-section--embedded',
       )}
-      aria-label="GeoScore interactive preview"
+      aria-label="SpotCore interactive preview"
     >
       <div className="demo-product-wrap relative mx-auto w-full max-w-5xl">
         <div className="demo-product-shell geo-glass-soft rounded-2xl" aria-busy={phase === 'running'}>

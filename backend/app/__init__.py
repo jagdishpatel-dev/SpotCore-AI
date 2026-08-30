@@ -1,1 +1,1 @@
-# GeoScore AI API
+# SpotCore AI API

@@ -4,7 +4,7 @@ import CityGrid from './CityGrid';
 import { prefersReducedMotion } from '$lib/utils/motion';
 import { cn } from '$lib/utils/cn';
 
-const STORAGE_KEY = 'geoscore-intro-seen';
+const STORAGE_KEY = 'spotcore-intro-seen';
 const HOLD_MS = 1000;
 const FADE_OUT_MS = 420;
 const REDUCED_HOLD_MS = 400;
@@ -65,8 +65,8 @@ export default function IntroOverlay({ onComplete }: IntroOverlayProps) {
       role="presentation"
     >
       <div className="intro-overlay__inner">
-        <p className="intro-overlay__wordmark font-sans text-2xl font-medium tracking-heading text-geoscorer-text md:text-3xl">
-          GeoScorer
+        <p className="intro-overlay__wordmark font-sans text-2xl font-medium tracking-heading text-spotcore-text md:text-3xl">
+          SpotCore
         </p>
         <div className="intro-overlay__city" aria-hidden="true">
           <CityGrid cols={10} rows={7} cellClass="h-2.5 w-2.5 sm:h-3 sm:w-3" gapClass="gap-1" />

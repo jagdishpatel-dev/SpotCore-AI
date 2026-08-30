@@ -12,8 +12,8 @@ export default function DemoSection() {
           <h2 id="demo-section-heading" className="geo-section-title mt-3">
             See how a site gets scored
           </h2>
-          <p className="mt-3 text-base text-geoscorer-text-muted">
-            Try a sample location to see how GeoScorer evaluates demand, competition, and fit—no account
+          <p className="mt-3 text-base text-spotcore-text-muted">
+            Try a sample location to see how SpotCore evaluates demand, competition, and fit—no account
             required.
           </p>
         </div>

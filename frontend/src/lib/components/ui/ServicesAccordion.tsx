@@ -81,7 +81,7 @@ export default function ServicesAccordion({
             className={cn(
               'svc-row group/row relative rounded-xl border bg-[var(--bg-surface)] transition-[border-color,box-shadow,background-color] duration-200 ease-out',
               open
-                ? 'border-geoscorer-accent/35 shadow-[0_18px_48px_-26px_rgba(15,124,117,0.2)]'
+                ? 'border-spotcore-accent/35 shadow-[0_18px_48px_-26px_rgba(15,124,117,0.2)]'
                 : 'border-[var(--border-soft)] hover:border-accent-cyan/25 hover:bg-[var(--bg-surface-2)]/60 hover:shadow-[0_10px_28px_-18px_rgba(15,23,42,0.45)]',
             )}
           >

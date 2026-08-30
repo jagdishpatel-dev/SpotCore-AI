@@ -8,7 +8,7 @@ const items: ServiceItem[] = [
     title: 'Market entry & new sites',
     subtitle: 'Find the strongest neighborhoods for new openings.',
     body:
-      'Use GeoScore to quickly rank potential addresses by viability, so your team can focus on the locations that are most likely to perform.',
+      'Use SpotCore to quickly rank potential addresses by viability, so your team can focus on the locations that are most likely to perform.',
     bullets: [
       'Compare demand, competition, and income at a glance.',
       'Spot red flags before you commit to a lease.',
@@ -83,7 +83,7 @@ export default function Services() {
             }}
           />
 
-          <Badge variant="outline">How GeoScore helps</Badge>
+          <Badge variant="outline">How SpotCore helps</Badge>
           <h2
             id="services-heading"
             className="mt-5 font-display text-[40px] font-bold leading-[1.05] tracking-[-0.02em] text-text-primary sm:text-[52px] md:text-[60px] lg:text-[64px]"
@@ -92,7 +92,7 @@ export default function Services() {
             <span className="block shimmer-text">clear answers.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-base text-text-secondary md:text-lg">
-            Different teams use GeoScore in different ways. Explore the core use cases we support out of
+            Different teams use SpotCore in different ways. Explore the core use cases we support out of
             the box.
           </p>
         </div>

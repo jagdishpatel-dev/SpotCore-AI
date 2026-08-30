@@ -8,7 +8,7 @@ const variants: Record<string, string> = {
   default:
     'bg-[var(--bg-surface)] text-text-primary border border-[var(--border-soft)] hover:border-accent-cyan/40 hover:-translate-y-[1px]',
   cyan:
-    'bg-geoscorer-accent text-white shadow-[0_18px_50px_-18px_rgba(15,124,117,0.38)] hover:bg-geoscorer-accent-hover hover:shadow-[0_22px_60px_-18px_rgba(15,124,117,0.42)] hover:scale-[1.02] active:scale-[0.99]',
+    'bg-spotcore-accent text-white shadow-[0_18px_50px_-18px_rgba(15,124,117,0.38)] hover:bg-spotcore-accent-hover hover:shadow-[0_22px_60px_-18px_rgba(15,124,117,0.42)] hover:scale-[1.02] active:scale-[0.99]',
   outline:
     'bg-transparent text-text-primary border border-[var(--border-soft)] hover:border-accent-cyan/40 hover:bg-[var(--bg-surface)]/40',
   ghost:
