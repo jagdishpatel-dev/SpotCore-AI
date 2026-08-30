@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import type { BusinessMarker } from '$lib/types';
+import type { BusinessMarker, ZoningMapFeature } from '$lib/types';
 import '$lib/components/site-map.css';
 
 export interface SiteMapProps {
@@ -9,6 +9,7 @@ export interface SiteMapProps {
   competitors: BusinessMarker[];
   complementary: BusinessMarker[];
   radiusM?: number;
+  zoningFeatures?: ZoningMapFeature[];
 }
 
 function escapeHtml(s: string) {
@@ -19,12 +20,20 @@ function escapeHtml(s: string) {
   );
 }
 
+const PERMISSION_LABEL: Record<ZoningMapFeature['permission'], string> = {
+  permitted: 'Permitted',
+  conditional: 'Conditional use (permit required)',
+  prohibited: 'Not permitted',
+  unknown: 'Unclassified / legacy code',
+};
+
 export default function SiteMap({
   lat,
   lon,
   competitors,
   complementary,
   radiusM = 500,
+  zoningFeatures,
 }: SiteMapProps) {
   const elRef = useRef<HTMLDivElement>(null);
 
@@ -53,6 +62,39 @@ export default function SiteMap({
         subdomains: 'abcd',
         opacity: 0.85,
       }).addTo(map);
+
+      if (zoningFeatures?.length) {
+        const geojson = {
+          type: 'FeatureCollection' as const,
+          features: zoningFeatures.map((f) => ({
+            type: 'Feature' as const,
+            geometry: f.geometry,
+            properties: f,
+          })),
+        };
+        L.geoJSON(geojson, {
+          style: (feature) => {
+            const props = feature?.properties as ZoningMapFeature | undefined;
+            return {
+              color: props?.color ?? '#6B7280',
+              weight: 1,
+              opacity: 0.7,
+              fillColor: props?.color ?? '#6B7280',
+              fillOpacity: 0.28,
+            };
+          },
+          onEachFeature: (feature, layer) => {
+            const props = feature.properties as ZoningMapFeature;
+            const districtLabel = props.base_district ?? props.ztype;
+            const useLine = props.matched_use
+              ? `<br/><span class="gs-popup-sub">${escapeHtml(props.matched_use)}: ${PERMISSION_LABEL[props.permission]}</span>`
+              : '';
+            layer.bindPopup(
+              `<strong>${escapeHtml(districtLabel)}</strong> <span class="gs-popup-sub">(${escapeHtml(props.ztype)})</span>${useLine}`,
+            );
+          },
+        }).addTo(map);
+      }
 
       L.circle([lat, lon], {
         radius: radiusM,
@@ -118,7 +160,7 @@ export default function SiteMap({
       cancelled = true;
       map?.remove();
     };
-  }, [lat, lon, competitors, complementary, radiusM]);
+  }, [lat, lon, competitors, complementary, radiusM, zoningFeatures]);
 
   return (
     <div

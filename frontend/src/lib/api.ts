@@ -1,4 +1,11 @@
-import type { AddressSuggestResponse, AnalyzeSiteResponse, TrendsKeywordsResponse, TrendsTimeframe } from './types';
+import type {
+  AddressSuggestResponse,
+  AnalyzeSiteResponse,
+  TrendsKeywordsResponse,
+  TrendsTimeframe,
+  ZoningAnswerResponse,
+  ZoningMapResponse,
+} from './types';
 
 function baseUrl(): string {
   const env = import.meta.env.VITE_API_BASE_URL as string | undefined;
@@ -98,4 +105,62 @@ export async function trendsAreaDemand(payload: {
     throw new Error(msg || `Trends request failed (${res.status})`);
   }
   return res.json() as Promise<TrendsKeywordsResponse>;
+}
+
+async function parseErrorDetail(res: Response, fallback: string): Promise<string> {
+  let msg = await res.text();
+  try {
+    const j = JSON.parse(msg) as { detail?: unknown };
+    if (typeof j.detail === 'string') msg = j.detail;
+    else if (Array.isArray(j.detail)) msg = JSON.stringify(j.detail);
+  } catch {
+    /* keep text */
+  }
+  return msg || fallback;
+}
+
+export async function zoningAsk(payload: {
+  question: string;
+  jurisdiction?: string;
+  zoning_district?: string | null;
+  address?: string | null;
+}): Promise<ZoningAnswerResponse> {
+  const res = await fetch(`${baseUrl()}/zoning-ask`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      question: payload.question,
+      jurisdiction: payload.jurisdiction ?? 'austin_tx',
+      zoning_district: payload.zoning_district ?? null,
+      address: payload.address ?? null,
+    }),
+  });
+  if (!res.ok) {
+    throw new Error(await parseErrorDetail(res, `Zoning question failed (${res.status})`));
+  }
+  return res.json() as Promise<ZoningAnswerResponse>;
+}
+
+export async function zoningMap(payload: {
+  lat: number;
+  lon: number;
+  radius_m?: number;
+  business_type?: string | null;
+  jurisdiction?: string;
+}): Promise<ZoningMapResponse> {
+  const res = await fetch(`${baseUrl()}/zoning-map`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      lat: payload.lat,
+      lon: payload.lon,
+      radius_m: payload.radius_m ?? 500,
+      business_type: payload.business_type ?? null,
+      jurisdiction: payload.jurisdiction ?? 'austin_tx',
+    }),
+  });
+  if (!res.ok) {
+    throw new Error(await parseErrorDetail(res, `Zoning map request failed (${res.status})`));
+  }
+  return res.json() as Promise<ZoningMapResponse>;
 }

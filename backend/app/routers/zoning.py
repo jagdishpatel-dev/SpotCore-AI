@@ -4,12 +4,20 @@ import logging
 
 from fastapi import APIRouter, HTTPException
 
-from app.models.schemas import ZoningAnswerResponse, ZoningQuestionRequest
-from app.services import ai_consultant, zoning_rag
+from app.models.schemas import (
+    ZoningAnswerResponse,
+    ZoningMapRequest,
+    ZoningMapResponse,
+    ZoningQuestionRequest,
+)
+from app.services import ai_consultant, zoning_geo, zoning_rag
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter(tags=["zoning"])
+
+# Pilot scope: only Austin's zoning polygon dataset is wired up.
+_MAP_SUPPORTED_JURISDICTIONS = {"austin_tx"}
 
 
 @router.post("/zoning-ask", response_model=ZoningAnswerResponse)
@@ -28,3 +36,20 @@ async def post_zoning_ask(body: ZoningQuestionRequest) -> ZoningAnswerResponse:
         zoning_district=body.zoning_district,
         address=body.address,
     )
+
+
+@router.post("/zoning-map", response_model=ZoningMapResponse)
+async def post_zoning_map(body: ZoningMapRequest) -> ZoningMapResponse:
+    if body.jurisdiction not in _MAP_SUPPORTED_JURISDICTIONS:
+        raise HTTPException(
+            status_code=404,
+            detail=f"No zoning map data available for jurisdiction={body.jurisdiction!r} yet.",
+        )
+    features = await zoning_geo.fetch_zoning_polygons(
+        lat=body.lat,
+        lon=body.lon,
+        radius_m=body.radius_m,
+        business_query=body.business_type,
+        jurisdiction=body.jurisdiction,
+    )
+    return ZoningMapResponse(jurisdiction=body.jurisdiction, business_type=body.business_type, features=features)

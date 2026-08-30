@@ -56,8 +56,10 @@ def _tokenize(text: str) -> set[str]:
     return {w for w in words if w not in _STOPWORDS and len(w) > 2}
 
 
-def find_matching_uses(query: str, jurisdiction: str = "austin_tx", top_n: int = 3) -> list[str]:
-    """Return up to top_n use names from the table whose words best overlap `query`."""
+def find_matching_uses(
+    query: str, jurisdiction: str = "austin_tx", top_n: int = 3, min_score: float = 0.0
+) -> list[tuple[float, str]]:
+    """Return up to top_n (score, use_name) pairs whose words best overlap `query`, highest score first."""
     table = load_use_table(jurisdiction)
     if not table:
         return []
@@ -75,18 +77,25 @@ def find_matching_uses(query: str, jurisdiction: str = "austin_tx", top_n: int =
             continue
         # Favor near-complete matches of the (usually short) use name over partial ones.
         score = overlap / len(name_words)
-        scored.append((score, name))
+        if score >= min_score:
+            scored.append((score, name))
 
     scored.sort(key=lambda t: (-t[0], t[1]))
-    return [name for _, name in scored[:top_n]]
+    return scored[:top_n]
 
 
-def lookup(query: str, district: str, jurisdiction: str = "austin_tx", top_n: int = 3) -> list[dict]:
+def lookup(
+    query: str, district: str, jurisdiction: str = "austin_tx", top_n: int = 3, min_score: float = 0.0
+) -> list[dict]:
     """
     Find uses matching `query` and report their exact table value for `district`.
 
-    Returns a list of {use, district, value, meaning} dicts, most relevant first.
-    Empty list if the district isn't a known column or nothing matched.
+    `min_score` filters out weak fuzzy matches — raise it for callers where a wrong
+    match is costly to show confidently (e.g. coloring a map by permission status),
+    vs. the default 0.0 used for text Q&A, where the LLM can hedge on a-weak match.
+
+    Returns a list of {use, district, value, meaning, score} dicts, most relevant first.
+    Empty list if the district isn't a known column or nothing matched above min_score.
     """
     district = district.strip().upper()
     if district not in AUSTIN_DISTRICT_COLUMNS:
@@ -94,7 +103,7 @@ def lookup(query: str, district: str, jurisdiction: str = "austin_tx", top_n: in
     table = load_use_table(jurisdiction)
     meanings = {"P": "Permitted", "C": "Conditional Use (needs a conditional use permit)", "—": "Not permitted"}
     results = []
-    for name in find_matching_uses(query, jurisdiction, top_n=top_n):
+    for score, name in find_matching_uses(query, jurisdiction, top_n=top_n, min_score=min_score):
         value = table.get(name, {}).get(district, "")
         results.append(
             {
@@ -102,6 +111,7 @@ def lookup(query: str, district: str, jurisdiction: str = "austin_tx", top_n: in
                 "district": district,
                 "value": value,
                 "meaning": meanings.get(value, f"See endnote {value}" if value else "unknown"),
+                "score": score,
             }
         )
     return results

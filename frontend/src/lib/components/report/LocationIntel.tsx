@@ -1,14 +1,24 @@
 
+import { useEffect, useState } from 'react';
 import GlassCard from './GlassCard';
 import Reveal from './Reveal';
 import AccentIcon from './AccentIcon';
 import SiteMap from '$lib/components/SiteMap';
 import { cn } from '$lib/utils/cn';
-import type { AnalyzeSiteResponse } from '$lib/types';
+import { zoningMap } from '$lib/api';
+import type { AnalyzeSiteResponse, ZoningMapFeature } from '$lib/types';
 
 export interface LocationIntelProps {
   result: AnalyzeSiteResponse;
+  businessType?: string;
 }
+
+const ZONING_LEGEND: { permission: ZoningMapFeature['permission']; label: string; color: string }[] = [
+  { permission: 'permitted', label: 'Permitted', color: '#22C55E' },
+  { permission: 'conditional', label: 'Conditional', color: '#F59E0B' },
+  { permission: 'prohibited', label: 'Not permitted', color: '#EF4444' },
+  { permission: 'unknown', label: 'Unclassified', color: '#6B7280' },
+];
 
 function fmtN(n?: number | null): string {
   if (n == null) return '—';
@@ -37,7 +47,36 @@ function saturationLabel(c: number): {
   return { tone: 'danger', text: 'Saturated' };
 }
 
-export default function LocationIntel({ result }: LocationIntelProps) {
+export default function LocationIntel({ result, businessType = '' }: LocationIntelProps) {
+  const [zoningFeatures, setZoningFeatures] = useState<ZoningMapFeature[] | undefined>(undefined);
+  const [zoningUnavailable, setZoningUnavailable] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    setZoningFeatures(undefined);
+    setZoningUnavailable(false);
+
+    zoningMap({
+      lat: result.location.lat,
+      lon: result.location.lon,
+      business_type: businessType || null,
+    })
+      .then((res) => {
+        if (cancelled) return;
+        setZoningFeatures(res.features);
+      })
+      .catch(() => {
+        // Pilot scope: only Austin, TX has zoning polygon data. A 404 here
+        // just means this address is outside that coverage — not an error
+        // worth surfacing, the map still works fine without the overlay.
+        if (!cancelled) setZoningUnavailable(true);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [result.location.lat, result.location.lon, businessType]);
+
   const pop = result.demographics?.population;
   const income = result.demographics?.median_household_income;
   const edu = result.demographics?.pct_bachelors_or_higher;
@@ -92,6 +131,24 @@ export default function LocationIntel({ result }: LocationIntelProps) {
                   </span>
                 </div>
               </div>
+              {zoningFeatures?.length ? (
+                <div className="mt-2 flex flex-wrap items-center gap-3 text-[11px] text-muted">
+                  <span className="text-muted-2">Zoning{businessType ? ` for ${businessType}` : ''}:</span>
+                  {ZONING_LEGEND.map((item) => (
+                    <span key={item.permission} className="inline-flex items-center gap-1.5">
+                      <span
+                        className="inline-block h-2 w-2 rounded-full"
+                        style={{ backgroundColor: item.color }}
+                      ></span>
+                      {item.label}
+                    </span>
+                  ))}
+                </div>
+              ) : zoningUnavailable ? (
+                <p className="mt-2 text-[11px] text-muted">
+                  Zoning overlay is currently only available for Austin, TX addresses.
+                </p>
+              ) : null}
             </div>
             <div className="p-2 md:p-3">
               <SiteMap
@@ -99,6 +156,7 @@ export default function LocationIntel({ result }: LocationIntelProps) {
                 lon={result.location.lon}
                 competitors={result.competitors}
                 complementary={result.complementary_businesses}
+                zoningFeatures={zoningFeatures}
               />
             </div>
           </GlassCard>

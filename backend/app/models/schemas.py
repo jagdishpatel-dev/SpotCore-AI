@@ -232,6 +232,32 @@ class ZoningAnswerResponse(BaseModel):
     )
 
 
+class ZoningMapRequest(BaseModel):
+    lat: float = Field(..., ge=-90, le=90)
+    lon: float = Field(..., ge=-180, le=180)
+    radius_m: int = Field(default=500, ge=100, le=1500)
+    business_type: str | None = Field(
+        default=None, max_length=120, description="If given, polygons are colored by permission for this use."
+    )
+    jurisdiction: str = Field(default="austin_tx", pattern=r"^[a-z0-9_]{1,64}$")
+
+
+class ZoningMapFeature(BaseModel):
+    geometry: dict[str, Any]
+    ztype: str
+    base_district: str | None
+    case_number: str | None
+    permission: str
+    color: str
+    matched_use: str | None
+
+
+class ZoningMapResponse(BaseModel):
+    jurisdiction: str
+    business_type: str | None
+    features: list[ZoningMapFeature]
+
+
 class TrendsKeywordsResponse(BaseModel):
     disclaimer: str
     geocode: GeocodedLocationGoogle

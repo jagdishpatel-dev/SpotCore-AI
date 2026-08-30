@@ -40,7 +40,7 @@ export default function ReportView({
       <PlayCards result={result} />
       <ScoreDrivers drivers={drivers} />
       <DemandCharts result={result} />
-      <LocationIntel result={result} />
+      <LocationIntel result={result} businessType={businessType} />
       <BenefitsGrid />
       <FooterCTA
         onAnalyzeAnother={onAnalyzeAnother}
