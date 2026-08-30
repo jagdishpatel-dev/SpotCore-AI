@@ -63,7 +63,45 @@ class TransitBlock(BaseModel):
     subway_stops_within_800m: int
     bus_or_light_rail_stops_within_400m: int
     nearest_subway_distance_m: float | None = None
+    parking_nodes_within_radius: int | None = None
+    bicycle_parking_within_radius: int | None = None
+    major_road_nodes_within_radius: int | None = None
     summary: str
+
+
+class SoftDemandSignals(BaseModel):
+    """Behavioral / relative demand proxies — not census population or foot traffic."""
+
+    search_interest_index: float | None = Field(
+        default=None,
+        description="Region-level Google Trends relative score (0–100), not address-level search volume.",
+    )
+    search_interest_geo_used: str | None = None
+    search_interest_resolution: str | None = None
+    search_interest_keywords: list[str] | None = None
+    search_interest_timeframe: str | None = None
+    search_interest_disclaimer: str | None = None
+
+
+class ScoreInputs(BaseModel):
+    """Raw values fed into scoring — evidence behind the 0–100 subscores."""
+
+    population: int | None = None
+    median_income: int | None = None
+    median_age: float | None = None
+    pct_college_educated: float | None = None
+    vacancy_pct: float | None = None
+    competitor_count: int | None = None
+    complementary_count: int | None = None
+    commercial_poi_count: int | None = None
+    subway_within_800m: int | None = None
+    bus_within_400m: int | None = None
+    nearest_subway_m: float | None = None
+    parking_within_radius: int | None = None
+    bicycle_parking_within_radius: int | None = None
+    major_road_nodes_within_radius: int | None = None
+    traffic_signal_nodes_within_radius: int | None = None
+    monthly_budget: float | None = None
 
 
 class ScoreBreakdown(BaseModel):
@@ -98,6 +136,8 @@ class AnalyzeSiteResponse(BaseModel):
     transit: TransitBlock
     summary: list[str]
     data_sources: dict[str, Any] = Field(default_factory=dict)
+    demand_signals: SoftDemandSignals | None = None
+    score_inputs: ScoreInputs | None = None
 
 
 class CompareSitesResponse(BaseModel):
@@ -161,6 +201,35 @@ class GeocodedLocationGoogle(BaseModel):
 class RegionTrendRow(BaseModel):
     region: str
     scores: dict[str, float]
+
+
+class ZoningQuestionRequest(BaseModel):
+    question: str = Field(..., min_length=5, max_length=1000)
+    jurisdiction: str = Field(
+        default="austin_tx",
+        pattern=r"^[a-z0-9_]{1,64}$",
+        description="Zoning corpus key under app/data/zoning/. Pilot scope: 'austin_tx' only.",
+    )
+    zoning_district: str | None = Field(
+        default=None, max_length=20, description="Known district code, e.g. 'CS-1', if the user has it."
+    )
+    address: str | None = Field(default=None, max_length=500)
+
+
+class ZoningCitation(BaseModel):
+    citation: str
+    title: str
+    score: float
+
+
+class ZoningAnswerResponse(BaseModel):
+    answer: str
+    citations: list[ZoningCitation]
+    jurisdiction: str
+    disclaimer: str = (
+        "Informational only, not legal advice. Verify against the current code with the "
+        "City of Austin Development Services Department before making a decision."
+    )
 
 
 class TrendsKeywordsResponse(BaseModel):

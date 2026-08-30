@@ -73,7 +73,7 @@ export default function AnalyzePage() {
       {loading ? <LoadingOverlay active /> : null}
       <section className="analyze-page mx-auto grid w-full max-w-7xl flex-1 gap-8 px-4 py-10 md:grid-cols-[minmax(0,1fr)_minmax(360px,1.05fr)] md:items-stretch md:gap-8 md:px-6 md:py-14 lg:gap-10">
         <InquiryVisualPanel className="md:sticky md:top-24 md:self-start" />
-        <div className="analyze-page__form-card overflow-hidden p-6 md:p-8 lg:p-9">
+        <div className="analyze-page__form-card overflow-visible p-6 md:p-8 lg:p-9">
           <div className="flex flex-wrap items-center gap-3">
             <Link
               to="/"

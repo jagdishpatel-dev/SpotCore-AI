@@ -1,0 +1,666 @@
+{
+  "aliases": {
+    "coffee": "coffee_shop",
+    "cafe": "coffee_shop",
+    "café": "coffee_shop",
+    "espresso": "coffee_shop",
+    "clinic": "clinic",
+    "medical": "clinic",
+    "doctor": "clinic",
+    "dental": "clinic",
+    "urgent care": "clinic",
+    "restaurant": "restaurant",
+    "food": "restaurant",
+    "pizza": "restaurant",
+    "bakery": "restaurant",
+    "salon": "salon",
+    "barber": "salon",
+    "beauty": "salon",
+    "nail": "salon",
+    "spa": "salon",
+    "gym": "gym",
+    "fitness": "gym",
+    "yoga": "gym",
+    "warehouse": "warehouse",
+    "logistics": "warehouse",
+    "distribution": "warehouse",
+    "retail": "retail",
+    "clothing": "retail",
+    "apparel": "retail",
+    "boutique": "retail"
+  },
+  "profiles": {
+    "default": {
+      "weights_no_budget": {
+        "demand": 0.28,
+        "competition": 0.24,
+        "accessibility": 0.22,
+        "demographic_fit": 0.26
+      },
+      "weights_with_budget": {
+        "demand": 0.24,
+        "competition": 0.2,
+        "accessibility": 0.18,
+        "demographic_fit": 0.22,
+        "cost_fit": 0.16
+      },
+      "demand": {
+        "pop_divisor": 8000,
+        "pop_weight": 0.55,
+        "activity_multiplier": 8,
+        "activity_weight": 0.45,
+        "vacancy_penalty_threshold": 15,
+        "vacancy_penalty": 15
+      },
+      "competition": {
+        "tiers": [
+          [0, 92],
+          [2, 78],
+          [5, 62],
+          [10, 48]
+        ],
+        "fallback_base": 55,
+        "fallback_per_competitor": 3,
+        "fallback_min": 25
+      },
+      "accessibility": {
+        "subway_cap": 55,
+        "subway_pts_per_stop": 18,
+        "bus_cap": 35,
+        "bus_pts_per_stop": 4,
+        "nearest_under_250": 15,
+        "nearest_under_450": 10,
+        "nearest_under_800": 5,
+        "parking_cap": 0,
+        "parking_pts_per": 0,
+        "bike_cap": 0,
+        "bike_pts_per": 0,
+        "road_cap": 0,
+        "road_pts_per": 0,
+        "signal_cap": 0,
+        "signal_pts_per": 0
+      },
+      "demographic_fit": {
+        "income_baseline": 40000,
+        "income_slope": 1000,
+        "income_min_score": 25,
+        "ideal_age": 42,
+        "age_penalty_factor": 1.8,
+        "age_penalty_cap": 35,
+        "income_weight": 0.45,
+        "edu_weight": 0.3,
+        "age_weight": 0.25,
+        "edu_multiplier": 1.2,
+        "edu_min_score": 20,
+        "income_mode": "default"
+      },
+      "cost_fit": {
+        "default_income": 65000,
+        "affordability_factor": 0.003,
+        "ratio_tiers": [
+          [1.4, 88],
+          [1.0, 72],
+          [0.7, 55]
+        ],
+        "fallback_score": 38
+      },
+      "recommendation": {
+        "strong_min": 72,
+        "medium_min": 52
+      }
+    },
+    "coffee_shop": {
+      "weights_no_budget": {
+        "demand": 0.3,
+        "competition": 0.22,
+        "accessibility": 0.26,
+        "demographic_fit": 0.22
+      },
+      "weights_with_budget": {
+        "demand": 0.26,
+        "competition": 0.18,
+        "accessibility": 0.22,
+        "demographic_fit": 0.2,
+        "cost_fit": 0.14
+      },
+      "demand": {
+        "pop_divisor": 7500,
+        "pop_weight": 0.5,
+        "activity_multiplier": 9,
+        "activity_weight": 0.5,
+        "vacancy_penalty_threshold": 12,
+        "vacancy_penalty": 12
+      },
+      "competition": {
+        "tiers": [
+          [0, 90],
+          [3, 76],
+          [6, 60],
+          [12, 45]
+        ],
+        "fallback_base": 52,
+        "fallback_per_competitor": 2.5,
+        "fallback_min": 25
+      },
+      "accessibility": {
+        "subway_cap": 50,
+        "subway_pts_per_stop": 20,
+        "bus_cap": 30,
+        "bus_pts_per_stop": 4,
+        "nearest_under_250": 15,
+        "nearest_under_450": 10,
+        "nearest_under_800": 5,
+        "parking_cap": 8,
+        "parking_pts_per": 2,
+        "bike_cap": 12,
+        "bike_pts_per": 4,
+        "road_cap": 8,
+        "road_pts_per": 0.5,
+        "signal_cap": 5,
+        "signal_pts_per": 1
+      },
+      "demographic_fit": {
+        "income_baseline": 35000,
+        "income_slope": 900,
+        "income_min_score": 20,
+        "ideal_age": 34,
+        "age_penalty_factor": 2.0,
+        "age_penalty_cap": 40,
+        "income_weight": 0.4,
+        "edu_weight": 0.35,
+        "age_weight": 0.25,
+        "edu_multiplier": 1.2,
+        "edu_min_score": 20,
+        "income_mode": "coffee"
+      },
+      "cost_fit": {
+        "default_income": 65000,
+        "affordability_factor": 0.003,
+        "ratio_tiers": [
+          [1.4, 88],
+          [1.0, 72],
+          [0.7, 55]
+        ],
+        "fallback_score": 38
+      },
+      "recommendation": {
+        "strong_min": 72,
+        "medium_min": 52
+      }
+    },
+    "clinic": {
+      "weights_no_budget": {
+        "demand": 0.24,
+        "competition": 0.28,
+        "accessibility": 0.24,
+        "demographic_fit": 0.24
+      },
+      "weights_with_budget": {
+        "demand": 0.2,
+        "competition": 0.24,
+        "accessibility": 0.22,
+        "demographic_fit": 0.22,
+        "cost_fit": 0.12
+      },
+      "demand": {
+        "pop_divisor": 9000,
+        "pop_weight": 0.6,
+        "activity_multiplier": 6,
+        "activity_weight": 0.4,
+        "vacancy_penalty_threshold": 18,
+        "vacancy_penalty": 10
+      },
+      "competition": {
+        "tiers": [
+          [0, 88],
+          [1, 72],
+          [3, 55],
+          [6, 40]
+        ],
+        "fallback_base": 48,
+        "fallback_per_competitor": 4,
+        "fallback_min": 22
+      },
+      "accessibility": {
+        "subway_cap": 35,
+        "subway_pts_per_stop": 14,
+        "bus_cap": 25,
+        "bus_pts_per_stop": 3,
+        "nearest_under_250": 10,
+        "nearest_under_450": 7,
+        "nearest_under_800": 4,
+        "parking_cap": 25,
+        "parking_pts_per": 5,
+        "bike_cap": 5,
+        "bike_pts_per": 2,
+        "road_cap": 15,
+        "road_pts_per": 0.8,
+        "signal_cap": 8,
+        "signal_pts_per": 1.5
+      },
+      "demographic_fit": {
+        "income_baseline": 50000,
+        "income_slope": 1100,
+        "income_min_score": 30,
+        "ideal_age": 45,
+        "age_penalty_factor": 1.6,
+        "age_penalty_cap": 32,
+        "income_weight": 0.5,
+        "edu_weight": 0.3,
+        "age_weight": 0.2,
+        "edu_multiplier": 1.15,
+        "edu_min_score": 25,
+        "income_mode": "default"
+      },
+      "cost_fit": {
+        "default_income": 75000,
+        "affordability_factor": 0.0035,
+        "ratio_tiers": [
+          [1.5, 90],
+          [1.1, 74],
+          [0.75, 56]
+        ],
+        "fallback_score": 36
+      },
+      "recommendation": {
+        "strong_min": 74,
+        "medium_min": 54
+      }
+    },
+    "restaurant": {
+      "weights_no_budget": {
+        "demand": 0.3,
+        "competition": 0.24,
+        "accessibility": 0.24,
+        "demographic_fit": 0.22
+      },
+      "weights_with_budget": {
+        "demand": 0.26,
+        "competition": 0.2,
+        "accessibility": 0.2,
+        "demographic_fit": 0.2,
+        "cost_fit": 0.14
+      },
+      "demand": {
+        "pop_divisor": 8000,
+        "pop_weight": 0.52,
+        "activity_multiplier": 8,
+        "activity_weight": 0.48,
+        "vacancy_penalty_threshold": 15,
+        "vacancy_penalty": 14
+      },
+      "competition": {
+        "tiers": [
+          [0, 90],
+          [2, 75],
+          [5, 58],
+          [10, 44]
+        ],
+        "fallback_base": 52,
+        "fallback_per_competitor": 3,
+        "fallback_min": 24
+      },
+      "accessibility": {
+        "subway_cap": 48,
+        "subway_pts_per_stop": 17,
+        "bus_cap": 32,
+        "bus_pts_per_stop": 4,
+        "nearest_under_250": 14,
+        "nearest_under_450": 9,
+        "nearest_under_800": 5,
+        "parking_cap": 12,
+        "parking_pts_per": 3,
+        "bike_cap": 6,
+        "bike_pts_per": 2,
+        "road_cap": 10,
+        "road_pts_per": 0.6,
+        "signal_cap": 6,
+        "signal_pts_per": 1
+      },
+      "demographic_fit": {
+        "income_baseline": 42000,
+        "income_slope": 950,
+        "income_min_score": 22,
+        "ideal_age": 36,
+        "age_penalty_factor": 1.9,
+        "age_penalty_cap": 38,
+        "income_weight": 0.42,
+        "edu_weight": 0.28,
+        "age_weight": 0.3,
+        "edu_multiplier": 1.15,
+        "edu_min_score": 20,
+        "income_mode": "default"
+      },
+      "cost_fit": {
+        "default_income": 65000,
+        "affordability_factor": 0.003,
+        "ratio_tiers": [
+          [1.4, 88],
+          [1.0, 72],
+          [0.7, 55]
+        ],
+        "fallback_score": 38
+      },
+      "recommendation": {
+        "strong_min": 72,
+        "medium_min": 52
+      }
+    },
+    "salon": {
+      "weights_no_budget": {
+        "demand": 0.27,
+        "competition": 0.25,
+        "accessibility": 0.23,
+        "demographic_fit": 0.25
+      },
+      "weights_with_budget": {
+        "demand": 0.23,
+        "competition": 0.21,
+        "accessibility": 0.19,
+        "demographic_fit": 0.23,
+        "cost_fit": 0.14
+      },
+      "demand": {
+        "pop_divisor": 8200,
+        "pop_weight": 0.54,
+        "activity_multiplier": 7,
+        "activity_weight": 0.46,
+        "vacancy_penalty_threshold": 15,
+        "vacancy_penalty": 12
+      },
+      "competition": {
+        "tiers": [
+          [0, 91],
+          [2, 77],
+          [5, 61],
+          [9, 47]
+        ],
+        "fallback_base": 54,
+        "fallback_per_competitor": 3,
+        "fallback_min": 26
+      },
+      "accessibility": {
+        "subway_cap": 42,
+        "subway_pts_per_stop": 16,
+        "bus_cap": 30,
+        "bus_pts_per_stop": 4,
+        "nearest_under_250": 12,
+        "nearest_under_450": 8,
+        "nearest_under_800": 4,
+        "parking_cap": 15,
+        "parking_pts_per": 4,
+        "bike_cap": 5,
+        "bike_pts_per": 2,
+        "road_cap": 10,
+        "road_pts_per": 0.5,
+        "signal_cap": 5,
+        "signal_pts_per": 1
+      },
+      "demographic_fit": {
+        "income_baseline": 45000,
+        "income_slope": 1000,
+        "income_min_score": 25,
+        "ideal_age": 38,
+        "age_penalty_factor": 1.85,
+        "age_penalty_cap": 36,
+        "income_weight": 0.44,
+        "edu_weight": 0.32,
+        "age_weight": 0.24,
+        "edu_multiplier": 1.2,
+        "edu_min_score": 22,
+        "income_mode": "default"
+      },
+      "cost_fit": {
+        "default_income": 65000,
+        "affordability_factor": 0.003,
+        "ratio_tiers": [
+          [1.4, 88],
+          [1.0, 72],
+          [0.7, 55]
+        ],
+        "fallback_score": 38
+      },
+      "recommendation": {
+        "strong_min": 72,
+        "medium_min": 52
+      }
+    },
+    "gym": {
+      "weights_no_budget": {
+        "demand": 0.28,
+        "competition": 0.24,
+        "accessibility": 0.26,
+        "demographic_fit": 0.22
+      },
+      "weights_with_budget": {
+        "demand": 0.24,
+        "competition": 0.2,
+        "accessibility": 0.22,
+        "demographic_fit": 0.2,
+        "cost_fit": 0.14
+      },
+      "demand": {
+        "pop_divisor": 8500,
+        "pop_weight": 0.56,
+        "activity_multiplier": 7,
+        "activity_weight": 0.44,
+        "vacancy_penalty_threshold": 16,
+        "vacancy_penalty": 12
+      },
+      "competition": {
+        "tiers": [
+          [0, 90],
+          [2, 76],
+          [4, 60],
+          [8, 46]
+        ],
+        "fallback_base": 53,
+        "fallback_per_competitor": 3,
+        "fallback_min": 25
+      },
+      "accessibility": {
+        "subway_cap": 50,
+        "subway_pts_per_stop": 18,
+        "bus_cap": 32,
+        "bus_pts_per_stop": 4,
+        "nearest_under_250": 14,
+        "nearest_under_450": 9,
+        "nearest_under_800": 5,
+        "parking_cap": 18,
+        "parking_pts_per": 4,
+        "bike_cap": 8,
+        "bike_pts_per": 3,
+        "road_cap": 8,
+        "road_pts_per": 0.5,
+        "signal_cap": 4,
+        "signal_pts_per": 1
+      },
+      "demographic_fit": {
+        "income_baseline": 40000,
+        "income_slope": 950,
+        "income_min_score": 22,
+        "ideal_age": 34,
+        "age_penalty_factor": 2.0,
+        "age_penalty_cap": 40,
+        "income_weight": 0.4,
+        "edu_weight": 0.3,
+        "age_weight": 0.3,
+        "edu_multiplier": 1.2,
+        "edu_min_score": 20,
+        "income_mode": "default"
+      },
+      "cost_fit": {
+        "default_income": 65000,
+        "affordability_factor": 0.003,
+        "ratio_tiers": [
+          [1.4, 88],
+          [1.0, 72],
+          [0.7, 55]
+        ],
+        "fallback_score": 38
+      },
+      "recommendation": {
+        "strong_min": 72,
+        "medium_min": 52
+      }
+    },
+    "warehouse": {
+      "weights_no_budget": {
+        "demand": 0.18,
+        "competition": 0.2,
+        "accessibility": 0.38,
+        "demographic_fit": 0.24
+      },
+      "weights_with_budget": {
+        "demand": 0.16,
+        "competition": 0.18,
+        "accessibility": 0.34,
+        "demographic_fit": 0.2,
+        "cost_fit": 0.12
+      },
+      "demand": {
+        "pop_divisor": 10000,
+        "pop_weight": 0.4,
+        "activity_multiplier": 5,
+        "activity_weight": 0.6,
+        "vacancy_penalty_threshold": 20,
+        "vacancy_penalty": 8
+      },
+      "competition": {
+        "tiers": [
+          [0, 85],
+          [3, 70],
+          [8, 55],
+          [15, 42]
+        ],
+        "fallback_base": 50,
+        "fallback_per_competitor": 2,
+        "fallback_min": 30
+      },
+      "accessibility": {
+        "subway_cap": 20,
+        "subway_pts_per_stop": 10,
+        "bus_cap": 15,
+        "bus_pts_per_stop": 2,
+        "nearest_under_250": 6,
+        "nearest_under_450": 4,
+        "nearest_under_800": 2,
+        "parking_cap": 20,
+        "parking_pts_per": 4,
+        "bike_cap": 3,
+        "bike_pts_per": 1,
+        "road_cap": 35,
+        "road_pts_per": 1.2,
+        "signal_cap": 12,
+        "signal_pts_per": 2
+      },
+      "demographic_fit": {
+        "income_baseline": 45000,
+        "income_slope": 1200,
+        "income_min_score": 20,
+        "ideal_age": 40,
+        "age_penalty_factor": 1.5,
+        "age_penalty_cap": 30,
+        "income_weight": 0.35,
+        "edu_weight": 0.25,
+        "age_weight": 0.4,
+        "edu_multiplier": 1.0,
+        "edu_min_score": 18,
+        "income_mode": "default"
+      },
+      "cost_fit": {
+        "default_income": 60000,
+        "affordability_factor": 0.004,
+        "ratio_tiers": [
+          [1.3, 86],
+          [0.95, 70],
+          [0.65, 52]
+        ],
+        "fallback_score": 40
+      },
+      "recommendation": {
+        "strong_min": 70,
+        "medium_min": 50
+      }
+    },
+    "retail": {
+      "weights_no_budget": {
+        "demand": 0.29,
+        "competition": 0.25,
+        "accessibility": 0.22,
+        "demographic_fit": 0.24
+      },
+      "weights_with_budget": {
+        "demand": 0.25,
+        "competition": 0.21,
+        "accessibility": 0.18,
+        "demographic_fit": 0.22,
+        "cost_fit": 0.14
+      },
+      "demand": {
+        "pop_divisor": 8000,
+        "pop_weight": 0.55,
+        "activity_multiplier": 8,
+        "activity_weight": 0.45,
+        "vacancy_penalty_threshold": 15,
+        "vacancy_penalty": 15
+      },
+      "competition": {
+        "tiers": [
+          [0, 90],
+          [2, 76],
+          [6, 58],
+          [11, 44]
+        ],
+        "fallback_base": 52,
+        "fallback_per_competitor": 3,
+        "fallback_min": 24
+      },
+      "accessibility": {
+        "subway_cap": 45,
+        "subway_pts_per_stop": 16,
+        "bus_cap": 28,
+        "bus_pts_per_stop": 3,
+        "nearest_under_250": 12,
+        "nearest_under_450": 8,
+        "nearest_under_800": 4,
+        "parking_cap": 18,
+        "parking_pts_per": 4,
+        "bike_cap": 4,
+        "bike_pts_per": 1.5,
+        "road_cap": 12,
+        "road_pts_per": 0.7,
+        "signal_cap": 6,
+        "signal_pts_per": 1
+      },
+      "demographic_fit": {
+        "income_baseline": 50000,
+        "income_slope": 1100,
+        "income_min_score": 25,
+        "ideal_age": 40,
+        "age_penalty_factor": 1.7,
+        "age_penalty_cap": 34,
+        "income_weight": 0.48,
+        "edu_weight": 0.28,
+        "age_weight": 0.24,
+        "edu_multiplier": 1.15,
+        "edu_min_score": 22,
+        "income_mode": "luxury"
+      },
+      "cost_fit": {
+        "default_income": 70000,
+        "affordability_factor": 0.003,
+        "ratio_tiers": [
+          [1.4, 88],
+          [1.0, 72],
+          [0.7, 55]
+        ],
+        "fallback_score": 38
+      },
+      "recommendation": {
+        "strong_min": 72,
+        "medium_min": 52
+      }
+    }
+  }
+}

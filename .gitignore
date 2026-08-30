@@ -17,3 +17,7 @@
 **/dist/
 **/.vite/
 **/.next/
+**/.vscode/
+**/.cursor/
+**/AGENTS.md
+backend/app/data/zoning/_index/

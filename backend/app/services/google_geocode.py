@@ -8,6 +8,7 @@ from typing import Any
 import httpx
 
 from app.config import settings
+from app.services.us_regions import normalize_country_code, resolve_us_state_code
 
 logger = logging.getLogger(__name__)
 
@@ -60,6 +61,18 @@ async def geocode_google_structured(address: str) -> dict[str, Any] | None:
     country_long, country_short = both("country")
     postal_long, _ = both("postal_code")
 
+    country_short = normalize_country_code(country_short) or country_short
+    state_code = (
+        resolve_us_state_code(
+            {
+                "state": admin1_short or admin1_long,
+                "administrative_area_level_1": admin1_short,
+                "country_code": country_short,
+            }
+        )
+        or admin1_short
+    )
+
     return {
         "formatted_address": res.get("formatted_address"),
         "lat": float(lat),
@@ -69,7 +82,7 @@ async def geocode_google_structured(address: str) -> dict[str, Any] | None:
         "locality": locality_long,
         "sublocality": subloc_long,
         "neighborhood": neighborhood_long,
-        "administrative_area_level_1": admin1_short,
+        "administrative_area_level_1": state_code,
         "administrative_area_level_1_long": admin1_long,
         "administrative_area_level_2": admin2_short,
         "administrative_area_level_2_long": admin2_long,

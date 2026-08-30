@@ -1,0 +1,22 @@
+{
+  "aliases": {
+    "coffee": ["coffee shop", "cafe"],
+    "cafe": ["coffee shop", "cafe"],
+    "café": ["coffee shop", "cafe"],
+    "espresso": ["coffee shop", "espresso"],
+    "clinic": ["medical clinic", "doctor office"],
+    "medical": ["medical clinic", "urgent care"],
+    "dental": ["dental clinic", "dentist"],
+    "restaurant": ["restaurant", "food delivery"],
+    "pizza": ["pizza restaurant", "pizza delivery"],
+    "bakery": ["bakery", "pastry shop"],
+    "salon": ["hair salon", "beauty salon"],
+    "barber": ["barber shop", "haircut"],
+    "gym": ["gym", "fitness center"],
+    "fitness": ["gym", "fitness center"],
+    "yoga": ["yoga studio", "pilates"],
+    "warehouse": ["warehouse", "logistics"],
+    "retail": ["retail store", "shopping"]
+  },
+  "default_max_keywords": 2
+}
