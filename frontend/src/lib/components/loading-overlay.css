@@ -1,0 +1,14 @@
+@keyframes loading-overlay-fall {
+  from {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(110vh);
+    opacity: 1;
+  }
+}
+
+.loading-overlay-fall {
+  animation: loading-overlay-fall linear infinite;
+}

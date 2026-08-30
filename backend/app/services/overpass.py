@@ -1,9 +1,20 @@
+import logging
 import math
 import re
 
 import httpx
 
 from app.config import settings
+from app.observability.pipeline_events import log_event
+
+logger = logging.getLogger(__name__)
+
+# Mirrors tried in order when the primary OVERPASS_URL fails.
+_OVERPASS_FALLBACK_URLS = (
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.openstreetmap.ru/api/interpreter",
+)
 
 
 def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -17,6 +28,30 @@ def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
 
 def _sanitize_radius(r: int) -> int:
     return max(100, min(r, 2000))
+
+
+def _overpass_headers() -> dict[str, str]:
+    """
+    overpass-api.de rejects anonymous/bot-like clients with 406 unless User-Agent
+    and Referer identify the application (see OSM community usage rules).
+    """
+    return {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Accept": "*/*",
+        "User-Agent": (settings.overpass_user_agent or settings.nominatim_user_agent).strip(),
+        "Referer": (settings.overpass_referer or "http://127.0.0.1:5173/").strip(),
+    }
+
+
+def _overpass_urls() -> list[str]:
+    primary = (settings.overpass_url or "").strip()
+    seen: set[str] = set()
+    out: list[str] = []
+    for u in [primary, *_OVERPASS_FALLBACK_URLS]:
+        if u and u not in seen:
+            seen.add(u)
+            out.append(u)
+    return out
 
 
 async def fetch_nearby_pois(lat: float, lon: float, radius_m: int | None = None) -> list[dict]:
@@ -35,27 +70,46 @@ async def fetch_nearby_pois(lat: float, lon: float, radius_m: int | None = None)
       node["public_transport"="platform"](around:{r},{lat},{lon});
       way["public_transport"="platform"](around:{r},{lat},{lon});
       node["highway"="bus_stop"](around:{r},{lat},{lon});
+      node["amenity"="parking"](around:{r},{lat},{lon});
+      way["amenity"="parking"](around:{r},{lat},{lon});
+      node["amenity"="parking_entrance"](around:{r},{lat},{lon});
+      way["amenity"="parking_entrance"](around:{r},{lat},{lon});
+      node["amenity"="bicycle_parking"](around:{r},{lat},{lon});
+      way["amenity"="bicycle_parking"](around:{r},{lat},{lon});
+      node["highway"~"^(primary|secondary|tertiary)$"](around:{r},{lat},{lon});
+      way["highway"~"^(primary|secondary|tertiary)$"](around:{r},{lat},{lon});
+      node["highway"="traffic_signals"](around:{r},{lat},{lon});
+      node["highway"="stop"](around:{r},{lat},{lon});
     );
     out center;
     """
-    headers = {
-        "Content-Type": "text/plain; charset=utf-8",
-        "Accept": "application/json",
-        "User-Agent": settings.nominatim_user_agent,
-    }
-    urls = [settings.overpass_url, "https://overpass-api.de/api/interpreter"]
+    headers = _overpass_headers()
     last_err: Exception | None = None
+    data = None
     async with httpx.AsyncClient(timeout=35.0) as client:
-        for url in urls:
+        for url in _overpass_urls():
             try:
                 resp = await client.post(url, content=query.encode("utf-8"), headers=headers)
                 resp.raise_for_status()
                 data = resp.json()
+                if url != _overpass_urls()[0]:
+                    logger.info("Overpass succeeded via fallback mirror: %s", url)
                 break
             except Exception as e:
                 last_err = e
-                data = None
+                status = getattr(getattr(e, "response", None), "status_code", None)
+                logger.warning("Overpass failed url=%s status=%s: %s", url, status, e)
+                log_event(
+                    "analyze_site.overpass.mirror_failed",
+                    url=url.split("/")[2] if "/" in url else url,
+                    status_code=status,
+                    error_type=type(e).__name__,
+                )
         if data is None:
+            log_event(
+                "analyze_site.overpass.all_mirrors_failed",
+                error_type=type(last_err).__name__ if last_err else "unknown",
+            )
             raise last_err or RuntimeError("Overpass request failed")
     elements = data.get("elements") or []
     out: list[dict] = []

@@ -1,0 +1,791 @@
+Title: SUBCHAPTER F: - RESIDENTIAL DESIGN AND COMPATIBILITY STANDARDS. | Land Development Code | Austin, TX | Municode Library
+URL: https://library.municode.com
+Source element: <div>
+---
+Austin, TX
+Austin, Texas - Land Development Code TITLE 25. - LAND DEVELOPMENT. CHAPTER 25-2. - ZONING.  SUBCHAPTER F: - RESIDENTIAL DESIGN AND COMPATIBILITY STANDARDS.
+
+ ARTICLE 5: - DEFINITIONS.
+APPENDIX A. - BOUNDARIES OF THE CAPITOL VIEW CORRIDORS.
+SUBCHAPTER F: - RESIDENTIAL DESIGN AND COMPATIBILITY STANDARDS.
+ARTICLE 1: - GENERAL PROVISIONS.
+
+§ 1.1. - INTENT.
+
+This Subchapter is intended to minimize the impact of new construction, remodeling, and additions to existing buildings on surrounding properties in residential neighborhoods by defining an acceptable buildable area for each lot within which new development may occur. The standards are designed to protect the character of Austin's older neighborhoods by ensuring that new construction and additions are compatible in scale and bulk with existing neighborhoods.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022.
+
+§ 1.2. - APPLICABILITY.
+
+Except as provided in Section 1.3, this Subchapter applies to property that is:
+
+1.2.1.   Within the area bounded by:
+
+A.
+
+Highway 183 from Loop 360 to Ben White Boulevard;
+
+B.
+
+Ben White Boulevard from Highway 183 to South Interstate Highway 35;
+
+C.
+
+South Interstate Highway 35 from Ben White Boulevard to William Cannon Drive;
+
+D.
+
+William Cannon Drive from South Interstate Highway 35 to Manchaca Road;
+
+E.
+
+Manchaca Road from William Cannon Drive to Ben White Boulevard;
+
+F.
+
+Ben White Boulevard from Manchaca Road to Loop 360;
+
+G.
+
+Loop 360 from Ben White Boulevard to Loop 1;
+
+H.
+
+Loop 1 from Loop 360 to the Colorado River;
+
+I.
+
+The Colorado River from Loop 1 to Loop 360; and
+
+J.
+
+Loop 360 from the Colorado River to Highway 183; and
+
+1.2.2.   Used for a:
+
+A.
+
+Bed and breakfast (group 1) residential use;
+
+B.
+
+Bed and breakfast (group 2) residential use;
+
+C.
+
+Cottage special use;
+
+D.
+
+Secondary apartment special use;
+
+E.
+
+Single-family attached residential use;
+
+F.
+
+Single-family residential use;
+
+G.
+
+Small lot single-family residential use;
+
+H.
+
+Urban home special use;
+
+I.
+
+Club or lodge;
+
+J.
+
+Daycare services (general and limited);
+
+K.
+
+Condo residential;
+
+L.
+
+Retirement housing (small and large site); or
+
+M.
+
+Townhouse residential.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022; Ord. 20080618-093; Ord. 20100805-051; Ord. No. 20231207-001, § 16, 12-18-23.
+
+§ 1.3. - EXCEPTIONS.
+
+1.3.1.
+
+This Subchapter does not apply to a lot zoned as a single-family residence small lot (SF-4A) district unless the lot is adjacent to property zoned as a single-family residence standard lot (SF-1), single-family residence standard lot (SF-2) district, or family residence (SF-3) district.
+
+1.3.2.
+
+This Subchapter does not apply to the approximately 698.7 acres of land known as the Mueller Planned Unit Development, which was zoned as a planned unit development (PUD) district by Ordinance Number 040826-61.
+
+1.3.3.
+
+A use listed in Subsections 1.2.2(I)—(M) of Section 1.2 may comply with this subchapter or the requirements of Chapter 25-2, Article 10 (Compatibility Standards).
+
+1.3.4.
+
+This Subchapter does not apply to a property zoned Downtown mixed use (DMU) district, Central business district (CBD), East Riverside Corridor (ERC) district, or transit oriented development (TOD) district.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022; Ord. 20080618-093; Ord. No. 20150212-085, Pt. 2, 2-23-15; Ord. No. 20151015-071, Pt. 1, 10-26-15; Ord. No. 20240516-004, Pt. 2, 7-15-24.
+
+§ 1.4. - CONFLICTING PROVISIONS.
+
+1.4.1.
+
+To the extent of conflict, this Subchapter supersedes:
+
+A.
+
+Section 25-1-21 (Definitions);
+
+B.
+
+Section 25-2-492 (Site Development Regulations);
+
+C.
+
+Section 25-2-555 (Family Residence (SF-3) District Regulations);
+
+D.
+
+Section 25-2-773 (Duplex, Two-Unit and Three-Unit Residential Uses);
+
+E.
+
+Section 25-2-778 (Front Yard Setback for Certain Residential Uses);
+
+F.
+
+Section 25-2-779 (Small Lot Single-Family Residential Uses); and
+
+G.
+
+Section 25-4-232 (Small Lot Subdivisions).
+
+1.4.2.
+
+To the extent of conflict, the following provisions supersede this Subchapter:
+
+A.
+
+Section 25-2-1424 (Urban Home Regulations);
+
+B.
+
+Section 25-2-1444 (Cottage Regulations);
+
+C.
+
+Section 25-2-1463 (Secondary Apartment Regulations); or
+
+D.
+
+The provisions of an ordinance designating property as a:
+
+1.
+
+Neighborhood plan (NP) combining district;
+
+2.
+
+Neighborhood conservation (NC) combining district; or
+
+3.
+
+Historic area (HD) combining district.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022; Ord. 20080618-093; Ord. No. 20231207-001, Pt. 18, 12-18-23.
+
+ARTICLE 2: - DEVELOPMENT STANDARDS.
+
+§ 2.1. - MAXIMUM DEVELOPMENT PERMITTED.
+
+The maximum amount of development permitted on a property subject to this Subchapter is limited to the greater of 0.4 to 1.0 floor-to-area ratio or 2,300 square feet of gross floor area, as defined in Section 3.3. Floor-to-area ratio shall be measured using gross floor area as defined in Section 3.3, except that the lot area of a flag lot is calculated consistent with the requirements of Section 25-1-22 (Measurements).
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022; Ord. 20080618-093.
+
+§ 2.2. - BUILDING HEIGHT.
+
+Except where these regulations are superseded, the maximum building height for development subject to this Subchapter is:
+
+(A)
+
+32 feet for development located outside the 100-year floodplain; and
+
+(B)
+
+35 feet for development located in the 100-year floodplain.
+
+Section 25-2-531 (Height Limit Exceptions) does not apply to development subject to this Subchapter, except for a chimney, vent, antenna, or energy conservation or production equipment or feature not designed for occupancy. Building height shall be measured under the requirements defined in Section 3.4.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022; Ord. No. 20191114-064, Pt. 1, 11-25-19.
+
+§ 2.3. - FRONT YARD SETBACK.
+
+A.
+
+Minimum Setback Required. The minimum front yard setback required for development subject to this Subchapter is the lesser of:
+
+1.
+
+The minimum front yard setback prescribed by the other provisions of this Code; or
+
+2.
+
+The average front yard setback, if an average may be determined as provided in Subsection B. below.
+
+B.
+
+Average Front Yard Setback. The following rules apply for purposes of the setback calculation required by Paragraph A.2:
+
+1.
+
+A front yard setback is the distance between the front lot line and the closest front exterior wall or building façade of the principal residential structure located on the lot.
+
+2.
+
+Except as provided in paragraph 3, average front yard setback is determined using the front yard setback of the four principal residential structures that are: (a) built within fifty feet of the front lot line; and (b) closest to, and on the same side of the block, as the property subject to the setback required by this section.
+
+3.
+
+If less than four structures satisfy the criteria in paragraph B.2, average front yard setback is calculated using the number of existing residential structures on the same side of the street block as the property subject to the setback required by this section. If there are no structures on the same side of the block, average front yard setback is calculated using the front yard setbacks of the four structures on the opposite side of the block that are closest to the property subject to the setback required by this section. If there are less than four structures on the opposite side of the block, the lesser number of structures is used in the calculation. See Figure 1.
+
+Figure 1: Average Front Yard Setback
+
+In this example, the minimum required front setback in the underlying zoning district is 25 feet. However, because of the variety in existing setbacks of buildings on the same block face, new development on lot C may be located with a setback of only 20 feet, which is the average of the setbacks of lots B, D, and E. The building on lot A is not included in the average because it is located more than 50 feet from the property line.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022; Ord. 20080618-093.
+
+§ 2.4. - REAR YARD SETBACK.
+
+The principal structure shall comply with the rear yard setback prescribed by other provisions of this Code. All other structures shall comply with the rear yard setback provisions of this Code, but the minimum rear yard setback of a second dwelling unit may be reduced to five feet if the rear lot line is adjacent to an alley. See Figure 2.
+
+Figure 2: Rear Yard Setback
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022; Ord. 20080618-093.
+
+§ 2.5. - SIDE YARD SETBACKS.
+
+All structures shall comply with the side yard setbacks prescribed by other provisions of this Code.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022.
+
+§ 2.6. - SETBACK PLANES.
+
+This subsection prescribes side and rear setback planes in order to minimize the impact of new development and rear development on adjacent properties. A structure may not extend beyond a setback plane except as authorized by subsection D. below. The height of a setback plane shall be measured under the requirements defined in Section 3.4.
+
+A.
+
+Side Setback Plane. Except as provided in subsection B. below, an inwardly sloping 45-degree angle side setback plane begins at a horizontal line 15 feet directly above the side property line. The 15-foot height of the horizontal line is established for 40-foot deep portions of the lot beginning at the building line and extending to the rear of the lot, except that the last portion at the rear of the lot may be less than 40 feet deep. See Figures 3 through 5.
+
+1.
+
+For the first portion, the 15-foot height of the horizontal line is measured at the highest of the elevations of the four intersections of the side lot lines, the building line, and a line 40 feet from and parallel to the building line.
+
+2.
+
+For successive portions other than the last portion, the 15-foot height of the horizontal line is measured at the highest of the elevations of the four intersections of the side lot lines and the appropriate two lines that are 40 feet apart and parallel to the building line.
+
+3.
+
+For the last portion, the 15-foot height of the horizontal line is measured at the highest of the elevations of the four intersections of the side lot lines, the appropriate line parallel to the building line, and the rear lot line.
+
+Figure 3: Side Setback Plane Measured From Side Property Line
+
+Figure 4: (Elevation View) Dividing Lot into 40-foot Portions to Create Side Setback Planes (Rear Setback Plane Not Shown)
+
+Figure 5: Determining High Points on a Sloping Lot
+
+For each portion of the side setback plane, the 15-foot height of the horizontal line is measured starting from the highest point of the four intersections defining the portion. In this example, topography lines indicate that the lot is sloping downward from the rear to the front of the lot, and from the right to the left. The high points for Portions 1, 2, and 3 are indicated, along with the Building Line.
+
+B.
+
+Rear Setback Plane. Except as provided in subsection D., an inwardly sloping 45-degree angle rear setback plane begins at a horizontal line directly above the rear property line at the same elevation as the horizontal line for the last portion of the side setback plane established in paragraph A.3. See Figures 6 through 9.
+
+Figure 6: (Elevation View) Rear Setback Plane (Level Ground)
+
+Figure 7: (Elevation View) Rear Setback Plane (Sloping Ground)
+
+Figure 8: Side and Rear Setback Planes on Level Ground
+
+The side and rear setback planes form a "tent" over the lot, rising from the property lines for 15 feet and then angling in at 45-degree angles from the side and rear. The required front, rear, and side yard setbacks are indicated by the darker shading on the ground.
+
+Figure 9: Side and Rear Setback Planes on Sloping Ground
+
+C.
+
+Buildable Area. The buildable area, as defined in Section 3.3., consists of the smallest area within the front, side, and rear yard setbacks; maximum height limit; and the combined side and rear setback planes. See Figures 10 and 11.
+
+Figure 10: Buildable Area (Combination of Yard Setbacks, Maximum Height Limit, and Setback Planes)
+
+The heavy blue line indicates the "tent" formed by the side and rear setback planes. The buildable area is the smallest area included within the front, side, and rear yard setbacks; maximum height limit; and the combined side and rear setback planes (shown here as the green area).
+
+Figure 11: Buildable Area on Corner Lot
+
+This figure shows the same concept illustrated in Figure 10 but for a corner lot that has a greater street side yard setback requirement. In this example, the minimum required street side yard setback in the underlying zoning district is 15 feet. Because the side setback plane is measured from the side property line, the height of the setback plane is 30 feet at the 15-foot street side yard setback line.
+
+D.
+
+Side and Rear Setback Plane Exceptions for Existing One-Story Buildings.
+
+1.
+
+Except as provided in paragraph 3 below, an applicant proposing to add a second story to a one-story building may choose either of the following side setback planes for the portion of the project that is within the building footprint originally constructed, or permitted for original construction, before October 1, 2006:
+
+a.
+
+The side setback plane required under subsection A.
+
+b.
+
+The inwardly sloping 45-degree angle side setback plane that begins at a horizontal line directly above the outermost side wall at a height equal to the height of the first floor wall plate that was originally constructed or received a building permit before October 1, 2006, plus 10 and one-half feet. See Figure 12. The wall plate is the lowest point of the existing first floor ceiling framing that intersects the exterior wall.
+
+2.
+
+Except as provided in paragraph 3 below, an applicant proposing to add a second story to a one-story building may choose either of the following rear setback planes for the portion of the project that is within the building footprint originally constructed, or permitted for original construction, before October 1, 2006:
+
+a.
+
+The rear setback plane required under subsection B.
+
+b.
+
+An inwardly sloping 45-degree angle rear setback plane that begins at a horizontal line directly above the rear property line at a height equal to the height of the first floor wall plate that was originally constructed or received a building permit before October 1, 2006, plus 10 and one-half feet.
+
+3.
+
+The side setback plane required under subsection A, and the rear setback plane required under subsection B, apply to:
+
+a.
+
+any portion of the proposed construction that is outside of the building footprint originally constructed, or permitted for original construction, before October 1, 2006; and
+
+b.
+
+the entire project, if any portion of the proposed construction requires the removal or demolition of exterior walls.
+
+Figure 12: Side Setback Plane Exception for Existing Single-Story Buildings
+
+The side setback planes for an existing single-story building are determined based on the height of the sidewall. In this example, the horizontal line that forms the base of the setback plane is placed ten feet and six inches above the sidewall height (12 feet). The revised plane rises above the standard setback plane within the area of the building footprint. The standard setback planes created in Sections 2.6. A. and B. apply outside of the existing footprint.
+
+E.
+
+Exceptions. A structure may not extend beyond a setback plane, except for:
+
+1.
+
+A roof overhang or eave, up to two feet beyond the setback plane;
+
+2.
+
+A chimney, vent, antenna, or energy conservation or production equipment or feature not designed for occupancy; and
+
+3.
+
+Either:
+
+a.
+
+30-Foot Side-Gabled Roof Exception. A side-gabled roof structure on each side of the building, with a total horizontal length of not more than 30 feet, measured from the building line along the intersection with the side setback plane (See Figure 13.); or
+
+b.
+
+Gables Plus Dormers Exception.
+
+(i)
+
+Gables or a shed roof, with a total horizontal length of not more than 18 feet on each side of the building, measured along the intersection with the setback plane (See Figures 14 and 17.); and
+
+(ii)
+
+Dormers, with a total horizontal length of not more than 15 feet on each side of the building, measured along the intersection with the setback plane. (See Figures 15 and 16.)
+
+Figure 13: Side-Gabled Rood Exception
+
+A side-gabled roof may project through the side setback plane for a horizontal distance of up to a maximum of 30 feet, measured from the building line. In this example, the gable intrudes into the setback plane beginning 9 feet behind the building line. Therefore, the maximum length of the gable intrusion would be 21 feet.
+
+Figure 14: 18-foot Exception for Shed Roof
+
+Figure 15: Dormer Exception (Gable or Shed)
+
+One or more dormers with a combined width of 15 feet or less on each side of the roof may extend beyond the setback plane. The width of the dormer is measured at the point that it intersects the setback plane.
+
+Figure 16: Dormer Exception (Gable or Shed)
+
+One or more dormers with a combined width of 15 feet or less on each side of the roof may extend beyond the setback plane. The width of the dormer is measured at the point that it intersects the setback plane.
+
+Figure 17: Combination of Roof and Dormer Exceptions
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022; Ord. 20080618-093; Ord. No. 20150507-042, Pt. 2, 5-18-15.
+
+§ 2.7. - SIDE WALL ARTICULATION.
+
+2.7.1.
+
+Except as provided in subsection 2.7.2, if a side wall of a building is more than 15 feet high and is an average distance of less than nine feet from an interior lot line, the sidewall may not extend in an unbroken plane for more than 36 feet along a side lot line without a sidewall articulation that meets the requirements of this section.
+
+A.
+
+To beak the plane, a sidewall articulation must:
+
+1.
+
+be perpendicular to the side property line, at least four feet deep, and extend along the side property line for at least 10 feet, as shown in Figures 18 through 20;
+
+2.
+
+extend the entire height of the first floor of an addition to, or remodel of, an existing one-story building;
+
+3.
+
+extend the entire height of the second story of an addition to, or remodel of, a two or more story building;
+
+4.
+
+extend to the height of the top floor of a newly constructed building; and
+
+5.
+
+extend evenly upward for its entire height.
+
+B.
+
+A sidewall articulation cannot:
+
+1.
+
+create patios or decks or be screened from view; or
+
+2.
+
+serve as an eave or gutter.
+
+C.
+
+Sidewall articulation required under this section may be satisfied by horizontal articulation, such that each story above the first story is setback further from the property line by at least nine feet and extends along the side property line for at least 10 feet.
+
+D.
+
+For purposes of subsection 2.7.1, wall height:
+
+1.
+
+excludes side gables; and
+
+2.
+
+is measured from the lower of natural or finished grade adjacent to the structure up to the first floor wall plate, which is the lowest point of the existing first floor ceiling framing that intersects the exterior wall.
+
+2.7.2.
+
+The requirements of this section do not apply to:
+
+A.
+
+Any side of a structure that is adjacent to a commercial use, unless the commercial use is occupying a residential structure.
+
+B.
+
+An addition to or remodel of an existing principal structure, or the construction of a new principal structure, provided that the resulting structure is less than 2,000 square feet in net building coverage and less than or equal to 32 feet in height.
+
+C.
+
+An addition to or remodel of an existing second structure, or the construction of a new second structure, provided that the principal structure is exempt under subsection 2.7.2.B and the resulting second structure:
+
+1.
+
+does not exceed 550 square feet;
+
+2.
+
+does not exceed the maximum height allowed in the base zoning district; and
+
+3.
+
+is either detached from the principal structure or connected by a covered breezeway that is open on all sides, with a walkway of no more than six (6) feet in width that is covered by a roof of no more than eight (8) feet in width.
+
+D.
+
+The addition of a second story to an existing one-story structure if the addition is directly above a portion of the existing one-story structure that was originally constructed, or received a permit for construction, before October 1, 2006.
+
+E.
+
+An extension of the second floor of an existing two-story structure, provided that the building footprint of the structure is not increased.
+
+Figure 18: Side Wall Articulation (Existing Side Wall Exceeds 36 Feet)
+
+Articulation is required for side walls on additions or new construction that are 15 feet or taller and located within 9 feet of the side lot line. No wall may extend for more than 36 feet without a projection or recession of at least 4 feet in depth and 10 feet in length.
+
+Figure 19: Side Wall Articulation (Existing Side Wall Less Than or Equal to 36 feet)
+
+An addition to an existing building may extend a side wall up to a maximum of 36′ in total length without articulation.
+
+Figure 20: Side Wall Articulation (New Construction)
+
+All new construction must meet the sidewall articulation standards.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022; Ord. 20080618-093.
+
+§ 2.8. - RESERVED.
+
+Editor's note— Ord. No. 20150507-042, Pt. 3, effective May 18, 2015, repealed § 2.8, which pertained to modifications by the residential design and compatibility commission. See Code Comparative Table for complete derivation.
+
+§ 2.9. - MODIFICATIONS WITHIN NEIGHBORHOOD PLAN (NP) COMBINING DISTRICTS.
+
+Under Section 25-2-1406 of the Code, an ordinance zoning or rezoning property as a neighborhood plan (NP) combining district may modify certain development standards of this Subchapter.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022.
+
+ARTICLE 3: - DEFINITIONS AND MEASUREMENT.
+
+§ 3.1. - BUILDABLE AREA.
+
+In this Subchapter, BUILDABLE AREA means the area in which development subject to this Subchapter may occur, and which is defined by the side and rear setback planes required by this Subchapter, together with the area defined by the front, side, and rear yard setbacks and the maximum height limit.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022.
+
+§ 3.2. - BUILDING LINE.
+
+In this Subchapter, BUILDING LINE means a line that is parallel to the front lot line and that intersects the principal residential structure at the point where the structure is closest to the front lot line, including any allowed projections into the front yard setback. See Figure 21.
+
+Figure 21: Building Line
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022.
+
+§ 3.3. - GROSS FLOOR AREA.
+
+In this Subchapter, GROSS FLOOR AREA has the meaning assigned by Section 25-1-21 (Definitions), with the following modifications:
+
+3.3.1.
+
+In this Subchapter, GROSS FLOOR AREA means all enclosed space, regardless of its dimensions, that is not exempted under subsections 3.3.2, 3.3.3, or 3.3.4.
+
+3.3.2.
+
+Subject to the limitations in paragraph C below, the following parking areas and structures are excluded from gross floor area for purposes of this Subchapter:
+
+A.
+
+Up to 450 square feet of:
+
+1.
+
+A detached rear parking area that is separated from the principal structure by not less than 10 feet;
+
+2.
+
+A rear parking area that is 10 feet or more from the principal structure, provided that the parking area is either:
+
+a.
+
+detached from the principal structure; or
+
+b.
+
+attached by a covered breezeway that is completely open on all sides, with a walkway not exceeding 6 feet in width and a roof not exceeding 8 feet in width; or
+
+3.
+
+A parking area that is open on two or more sides, if:
+
+i.
+
+it does not have habitable space above it; and
+
+ii.
+
+the open sides are clear and unobstructed for at least 80% of the area measured below the top of the wall plate to the finished floor of the carport.
+
+B.
+
+Up to 200 square feet of:
+
+1.
+
+An attached parking area if it is used to meet the minimum accessible spaces requirement; or
+
+2.
+
+A garage that is less than 10 feet from the rear of the principal structure, provided that the garage is either:
+
+a.
+
+detached from the principal structure; or
+
+b.
+
+attached by a covered breezeway that is completely open on all sides, with a walkway not exceeding 6 feet in width and a roof not exceeding 8 feet in width.
+
+C.
+
+An applicant may receive only one 450-square foot exemption per site under paragraph A. An applicant who receives a 450-square foot exemption may receive an additional 200-foot exemption for the same site under paragraph B, but only for an attached parking area used to meet the minimum accessible spaces requirement.
+
+3.3.3.
+
+Porches, basements, and attics that meet the following requirements shall be excluded from the calculation of gross floor area:
+
+A.
+
+A ground floor porch, including a screened porch, provided that:
+
+1.
+
+the porch is not accessible by automobile and is not connected to a driveway; and
+
+2.
+
+the exemption may not exceed 200 square feet if a porch has habitable space or a balcony above it.
+
+B.
+
+A habitable portion of a building that is below grade if:
+
+1.
+
+The habitable portion does not extend beyond the first-story footprint and is:
+
+a.
+
+Below natural or finished grade, whichever is lower; and
+
+b.
+
+Surrounded by natural grade for at least 50% of its perimeter wall area, if the habitable portion is required to be below natural grade under Paragraph 1.a.
+
+2.
+
+The finished floor of the first story is not more than three feet above the average elevation at the intersections of the minimum front yard setback line and the side property lines.
+
+C.
+
+A habitable portion of an attic, if:
+
+1.
+
+The roof above it is not a flat or mansard roof and has a slope of 3 to 12 or greater;
+
+2.
+
+It is fully contained within the roof structure;
+
+3.
+
+It has only one floor;
+
+4.
+
+It does not extend beyond the footprint of the floors below;
+
+5.
+
+It is the highest habitable portion of the building, or a section of the building, and adds no additional mass to the structure; and
+
+6.
+
+Fifty percent or more of the area has a ceiling height of seven feet or less.
+
+3.3.4.
+
+An enclosed area shall be excluded from the calculation of gross floor area if it is five feet or less in height. For purposes of this subsection:
+
+A.
+
+Area is measured on the outside surface of the exterior walls; and
+
+B.
+
+Height is measured from the finished floor elevation, up to either:
+
+1.
+
+the underside of the roof rafters; or
+
+2.
+
+the bottom of the top chord of the roof truss, but not to collar ties, ceiling joists, or any type of furred-down ceiling.
+
+3.3.5.
+
+An area with a ceiling height greater than 15 feet is counted twice.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022; Ord. 20080618-093; Ord. 20130425-105; Ord. No. 20231102-028, Pt. 33, 11-13-23.
+
+§ 3.4. - HEIGHT.
+
+For purposes of this Subchapter, the HEIGHT of a building or setback plane shall be measured as follows:
+
+3.4.1.
+
+Height shall be measured vertically from the average of the highest and lowest grades adjacent to the building to:
+
+A.
+
+For a flat roof, the highest point of the coping;
+
+B.
+
+For a mansard roof, the deck line;
+
+C.
+
+For a pitched or hip roof, the gabled roof or dormer with the highest average height; or
+
+D.
+
+For other roof styles, the highest point of the building.
+
+3.4.2.
+
+The grade used in the measurement of height for a building or setback plane shall be the lower of natural grade or finished grade, except height shall be measured from natural grade if the site is located in the 100-year floodplain.
+
+3.4.3.
+
+For a stepped or terraced building, the height of each segment is determined individually.
+
+3.4.4.
+
+The height of a structure other than a building is measured vertically from the ground level immediately under the structure to the top of the structure. The height of a fence on top of a retaining wall is measured from the bottom of the retaining wall.
+
+3.4.5.
+
+A maximum height is limited by both number of feet and number of stories if both measurements are prescribed, regardless of whether the measurements are conjoined with "or" or "and."
+
+3.4.6.
+
+The habitable portion of a basement that is below natural grade and the habitable portion of an attic do not count toward the number of stories for purposes of Section 25-2-773(B)(5) (Duplex, Two-Unit and Three-Unit Residential Uses) if the area satisfies the requirements for an exemption from gross floor area under subsections 3.3.2.B., C. of this Subchapter.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022; Ord. 20080618-093; Ord. No. 20191114-064, Pt. 2, 11-25-19; Ord. No. 20231207-001, Pt. 18, 12-18-23.
+
+§ 3.5. - NATURAL GRADE.
+
+3.5.1.
+
+In this Subchapter, NATURAL GRADE is:
+
+A.
+
+The grade of a site before it is modified by moving earth, adding or removing fill, or installing a berm, retaining wall, or architectural or landscape feature; or
+
+B.
+
+For a site with a grade that was legally modified before October 1, 2006, the grade that existed on October 1, 2006.
+
+3.5.2.
+
+Natural grade is determined by reference to an on-ground survey, City-approved topographic map, or other information approved by the director. The director may require an applicant to provide a third-party report that shows the natural grade of a site.
+
+Source: Ord. 20060216-043; Ord. 20060309-058; Ord. 20060622-022; Ord. 20060928-022.
+
+ ARTICLE 5: - DEFINITIONS.
+APPENDIX A. - BOUNDARIES OF THE CAPITOL VIEW CORRIDORS.
+Loading complete

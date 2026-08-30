@@ -5,6 +5,11 @@
 **/.mypy_cache/
 **/.ruff_cache/
 **/.DS_Store
+# macOS Finder / iCloud duplicate copies (e.g. "+page 2.svelte" breaks SvelteKit)
+**/* 2
+**/* 2.*
+**/* 3.*
+**/* 4.*
 **/.env
 **/node_modules/
 **/.svelte-kit/
@@ -12,3 +17,7 @@
 **/dist/
 **/.vite/
 **/.next/
+**/.vscode/
+**/.cursor/
+**/AGENTS.md
+backend/app/data/zoning/_index/

@@ -6,8 +6,11 @@ from app.models.schemas import (
     DemographicsBlock,
     LocationInfo,
     ScoreBreakdown,
+    ScoreInputs,
+    SoftDemandSignals,
     TransitBlock,
 )
+from app.services.trends_pytrends import DISCLAIMER
 
 
 def mock_response(address: str, business_type: str, budget: float | None, radius_m: int) -> AnalyzeSiteResponse:
@@ -80,7 +83,10 @@ def mock_response(address: str, business_type: str, budget: float | None, radius
             subway_stops_within_800m=1,
             bus_or_light_rail_stops_within_400m=4,
             nearest_subway_distance_m=520,
-            summary="Mock: one subway node within ~800m and several bus stops within ~400m.",
+            parking_nodes_within_radius=3,
+            bicycle_parking_within_radius=2,
+            major_road_nodes_within_radius=8,
+            summary="Mock: one subway node within ~800m, bus stops, parking and major-road proxies nearby.",
         ),
         summary=[
             "This is mock data because a live data source timed out or failed.",
@@ -88,5 +94,31 @@ def mock_response(address: str, business_type: str, budget: float | None, radius
             "Nearby mapped competition looks moderate in this synthetic example.",
             "Transit access is directionally favorable in the mock profile.",
         ],
-        data_sources={"mode": "mock", "radius_m": radius_m},
+        data_sources={"mode": "mock", "radius_m": radius_m, "scoring_profile": "default"},
+        demand_signals=SoftDemandSignals(
+            search_interest_index=72.0,
+            search_interest_geo_used="US-NY",
+            search_interest_resolution="DMA",
+            search_interest_keywords=["coffee shop", "cafe"],
+            search_interest_timeframe="today 3-m",
+            search_interest_disclaimer=DISCLAIMER,
+        ),
+        score_inputs=ScoreInputs(
+            population=4200,
+            median_income=78000,
+            median_age=38.2,
+            pct_college_educated=32.5,
+            vacancy_pct=6.2,
+            competitor_count=2,
+            complementary_count=1,
+            commercial_poi_count=12,
+            subway_within_800m=1,
+            bus_within_400m=4,
+            nearest_subway_m=520.0,
+            parking_within_radius=3,
+            bicycle_parking_within_radius=2,
+            major_road_nodes_within_radius=8,
+            traffic_signal_nodes_within_radius=4,
+            monthly_budget=budget,
+        ),
     )

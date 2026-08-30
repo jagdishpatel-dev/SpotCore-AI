@@ -3,6 +3,7 @@ import logging
 import httpx
 
 from app.config import settings
+from app.services.us_regions import normalize_geocode_address
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +44,7 @@ async def _geocode_nominatim(q: str) -> dict | None:
         "lat": float(hit["lat"]),
         "lon": float(hit["lon"]),
         "display_name": hit.get("display_name"),
-        "address": hit.get("address") or {},
+        "address": normalize_geocode_address(hit.get("address") or {}),
         "source": "nominatim",
     }
 
@@ -75,12 +76,15 @@ async def _geocode_photon(q: str) -> dict | None:
         "lat": lat,
         "lon": lon,
         "display_name": display or q,
-        "address": {
-            "road": props.get("street"),
-            "city": props.get("city") or props.get("district"),
-            "state": props.get("state"),
-            "postcode": props.get("postcode"),
-        },
+        "address": normalize_geocode_address(
+            {
+                "road": props.get("street"),
+                "city": props.get("city") or props.get("district"),
+                "state": props.get("state"),
+                "postcode": props.get("postcode"),
+                "country_code": props.get("countrycode"),
+            }
+        ),
         "source": "photon",
     }
 

@@ -1,17 +1,50 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   // Must include `.svelte` or Tailwind purges almost all utilities used in components.
-  content: ['./src/**/*.{html,js,svelte,ts}'],
+  content: ['./index.html', './src/**/*.{html,js,ts,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"Space Grotesk"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        mono: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        score: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: [
+          'var(--font-geist-sans)',
+          'Geist',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'sans-serif',
+        ],
+        display: [
+          'var(--font-false)',
+          'False',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'sans-serif',
+        ],
+        mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
+        score: [
+          'var(--font-geist-sans)',
+          'Geist',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'sans-serif',
+        ],
+      },
+      fontSize: {
+        'hero-sm': ['2.75rem', { lineHeight: '1.1', letterSpacing: '-0.032em' }],
+        hero: ['3.25rem', { lineHeight: '1.08', letterSpacing: '-0.034em' }],
+        'hero-lg': ['3.75rem', { lineHeight: '1.06', letterSpacing: '-0.036em' }],
+        'hero-xl': ['4.5rem', { lineHeight: '1.04', letterSpacing: '-0.038em' }],
+        lead: ['1.0625rem', { lineHeight: '1.7', letterSpacing: '-0.008em' }],
+        'lead-md': ['1.125rem', { lineHeight: '1.68', letterSpacing: '-0.01em' }],
       },
       colors: {
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        border: 'var(--border)',
+        ring: 'var(--ring)',
         // Legacy tokens retained (consumed by analyze/report routes)
         canvas: 'var(--color-canvas)',
         surface: 'var(--color-surface)',
@@ -44,8 +77,25 @@ module.exports = {
 
         // Legacy alias retained
         success: 'var(--positive)',
+
+        // SpotCore marketing homepage (maps to --gs-* on .marketing-page)
+        spotcore: {
+          bg: 'var(--gs-bg)',
+          surface: 'var(--gs-surface)',
+          'surface-soft': 'var(--gs-surface-soft)',
+          text: 'var(--gs-text)',
+          'text-muted': 'var(--gs-text-muted)',
+          'text-lead': 'var(--gs-text-lead)',
+          accent: 'var(--gs-accent)',
+          'accent-hover': 'var(--gs-accent-hover)',
+          'accent-soft': 'var(--gs-accent-soft)',
+          'accent-2': 'var(--gs-accent-2)',
+          border: 'var(--gs-border)',
+        },
       },
       boxShadow: {
+        'gs-hero': '0 12px 40px rgba(15, 124, 117, 0.08)',
+        'gs-glass': '0 14px 40px rgba(15, 124, 117, 0.10)',
         card: '0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 40px -12px rgba(2, 6, 23, 0.7)',
         'card-hover':
           '0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 18px 60px -16px rgba(34, 211, 238, 0.18)',
@@ -136,6 +186,9 @@ module.exports = {
       letterSpacing: {
         micro: '0.14em',
         display: '-0.02em',
+        hero: '-0.032em',
+        heading: '-0.02em',
+        body: '-0.006em',
       },
     },
   },

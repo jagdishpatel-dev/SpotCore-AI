@@ -1,0 +1,52 @@
+/* Analyze / inquiry route — full light Claura-style surface */
+
+.analyze-page {
+  --inquiry-bg: #f9f5f1;
+  --inquiry-card: #fdfaf6;
+  --inquiry-input: #efe9e1;
+  --inquiry-ink: #1a120b;
+  --inquiry-muted: #706b66;
+  --inquiry-border: rgba(26, 18, 11, 0.08);
+  --inquiry-focus: rgba(15, 124, 117, 0.32);
+  --inquiry-focus-ring: rgba(15, 124, 117, 0.14);
+
+  background: var(--inquiry-bg);
+  color: var(--inquiry-ink);
+}
+
+.analyze-page__form-card {
+  border-radius: clamp(28px, 3vw, 40px);
+  border: 1px solid var(--inquiry-border);
+  background: var(--inquiry-card);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 24px 64px -40px rgba(26, 18, 11, 0.14);
+}
+
+.analyze-page__eyebrow {
+  color: var(--inquiry-muted);
+}
+
+.analyze-page__eyebrow-accent {
+  color: #0f7c75;
+}
+
+.analyze-page__title {
+  color: var(--inquiry-ink);
+}
+
+.analyze-page__lead {
+  color: var(--inquiry-muted);
+}
+
+.analyze-page__back {
+  color: var(--inquiry-muted);
+}
+
+.analyze-page__back:hover {
+  color: var(--inquiry-ink);
+}
+
+.analyze-page__crumb {
+  color: rgba(26, 18, 11, 0.22);
+}

@@ -1,0 +1,59 @@
+.app-chrome-react-root {
+  display: block;
+  width: 100%;
+}
+
+.chrome-header {
+  pointer-events: none;
+  background: transparent;
+}
+
+.chrome-bar {
+  isolation: isolate;
+  border: 1px solid var(--gs-border, #e6ded2);
+  box-shadow: 0 10px 32px -16px rgba(30, 36, 48, 0.07);
+  background: transparent;
+}
+
+/* Blurs real page content (hero text, etc.) as it scrolls under the sticky nav */
+.chrome-bar-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  backdrop-filter: blur(
+      calc(28px * var(--glass-transmission, 1) * (0.25 + var(--glass-roughness, 0) + var(--glass-thickness, 0.33)))
+    )
+    saturate(calc(100% + 50% * var(--glass-transmission, 1)));
+  -webkit-backdrop-filter: blur(
+      calc(28px * var(--glass-transmission, 1) * (0.25 + var(--glass-roughness, 0) + var(--glass-thickness, 0.33)))
+    )
+    saturate(calc(100% + 50% * var(--glass-transmission, 1)));
+  background: color-mix(
+    in srgb,
+    var(--gs-surface-soft, #f1ece4) calc(72% + 18% * var(--glass-transmission, 1)),
+    white
+  );
+}
+
+/* WebGL bar sits above the backdrop; transparent canvas areas show the blur */
+.fluid-glass-bar-canvas {
+  z-index: 1;
+  mix-blend-mode: normal;
+}
+
+.chrome-bar--scrolled {
+  border-color: color-mix(in srgb, var(--gs-border, #e6ded2) 88%, white);
+  box-shadow: 0 14px 36px -14px rgba(30, 36, 48, 0.1);
+}
+
+.chrome-bar-glass {
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(241, 236, 228, 0.42) 48%,
+    rgba(246, 242, 234, 0.12) 100%
+  );
+}

@@ -1,4 +1,3 @@
-'use client';
 
 import type { AnalyzeSiteResponse, Recommendation, ScoreBreakdown } from '@/lib/types';
 
@@ -443,7 +442,7 @@ export default function ExecutiveReport({ result, businessType, isMock = false, 
 
         {/* Footer */}
         <p className="text-center text-[10px] text-[#9C9490] border-t border-[#E4DFD9] pt-5 pb-2">
-          GeoScore Intelligence Report · Data sourced from OSM &amp; US Census ACS5 · Not financial or legal advice
+          SpotCore Intelligence Report · Data sourced from OSM &amp; US Census ACS5 · Not financial or legal advice
         </p>
       </div>
     </div>

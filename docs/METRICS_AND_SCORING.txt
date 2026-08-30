@@ -1,4 +1,4 @@
-GeoScore AI — Metrics & Scoring Reference (MVP)
+SpotCore AI — Metrics & Scoring Reference (MVP)
 ================================================
 Generated for offline review. Source of truth: backend Python under
 `backend/app/services/` (especially `scoring.py`, `analyze_site.py`,

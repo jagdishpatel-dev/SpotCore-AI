@@ -6,7 +6,9 @@ class Settings(BaseSettings):
 
     census_api_key: str = ""
     google_geocoding_api_key: str = ""
-    nominatim_user_agent: str = "GeoScoreAI/1.0 (contact@example.com)"
+    nominatim_user_agent: str = "SpotCoreAI/1.0 (contact@example.com)"
+    overpass_user_agent: str = "SpotCoreAI/1.0 (site-analysis; contact@example.com)"
+    overpass_referer: str = "http://127.0.0.1:5173/"
     overpass_url: str = "https://overpass.kumi.systems/api/interpreter"
     overpass_radius_m: int = 500
     census_year: str = "2022"
@@ -18,10 +20,12 @@ class Settings(BaseSettings):
     address_suggest_cache_max: int = 200
     address_suggest_min_chars: int = 3
 
-    # LLM Configuration for Intelligence Layer
-    gemini_api_key: str = ""
-    gemini_base_url: str = "https://generativelanguage.googleapis.com/v1beta/openai/"
-    ai_model: str = "models/gemma-4-26b-a4b-it"
+    # LLM Configuration for Intelligence Layer (OpenRouter — OpenAI-compatible, free-tier models only)
+    openrouter_api_key: str = ""
+    openrouter_base_url: str = "https://openrouter.ai/api/v1"
+    ai_model: str = "openrouter/free"
+
+    embedding_model: str = "nvidia/llama-nemotron-embed-vl-1b-v2:free"
 
 
 settings = Settings()

@@ -31,7 +31,7 @@ BUSINESS_CONTEXT_SYSTEM_PROMPT_V1: str = (
     # The product team will supply the final prompt here.
     # Structure to follow:
     #   ROLE       – who the model is (title, expertise, geographic focus)
-    #   CONTEXT    – what GeoScore is and how data is gathered
+    #   CONTEXT    – what SpotCore is and how data is gathered
     #   RULES      – tone, forbidden phrases, length constraints
     #   OUTPUT     – JSON schema contract (mirrors AIInsights / AIInsight)
     # ────────────────────────────────────────────────────────────────────────

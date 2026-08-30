@@ -1,0 +1,997 @@
+Title: ARTICLE 2. - PRINCIPAL USE AND DEVELOPMENT REGULATIONS. | Land Development Code | Austin, TX | Municode Library
+URL: https://library.municode.com
+Source element: <div>
+---
+Austin, TX
+Austin, Texas - Land Development Code TITLE 25. - LAND DEVELOPMENT. CHAPTER 25-2. - ZONING. SUBCHAPTER C. - USE AND DEVELOPMENT REGULATIONS.  ARTICLE 2. - PRINCIPAL USE AND DEVELOPMENT REGULATIONS.
+
+ § 25-2-476 - SPECIAL EXCEPTIONS.
+ARTICLE 3. - ADDITIONAL REQUIREMENTS FOR CERTAIN DISTRICTS.
+ARTICLE 2. - PRINCIPAL USE AND DEVELOPMENT REGULATIONS.
+Division 1. - Regulation Tables.
+
+§ 25-2-491 - PERMITTED, CONDITIONAL, AND PROHIBITED USES.
+
+(A)
+
+The table in Subsection (C) provides the permitted and conditional uses for each base district. "P" means a use is a permitted use, "C" means a use is a conditional use, and "X" means a use is prohibited. Endnotes provide additional information.
+
+(B)
+
+The requirements of other provisions of this subchapter modify and supersede the requirements of this section, to the extent of conflict.
+
+(C)
+
+Table of permitted, conditional, and prohibited uses.
+
+Source: Sections 13-2-220 and 13-2-221; Ord. 990225-70; Ord. 990520-38; Ord. 990715-114; Ord. 990902-57; Ord. 990930-100; Ord. 991104-46; Ord. 020627-Z34; Ord. 000302-36; Ord. 000309-39; Ord. 000406-86; Ord. 000511-108; Ord. 010426-48; Ord. 031211-11; Ord. 031211-41; Ord. 040617-Z-1; Ord. 041118-57; Ord. 20080131-135; Ord. 20090423-089; Ord. 20100819-064; Ord. 20110210-018; Ord. 20111110-107; Ord. 20120426-139; Ord. 20120802-122; Ord. 20121101-057; Ord. 20130411-061; 20130620-092; Ord. 20131017-081; Ord. 20130926-144; Ord. 20131121-105, Pt. 2, 3-21-14.
+
+ EXPAND
+ZONING USE SUMMARY TABLE (LAND DEVELOPMENT CODE)
+P = Permitted Use  C = Conditional Use Permit    — = Not permitted
+
+LA
+
+RR
+
+SF-1
+
+SF-2
+
+SF-3
+
+SF-4A
+
+SF-4B
+
+SF-5
+
+SF-6
+
+MF-1
+
+MF-2
+
+MF-3
+
+MF-4
+
+MF-5
+
+MF-6
+
+MH
+
+NO
+
+LO
+
+GO
+
+CR
+
+LR
+
+GR
+
+L
+
+CBD
+
+DMU
+
+W/LO
+
+CS
+
+CS-1
+
+CH
+
+IP
+
+MI
+
+LI
+
+R&D
+
+DR
+
+AV
+
+AG
+
+PUD
+
+P
+
+RESIDENTIAL USES
+Bed & Breakfast (Group 1)	—	—	P	P	P	—	—	P	P	P	P	P	P	P	P	—	P	P	P	P	P	P	P	P	P	P	P	P	P	—	—	—	—	—	—	—	—	—
+Bed & Breakfast (Group 2)	—	—	—	—	—	—	—	P	P	P	P	P	P	P	P	—	P	P	P	P	P	P	P	P	P	P	P	P	P	—	—	—	—	—	—	—	—	—
+Condominium Residential	—	—	—	—	—	—	—	P	P	P	P	P	P	P	P	—	—	—	—	—	—	—	C	P	P	—	—	—	P	—	—	—	—	—	—	—	—	—
+Conservation Single Family Residential	—	—	P	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—
+Duplex Residential	—	—	P	P	P	—	—	P	P	P	P	P	P	P	P	—	—	—	—	—	—	—	—	P	P	—	—	—	—	—	—	—	—	—	—	—	—	—
+Group Residential	—	—	—	—	—	—	—	—	—	—	—	C	P	P	P	—	—	—	—	—	—	—	C	P	P	—	—	—	P	—	—	—	—	—	—	—	—	—
+Mobile Home Residential	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—
+Multifamily Residential	—	—	—	—	—	—	—	—	—	P	P	P	P	P	P	—	—	—	—	—	—	—	C	P	P	—	—	—	P	—	—	—	—	—	—	—	—	—
+Retirement Housing (Small Site)	—	—	—	—	P	—	—	P	P	P	P	P	P	P	P	—	—	—	—	—	—	—	—	P	P	—	—	—	—	—	—	—	—	—	—	—	—	—
+Retirement Housing (Large Site)	—	—	—	—	—	—	—	C	C	C	C	C	C	C	C	—	—	—	—	—	—	—	—	P	P	—	—	—	—	—	—	—	—	—	—	—	—	—
+Single-Family Attached Residential	—	—	—	—	P	—	—	P	P	P	P	P	P	P	P	—	—	—	—	—	—	—	—	P	P	—	—	—	—	—	—	—	—	—	—	—	—	—
+Single-Family Residential	P	P	P	P	P	—	—	P	P	P	P	P	P	P	P	—	—	—	—	—	—	—	—	P	P	—	—	—	—	—	—	—	1	P	—	C	3	4
+Small Lot Single-Family Residential	—	—	P	P	P	P	P	P	P	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	—	—	—	—	—	—	—	—	—	—	—	—	—
+Townhouse Residential	—	—	—	—	—	—	—	P	P	P	P	P	P	P	P	—	—	—	—	—	—	—	C	P	P	—	—	—	P	—	—	—	—	—	—	—	—	—
+Three-Unit Residential	—	—	P	P	P	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—
+Two-Unit Residential	—	—	P	P	P	—	—	P	P	P	P	P	P	P	P	—	—	—	—	—	—	—	—	P	P	—	—	—	—	—	—	—	—	—	—	—	—	—
+COMMERCIAL USES
+Administrative and Business Offices	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	—	P	P	C	P	P	P	P	P	P	P	P	P	1	—	2	—	3	4
+Agricultural Sales and Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	P	P	P	1	—	—	—	3	4
+Alternative Financial Services 12	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	P	—	—	C	—	P	—	—	—	—	—	—	—	—	—	—	—
+Art Gallery	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	1	—	—	—	3	4
+Art Workshop	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	P	P	P	C	P	P	P	P	P	P	P	P	P	1	—	—	—	3	4
+Automotive Rentals	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	C	C	C	—	P	P	P	P	P	P	1	—	2	—	3	4
+Automotive Repair Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	C	C	C	—	P	P	P	P	P	P	1	—	2	—	3	4
+Automotive Sales	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	C	C	C	—	P	P	P	P	P	P	1	—	—	—	3	4
+Automotive Washing (of any type)	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	C	C	C	—	P	P	P	—	P	P	1	—	2	—	3	4
+Bail Bond Services 10	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	PC	—	PC	PC	—	PC	PC	PC	PC	PC	PC	—	—	—	—	—	—
+Building Maintenance Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	P	P	P	P	1	—	—	—	3	4
+Business or Trade School	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—	P	C	P	P	C	P	P	P	P	P	P	1	—	—	—	3	4
+Business Support Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—	P	C	P	P	P	P	P	P	P	P	P	1	—	—	—	3	4
+Campground	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	—	—	—	—	—	—	P	P	P	—	—	P	1	—	—	—	3	4
+Carriage Stable	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	—	—	—	—	—	—	—	—	—	C	—	P	—	—
+Cocktail Lounge	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	P	C	—	—	C	C	—	—	—	—	—	—	—	—	—
+Commercial Blood Plasma Center	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P5	P5	P5	—	—	—	—	—	—	—	—	—
+Commercial Off-Street Parking	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	C	C	C	—	P	P	P	—	P	P	1	—	2	—	3	4
+Communications Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	—	—	P	C	P	P	P	P	P	P	P	P	P	1	—	2	—	3	4
+Construction Sales and Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	P	P	P	P	P	P	1	—	—	—	3	4
+Consumer Convenience Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	P	P	C	P	P	—	P	P	P	—	P	P	1	—	2	—	3	4
+Consumer Repair Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	C	P	P	—	P	P	P	—	—	—	—	—	—	—	—	—
+Convenience Storage	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	P	P	P	P	P	P	1	—	—	—	3	4
+Drop-Off Recycling Collection Facility	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P6	—	—	—	—	P	P	P	—	P	P	—	—	—	—	—	P4
+Electronic Prototype Assembly 15	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	CP	CP	P	P	P	P	P	P	P	—	—	—	—	—	—
+Electronic Testing 16	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	CP	CP	P	P	—	P	P	P	P	—	—	—	—	—	—
+Equipment Repair Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	P	P	P	—	P	P	1	—	—	—	3	4
+Equipment Sales	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	—	P	P	1	—	—	—	3	4
+Exterminating Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	P	P	C	P	P	P	P	—	P	1	—	—	—	3	4
+Financial Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	C	P	P	—	P	P	P	P	P	P	1	—	2	—	3	4
+Food Preparation	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	P	P	P	P	P	P	P	P	P	P	1	—	2	—	3	4
+Food Sales	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	C	P	P	—	P	P	P	—	P	P	1	—	2	—	3	4
+Funeral Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	P	P	—	P	P	P	—	—	P	1	—	—	—	3	4
+General Retail Sales (Convenience)	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	C	P	P	—	P	P	P	—	P	P	1	—	2	—	3	4
+General Retail Sales (General)	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	11	P	C	P	P	—	P	P	P	—	P	P	1	—	2	—	3	4
+Hotel-Motel	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	—	P	C	P	P	—	P	P	P	—	P	P	1	—	2	—	3	4
+Indoor Entertainment	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	—	P	C	P	P	—	P	P	P	P	P	P	1	—	2	—	3	4
+Indoor Sports and Recreation	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	—	P	C	P	P	—	P	P	P	P	P	P	1	—	2	—	3	4
+Kennels	—	C	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	—	—	P	1	C	2	—	3	4
+Laundry Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	P	P	—	P	P	P	—	—	P	1	—	2	—	3	4
+Liquor Sales	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	—	—	P	P	—	C	C	1	—	2	—	3	4
+Marina	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—	—	—	—	—	—	—	—	—	—	—	1	—	—	—	3	4
+Medical Offices—exceeding 5,000 sq. ft. gross floor area	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	—	C	P	C	P	P	—	P	P	P	P	P	P	1	—	2	—	3	4
+Medical Offices—not exceeding 5,000 sq. ft. gross floor area	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	—	P	P	C	P	P	—	P	P	P	P	P	P	1	—	2	—	3	4
+Monument Retail Sales	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—	—	P	P	1	—	—	—	3	4
+Off-Site Accessory Parking 14	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	CP	P	—	P	P	C	P	P	—	P	P	P	P	P	P	1	—	2	—	3	4
+Outdoor Entertainment	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	—	C	C	C	C	—	C	C	C	C	C	C	1	—	2	—	3	4
+Outdoor Sports and Recreation	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	P	C	P	P	—	P	P	P	P	P	P	1	—	2	—	3	4
+Pawn Shop Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	P	P	—	P	P	P	—	—	—	1	—	2	—	3	4
+Pedicab Storage and Dispatch	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	—	C	C	P	P	P	P	P	P	P	1	—	—	—	—	—
+Performance Venue	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	—	C	—	P	C	C	C	C	C	—	—	C	—	—	—	—	—	—
+Personal Improvement Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	11	P	C	P	P	—	P	P	P	—	P	P	1	—	2	—	3	4
+Personal Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	P	—	P	P	C	P	P	—	P	P	P	P	P	P	1	—	2	—	3	4
+Pet Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	C	P	P	—	P	P	P	—	—	—	1	—	2	—	3	4
+Plant Nursery	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	C	—	—	—	—	P	P	P	P	P	P	—	—	—	—	—	—
+Printing and Publishing	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	P	P	P	P	P	P	P	P	P	P	P	P	1	—	2	—	3	4
+Professional Office	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	—	P	P	C	P	P	—	P	P	P	P	P	P	1	—	2	—	3	4
+Recreational Equipment Maint. & Stor.	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—	—	—	—	—	—	—	—	—	—	—	1	—	—	—	3	4
+Recreational Equipment Sales	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—	—	—	—	—	—	—	—	—	—	—	1	—	—	—	3	4
+Research Assembly Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	—	—	3	4
+Research Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	C	P	P	—	P	P	P	P	P	P	1	—	—	—	3	4
+Research Testing Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	—	—	3	4
+Research Warehousing Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	—	—	3	4
+Restaurant (General)	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	11	P	C	P	P	—	P	P	P	P	P	P	1	—	2	—	3	4
+Restaurant (Limited)	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	—	P	P	C	P	P	—	P	P	P	P	P	P	1	—	2	—	3	4
+Scrap and Salvage	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	C	1	—	—	—	3	4
+Service Station	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	P	P	C	C	C	—	P	P	P	P	P	P	1	—	2	—	3	4
+Software Development	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	—	P	P	—	P	P	—	P	P	P	P	P	P	—	—	—	—	—	—
+Special Use Historic	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—
+Stables	—	C	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	C	—	P	3	4
+Theater	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	P	P	P	P	P	C	P	P	P	P	P	P	P	P	P	1	—	2	—	3	4
+Vehicle Storage	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	C	—	P	P	P	—	P	P	1	—	2	—	3	4
+Veterinary Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	—	—	P	1	—	2	—	3	4
+INDUSTRIAL USES
+Basic Industry	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	1	—	2	—	3	4
+Custom Manufacturing	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	C	—	P	P	P	P	P	P	P	P	P	1	—	2	—	3	4
+General Warehousing and Distribution	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	1	—	2	—	3	4
+Light Manufacturing	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	1	—	2	—	3	4
+Limited Warehousing and Distribution	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	P	P	P	P	P	P	1	—	2	—	3	4
+Recycling Center	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	—	—	—	—	—	—
+Resource Extraction	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	1	C	2	—	3	4
+AGRICULTURAL USES
+Animal Production	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—
+Community Garden	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P
+Crop Production	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—
+Horticulture	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—
+Indoor Crop Production	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—	P	P	P	—	—	—	—	P	—
+Support Housing	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—
+Urban Farm	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P
+CIVIC USES
+Administrative Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	—	—	—	—	—	—	—	1	—	2	—	3	4
+Adult Care Services (General)	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	—	—	—	—	—	—
+Adult Care Services (Limited)	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	—	P	P	P	P	P	P	P	P	P	P	P	P	—	—	—	—	—	—
+Aviation Facilities	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	2	—	3	4
+Camp	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	P	—	—	3	4
+Cemetery	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	—	—	3	4
+Child Care Services (General)	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	C	C	C	—	C	—	C	—	—
+Child Care Services (Limited)	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	C	P	P	P	P	P	P	P	P	P	P	C	P	—	C	—	C	—	—
+Club or Lodge	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	—	C	C	—	C	C	C	C	C	C	C	C	C	C	C	C	1	C	—	C	3	4
+College and University Facilities	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	P	C	P	P	C	P	P	C	P	P	P	P	—	P	1	P	1	—	3	4
+Communication Service Facilities	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	C	P	P	C	P	P	P	P	P	P	P	P	P	1	P	2	P	3	4
+Community Events	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8	8
+Community Recreation (Private)	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	P	C	P	C	P	P	C	P	P	P	P	P	P	1	—	2	—	3	4
+Community Recreation (Public)	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	P	C	P	C	P	P	C	P	P	P	P	P	P	1	—	2	—	3	4
+Congregate Living	—	—	—	—	—	—	—	—	—	C	C	C	C	C	C	C	C	C	P	—	C	P	C	P	P	—	P	P	P	P	P	P	1	—	—	—	3	4
+Convalescent Services	—	—	—	—	—	—	—	—	—	—	—	C	C	C	C	—	—	P	P	—	—	—	—	—	—	P	—	—	—	—	—	—	1	—	—	—	3	4
+Convention Center	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	—	—	—	—	—	—	—	—	—	—	—	—	—
+Counseling Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	—	—	—	—	—	—
+Cultural Services	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	—	P	P	P	P	P	C	P	P	P	P	P	P	P	P	P	1	—	2	—	3	4
+Detention Facilities	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	—	—	3	4
+Employee Recreation	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	1	P	—	—	3	4
+Guidance Services	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	—	P	P	C	P	P	—	P	P	P	—	—	—	1	—	—	—	3	4
+Hospital Services (General)	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	—	—	C	C	C	C	—	C	C	C	—	—	—	1	—	2	—	3	4
+Hospital Services (Limited)	—	—	—	—	—	—	—	—	—	—	—	—	C	C	C	—	—	C	P	C	C	P	C	P	P	—	P	P	P	—	—	—	1	—	2	—	3	4
+Local Utility Services	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	P	P	P	C	P	P	C	P	P	P	P	P	P	P	P	P	1	—	2	—	3	4
+Maintenance and Service Facilities	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	C	—	P	P	P	P	P	P	1	—	2	—	3	4
+Major Public Facilities	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	2	—	3	4
+Major Utility Facilities	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	2	—	3	4
+Military Installations	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	2	—	3	4
+Park and Recreation Services (General)	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	2	—	3	4
+Park and Recreation Services (Special)	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	2	—	3	4
+Postal Facilities	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	2	—	3	4
+Private Primary Educational Facilities	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	P	P	P	C	P	P	C	P	P	P	P	P	P	—	—	—	1	—	—	—	3	4
+Private Secondary Educational Facilities	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	P	C	P	P	C	P	P	C	P	P	P	—	—	—	1	—	—	—	3	4
+Public Primary Educational Facilities	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	C	P	P	C	P	P	P	P	P	P	—	—	—	1	—	—	—	3	4
+Public Secondary Educational Facilities	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	C	P	P	C	P	P	C	P	P	P	—	—	P	1	—	—	—	3	4
+Railroad Facilities	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	P	P	P	1	—	2	—	3	4
+Religious Assembly	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	P	C	P	P	C	P	P	P	P	P	P	P	P	P	1	P	2	—	3	4
+Residential Treatment	—	—	—	—	—	—	—	—	—	C	C	C	C	C	C	C	C	C	C	—	C	P	C	P	P	—	P	P	P	P	P	P	1	—	—	—	3	4
+Safety Services	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	C	P	P	P	—	P	P	C	P	P	P	P	P	P	P	P	P	1	—	2	—	3	4
+Telecommunication Tower 7	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	PC	—	—	—	—	—	4
+Transitional Housing	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	C	C	—	C	C	C	C	C	C	1	—	—	—	3	4
+Transportation Terminal	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	C	C	—	C	C	C	C	C	C	1	—	2	—	3	4
+All other Civic Uses	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	—	1	—	2	—	3	4
+1-Refers to 25-2-602 (13-2-225); 2-Refers to 25-2-622 (13-2-226); 3-Refers to Subchapter B, Art. 2, Div 5; 4 Refers to 25-2-624 (13-2-227); 5-Refers to 25-2-803 (13-2-233); 6-Subject to 25-2-805 (13-2-224); 7-Subject to 25-2-839 (13-2-235 & 13-2-273); 8-Refers to 25-2-842; 9-Refers to 25-2-863; 10-Subject to 25-2-177 & 25-2-650; 11-Subject to 25-2-587 (D); 12-Subject to 25-2-816; 13-Permitted in MU and V combining districts, subject to 25-2, Subchapter E, Art. 4, Subsec. 4.2.1.C; 14-Refers to 25-6-501; 15-Refers to 25-2-817; 16-Refers to 25-2-811; 17-Permitted in MU and V combining districts, subject to 25-2-789.
+PC - Permitted in the district, but under some circumstances may be conditional; CP - Conditional in the district, but under some circumstances may be permitted
+
+
+
+Source: Ord. No. 20150212-085, Pt. 1, 2-23-15; Updated 3-5-15; Ord. No. 20160223-A.1, Pt. 4, 4-1-17; Ord. No. 20160623-090, Pt. 2, 7-4-16; Ord. No. 20190207-050, Pt. 2, 2-18-19; Ord. No. 20230914-097, Pt. 2, 9-25-23; Ord. No. 20231019-052, Pt. 3, 10-30-23; Ord. No. 20231207-001, Pt. 4, 12-18-23; Ord. No. 20240516-006, Pt. 4, 5-27-24; Ord. No. 20250227-039, Pt. 5, 10-1-25.
+
+§ 25-2-492 - SITE DEVELOPMENT REGULATIONS.
+
+(A)
+
+The table in Subsection (D) establishes the principal site development regulations for each zoning district.
+
+(B)
+
+Except as provided in Subsection (C), if a requirement of Subsection (D) conflicts with another provision of this title, the more restrictive regulation governs.
+
+(C)
+
+The requirements of the other provisions of this subchapter supersede the requirements of Subsection (D), to the extent of conflict.
+
+(D)
+
+Site development regulation table.
+
+Source: Section 13-2-630; Ord. 990225-70; Ord. 991104-46; Ord. 000511-109; Ord. 030731-53; Ord. 031211-11; Ord. 041118-57; Ord. 20100819-064; Ord. No. 20251023-063, Pt. 1, 11-3-25.
+
+ EXPAND
+	LA	RR	SF-1	SF-2	SF-3	SF-4A	SF-4B	SF-5	SF-6	MF-1	MF-2	MF-3	MF-4	MF-5	MF-6	MH	NO	LO	GO	CR	LR	GR	L	CBD	DMU	W/LO	CS	CS-1	CH 12	IP	MI	LI	R&D	DR	AV	AG 16	P
+MINIMUM LOT SIZE (square feet):	43,560	43,560	10,000	5,750	5,750	4	5	5,750	5,750	8,000	8,000	8,000	8,000	8,000	8,000	—	5,750	5,750	5,750	20,000	5,750	5,750	5,750	—	—	43,560
+11	5,750	5,750	20,000	43,560	50 acres	5,750	14	10 acres	15	10 acres	17
+MINIMUM CORNER LOT AREA (square feet):						4	5	—	—	—
+MINIMUM LOT WIDTH:	100	100	60	50	50	4	5	50	50	50	50	50	50	50	50	—	50	50	50	100	50	50	50	—	—	100	50	50	100	100	250	50	100	100	15	—	17
+MINIMUM CORNER LOT WIDTH:						4	5	50	—	—
+MAXIMUM DWELLING UNITS PER LOT:	1	1	3	3	3	4	5	—	—	6	7	8	9	9	—	—																		1	15	—	17
+MAXIMUM HEIGHT:	35	35	35	35	35	4	5	35	35	40	40 or 3 stories	40	60	60	90	—	35 or 2 stories	40 or 3 stories	60	40	40 or 3 stories	60	200	350	120	25 or 1 story 11	60	60	12	60	120	60	45	35	15	60	17
+MINIMUM SETBACKS:
+ FRONT YARD:	40	40	25	25	25	4	5	25	25	25	25	25	15	15	15	—	25	25	15	50	25	10	10	—	—	25	10	10	50	25	—	—	75	25	15	100	17
+ STREET SIDE YARD:	25	25	15	15	15	4	5	15	15	15	15	15	15	15	15	—	15	15	15	50	15	10	10	—	—	25	10	10	50	25	—	—	14	25	15	100	17
+ INTERIOR SIDE YARD:	10	10	5	5	5	4	10	5	5	5	5	5	5	5	5	—	5	5	5	20	—	—	—	—	—	5	—	—	25	13	13	13	14	10	15	100	17
+ REAR YARD:	20	20	10	10	10	4	5	10	10	10	10	10	10	10	10	—	5	5	5	20	—	—	—	—	—	25	—	—	25	13	13	13	14	10	15	100	17
+MAXIMUM BUILDING COVERAGE:	—	20%	35%	40%	40%	4	40%	40%	40%	45%	50%	55%	60%	60%	70%	—	35%	50%	60%	25%	50%	75%	50%	100%	100%	—	95%	95%	85%	50%	75%	75%	40%	12,000	15	—	17
+MAXIMUM IMPERVIOUS COVER:	1	25%	40%	45%	45%	*	60%	55%	55%	55%	60%	65%	70%	70%	80%	—	60%	70%	80%	60%	80%	90%	50%	100%	100%	70%	95%	95%	85%	80%	80%	80%	14	15,000	15	—	17
+MAXIMUM FLOOR AREA RATIO											—	.75:1	.75:1	1:1	—	—	.35:1	.7:1	1:1	.25:1	.5:1	1:1	8:1	8:1	5:1	.25:1 11	2:1	2:1	3:1	1:1	1:1	1:1	14	—	15	—	17
+
+
+
+1 See Section 25-2-551 (Lake Austin District Regulations).
+
+2 See Section 25-2-556 (Family Residence District Regulations).
+
+3 See Section 25-2-780 (Conservation Single Family Residential Use).
+
+4 See Section 25-2-779 (Small Lot Single-Family Residential Uses) and Section 25-4-232 (Small Lot Subdivisions).
+
+5 See Section 25-2-558 (Single-Family Residence Condominium Site District Regulations).
+
+6 See Section 25-2-559 (Urban Family Residence District of Townhouse and Condominium Residence District Retirement Housing Use).
+
+7 See Section 25-2-561 (Multifamily Residence Low Density District Regulations).
+
+8 See Section 25-2-562 (Multifamily Residence Medium Density District Regulations).
+
+9 See Section 25-2-563 (Multifamily Residence Moderate-High Density and Multifamily Residence High Density District Regulations).
+
+10 See Section 25-2-581 (Central Business District Regulations).
+
+11 See Section 25-2-584 (Warehouse/Limited Office (W/LO) District Regulations).
+
+12 See Section 25-2-582 (Commercial Highway District Regulations).
+
+13 See Section 25-2-601 (Industrial Park, Major Industry, And Limited Industrial Service District Regulations).
+
+14 See Section 25-2-603 (Research And Development Regulations).
+
+15 See Section 25-2-623 (Aviation Services District Regulations).
+
+16 See Section 25-2-621 (Agricultural District Regulations).
+
+17 See Section 25-2-625 (Public District Regulations).
+
+Source: Ord. No. 20231207-001, Pt. 5, 12-18-23; Ord. No. 20251023-063, Pt. 1, 11-3-25.
+
+Division 2. - Requirements for All Districts.
+
+§ 25-2-511 - RESERVED.
+
+Editor's note— Ord. No. 20231207-001, Pt. 6, effective December 18, 2023, repealed § 25-2-511, which pertained to dwelling unit occupancy limit and derived from Section 13-2-1; Ord. 990225-70; Ord. 030605-49; Ord. 031211-11; Ord. 0411118-59; Ord. 20100923-127; Ord. 20140320-062, Pts. 1, 3, 3-31-14; Ord. No. 20160223-A.1, Pt. 3, 3-5-16.
+
+§ 25-2-512 - LOT SIZE MINIMUM.
+
+(A)
+
+Except as provided in Subsections (B) and (C), a lot may not be reduced in area, width, or depth to less than the minimum requirements.
+
+(B)
+
+This subsection applies to the remainder of a lot if a portion of the original lot is acquired for public use. Notwithstanding other provisions of this article, the remainder of the lot complies with the lot size requirements of this article if:
+
+(1)
+
+before the acquisition, the lot complied with the lot size requirements of this article;
+
+(2)
+
+the remainder of the lot contains a rectangular space at least 30 feet by 40 feet in size and usable for a building, excluding required yards;
+
+(3)
+
+the remainder of the lot contains an area that is not less than 50 percent of the minimum area requirement; and
+
+(4)
+
+the remainder of the lot has at least 40 feet of street frontage.
+
+(C)
+
+For a lot that is used exclusively for a public building, or by a public or quasi-public agency for a nonresidential use, the entity responsible under Chapter 25-5 (Site Plans) for approving a site plan for the use may reduce the lot size requirements of this article.
+
+Source: Section 13-2-603; Ord. 990225-70; Ord. 031211-11.
+
+§ 25-2-513 - OPENNESS OF REQUIRED YARDS.
+
+(A)
+
+Except as otherwise provided in this section, a required yard must be open and unobstructed from finished grade to the sky. This restriction does not apply to a yard or part of a yard that is not required by this article.
+
+(B)
+
+A window sill, belt course, cornice, flue, chimney, eave, box window, or cantilevered bay window may project two feet into a required yard. The two foot limitation does not apply to a feature required for a passive energy design.
+
+(C)
+
+Uncovered steps or a porch or stoop that is not more than three feet above ground level may project three feet into a required yard.
+
+(D)
+
+A parking area may be located in a required yard, unless prohibited by Article 10 (Compatibility Standards).
+
+(E)
+
+In a townhouse and condominium residence (SF-6) or more restrictive district, a pool, including a swimming pool, reflecting pool, or fountain, may be located in a required yard.
+
+(F)
+
+Landscaping may be located in a required yard.
+
+(G)
+
+This subsection applies to a building located in a multifamily residence medium density (MF-3) or more restrictive district. A covered porch that is open on three sides may project five feet into a required front yard, a street side yard, or both.
+
+(H)
+
+A ramp for a new or an existing single-family or duplex residential unit may be constructed in a required yard if:
+
+(1)
+
+a person with a disability requires access to a dwelling entrance that meets the requirements of the Residential Code, Section R320.6 (Visitable dwelling entrance);
+
+(2)
+
+the ramp:
+
+(a)
+
+is no wider than 48 inches, except that any portion of a landing for the ramp required for turns may be no wider than 60 inches;
+
+(b)
+
+may have a hand railing, but may not have a roof or walls; and
+
+(c)
+
+the building official determines that the ramp will not pose a threat to public health and safety; and
+
+(3)
+
+encroachment into the required yard:
+
+(a)
+
+is the minimum amount necessary to provide access for a person with a disability;
+
+(b)
+
+does not extend more than three feet into a side yard setback; and
+
+(c)
+
+is not located in a rear yard setback unless:
+
+(i)
+
+the dwelling is located on a corner lot;
+
+(ii)
+
+access is from an alley; or
+
+(iii)
+
+another requirement of this title prohibits location of the ramp in the front or side yard.
+
+Source: Section 13-2-610; Ord. 990225-70; Ord. 031211-11; Ord. 040826-67; Ord. No. 20140522-078, Pt. 1, 6-2-14; Ord. No. 20151217-093, Pt. 1, 12-28-15.
+
+§ 25-2-514 - (RESERVED).
+§ 25-2-515 - REAR YARD OF THROUGH LOT.
+
+For a through lot, a rear yard must comply with the minimum requirements applicable to a front yard.
+
+Source: Section 13-2-612; Ord. 990225-70; Ord. 031211-11.
+
+§ 25-2-516 - DEVELOPMENT NEAR A HAZARDOUS PIPELINE.
+
+(A)
+
+In this section:
+
+(1)
+
+HAZARDOUS PIPELINE means a pipeline designed for the transmission of a "hazardous liquid", as defined by Title 49, Code of Federal Regulations, Section 195.2, with an inside diameter of eight inches or more.
+
+(2)
+
+NEW CONSTRUCTION means the construction after April 20, 2003 of a structure intended for human occupancy, and includes the construction of a new structure, the construction of an addition to an existing structure and the reconstruction of a portion of an existing structure. The term excludes an addition to or the reconstruction or replacement of a structure existing on April 21, 2003 used for:
+
+(a)
+
+single-family residential use;
+
+(b)
+
+small lot single-family residential use;
+
+(c)
+
+single-family attached residential use;
+
+(d)
+
+duplex residential use;
+
+(e)
+
+two-family residential use;
+
+(f)
+
+mobile home residential use; or
+
+(g)
+
+in a neighborhood plan combining district:
+
+(i)
+
+cottage special use;
+
+(ii)
+
+urban home special use; or
+
+(iii)
+
+secondary apartment special use.
+
+(3)
+
+RESTRICTED PIPELINE AREA includes an area within 25 feet of a hazardous pipeline and an area within a hazardous pipeline easement.
+
+(4)
+
+USE REQUIRING EVACUATION ASSISTANCE includes the following uses:
+
+(a)
+
+congregate living;
+
+(b)
+
+convalescent services;
+
+(c)
+
+detention facilities;
+
+(d)
+
+day care services (commercial);
+
+(e)
+
+hospital (general);
+
+(f)
+
+hospital (limited);
+
+(g)
+
+medical offices exceeding 5,000 square feet of gross floor area;
+
+(h)
+
+private primary educational facilities;
+
+(i)
+
+private secondary educational facilities;
+
+(j)
+
+public primary educational facilities;
+
+(k)
+
+public secondary educational facilities; and
+
+(l)
+
+retirement housing (large site).
+
+(B)
+
+A use requiring evacuation assistance is prohibited in a structure intended for human occupancy that is located within 500 feet of a hazardous pipeline. This prohibition does not apply to a structure that is located between 200 and 500 feet of a hazardous pipeline if by resolution the council determines, after receiving a recommendation from the fire chief, that:
+
+(1)
+
+the structure has a performance-based design that provides an adequate time period for occupant evacuation to a safe place in the event of a pipeline leak or fire associated with the pipeline, after considering:
+
+(a)
+
+the requirements of Chapter 25-12, Article 7 (Uniform Fire Code) and the 2000 edition of the National Fire Protection Association 101 Life Safety Code;
+
+(b)
+
+the site and structure design;
+
+(c)
+
+the structure's building materials;
+
+(d)
+
+the structure's distance from the pipeline;
+
+(e)
+
+the use of radiant energy barriers;
+
+(f)
+
+access to the site and the structure by emergency responders;
+
+(g)
+
+available on-site resources for emergency responders;
+
+(h)
+
+the topography and other natural features;
+
+(i)
+
+the use of the structure; and
+
+(j)
+
+the evacuation capability of the occupants;
+
+(2)
+
+the structure incorporates a system for the early detection and notification of a pipeline leak, if the fire chief determines that an appropriate system is commercially available; and
+
+(3)
+
+the performance-based design for occupant evacuation and the early detection and notification system are certified and sealed by an engineer registered in Texas.
+
+(C)
+
+A person may not build new construction within 200 feet of a hazardous pipeline unless:
+
+(1)
+
+the fire chief determines that:
+
+(a)
+
+the new construction has a performance-based design that provides a minimum one-hour time period for occupant evacuation to a safe place in the event of a pipeline leak or a fire associated with the pipeline, in accordance with Chapter 25-12, Article 7 (Uniform Fire Code) or the 2000 edition of the National Fire Protection Association 101 Life Safety Code;
+
+(b)
+
+the new construction incorporates a system for the early detection and notification of a pipeline leak, if the fire chief determines that an appropriate system is commercially available; and
+
+(c)
+
+the performance-based design for occupant evacuation and the early detection and notification system are certified and sealed by an engineer registered in Texas; or
+
+(2)
+
+the new construction complies with the standards for construction near a pipeline prescribed by the Fire Criteria Manual.
+
+(D)
+
+A person may not place a structure or excavate within a restricted pipeline area.
+
+(1)
+
+This prohibition does not apply to:
+
+(a)
+
+the pipeline or an appurtenance;
+
+(b)
+
+a facility that produces, consumes, processes, or stores the product transported by the pipeline, including a power generation facility;
+
+(c)
+
+a utility line that crosses the restricted pipeline area, including an appurtenance to the line;
+
+(d)
+
+a utility service connection;
+
+(e)
+
+a road;
+
+(f)
+
+a surface parking lot; or
+
+(g)
+
+a structure or excavation that the director determines does not disturb the pipeline or impede its operation.
+
+(2)
+
+Before a person may place a road, surface parking lot, or utility line in a restricted pipeline area, the person must deliver to the director a certification by a registered engineer stating that the proposed construction activity and structure are designed to prevent disturbing the pipeline or impeding its operation.
+
+Source: Ord. 030410-12; Ord. 031211-11.
+
+§ 25-2-517 - REQUIREMENTS FOR AMPHITHEATERS.
+
+(A)
+
+Construction of an amphitheater that is associated with a civic or residential use requires a site plan approved under Section 25-5, Article 3 (Land Use Commission Approved Site Plans), regardless of whether the amphitheater is part of a principal or accessory use. Review of the site plan is subject to the criteria in Section 25-5-145 (Evaluation Criteria) and the notice requirements of Section 25-5-144 (Public Hearing and Notice).
+
+(B)
+
+A decision by the Land Use Commission on an application for an amphitheater is subject to appeal under Section 25-5-149 (Appeal to Council).
+
+(C)
+
+A lawfully constructed amphitheater may be expanded one time without obtaining the approval required under Subsection (A) of this section, provided that the expansion is consistent with the applicable site development regulations and does not expand the total area of the amphitheater by more than ten percent.
+
+Source: Ord. 20130228-074.
+
+§ 25-2-518 - QUALIFYING DEVELOPMENT.
+
+(A)
+
+In this section, a qualifying development is a development certified under Section 25-1-724 (Certification) and participating in the Affordability Unlocked Bonus Program.
+
+(B)
+
+Notwithstanding any ordinance or City Code provision to contrary, a qualifying development is a permitted use under Section 25-2-491 (Permitted, Conditional, and Prohibited Uses) in:
+
+(1)
+
+a residential base zoning district;
+
+(2)
+
+a commercial base zoning district;
+
+(3)
+
+a special purpose base zoning district, except on a site designated:
+
+(a)
+
+agricultural (AG),
+
+(b)
+
+aviation (AV); or
+
+(4)
+
+a combining and overlay district.
+
+(C)
+
+No more than 25 percent of the gross floor area of the qualifying development may be comprised of commercial uses. The permitted commercial uses are determined using the base zoning district.
+
+(D)
+
+A qualifying development is not required to comply with:
+
+(1)
+
+the height and setback requirements of Article 10 (Compatibility Standards) except to maintain side setbacks as required by the base zoning district;
+
+(2)
+
+the maximum floor-to-area ratio for the applicable base zoning district under Section 25-2-492 (Site Development Regulations);
+
+(3)
+
+Subchapter F (Residential Design and Compatibility Standards) except to maintain side setbacks as required by the base zoning district;
+
+(4)
+
+Section 25-2-773 (Duplex, Two-Unit and Three-Unit Residential Uses); or
+
+(5)
+
+minimum site area requirements.
+
+(E)
+
+This subsection applies to a qualifying development located in urban residence (SF-5) or more restrictive zoning district and the height of the development exceeds 35 feet or three stories.
+
+(1)
+
+A qualifying development must comply with:
+
+(a)
+
+Section 25-2-1066 (Screening Requirements); and
+
+(b)
+
+Subsections (A) and (B) in Section 25-2-1067 (Design Regulations).
+
+(2)
+
+A person must enclose a refuse receptacle, including a dumpster.
+
+(3)
+
+The location of and access to a refuse receptacle is subject to review and approval by the accountable official.
+
+(4)
+
+A person may not collect or allow another to collect refuse receptacles between 10:00 p.m. and 7:00 a.m.
+
+Source: Ord. No. 20190509-027, Pt. 3, 5-20-19; Ord. No. 20231207-001, Pt. 18, 12-18-23.
+
+§ 25-2-519 - RESERVED
+
+Editor's note— Ord. No. 20240229-070, Pt. 1, adopted March 11, 2024, repealed § 25-2-519, which pertained to Commercial-Residential Development and derived from Ord. No. 20221201-055, Pt. 2, 12-12-22; Ord. No. 20231102-028, Pt. 9, 11-13-23.
+
+Division 3. - Exceptions.
+
+§ 25-2-531 - HEIGHT LIMIT EXCEPTIONS.
+
+(A)
+
+This section provides exceptions to zoning district height limits.
+
+(B)
+
+Subsection (C) applies to:
+
+(1)
+
+parapet walls, chimneys, vents, and mechanical or safety features including fire towers, stairways, elevator penthouses, heating or cooling equipment, solar installations, and protective covers; and
+
+(2)
+
+ornamental towers, cupolas, domes, and spires that are not designed for occupancy.
+
+(C)
+
+A structure described in Subsection (B) may exceed a zoning district height limit by the greater of:
+
+(1)
+
+15 percent;
+
+(2)
+
+the amount necessary to comply with a federal or state regulation;
+
+(3)
+
+for a stack or vent, the amount necessary to comply with generally accepted engineering standards; or
+
+(4)
+
+for a spire, 30 percent.
+
+(D)
+
+The height of a home radio or television receiving antenna or a flagpole may not exceed the lesser of:
+
+(1)
+
+a 50 feet; or
+
+(2)
+
+if attached to a building, 25 feet above the building; or
+
+(3)
+
+if located on the ground, 125 percent of the zoning district height limit.
+
+(E)
+
+A radio tower operated by a licensed amateur radio operator may not exceed a height of 60 feet plus 15 feet for antennae. The Land Use Commission may approve a greater height as a conditional use.
+
+(F)
+
+An antenna located on a building in a non-residential zoning district may exceed the zoning district height limit by not more than 20 feet.
+
+(G)
+
+A fly tower that is constructed within a performing arts theater that seats 300 or more people may be up to 80 feet in height, regardless of the zoning district height limit, unless a lower height limit is required by City Code Chapter 25-2, Article 10 (Compatibility Standards). The fly tower must be:
+
+(1)
+
+located on land owned by the City of Austin; and
+
+(2)
+
+designed and used for moving set pieces, lights, microphones, and other equipment on and off stage.
+
+Source: Section 13-2-608; Ord. 990225-70; Ord. 010607-8; Ord. 031211-11; Ord. 040826-67; Ord. 20080724-082; Ord. 20100923-132.
+
+§ 25-2-532 - IMPERVIOUS COVER LIMIT EXCEPTIONS.
+
+(A)
+
+This section applies to property that had existing development or that was included in a released site plan on March 10, 1996.
+
+(B)
+
+Development may exceed the impervious cover limits of this article if the director determines that the amount of impervious cover proposed is the minimum necessary to comply with the accessibility standards of the Americans with Disabilities Act or Chapter 25-12, Article 1 (Uniform Building Code).
+
+Source: Section 13-2-630; Ord. 990225-70; Ord. 031211-11.
+
+§ 25-2-533 - STREET YARD EXCEPTIONS IN CERTAIN COMMERCIAL AREAS.
+
+(A)
+
+The council may, by ordinance, designate a location in a neighborhood commercial (LR), community commercial (GR), general commercial services (CS), commercial services - liquor sales (CS-1), or commercial highway services (CH) district where the minimum street yard requirement does not apply. To make a designation under this section, the council must determine that:
+
+(1)
+
+the location contains at least two nonresidential uses that were developed as a neighborhood shopping or business center under previous regulations;
+
+(2)
+
+the construction of a new building in compliance with current street yard requirements would be incompatible with the existing buildings;
+
+(3)
+
+at least half of the total lot area that is developed is used for nonresidential uses; and
+
+(4)
+
+at least half of the total street frontage that is developed with structures does not comply with the current street yard requirements.
+
+(B)
+
+The director of the Neighborhood Planning and Zoning Department shall delineate an area designated under this section on the zoning map.
+
+Source: Section 13-2-611; Ord. 990225-70; Ord. 010329-18; Ord. 031211-11.
+
+§ 25-2-534 - QUALIFYING DEVELOPMENT EXCEPTIONS.
+
+(A)
+
+In this section, a qualifying development is a development certified under Section 25-1-724 (Certification) and participating in the Affordability Unlocked Bonus Program.
+
+(B)
+
+A qualifying development is not subject to Section 25-2-511 (Dwelling Unit Occupancy Limit).
+
+(C)
+
+Minimum lot size for a qualifying development is 2,500 square feet.
+
+(D)
+
+Minimum lot width for a qualifying development is 25 feet.
+
+(E)
+
+A Type I development may:
+
+(1)
+
+construct to a height that is the applicable base zoning district height limit multiplied by 1.25;
+
+(2)
+
+reduce front yard setbacks by 50 percent;
+
+(3)
+
+reduce rear setbacks by 50 percent; and
+
+(4)
+
+include six dwelling units if the existing zoning on the site is Single Family Residential Small (SF-4A), Single Family Residence Condominium Site (SF-4B), or more restrictive.
+
+(F)
+
+In addition to Subsection (E), a Type 2 development may:
+
+(1)
+
+construct to a height that is the applicable base zoning district height limit multiplied by 1.5; and
+
+(2)
+
+include eight dwelling units if the existing zoning on the site is Single Family Residential Small (SF-4A), Single Family Residence Condominium Site (SF-4B), or more restrictive.
+
+(G)
+
+If a qualifying development is also eligible to utilize a separate density bonus program that grants density bonuses for the provision of affordable dwelling units or for the payment of a fee-in-lieu for affordable housing, then the qualifying development may comply with the least restrictive site development requirements if all affordable dwelling units are provided on-site.
+
+(H)
+
+A qualifying development will comply with impervious cover as allowed by zoning.
+
+Source: Ord. No. 20190509-027, Pt. 4, 5-20-19.
+
+ § 25-2-476 - SPECIAL EXCEPTIONS.
+ARTICLE 3. - ADDITIONAL REQUIREMENTS FOR CERTAIN DISTRICTS.
+Loading complete

@@ -4,7 +4,7 @@
  */
 import type { AnalyzeSiteResponse } from '$lib/types';
 
-export const REPORT_SESSION_KEY = 'geoscore:report:v1';
+export const REPORT_SESSION_KEY = 'spotcore:report:v1';
 
 export type ReportSessionPayload = {
   result: AnalyzeSiteResponse;

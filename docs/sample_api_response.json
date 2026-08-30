@@ -53,7 +53,10 @@
     "subway_stops_within_800m": 2,
     "bus_or_light_rail_stops_within_400m": 6,
     "nearest_subway_distance_m": 410.2,
-    "summary": "2 subway-linked station node(s) within ~800m; nearest about 410m. 6 bus/platform stops within ~400m."
+    "parking_nodes_within_radius": 4,
+    "bicycle_parking_within_radius": 2,
+    "major_road_nodes_within_radius": 11,
+    "summary": "2 subway-linked station node(s) within ~800m; nearest about 410m. 6 bus/platform stops within ~400m. 4 mapped parking node(s) in radius."
   },
   "summary": [
     "Residential density in the tract is relatively strong for local foot traffic.",
@@ -66,6 +69,34 @@
     "geocoder": "nominatim",
     "pois": "overpass",
     "demographics": "census_acs5",
-    "radius_m": 500
+    "radius_m": 500,
+    "scoring_profile": "coffee_shop",
+    "trends": "google_trends"
+  },
+  "demand_signals": {
+    "search_interest_index": 68.5,
+    "search_interest_geo_used": "US-NY",
+    "search_interest_resolution": "DMA",
+    "search_interest_keywords": ["coffee shop", "cafe"],
+    "search_interest_timeframe": "today 3-m",
+    "search_interest_disclaimer": "Values are relative Google Trends scores (0–100) for the selected geography and time window. They are normalized by Google, not raw search counts, not tied to a single street address, and not a measure of foot traffic."
+  },
+  "score_inputs": {
+    "population": 6124,
+    "median_income": 81250,
+    "median_age": 39.1,
+    "pct_college_educated": 31.2,
+    "vacancy_pct": 5.8,
+    "competitor_count": 1,
+    "complementary_count": 1,
+    "commercial_poi_count": 18,
+    "subway_within_800m": 2,
+    "bus_within_400m": 6,
+    "nearest_subway_m": 410.2,
+    "parking_within_radius": 4,
+    "bicycle_parking_within_radius": 2,
+    "major_road_nodes_within_radius": 11,
+    "traffic_signal_nodes_within_radius": 5,
+    "monthly_budget": 4500
   }
 }

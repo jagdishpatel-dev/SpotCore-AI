@@ -121,3 +121,34 @@ export interface TrendsKeywordsResponse {
   keywords: string[];
   regions: RegionTrendRow[];
 }
+
+export interface ZoningCitation {
+  citation: string;
+  title: string;
+  score: number;
+}
+
+export interface ZoningAnswerResponse {
+  answer: string;
+  citations: ZoningCitation[];
+  jurisdiction: string;
+  disclaimer: string;
+}
+
+export type ZoningPermission = 'permitted' | 'conditional' | 'prohibited' | 'unknown';
+
+export interface ZoningMapFeature {
+  geometry: GeoJSON.Geometry;
+  ztype: string;
+  base_district: string | null;
+  case_number: string | null;
+  permission: ZoningPermission;
+  color: string;
+  matched_use: string | null;
+}
+
+export interface ZoningMapResponse {
+  jurisdiction: string;
+  business_type: string | null;
+  features: ZoningMapFeature[];
+}

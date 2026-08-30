@@ -1,0 +1,339 @@
+Title: ARTICLE 7. - NONCONFORMING USES. | Land Development Code | Austin, TX | Municode Library
+URL: https://library.municode.com
+Source element: <div>
+---
+Austin, TX
+Austin, Texas - Land Development Code TITLE 25. - LAND DEVELOPMENT. CHAPTER 25-2. - ZONING. SUBCHAPTER C. - USE AND DEVELOPMENT REGULATIONS.  ARTICLE 7. - NONCONFORMING USES.
+
+ § 25-2-925 - SITE RESTORATION.
+ARTICLE 8. - NONCOMPLYING STRUCTURES.
+ARTICLE 7. - NONCONFORMING USES.
+
+§ 25-2-941 - NONCONFORMING USE DEFINED.
+
+NONCONFORMING USE means a land use that does not conform to current use regulations, but did conform to the use regulations in effect at the time the use was established.
+
+Source: Section 13-2-331; Ord. 990225-70; Ord. 031211-11.
+
+§ 25-2-942 - USES CONFORMING ON MARCH 1, 1984.
+
+The use of a building, structure, or property that conformed with the zoning regulations in effect on March 1, 1984 is a conforming use notwithstanding the requirements of this chapter.
+
+Source: Section 13-2-340; Ord. 990225-70; Ord. 031211-11.
+
+§ 25-2-943 - SUBSTANDARD LOT.
+
+(A)
+
+A substandard lot may be used for a nonresidential use that is permitted in the zoning district in which the lot is located if, except for minimum lot area, the use and development complies with the requirements of this title.
+
+(B)
+
+A substandard lot may be used for a single-family residential use if the use is permitted in the zoning district in which the lot is located and the lot complies with the requirements of this subsection.
+
+(1)
+
+A substandard lot recorded in the county real property records before March 15, 1946 must:
+
+(a)
+
+have an area of not less than 4,000 square feet; and
+
+(b)
+
+be not less than 33 feet wide at the street or at the building line, or have access to a street by an easement that is:
+
+(i)
+
+not less than ten feet wide if it serves one lot, or not less than 18 feet wide if it serves more than one lot;
+
+(ii)
+
+not more than 150 feet in length; and
+
+(iii)
+
+maintained for access by the property owner.
+
+(2)
+
+A substandard lot recorded in the county real property records after March 14, 1946 must:
+
+(a)
+
+have an area of not less than 5,750 square feet; and
+
+(b)
+
+be not less than 50 feet wide at the street or at the building line.
+
+(C)
+
+If a substandard lot is used with one or more contiguous lots for a single use or unified development, the requirements of this chapter apply to the aggregation of lots as if the aggregation were a single lot.
+
+(D)
+
+A substandard lot that is aggregated with other property to form a site may not be disaggregated after August 6, 2007 to form a site that is smaller than the minimum lot area requirement.
+
+Source: Sections 13-2-334, 13-2-335, and 13-2-336; Ord. 990225-70; Ord. 031211-11; Ord. 20070726-131.
+
+§ 25-2-944 - DAMAGED STRUCTURE USED FOR A NONCONFORMING USE.
+
+(A)
+
+A damaged structure used for a nonconforming use may be repaired and the nonconforming use continued if the building official determines that the cost of repair does not exceed 90 percent of the value of the structure immediately before the damage.
+
+(B)
+
+Approval of a site plan is not required to repair a structure under Subsection (A) unless the building official determines that:
+
+(1)
+
+a substantial change to the structure is proposed; and
+
+(2)
+
+a site plan is otherwise required by this title for initial construction of a structure similar to the structure after the proposed repairs.
+
+Source: Section 13-2-341; Ord. 990225-70; Ord. 031211-11.
+
+§ 25-2-945 - ABANDONMENT OF NONCONFORMING USE.
+
+(A)
+
+A person abandons a nonconforming use if:
+
+(1)
+
+the person changes the use of property from a nonconforming use to a conforming use; or
+
+(2)
+
+the person discontinues the nonconforming use for 90 consecutive days.
+
+(B)
+
+A seasonal discontinuance of a use, or a temporary discontinuance of a use for maintenance or repair, is excluded from a calculation of the 90 day period described in Subsection (A)(2).
+
+(C)
+
+A person may not resume an abandoned nonconforming use.
+
+Source: Sections 13-2-342 and 13-2-343; Ord. 990225-70; Ord. 031211-11.
+
+§ 25-2-946 - DETERMINATION OF NONCONFORMING USE REGULATION GROUP.
+
+(A)
+
+The table in this section determines whether a nonconforming use must comply with the nonconforming use regulations of Group "A", Group "B", Group "C", or Group "D" as prescribed by Section 25-2-947 (Nonconforming Use Regulation Groups).
+
+(B)
+
+To use the table:
+
+(1)
+
+find the column with the zoning district in which the nonconforming use is located;
+
+(2)
+
+find the row that describes the nonconforming use; and
+
+(3)
+
+find the nonconforming use regulation group for the nonconforming use at the intersection of the column and the row.
+
+(C)
+
+In the table, the phrase "allowed in" includes permitted and conditional uses.
+
+NONCONFORMING USE TABLE
+
+ EXPAND
+	LA
+RR
+SF-1
+SF-2
+SF-3	SF-4
+SF-5
+SF-6
+MF-1
+MF-2
+MF-3	MF-4
+MF-5
+MF-6
+MH	NO
+LO
+LR	L
+GO
+GR
+CBD
+DMU	CS
+CS-1
+CH	LI
+IP	AG
+DR
+Residential uses	B	C	D	D	D	D	D	D
+Commercial uses allowed in a LO or GO district	A	B	C	D	D	D	D	D
+Commercial uses allowed in a commercial district other than LO or GO	A	A	B	C	D	D	D	D
+Industrial uses allowed in a commercial district	A	A	B	B	C	D	D	D
+Industrial uses not allowed in a commercial district	A	A	A	B	B	C	D	D
+Civic uses allowed in a residential district	B	C	D	D	D	D	D	D
+Civic uses not allowed in a residential district	B	B	C	C	D	D	D	D
+Agricultural uses	B	B	B	B	B	C	C	C
+
+
+
+
+
+Source: Section 13-2-345; Ord. 990225-70; Ord. 031211-11.
+
+
+
+§ 25-2-947 - NONCONFORMING USE REGULATION GROUPS.
+
+(A)
+
+A Group "A" nonconforming use must comply with the regulations described in this subsection.
+
+(1)
+
+Except as provided in Subsections (B)(1) and (2), a Group "A" nonconforming use must comply with Group "B" nonconforming use regulations.
+
+(2)
+
+A person shall discontinue a nonconforming use not later than 10 years after the date the use becomes nonconforming, if the use occurs:
+
+(a)
+
+outside a structure; or
+
+(b)
+
+in a structure valued at less than $10,000.
+
+(3)
+
+Maintenance or improvement of a structure is limited to that required by law to comply with minimum health and safety requirements. The value of an improvement described in this paragraph may not be used in determining the value of a structure.
+
+(B)
+
+A Group "B" nonconforming use must comply with the regulations described in this subsection.
+
+(1)
+
+A person may continue a nonconforming use and maintain an associated structure, except the person may not:
+
+(a)
+
+increase the floor space or site area of a nonresidential use; or
+
+(b)
+
+make a change that increases the amount of required accessible spaces.
+
+(2)
+
+A person may improve, enlarge, or structurally alter a structure if the cost does not exceed 20 percent of the value of the structure before the improvement.
+
+(3)
+
+An improvement required by law to meet minimum health and safety requirements, or an improvement to a portion of a structure used solely for a conforming use may not be used in determining valuations under Subsection (B).
+
+(C)
+
+A Group "C" nonconforming use must comply with the regulations described in this subsection.
+
+(1)
+
+A person may continue a nonconforming use and maintain an associated structure.
+
+(2)
+
+A person may expand the portion of a structure or site that is used for a nonconforming use, except:
+
+(a)
+
+an expansion of the portion of the site must be on the same lot and may occur only one time; and
+
+(b)
+
+an expansion may not increase the amount of off-street parking that was required prior to November 13, 2023, to more than 120 percent of that required for the use on the later of March 1, 1984 or the date the use became nonconforming.
+
+(3)
+
+If a structure is used for a nonconforming conditional use that the Land Use Commission has not approved, a person may annually expend not more than 20 percent of the value of the structure to improve, enlarge, or structurally alter the structure.
+
+(D)
+
+A Group "D" nonconforming use must comply with the regulations described in this subsection.
+
+(1)
+
+A Group "D" nonconforming use must comply with Group "C" nonconforming use regulations.
+
+(2)
+
+A nonconforming conditional use approved by the Land Use Commission may be replaced by a similar nonconforming conditional use if the Land Use Commission:
+
+(a)
+
+reviews traffic generation, noise, hours of operation, number of employees, and other appropriate performance measures;
+
+(b)
+
+determines that the replacement use will not more adversely affect surrounding uses than does the original use; and
+
+(c)
+
+approves the replacement use.
+
+(E)
+
+Except as provided in Subsections (A)(3) and (B)(3), the value of a structure is the value established by the tax appraisal district.
+
+Source: Sections 13-1-333 and 13-2-344; Ord. 990225-70; Ord. 010607-8; Ord. 031211-11; Ord. No. 20231102-028, Pt. 21, 11-13-23.
+
+§ 25-2-948 - CERTAIN USES NEAR HAZARDOUS PIPELINES.
+
+(A)
+
+This section applies to a use that is nonconforming because of its proximity to a hazardous pipeline under Section 25-2-516(B) (Development Near a Hazardous Pipeline).
+
+(B)
+
+Proximity to a hazardous pipeline does not cause a structure or area to be noncomplying under Article 8 (Noncomplying Structures).
+
+(C)
+
+Except as provided by Subsection (C), the use is governed by Group "D" regulations prescribed by Section 25-2-947 (Nonconforming Use Regulation Groups).
+
+(D)
+
+If there is a conflict between the regulations prescribed by this section and the regulations as determined by Section 25-2-946 (Determination of Nonconforming Use Regulation Group), the more restrictive regulations apply.
+
+Source: Ord. 030410-12; Ord. 031211-11.
+
+§ 25-2-949 - CERTAIN USES IN A TRANSIT ORIENTED DEVELOPMENT DISTRICT.
+
+(A)
+
+This section applies to a use that is nonconforming under Section 25-2-766.12 (Use Regulations).
+
+(B)
+
+Except as provided by Subsection (C), the use is governed by Group "D" regulations prescribed by Section 25-2-947 (Nonconforming Use Regulation Groups).
+
+(C)
+
+If there is a conflict between the regulations prescribed by this section and the regulations as determined by Section 25-2-946 (Determination of Nonconforming Use Regulation Group), the more restrictive regulations apply.
+
+Source: Ord. 20050519-008.
+
+§ 25-2-950 - RESERVED.
+
+Editor's note— Ord. No. 20250227-039, Pt. 1, effective February 27, 2025, repealed § 25-2-950, which pertained to discontinuance of nonconforming short-term rental (type 2) uses and derived from Ord. No. 20160223-A.1, Pt. 5, 4-1-2017.
+
+ § 25-2-925 - SITE RESTORATION.
+ARTICLE 8. - NONCOMPLYING STRUCTURES.
+Loading complete

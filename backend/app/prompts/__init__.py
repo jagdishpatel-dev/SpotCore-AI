@@ -1,5 +1,5 @@
 """
-GeoScore — LLM Prompt Registry
+SpotCore — LLM Prompt Registry
 ================================
 All prompt strings and template functions live in this package.
 Import ONLY from backend services / API handlers — never from the frontend.
@@ -26,6 +26,15 @@ site_comparison
 
   Compares two candidate sites and requests a plain-prose differentiator.
   Used in get_comparison_insight().
+
+zoning_qa
+  ZONING_QA_SYSTEM_PROMPT_V1                 str constant
+  zoning_qa_user_prompt_v1(...)              template function
+
+  Answers "can I build/operate X here?" questions grounded in retrieved
+  zoning-code excerpts (see app/services/zoning_rag.py). Pilot scope:
+  Austin, TX, Land Development Code Chapter 25-2 only.
+  Used in get_zoning_answer().
 """
 
 from .business_context import (
@@ -37,6 +46,10 @@ from .site_comparison import (
     SITE_COMPARISON_SYSTEM_PROMPT_V1,
     site_comparison_prompt_v1,
 )
+from .zoning_qa import (
+    ZONING_QA_SYSTEM_PROMPT_V1,
+    zoning_qa_user_prompt_v1,
+)
 
 __all__ = [
     # business context
@@ -47,4 +60,7 @@ __all__ = [
     # site comparison
     "SITE_COMPARISON_SYSTEM_PROMPT_V1",
     "site_comparison_prompt_v1",
+    # zoning Q&A
+    "ZONING_QA_SYSTEM_PROMPT_V1",
+    "zoning_qa_user_prompt_v1",
 ]

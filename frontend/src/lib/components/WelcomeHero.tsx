@@ -1,4 +1,3 @@
-'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import SplitText from './SplitText';
@@ -60,8 +59,8 @@ const storySteps: StoryStep[] = [
   {
     eyebrow: 'Site viability',
     title: 'One number that answers the question.',
-    body: 'Every signal is weighted and combined into a single GeoScore. Benchmark it against district and metro averages to decide with confidence.',
-    metricLabel: 'GeoScore',
+    body: 'Every signal is weighted and combined into a single SpotCore. Benchmark it against district and metro averages to decide with confidence.',
+    metricLabel: 'SpotCore',
     metricPrimary: '84 / 100',
     metricSecondary: 'Strong retail potential',
     metricDetail: '+16 vs district · +22 vs metro benchmark.',
@@ -203,7 +202,7 @@ export default function WelcomeHero({ onStart }: Props) {
             </Reveal>
             <Reveal delay={240}>
               <p className="mt-4 text-lg text-slate-300 leading-relaxed">
-                Scroll through how GeoScore turns one address into five layers of intelligence — and one answer.
+                Scroll through how SpotCore turns one address into five layers of intelligence — and one answer.
               </p>
             </Reveal>
           </div>

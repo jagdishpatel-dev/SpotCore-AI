@@ -13,6 +13,7 @@ from app.models.schemas import (
     CompareSitesResponse,
 )
 from app.routers import trends as trends_router
+from app.routers import zoning as zoning_router
 from app.services import ai_consultant
 from app.services.address_suggest import suggest_addresses
 from app.services.analyze_site import analyze_site
@@ -20,8 +21,9 @@ from app.services.analyze_site import analyze_site
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="GeoScore AI API", version="0.1.0")
+app = FastAPI(title="SpotCore AI API", version="0.1.0")
 app.include_router(trends_router.router)
+app.include_router(zoning_router.router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -34,7 +36,7 @@ app.add_middleware(
 
 @app.get("/health")
 async def health():
-    return {"status": "ok", "service": "geoscore-ai"}
+    return {"status": "ok", "service": "spotcore-ai"}
 
 
 @app.get("/suggest-address", response_model=AddressSuggestResponse)
