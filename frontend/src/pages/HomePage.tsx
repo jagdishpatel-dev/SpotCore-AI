@@ -3,6 +3,7 @@ import IntroOverlay from '$lib/components/home/IntroOverlay';
 import Hero from '$lib/components/home/Hero';
 import StatsTrust from '$lib/components/home/StatsTrust';
 import DemoSection from '$lib/components/home/DemoSection';
+import ZoningDemoSection from '$lib/components/home/ZoningDemoSection';
 import HowItWorks from '$lib/components/home/HowItWorks';
 import InsightCategories from '$lib/components/home/InsightCategories';
 import UseCases from '$lib/components/home/UseCases';
@@ -22,6 +23,7 @@ export default function HomePage() {
       <Hero startHref={startHref} heroRevealReady={heroRevealReady} />
       <StatsTrust />
       <DemoSection />
+      <ZoningDemoSection />
       <HowItWorks />
       <InsightCategories />
       <UseCases startHref={startHref} />

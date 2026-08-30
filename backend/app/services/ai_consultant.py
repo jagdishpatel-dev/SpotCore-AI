@@ -51,6 +51,50 @@ def _make_client() -> OpenAI:
     )
 
 
+# OpenRouter's free-tier models rotate in and out of availability (a model
+# that works one minute can 404/429 the next — verified live while building
+# this). settings.ai_model ("openrouter/free") is OpenRouter's own routing
+# alias and already fails over internally, but these are a second, explicit
+# line of defense so a single bad provider response doesn't surface as a
+# user-visible failure.
+_CHAT_MODEL_FALLBACKS = (
+    "nvidia/nemotron-3.5-lightning:free",
+    "minimax/minimax-m3:free",
+    "nvidia/nemotron-3-super-120b-a12b:free",
+)
+
+
+# A free model occasionally returns a "successful" (200) response whose content
+# is moderation/safety-classifier metadata instead of an actual answer (seen
+# live: content == "User Safety: safe"). That's not an exception _chat_completion
+# would otherwise retry on, so treat suspiciously short content as a failure too.
+_MIN_VALID_CONTENT_CHARS = 40
+
+
+class _LowQualityResponse(Exception):
+    pass
+
+
+def _chat_completion(**kwargs):
+    """client.chat.completions.create(), retrying across free-model fallbacks on
+    failure OR on a response too short/empty to be a real answer."""
+    client = _make_client()
+    models = [settings.ai_model, *(m for m in _CHAT_MODEL_FALLBACKS if m != settings.ai_model)]
+    last_exc: Exception | None = None
+    for model in models:
+        try:
+            response = client.chat.completions.create(model=model, **kwargs)
+            content = (response.choices[0].message.content or "").strip()
+            if len(content) < _MIN_VALID_CONTENT_CHARS:
+                raise _LowQualityResponse(f"model={model} returned {len(content)} chars: {content!r}")
+            return response
+        except Exception as exc:  # noqa: BLE001 - deliberately broad: any provider failure should fail over
+            logger.warning("chat completion failed on model=%s: %s", model, exc)
+            last_exc = exc
+    assert last_exc is not None
+    raise last_exc
+
+
 def _strip_thought_tags(raw: str) -> str:
     """Remove <thought>…</thought> blocks emitted by some Gemma variants."""
     return re.sub(r"<thought>.*?</thought>", "", raw, flags=re.DOTALL).strip()
@@ -138,8 +182,6 @@ async def get_ai_consultant_insights(
     scores : ScoreBreakdown-like, optional
         Object with .demand / .competition / .accessibility / .demographic_fit.
     """
-    client = _make_client()
-
     # ── Build messages from prompt registry ──────────────────────────────────
     system_msg = business_context_system_prompt_v1(
         business_type=business_type,
@@ -169,8 +211,7 @@ async def get_ai_consultant_insights(
     )
 
     try:
-        response = client.chat.completions.create(
-            model=settings.ai_model,
+        response = _chat_completion(
             messages=[
                 {"role": "system", "content": system_msg},
                 {"role": "user",   "content": user_msg},
@@ -222,8 +263,6 @@ async def get_comparison_insight(
     2. site_comparison_prompt_v1         →  user role message
     3. LLM call  →  plain text
     """
-    client = _make_client()
-
     user_msg = site_comparison_prompt_v1(
         business_type=business_type,
         address_a=site_a.location.label,
@@ -241,8 +280,7 @@ async def get_comparison_insight(
     )
 
     try:
-        response = client.chat.completions.create(
-            model=settings.ai_model,
+        response = _chat_completion(
             messages=[
                 {"role": "system", "content": SITE_COMPARISON_SYSTEM_PROMPT_V1},
                 {"role": "user",   "content": user_msg},
@@ -298,10 +336,8 @@ async def get_zoning_answer(
         table_lookups=table_lookups,
     )
 
-    client = _make_client()
     try:
-        response = client.chat.completions.create(
-            model=settings.ai_model,
+        response = _chat_completion(
             messages=[
                 {"role": "system", "content": ZONING_QA_SYSTEM_PROMPT_V1},
                 {"role": "user",   "content": user_msg},

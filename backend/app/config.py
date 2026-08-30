@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     # LLM Configuration for Intelligence Layer (OpenRouter — OpenAI-compatible, free-tier models only)
     openrouter_api_key: str = ""
     openrouter_base_url: str = "https://openrouter.ai/api/v1"
-    ai_model: str = "nvidia/nemotron-3-nano-30b-a3b:free"
+    ai_model: str = "openrouter/free"
 
     embedding_model: str = "nvidia/llama-nemotron-embed-vl-1b-v2:free"
 
