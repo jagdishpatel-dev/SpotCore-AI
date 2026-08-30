@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Sparkles, ArrowRight, MapPin } from 'lucide-react';
 import { cn } from '$lib/utils/cn';
 import { zoningAsk } from '$lib/api';
+import MarkdownLite from '$lib/components/MarkdownLite';
 import type { ZoningAnswerResponse } from '$lib/types';
 
 interface LocationPreset {
@@ -169,7 +170,7 @@ export default function ZoningDemoPanel() {
 
           {phase === 'done' && result ? (
             <div className="mt-4 rounded-xl border border-white/60 bg-white/40 p-4">
-              <p className="whitespace-pre-line text-sm leading-relaxed text-[var(--gs-text)]">{result.answer}</p>
+              <MarkdownLite text={result.answer} className="text-sm leading-relaxed text-[var(--gs-text)]" />
               {result.citations.length ? (
                 <div className="mt-3 flex flex-wrap gap-1.5">
                   {result.citations.slice(0, 6).map((c) => (
