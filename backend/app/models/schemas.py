@@ -226,6 +226,15 @@ class ZoningAnswerResponse(BaseModel):
     answer: str
     citations: list[ZoningCitation]
     jurisdiction: str
+    # Decided by zoning_tables.pre_screen_status() from the § 25-2-491 use table, not by the LLM.
+    status: Literal["permitted", "conditional", "not_permitted", "unclear"] = "unclear"
+    status_reason: str = Field(
+        default="",
+        description="table | endnote | ambiguous_match | no_confident_match | unknown_district | no_district",
+    )
+    matched_use: str | None = None
+    table_value: str | None = Field(default=None, description="Raw § 25-2-491 cell, e.g. 'P', 'C', '—', '11'.")
+    status_citation: str = "§ 25-2-491"
     disclaimer: str = (
         "Informational only, not legal advice. Verify against the current code with the "
         "City of Austin Development Services Department before making a decision."

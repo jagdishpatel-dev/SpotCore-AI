@@ -21,3 +21,5 @@
 **/.cursor/
 **/AGENTS.md
 backend/app/data/zoning/_index/
+# Zoning eval run artifacts (raw LLM answers, retrieval cache)
+backend/evals/results/

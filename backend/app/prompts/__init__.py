@@ -28,13 +28,14 @@ site_comparison
   Used in get_comparison_insight().
 
 zoning_qa
-  ZONING_QA_SYSTEM_PROMPT_V1                 str constant
-  zoning_qa_user_prompt_v1(...)              template function
+  ZONING_QA_SYSTEM_PROMPT_V2                 str constant
+  zoning_qa_user_prompt_v2(...)              template function
+  ZONING_QA_SYSTEM_PROMPT_V1 / _v1(...)      previous version, kept for evals
 
-  Answers "can I build/operate X here?" questions grounded in retrieved
-  zoning-code excerpts (see app/services/zoning_rag.py). Pilot scope:
-  Austin, TX, Land Development Code Chapter 25-2 only.
-  Used in get_zoning_answer().
+  Explains a zoning pre-screen status (decided in code by
+  zoning_tables.pre_screen_status) using retrieved zoning-code excerpts
+  (see app/services/zoning_rag.py). Pilot scope: Austin, TX, Land
+  Development Code Chapter 25-2 only. V2 is used in get_zoning_answer().
 """
 
 from .business_context import (
@@ -48,7 +49,9 @@ from .site_comparison import (
 )
 from .zoning_qa import (
     ZONING_QA_SYSTEM_PROMPT_V1,
+    ZONING_QA_SYSTEM_PROMPT_V2,
     zoning_qa_user_prompt_v1,
+    zoning_qa_user_prompt_v2,
 )
 
 __all__ = [
@@ -62,5 +65,7 @@ __all__ = [
     "site_comparison_prompt_v1",
     # zoning Q&A
     "ZONING_QA_SYSTEM_PROMPT_V1",
+    "ZONING_QA_SYSTEM_PROMPT_V2",
     "zoning_qa_user_prompt_v1",
+    "zoning_qa_user_prompt_v2",
 ]

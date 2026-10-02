@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "austin_tx",
+  "source": "Austin Land Development Code § 25-2-491, Zoning Use Summary Table",
+  "source_file": "app/data/zoning/austin_tx/ch25-2_subchapter_c_art2.txt",
+  "notes": [
+    "Holdout set: written BEFORE the everyday-name alias list (app/data/zoning/austin_tx/use_aliases.json) existed, using different businesses and wording than zoning_golden.json. Do not add aliases by reading this file — it exists to check that alias coverage generalizes instead of being fitted to the golden set.",
+    "Same schema and status mapping as zoning_golden.json.",
+    "When a question could mean more than one table use and those uses have DIFFERENT values in the district, the correct answer is unclear (acceptable_uses = []). When every plausible use has the same value, that value is the correct answer."
+  ],
+  "cases": [
+    {"id": "hold-01", "category": "paraphrase", "question": "Can I open a tavern downtown?", "district": "CBD", "acceptable_uses": ["Cocktail Lounge"], "expected_value": "P", "expected_status": "permitted", "source_line": 142},
+    {"id": "hold-02", "category": "paraphrase", "question": "Is a nightclub allowed on this parcel?", "district": "GR", "acceptable_uses": ["Cocktail Lounge"], "expected_value": "—", "expected_status": "not_permitted", "source_line": 142},
+    {"id": "hold-03", "category": "paraphrase", "question": "Could I run a wine shop here?", "district": "CH", "acceptable_uses": ["Liquor Sales"], "expected_value": "P", "expected_status": "permitted", "source_line": 167},
+    {"id": "hold-04", "category": "paraphrase", "question": "Can I open a fitness center in CS?", "district": "CS", "acceptable_uses": ["Indoor Sports and Recreation"], "expected_value": "P", "expected_status": "permitted", "source_line": 164},
+    {"id": "hold-05", "category": "paraphrase", "question": "Can I put a bowling alley in an LR zone?", "district": "LR", "acceptable_uses": ["Indoor Sports and Recreation"], "expected_value": "—", "expected_status": "not_permitted", "source_line": 164},
+    {"id": "hold-06", "category": "paraphrase", "question": "Can I open a barbershop in GO?", "district": "GO", "acceptable_uses": ["Personal Services"], "expected_value": "P", "expected_status": "permitted", "source_line": 179},
+    {"id": "hold-07", "category": "paraphrase", "question": "I want to open a nail salon, the lot is zoned LO", "district": "LO", "acceptable_uses": ["Personal Services"], "expected_value": "C", "expected_status": "conditional", "source_line": 179},
+    {"id": "hold-08", "category": "paraphrase", "question": "Can a motel be built on CS-1 land?", "district": "CS-1", "acceptable_uses": ["Hotel-Motel"], "expected_value": "P", "expected_status": "permitted", "source_line": 162},
+    {"id": "hold-09", "category": "paraphrase", "question": "Can I open a cinema in a GO district?", "district": "GO", "acceptable_uses": ["Theater"], "expected_value": "P", "expected_status": "permitted", "source_line": 197},
+    {"id": "hold-10", "category": "paraphrase", "question": "Can we open a credit union branch here?", "district": "LR", "acceptable_uses": ["Financial Services"], "expected_value": "P", "expected_status": "permitted", "source_line": 156},
+    {"id": "hold-11", "category": "paraphrase", "question": "Can I open a check cashing store in LR?", "district": "LR", "acceptable_uses": ["Alternative Financial Services 12"], "expected_value": "C", "expected_status": "conditional", "source_line": 129},
+    {"id": "hold-12", "category": "paraphrase", "question": "Is a supermarket allowed in GR?", "district": "GR", "acceptable_uses": ["Food Sales"], "expected_value": "P", "expected_status": "permitted", "source_line": 158},
+    {"id": "hold-13", "category": "paraphrase", "question": "Can I open an animal hospital in an LI district?", "district": "LI", "acceptable_uses": ["Veterinary Services"], "expected_value": "P", "expected_status": "permitted", "source_line": 199},
+    {"id": "hold-14", "category": "paraphrase", "question": "Can a mosque be built on SF-3 land?", "district": "SF-3", "acceptable_uses": ["Religious Assembly"], "expected_value": "P", "expected_status": "permitted", "source_line": 254},
+    {"id": "hold-15", "category": "paraphrase", "question": "Can I open a mechanic shop downtown?", "district": "CBD", "acceptable_uses": ["Automotive Repair Services"], "expected_value": "C", "expected_status": "conditional", "source_line": 133},
+    {"id": "hold-16", "category": "paraphrase", "question": "Can I run a car rental agency in LR?", "district": "LR", "acceptable_uses": ["Automotive Rentals"], "expected_value": "—", "expected_status": "not_permitted", "source_line": 132},
+    {"id": "hold-17", "category": "paraphrase", "question": "Can I build a fuel station on GO land?", "district": "GO", "acceptable_uses": ["Service Station"], "expected_value": "—", "expected_status": "not_permitted", "source_line": 193},
+    {"id": "hold-18", "category": "paraphrase", "question": "Can I open a pet boarding facility in LI?", "district": "LI", "acceptable_uses": ["Kennels"], "expected_value": "P", "expected_status": "permitted", "source_line": 165},
+    {"id": "hold-19", "category": "paraphrase", "question": "Can I open a mini storage facility downtown?", "district": "CBD", "acceptable_uses": ["Convenience Storage"], "expected_value": "—", "expected_status": "not_permitted", "source_line": 149},
+    {"id": "hold-20", "category": "paraphrase", "question": "Can I open a funeral home in GR?", "district": "GR", "acceptable_uses": ["Funeral Services"], "expected_value": "P", "expected_status": "permitted", "source_line": 159},
+    {"id": "hold-21", "category": "paraphrase", "question": "Can I run a pest control company out of a CS lot?", "district": "CS", "acceptable_uses": ["Exterminating Services"], "expected_value": "P", "expected_status": "permitted", "source_line": 155},
+    {"id": "hold-22", "category": "paraphrase", "question": "Can I open a video game arcade in GR?", "district": "GR", "acceptable_uses": ["Indoor Entertainment"], "expected_value": "P", "expected_status": "permitted", "source_line": 163},
+    {"id": "hold-23", "category": "paraphrase", "question": "Can I open a junkyard in LI?", "district": "LI", "acceptable_uses": ["Scrap and Salvage"], "expected_value": "C", "expected_status": "conditional", "source_line": 192},
+    {"id": "hold-24", "category": "paraphrase", "question": "Can I open a dentist office in GR?", "district": "GR", "acceptable_uses": ["Medical Offices—exceeding 5,000 sq. ft. gross floor area", "Medical Offices—not exceeding 5,000 sq. ft. gross floor area"], "expected_value": "P", "expected_status": "permitted", "source_line": 169},
+    {"id": "hold-25", "category": "paraphrase", "question": "Can I open a restaurant in GR?", "district": "GR", "acceptable_uses": ["Restaurant (General)", "Restaurant (Limited)"], "expected_value": "P", "expected_status": "permitted", "source_line": 190},
+    {"id": "hold-26", "category": "unclear", "question": "Can I open a doctor's office in LR?", "district": "LR", "acceptable_uses": [], "expected_value": null, "expected_status": "unclear", "source_line": 169},
+    {"id": "hold-27", "category": "paraphrase", "question": "Can I open a garden center in GR?", "district": "GR", "acceptable_uses": ["Plant Nursery"], "expected_value": "C", "expected_status": "conditional", "source_line": 181},
+    {"id": "hold-28", "category": "unclear", "question": "Can I open a tattoo parlor in CS?", "district": "CS", "acceptable_uses": [], "expected_value": null, "expected_status": "unclear", "source_line": null}
+  ]
+}

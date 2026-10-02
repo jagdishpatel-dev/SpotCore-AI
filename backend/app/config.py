@@ -24,6 +24,10 @@ class Settings(BaseSettings):
     openrouter_api_key: str = ""
     openrouter_base_url: str = "https://openrouter.ai/api/v1"
     ai_model: str = "openrouter/free"
+    # Per-request bounds so a stalled free-tier provider fails fast and
+    # _chat_completion can fail over to the next model (SDK default is 600s x 2 retries).
+    llm_timeout_s: float = 45.0
+    llm_max_retries: int = 1
 
     embedding_model: str = "nvidia/llama-nemotron-embed-vl-1b-v2:free"
 

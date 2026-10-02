@@ -31,8 +31,8 @@ from app.prompts import (
     site_analysis_prompt_v1,
     SITE_COMPARISON_SYSTEM_PROMPT_V1,
     site_comparison_prompt_v1,
-    ZONING_QA_SYSTEM_PROMPT_V1,
-    zoning_qa_user_prompt_v1,
+    ZONING_QA_SYSTEM_PROMPT_V2,
+    zoning_qa_user_prompt_v2,
 )
 from app.services import zoning_rag, zoning_tables
 from app.services.scoring import RawSignals
@@ -48,6 +48,8 @@ def _make_client() -> OpenAI:
     return OpenAI(
         api_key=settings.openrouter_api_key,
         base_url=settings.openrouter_base_url,
+        timeout=settings.llm_timeout_s,
+        max_retries=settings.llm_max_retries,
     )
 
 
@@ -296,6 +298,32 @@ async def get_comparison_insight(
 # Zoning Q&A (RAG)
 # ---------------------------------------------------------------------------
 
+def build_zoning_messages(
+    question: str,
+    excerpts: list[dict],
+    jurisdiction: str = "austin_tx",
+    zoning_district: str | None = None,
+    address: str | None = None,
+) -> tuple[list[dict], dict]:
+    """Decide the pre-screen status in code and build the V2 chat messages that explain it.
+
+    Returns (messages, pre_screen). Shared by get_zoning_answer() and backend/evals/.
+    """
+    pre_screen = zoning_tables.pre_screen_status(question, zoning_district, jurisdiction=jurisdiction)
+    user_msg = zoning_qa_user_prompt_v2(
+        question=question,
+        excerpts=excerpts,
+        pre_screen=pre_screen,
+        zoning_district=zoning_district,
+        address=address,
+    )
+    messages = [
+        {"role": "system", "content": ZONING_QA_SYSTEM_PROMPT_V2},
+        {"role": "user", "content": user_msg},
+    ]
+    return messages, pre_screen
+
+
 async def get_zoning_answer(
     question: str,
     jurisdiction: str = "austin_tx",
@@ -304,15 +332,19 @@ async def get_zoning_answer(
     k: int = 6,
 ) -> ZoningAnswerResponse:
     """
-    Answer a "can I build/operate X here?" question, grounded in retrieved
-    excerpts from the jurisdiction's zoning code (see app/services/zoning_rag.py).
+    Answer a "can I build/operate X here?" question with a deterministic pre-screen
+    status plus an LLM explanation grounded in retrieved zoning code excerpts.
 
     Pipeline
     --------
-    1. zoning_rag.retrieve()       ->  top-k relevant zoning code chunks
-    2. ZONING_QA_SYSTEM_PROMPT_V1  ->  system role message
-    3. zoning_qa_user_prompt_v1    ->  user role message (question + excerpts)
-    4. LLM call  ->  plain-prose answer, cited inline as (§ 25-2-XXX)
+    1. zoning_tables.pre_screen_status()  ->  status from the § 25-2-491 use table
+                                              (unclear unless the match is confident)
+    2. zoning_rag.retrieve()              ->  top-k relevant zoning code chunks
+    3. ZONING_QA_SYSTEM_PROMPT_V2 + zoning_qa_user_prompt_v2  ->  messages
+    4. LLM call  ->  plain-prose explanation of that status, cited inline as (§ 25-2-XXX)
+
+    The status never comes from the LLM, so it is still returned if the LLM call
+    fails. See backend/evals/README.md for why.
 
     Raises
     ------
@@ -321,28 +353,12 @@ async def get_zoning_answer(
         (run `python -m app.services.zoning_rag --jurisdiction <name>`).
     """
     excerpts = zoning_rag.retrieve(question, jurisdiction=jurisdiction, k=k)
-
-    table_lookups = (
-        zoning_tables.lookup(question, zoning_district, jurisdiction=jurisdiction)
-        if zoning_district
-        else []
-    )
-
-    user_msg = zoning_qa_user_prompt_v1(
-        question=question,
-        excerpts=excerpts,
-        zoning_district=zoning_district,
-        address=address,
-        table_lookups=table_lookups,
+    messages, pre_screen = build_zoning_messages(
+        question, excerpts, jurisdiction=jurisdiction, zoning_district=zoning_district, address=address
     )
 
     try:
-        response = _chat_completion(
-            messages=[
-                {"role": "system", "content": ZONING_QA_SYSTEM_PROMPT_V1},
-                {"role": "user",   "content": user_msg},
-            ],
-        )
+        response = _chat_completion(messages=messages)
         answer = _strip_thought_tags(response.choices[0].message.content or "")
     except Exception as exc:
         logger.error("Zoning Q&A error: %s", exc)
@@ -352,12 +368,20 @@ async def get_zoning_answer(
             error_type=type(exc).__name__,
         )
         answer = (
-            "Sorry, the zoning assistant couldn't generate an answer right now. "
-            "The retrieved excerpts below may still help."
+            "The written explanation couldn't be generated right now. The pre-screen status "
+            "above comes from the § 25-2-491 use table, and the excerpts below may help."
         )
 
     citations = [
         ZoningCitation(citation=e.get("citation", "?"), title=e.get("title", ""), score=e.get("score", 0.0))
         for e in excerpts
     ]
-    return ZoningAnswerResponse(answer=answer, citations=citations, jurisdiction=jurisdiction)
+    return ZoningAnswerResponse(
+        answer=answer,
+        citations=citations,
+        jurisdiction=jurisdiction,
+        status=pre_screen["status"],
+        status_reason=pre_screen["reason"],
+        matched_use=pre_screen["matched_use"],
+        table_value=pre_screen["value"],
+    )
