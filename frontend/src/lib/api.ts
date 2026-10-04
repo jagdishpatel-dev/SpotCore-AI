@@ -11,7 +11,7 @@ function baseUrl(): string {
   const env = import.meta.env.VITE_API_BASE_URL as string | undefined;
   if (env && env.length > 0) return env.replace(/\/$/, '');
   if (import.meta.env.DEV) return '/api';
-  return 'http://127.0.0.1:8000';
+  return 'http://127.0.0.1:9000';
 }
 
 export async function suggestAddress(
