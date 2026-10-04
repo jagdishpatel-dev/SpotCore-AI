@@ -59,3 +59,38 @@ def test_prompt_states_status_as_fixed(no_retrieval):
     assert pre["status"] == "permitted"
     assert "Status : PERMITTED" in messages[1]["content"]
     assert "Never contradict" in messages[0]["content"]
+
+
+def test_zoning_ask_endpoint_uses_parcel_zoning(no_retrieval, monkeypatch):
+    from fastapi.testclient import TestClient
+
+    from app.main import app
+    from app.services import zoning_geo
+
+    seen = {}
+
+    async def fake_resolve(lat, lon):
+        seen["point"] = (lat, lon)
+        return {
+            "zoning_code": "CS-MU-CO-ETOD-DBETOD-NP", "base_district": "CS",
+            "overlays": ["MU", "CO", "ETOD", "DBETOD", "NP"], "case_numbers": ["C20-2023-004"],
+            "records": [{"ztype": "CS-MU-CO-ETOD-DBETOD-NP", "case_number": "C20-2023-004"}],
+            "conflicting_bases": [], "source": "test source", "retrieved_at": "2026-10-01T00:00:00+00:00",
+        }
+
+    monkeypatch.setattr(zoning_geo, "resolve_zoning_at_point", fake_resolve)
+    monkeypatch.setattr(ai_consultant.zoning_rag, "index_exists", lambda j: True)
+    monkeypatch.setattr(ai_consultant, "_chat_completion", lambda **k: _fake_completion("Explanation. " * 10))
+
+    resp = TestClient(app).post("/zoning-ask", json={
+        "question": "Can I open a gas station here?", "zoning_district": "CS-1", "lat": 30.25, "lon": -97.7505,
+    })
+    assert resp.status_code == 200, resp.text
+    body = resp.json()
+    assert seen["point"] == (30.25, -97.7505)
+    assert body["status"] == "not_permitted"
+    assert body["district_source"] == "parcel"
+    assert body["zoning_code"] == "CS-MU-CO-ETOD-DBETOD-NP"
+    assert body["status_citations"] == ["§ 25-2-491", "§ 25-2-653(B)", "§ 25-2-653(D)"]
+    assert body["case_numbers"] == ["C20-2023-004"]
+    assert body["zoning_data_retrieved_at"] == "2026-10-01T00:00:00+00:00"

@@ -61,7 +61,7 @@ export default function OldVsNew() {
             className="pointer-events-none absolute left-1/2 top-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 md:block"
             aria-hidden="true"
           >
-            <span className="grid h-14 w-14 place-items-center rounded-full border border-spotcore-accent/35 bg-[var(--bg-base)] font-display text-sm font-bold tracking-wider text-spotcore-accent shadow-[0_0_0_6px_rgba(15,124,117,0.08),0_24px_60px_-20px_rgba(15,124,117,0.28)]">
+            <span className="grid h-14 w-14 place-items-center rounded-full border border-spotcore-accent/35 bg-[var(--bg-base)] font-display text-sm font-bold tracking-wider text-spotcore-accent shadow-[0_0_0_6px_rgba(15,111,104,0.08),0_24px_60px_-20px_rgba(15,111,104,0.28)]">
               VS
             </span>
           </div>

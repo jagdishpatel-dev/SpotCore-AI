@@ -6,6 +6,7 @@ import {
 } from './chrome/fluidGlassDefaults';
 import { clearReportSession } from '$lib/reportSession';
 import { syncGlassCssVars } from './chrome/syncGlassCssVars';
+import BrandMark from './BrandMark';
 import ChromeErrorBoundary from './react/ChromeErrorBoundary';
 import FluidGlassBarCanvas from './react/FluidGlassBarCanvas';
 import './app-chrome.css';
@@ -39,7 +40,7 @@ function NavLink({
   className?: string;
   router?: boolean;
 }) {
-  const classes = `group relative inline-flex shrink-0 items-center whitespace-nowrap rounded-lg px-2 py-1.5 text-xs font-medium transition-colors sm:px-2.5 sm:text-sm lg:px-3 ${className} ${
+  const classes = `group relative inline-flex shrink-0 items-center whitespace-nowrap rounded-lg px-2 py-1.5 text-xs font-medium transition-colors sm:px-2.5 sm:text-[13.5px] lg:px-3 ${className} ${
     active ? 'text-spotcore-text' : 'text-spotcore-text-muted hover:text-spotcore-text'
   }`;
 
@@ -117,15 +118,10 @@ export default function AppChrome({
           to="/"
           className="group relative z-10 flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3"
         >
-          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-spotcore-accent/35 bg-gradient-to-b from-spotcore-accent-soft to-spotcore-accent text-[11px] font-bold tracking-tight text-white shadow-[0_0_0_1px_rgba(15,124,117,0.2),0_8px_24px_-8px_rgba(15,124,117,0.35)] transition-transform duration-300 group-hover:scale-[1.03]">
-            GS
-          </div>
-          <div className="hidden leading-tight lg:block">
-            <p className="text-sm font-medium tracking-tight text-spotcore-text">SpotCore</p>
-            <p className="text-[11px] tracking-wide text-spotcore-text-muted">
-              Location intelligence for operators
-            </p>
-          </div>
+          <BrandMark className="h-8 w-8 transition-transform duration-300 group-hover:-rotate-6" />
+          <span className="font-display text-[17px] font-semibold tracking-[-0.03em] text-spotcore-text">
+            SpotCore
+          </span>
         </Link>
 
         <nav
@@ -159,7 +155,7 @@ export default function AppChrome({
             <button
               type="button"
               onClick={newAnalysis}
-              className="inline-flex h-9 items-center justify-center rounded-full border border-[var(--border-soft)] bg-transparent px-4 text-sm font-semibold text-spotcore-text transition-colors hover:border-accent-cyan/40"
+              className="geo-btn-ghost !h-9 !py-0"
             >
               New analysis
             </button>
@@ -167,13 +163,14 @@ export default function AppChrome({
             <>
               <Link
                 to="/analyze"
-                className="hidden h-9 items-center justify-center rounded-full bg-spotcore-accent px-4 text-sm font-semibold text-white shadow-[0_18px_50px_-18px_rgba(15,124,117,0.38)] transition-all hover:scale-[1.02] hover:bg-spotcore-accent-hover sm:inline-flex"
+                className="geo-btn-primary group !hidden !h-9 !py-0 sm:!inline-flex"
               >
-                Analyze Address
+                Analyze an address
+                <span className="geo-btn-arrow" aria-hidden>→</span>
               </Link>
               <Link
                 to="/analyze"
-                className="inline-flex h-9 items-center justify-center rounded-full bg-spotcore-accent px-3 text-sm font-semibold text-white shadow-[0_18px_50px_-18px_rgba(15,124,117,0.38)] hover:bg-spotcore-accent-hover sm:hidden"
+                className="geo-btn-primary !h-9 !px-3 !py-0 sm:!hidden"
               >
                 Analyze
               </Link>

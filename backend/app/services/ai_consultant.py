@@ -24,6 +24,7 @@ from app.models.schemas import (
     AnalyzeSiteResponse,
     ZoningAnswerResponse,
     ZoningCitation,
+    ZoningOverlayNote,
 )
 from app.observability.pipeline_events import log_event
 from app.prompts import (
@@ -34,7 +35,7 @@ from app.prompts import (
     ZONING_QA_SYSTEM_PROMPT_V2,
     zoning_qa_user_prompt_v2,
 )
-from app.services import zoning_rag, zoning_tables
+from app.services import zoning_overlays, zoning_rag, zoning_tables
 from app.services.scoring import RawSignals
 
 logger = logging.getLogger(__name__)
@@ -304,17 +305,19 @@ def build_zoning_messages(
     jurisdiction: str = "austin_tx",
     zoning_district: str | None = None,
     address: str | None = None,
+    parcel: dict | None = None,
 ) -> tuple[list[dict], dict]:
     """Decide the pre-screen status in code and build the V2 chat messages that explain it.
 
-    Returns (messages, pre_screen). Shared by get_zoning_answer() and backend/evals/.
+    `parcel` is zoning_geo.resolve_zoning_at_point()'s result, if the caller looked
+    one up. Returns (messages, pre_screen). Shared by get_zoning_answer() and backend/evals/.
     """
-    pre_screen = zoning_tables.pre_screen_status(question, zoning_district, jurisdiction=jurisdiction)
+    pre_screen = zoning_overlays.pre_screen_request(question, zoning_district, parcel, jurisdiction=jurisdiction)
     user_msg = zoning_qa_user_prompt_v2(
         question=question,
         excerpts=excerpts,
         pre_screen=pre_screen,
-        zoning_district=zoning_district,
+        zoning_district=pre_screen.get("zoning_code") or zoning_district,
         address=address,
     )
     messages = [
@@ -329,6 +332,7 @@ async def get_zoning_answer(
     jurisdiction: str = "austin_tx",
     zoning_district: str | None = None,
     address: str | None = None,
+    parcel: dict | None = None,
     k: int = 6,
 ) -> ZoningAnswerResponse:
     """
@@ -337,8 +341,9 @@ async def get_zoning_answer(
 
     Pipeline
     --------
-    1. zoning_tables.pre_screen_status()  ->  status from the § 25-2-491 use table
-                                              (unclear unless the match is confident)
+    1. zoning_overlays.pre_screen_request() ->  status from the § 25-2-491 use table
+                                              for the base district, adjusted for the
+                                              parcel's overlays (unclear unless confident)
     2. zoning_rag.retrieve()              ->  top-k relevant zoning code chunks
     3. ZONING_QA_SYSTEM_PROMPT_V2 + zoning_qa_user_prompt_v2  ->  messages
     4. LLM call  ->  plain-prose explanation of that status, cited inline as (§ 25-2-XXX)
@@ -354,7 +359,7 @@ async def get_zoning_answer(
     """
     excerpts = zoning_rag.retrieve(question, jurisdiction=jurisdiction, k=k)
     messages, pre_screen = build_zoning_messages(
-        question, excerpts, jurisdiction=jurisdiction, zoning_district=zoning_district, address=address
+        question, excerpts, jurisdiction=jurisdiction, zoning_district=zoning_district, address=address, parcel=parcel
     )
 
     try:
@@ -384,4 +389,12 @@ async def get_zoning_answer(
         status_reason=pre_screen["reason"],
         matched_use=pre_screen["matched_use"],
         table_value=pre_screen["value"],
+        status_citations=pre_screen.get("citations", []),
+        zoning_code=pre_screen.get("zoning_code"),
+        overlays=pre_screen.get("overlays", []),
+        overlay_notes=[ZoningOverlayNote(**n) for n in pre_screen.get("overlay_notes", [])],
+        district_source=pre_screen.get("district_source", "none"),
+        case_numbers=pre_screen.get("case_numbers", []),
+        zoning_data_source=parcel.get("source") if parcel else None,
+        zoning_data_retrieved_at=parcel.get("retrieved_at") if parcel else None,
     )

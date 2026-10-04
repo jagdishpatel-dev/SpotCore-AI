@@ -17,7 +17,7 @@
   .gs-pin-subject {
     width: 16px;
     height: 16px;
-    box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.25), 0 0 22px var(--g);
+    box-shadow: 0 0 0 2px rgba(15, 111, 104, 0.25), 0 0 22px var(--g);
   }
   @keyframes gs-pin-pop {
     from {

@@ -3,21 +3,21 @@ import { cn } from '$lib/utils/cn';
 import type { CSSProperties, ReactNode } from 'react';
 
 const toneToBorder: Record<string, string> = {
-  neutral: 'rgba(148, 163, 184, 0.18)',
-  cyan: 'rgba(34, 211, 238, 0.32)',
-  positive: 'rgba(34, 197, 94, 0.32)',
-  warning: 'rgba(249, 115, 22, 0.32)',
-  danger: 'rgba(239, 68, 68, 0.32)',
-  blue: 'rgba(56, 189, 248, 0.32)',
+  neutral: 'var(--border-soft)',
+  cyan: 'rgba(15, 111, 104, 0.22)',
+  positive: 'rgba(47, 125, 79, 0.24)',
+  warning: 'rgba(184, 100, 28, 0.24)',
+  danger: 'rgba(180, 65, 47, 0.24)',
+  blue: 'rgba(10, 79, 74, 0.2)',
 };
 
 const toneToGlow: Record<string, string> = {
-  neutral: 'rgba(2,6,23,0.6)',
-  cyan: 'rgba(34, 211, 238, 0.18)',
-  positive: 'rgba(34, 197, 94, 0.16)',
-  warning: 'rgba(249, 115, 22, 0.18)',
-  danger: 'rgba(239, 68, 68, 0.18)',
-  blue: 'rgba(56, 189, 248, 0.2)',
+  neutral: 'rgba(52, 44, 30, 0.22)',
+  cyan: 'rgba(15, 111, 104, 0.26)',
+  positive: 'rgba(47, 125, 79, 0.24)',
+  warning: 'rgba(184, 100, 28, 0.24)',
+  danger: 'rgba(180, 65, 47, 0.24)',
+  blue: 'rgba(10, 79, 74, 0.24)',
 };
 
 export interface GlassCardProps {

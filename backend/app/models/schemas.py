@@ -211,9 +211,20 @@ class ZoningQuestionRequest(BaseModel):
         description="Zoning corpus key under app/data/zoning/. Pilot scope: 'austin_tx' only.",
     )
     zoning_district: str | None = Field(
-        default=None, max_length=20, description="Known district code, e.g. 'CS-1', if the user has it."
+        default=None,
+        max_length=60,
+        description="Known zoning code, e.g. 'CS-1' or 'CS-MU-CO-NP'. Used only if no parcel record is found at lat/lon.",
     )
     address: str | None = Field(default=None, max_length=500)
+    lat: float | None = Field(default=None, ge=-90, le=90, description="If given with lon, the zoning on record here is looked up.")
+    lon: float | None = Field(default=None, ge=-180, le=180)
+
+
+class ZoningOverlayNote(BaseModel):
+    code: str
+    effect: str = Field(description="modeled | restricts | modifies | adds_residential | adds_uses | adds_non_etod | unknown")
+    citation: str
+    changed: bool = Field(description="Whether this overlay changed the base-district status.")
 
 
 class ZoningCitation(BaseModel):
@@ -230,11 +241,22 @@ class ZoningAnswerResponse(BaseModel):
     status: Literal["permitted", "conditional", "not_permitted", "unclear"] = "unclear"
     status_reason: str = Field(
         default="",
-        description="table | endnote | ambiguous_match | no_confident_match | unknown_district | no_district",
+        description=(
+            "table | endnote | ambiguous_match | no_confident_match | unknown_district | no_district | "
+            "overlay_table | overlay_not_modeled | unrecognized_zoning_code | conflicting_zoning_records"
+        ),
     )
     matched_use: str | None = None
-    table_value: str | None = Field(default=None, description="Raw § 25-2-491 cell, e.g. 'P', 'C', '—', '11'.")
-    status_citation: str = "§ 25-2-491"
+    table_value: str | None = Field(default=None, description="Raw § 25-2-491 cell for the base district, e.g. 'P', '—', '11'.")
+    status_citations: list[str] = Field(default_factory=list, description="Sections that decided the status.")
+    # Zoning the status was computed for
+    zoning_code: str | None = Field(default=None, description="Base district plus overlays, e.g. 'CS-MU-CO-NP'.")
+    overlays: list[str] = Field(default_factory=list)
+    overlay_notes: list[ZoningOverlayNote] = Field(default_factory=list)
+    district_source: Literal["parcel", "user", "none"] = "none"
+    case_numbers: list[str] = Field(default_factory=list, description="Zoning cases on record for the parcel.")
+    zoning_data_source: str | None = None
+    zoning_data_retrieved_at: str | None = None
     disclaimer: str = (
         "Informational only, not legal advice. Verify against the current code with the "
         "City of Austin Development Services Department before making a decision."

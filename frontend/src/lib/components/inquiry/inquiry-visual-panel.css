@@ -5,7 +5,7 @@
   --iv-sand: #efe9e1;
   --iv-ink: #1a120b;
   --iv-muted: #706b66;
-  --iv-teal: #0f7c75;
+  --iv-teal: var(--gs-accent);
   --iv-amber: #c97842;
   --iv-amber-soft: #e8c9a8;
   --iv-border: rgba(26, 18, 11, 0.08);
@@ -31,7 +31,7 @@
 .inquiry-visual__layer--base {
   background:
     radial-gradient(ellipse 85% 65% at 78% 92%, rgba(201, 120, 66, 0.22) 0%, transparent 58%),
-    radial-gradient(ellipse 50% 42% at 14% 14%, rgba(15, 124, 117, 0.12) 0%, transparent 52%),
+    radial-gradient(ellipse 50% 42% at 14% 14%, rgba(var(--gs-accent-rgb), 0.12) 0%, transparent 52%),
     linear-gradient(158deg, #fdfaf6 0%, var(--iv-cream) 42%, #f3ece3 100%);
   z-index: 0;
 }
@@ -64,7 +64,7 @@
     linear-gradient(12deg, transparent 58%, rgba(26, 18, 11, 0.04) 58.3%, transparent 58.6%),
     radial-gradient(ellipse 28% 18% at 62% 42%, rgba(26, 18, 11, 0.07) 0%, transparent 70%),
     radial-gradient(ellipse 22% 14% at 34% 55%, rgba(26, 18, 11, 0.06) 0%, transparent 68%),
-    radial-gradient(ellipse 18% 12% at 78% 62%, rgba(15, 124, 117, 0.08) 0%, transparent 65%);
+    radial-gradient(ellipse 18% 12% at 78% 62%, rgba(var(--gs-accent-rgb), 0.08) 0%, transparent 65%);
   filter: blur(0.4px);
   opacity: 0.9;
 }
@@ -89,7 +89,7 @@
     linear-gradient(
       -12deg,
       transparent 52%,
-      rgba(15, 124, 117, 0.08) 52.2%,
+      rgba(var(--gs-accent-rgb), 0.08) 52.2%,
       transparent 52.5%
     );
   mask-image: radial-gradient(ellipse 85% 65% at 50% 35%, black 20%, transparent 78%);
@@ -191,7 +191,7 @@
 
 .inquiry-visual__headline {
   margin: 0;
-  font-family: var(--font-false), var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-display), var(--font-geist-sans), system-ui, sans-serif;
   font-size: clamp(1.65rem, 3.8vw, 2.35rem);
   font-weight: 500;
   line-height: 1.12;

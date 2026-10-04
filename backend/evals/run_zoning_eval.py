@@ -6,13 +6,16 @@ evals/zoning_golden.json (Austin § 25-2-491 permitted-use questions).
 
 Modes
 -----
-table     Rules engine only: zoning_tables.pre_screen_status(). Offline. (Before
+table     Rules engine only: zoning_overlays.pre_screen_zoning() on the case's full
+          zoning code (base district + overlays) if it has one. Offline. (Before
           2026-10-01 this was the plain top lookup match; that baseline is archived
           in results/baseline/.)
 rag_only  Retrieved code excerpts + LLM, WITHOUT the verified table lookup — the
           pipeline before zoning_tables.py existed (the LLM reads raw table text).
 hybrid    Retrieved excerpts + verified table lookup + LLM, where the LLM decides
           the status (V1 prompt) — production before 2026-10-01.
+base_only Rules engine on the base district alone, overlays ignored (how SpotCore
+          worked before overlays were read). Offline.
 v2        Production today: status from pre_screen_status(), LLM explains it (V2
           prompt). Also checks whether the LLM's prose agrees with that status.
 
@@ -53,15 +56,20 @@ import time
 from collections import defaultdict
 from pathlib import Path
 
-from app.services import zoning_tables
+from app.services import zoning_overlays, zoning_tables
 
 EVAL_DIR = Path(__file__).resolve().parent
-CASE_SETS = {"golden": EVAL_DIR / "zoning_golden.json", "holdout": EVAL_DIR / "zoning_holdout.json"}
+CASE_SETS = {
+    "golden": EVAL_DIR / "zoning_golden.json",
+    "holdout": EVAL_DIR / "zoning_holdout.json",
+    "overlays": EVAL_DIR / "zoning_overlays.json",
+}
 # Reassigned in main(): results/<run name>/<case set>/
 RESULTS_DIR = EVAL_DIR / "results" / "latest" / "golden"
 RETRIEVAL_CACHE = RESULTS_DIR / "retrieval_cache.json"
 
-ALL_MODES = ("table", "rag_only", "hybrid", "v2")
+ALL_MODES = ("table", "base_only", "rag_only", "hybrid", "v2")
+OFFLINE_MODES = ("table", "base_only")
 STATUSES = ("permitted", "conditional", "not_permitted", "unclear")
 
 _STATUS_SUFFIX = """
@@ -86,8 +94,15 @@ def parse_status(answer: str) -> str | None:
 # Predictors
 # ---------------------------------------------------------------------------
 
-def predict_table(case: dict) -> dict:
-    pre = zoning_tables.pre_screen_status(case["question"], case["district"])
+def _zoning(case: dict) -> str | None:
+    return case.get("zoning_code") or case["district"]
+
+
+def predict_table(case: dict, base_only: bool = False) -> dict:
+    if base_only:
+        pre = zoning_tables.pre_screen_status(case["question"], case["district"])
+    else:
+        pre = zoning_overlays.pre_screen_zoning(case["question"], _zoning(case))
     return {"status": pre["status"], "reason": pre["reason"], "matched_use": pre["matched_use"], "value": pre["value"]}
 
 
@@ -104,7 +119,7 @@ def predict_v2(case: dict, retrieval_cache: dict) -> dict:
     from app.services.ai_consultant import _chat_completion, _strip_thought_tags, build_zoning_messages
 
     excerpts = _retrieve_cached(case, retrieval_cache)
-    messages, pre = build_zoning_messages(case["question"], excerpts, zoning_district=case["district"])
+    messages, pre = build_zoning_messages(case["question"], excerpts, zoning_district=_zoning(case))
     messages[-1]["content"] += _STATUS_SUFFIX
     response = _chat_completion(messages=messages, temperature=0)
     answer = _strip_thought_tags(response.choices[0].message.content or "")
@@ -198,9 +213,9 @@ def _load_cached_results(mode: str) -> dict[str, dict]:
 
 def run_mode(mode: str, cases: list[dict], *, fresh: bool, delay: float) -> list[dict]:
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    if mode == "table":
-        rows = [{"id": c["id"], **predict_table(c)} for c in cases]
-        (RESULTS_DIR / "table.jsonl").write_text(
+    if mode in OFFLINE_MODES:
+        rows = [{"id": c["id"], **predict_table(c, base_only=mode == "base_only")} for c in cases]
+        (RESULTS_DIR / f"{mode}.jsonl").write_text(
             "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8"
         )
         return rows
@@ -247,7 +262,7 @@ def score(mode: str, cases: list[dict], rows: list[dict]) -> dict:
                 t["no_status"] += 1
             if mode == "v2":
                 t["llm_agrees"] += bool(row.get("llm_agrees"))
-            if mode == "table":
+            if mode in OFFLINE_MODES:
                 if case["acceptable_uses"]:
                     t["use_match"] += row["matched_use"] in case["acceptable_uses"]
                 else:
@@ -265,14 +280,12 @@ def _pct(num: int, den: int) -> str:
 
 def print_report(mode: str, result: dict) -> None:
     totals, failures = result["totals"], result["failures"]
-    extra = "use match" if mode == "table" else "cites §491"
-    extra_key = "use_match" if mode == "table" else "cites_491"
+    extra = "use match" if mode in OFFLINE_MODES else "cites §491"
+    extra_key = "use_match" if mode in OFFLINE_MODES else "cites_491"
     print(f"\n=== {mode} ===")
     print(f"{'category':<12} {'n':>3}  {'accuracy':>8}  {'overconfident':>13}  {extra:>10}")
-    for bucket in ("all", "exact", "paraphrase", "unclear"):
-        t = totals.get(bucket)
-        if not t:
-            continue
+    for bucket in ["all", *(b for b in totals if b != "all")]:
+        t = totals[bucket]
         print(
             f"{bucket:<12} {t['n']:>3}  {_pct(t['correct'], t['n']):>8}  "
             f"{t['overconfident']:>6} ({_pct(t['overconfident'], t['n']).strip()})  {_pct(t[extra_key], t['n']):>10}"
@@ -286,7 +299,7 @@ def print_report(mode: str, result: dict) -> None:
         print("  misses:")
         for case, row in failures:
             got = row.get("status") or row.get("error", "no status")
-            detail = f"  matched={row['matched_use']!r} reason={row.get('reason')}" if mode == "table" else ""
+            detail = f"  matched={row['matched_use']!r} reason={row.get('reason')}" if mode in OFFLINE_MODES else ""
             print(f"    {case['id']:<11} expected={case['expected_status']:<13} got={got}{detail}")
 
 
@@ -296,7 +309,7 @@ def main() -> None:
     parser.add_argument("--set", dest="case_set", choices=sorted(CASE_SETS), default="golden")
     parser.add_argument("--run-name", default="latest", help="Results go to results/<run name>/<set>/.")
     parser.add_argument("--limit", type=int, default=None, help="Only run the first N cases.")
-    parser.add_argument("--category", choices=["exact", "paraphrase", "unclear"], default=None)
+    parser.add_argument("--category", default=None, help="Only cases of this category (e.g. paraphrase, etod).")
     parser.add_argument("--fresh", action="store_true", help="Ignore cached LLM results.")
     parser.add_argument("--delay", type=float, default=2.0, help="Seconds between LLM calls (free-tier rate limits).")
     args = parser.parse_args()

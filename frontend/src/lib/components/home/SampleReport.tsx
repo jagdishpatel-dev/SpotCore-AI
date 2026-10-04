@@ -22,13 +22,13 @@ export default function SampleReport({ startHref = '/analyze' }: SampleReportPro
     >
       <div className="geo-section">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-          <article className="reveal-init geo-card overflow-hidden shadow-gs-hero" data-reveal-child>
+          <article className="reveal-init geo-card overflow-hidden shadow-gs-hero hover:!translate-y-0 lg:rotate-[-1deg]" data-reveal-child>
             <header className="flex flex-wrap items-center justify-between gap-3 border-b border-spotcore-border bg-spotcore-surface px-4 py-3 md:px-5">
               <div>
                 <p className="text-sm font-semibold text-spotcore-text">South Lamar — Fast casual</p>
                 <p className="text-xs text-spotcore-text-muted">1847 S Lamar Blvd, Austin, TX</p>
               </div>
-              <span className="rounded-full bg-spotcore-accent-soft px-3 py-1 text-xs font-semibold text-spotcore-accent">
+              <span className="rounded-md bg-spotcore-accent-soft px-2.5 py-1 font-mono text-xs font-medium text-spotcore-accent">
                 78 · Strong
               </span>
             </header>
@@ -38,7 +38,7 @@ export default function SampleReport({ startHref = '/analyze' }: SampleReportPro
                 <div key={m.label}>
                   <div className="flex items-center justify-between text-xs text-spotcore-text-muted">
                     <span>{m.label}</span>
-                    <span className="font-sans font-medium tabular-nums text-spotcore-text">{m.value}</span>
+                    <span className="font-mono font-medium tabular-nums text-spotcore-text">{m.value}</span>
                   </div>
                   <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-spotcore-surface-soft">
                     <span
@@ -61,10 +61,10 @@ export default function SampleReport({ startHref = '/analyze' }: SampleReportPro
 
           <div className="reveal-init from-right" data-reveal-child>
             <p className="geo-label">Sample report</p>
-            <h2 id="sample-report-heading" className="geo-section-title mt-3">
+            <h2 id="sample-report-heading" className="geo-section-title mt-4">
               The same UI you get after analysis
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-spotcore-text-muted">
+            <p className="geo-section-lead mt-4">
               Every SpotCore run produces a structured site report: viability score, pillar drivers,
               demand outlook, competition map context, and an AI strategic summary your team can share.
             </p>
@@ -83,8 +83,9 @@ export default function SampleReport({ startHref = '/analyze' }: SampleReportPro
               </li>
             </ul>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href={startHref} className="geo-btn-primary">
+              <a href={startHref} className="geo-btn-primary group">
                 Analyze a location
+                <span className="geo-btn-arrow" aria-hidden="true">→</span>
               </a>
               <a href="#demo" className="geo-btn-ghost">
                 View live demo

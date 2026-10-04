@@ -7,12 +7,12 @@ export default function DemoSection() {
   return (
     <section aria-labelledby="demo-section-heading" ref={ref}>
       <div className="geo-section">
-        <div className="reveal-init mx-auto max-w-3xl text-center" data-reveal-child>
+        <div className="reveal-init max-w-3xl" data-reveal-child>
           <p className="geo-label">Live preview</p>
-          <h2 id="demo-section-heading" className="geo-section-title mt-3">
+          <h2 id="demo-section-heading" className="geo-section-title mt-4">
             See how a site gets scored
           </h2>
-          <p className="mt-3 text-base text-spotcore-text-muted">
+          <p className="geo-section-lead mt-4">
             Try a sample location to see how SpotCore evaluates demand, competition, and fit—no account
             required.
           </p>

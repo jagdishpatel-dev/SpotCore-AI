@@ -91,7 +91,7 @@ export default function BusinessSnapshot({
                 {factors.map((f, i) => (
                   <Reveal key={f} y={8} duration={420} delay={120 + i * 70}>
                     <li className="flex items-start gap-3 text-[15px] leading-relaxed text-ink/90">
-                      <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent shadow-[0_0_10px_rgba(34,211,238,0.6)]"></span>
+                      <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent shadow-[0_0_0_3px_rgba(15,111,104,0.14)]"></span>
                       <span>{f}</span>
                     </li>
                   </Reveal>

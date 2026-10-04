@@ -15,8 +15,8 @@ module.exports = {
           'sans-serif',
         ],
         display: [
-          'var(--font-false)',
-          'False',
+          'var(--font-display)',
+          'Bricolage Grotesque Variable',
           'system-ui',
           '-apple-system',
           'BlinkMacSystemFont',
@@ -37,6 +37,7 @@ module.exports = {
         hero: ['3.25rem', { lineHeight: '1.08', letterSpacing: '-0.034em' }],
         'hero-lg': ['3.75rem', { lineHeight: '1.06', letterSpacing: '-0.036em' }],
         'hero-xl': ['4.5rem', { lineHeight: '1.04', letterSpacing: '-0.038em' }],
+        'hero-2xl': ['5.5rem', { lineHeight: '0.96', letterSpacing: '-0.048em' }],
         lead: ['1.0625rem', { lineHeight: '1.7', letterSpacing: '-0.008em' }],
         'lead-md': ['1.125rem', { lineHeight: '1.68', letterSpacing: '-0.01em' }],
       },
@@ -94,16 +95,16 @@ module.exports = {
         },
       },
       boxShadow: {
-        'gs-hero': '0 12px 40px rgba(15, 124, 117, 0.08)',
-        'gs-glass': '0 14px 40px rgba(15, 124, 117, 0.10)',
-        card: '0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 40px -12px rgba(2, 6, 23, 0.7)',
+        'gs-hero': '0 1px 2px rgba(52, 44, 30, 0.06), 0 24px 60px -24px rgba(52, 44, 30, 0.22)',
+        'gs-glass': '0 14px 40px rgba(15, 111, 104, 0.10)',
+        card: '0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 40px -12px rgba(52, 44, 30, 0.18)',
         'card-hover':
-          '0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 18px 60px -16px rgba(34, 211, 238, 0.18)',
-        glass: '0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 8px 30px rgba(2, 6, 23, 0.6)',
-        nav: '0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 8px 24px rgba(2, 6, 23, 0.6)',
-        glow: '0 0 0 1px rgba(34, 211, 238, 0.18), 0 24px 80px -24px rgba(34, 211, 238, 0.3)',
+          '0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 18px 60px -16px rgba(15, 111, 104, 0.18)',
+        glass: '0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 8px 30px rgba(52, 44, 30, 0.14)',
+        nav: '0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 8px 24px rgba(52, 44, 30, 0.14)',
+        glow: '0 0 0 1px rgba(15, 111, 104, 0.18), 0 24px 80px -24px rgba(15, 111, 104, 0.3)',
         'glow-soft':
-          '0 0 0 1px rgba(34, 211, 238, 0.18), 0 12px 40px -10px rgba(34, 211, 238, 0.22)',
+          '0 0 0 1px rgba(15, 111, 104, 0.18), 0 12px 40px -10px rgba(15, 111, 104, 0.22)',
       },
       keyframes: {
         'fade-in-up': {
@@ -155,12 +156,12 @@ module.exports = {
         'cta-pulse': {
           '0%, 100%': {
             boxShadow:
-              '0 0 0 0 rgba(34, 211, 238, 0.18), 0 18px 60px -22px rgba(34, 211, 238, 0.45)',
+              '0 0 0 0 rgba(15, 111, 104, 0.18), 0 18px 60px -22px rgba(15, 111, 104, 0.45)',
           },
           '50%': {
             boxShadow:
-              '0 0 0 8px rgba(34, 211, 238, 0)' +
-              ', 0 26px 70px -22px rgba(34, 211, 238, 0.55)',
+              '0 0 0 8px rgba(15, 111, 104, 0)' +
+              ', 0 26px 70px -22px rgba(15, 111, 104, 0.55)',
           },
         },
         'caret-blink': {

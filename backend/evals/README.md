@@ -27,6 +27,7 @@ From `backend/`:
 pip install -r requirements-dev.txt
 python -m pytest                                        # unit tests, offline, <1s
 python -m evals.run_zoning_eval --mode table            # deterministic lookup, offline
+python -m evals.run_zoning_eval --set overlays --mode base_only table
 python -m evals.run_zoning_eval --mode all --delay 2    # + LLM modes (needs OPENROUTER_API_KEY)
 ```
 
@@ -85,6 +86,35 @@ results: `results/baseline/` and `results/latest/` (git-ignored).
 - `get_zoning_answer()` returns `status`, `status_reason`, `matched_use`, `table_value`
   from code. The LLM gets the status as fixed and only explains it. The status is
   returned even when the LLM call fails.
+
+### Overlays (combining districts): `zoning_overlays.json` (24)
+
+Parcels carry overlays on top of the base district (`CS-MU-CO-ETOD-DBETOD-NP`), and the
+`§ 25-2-491` table alone doesn't account for them. `app/services/zoning_overlays.py` now applies
+ETOD Tables D/E exactly (§ 25-2-653) and returns `unclear` where an overlay can change
+the answer in ways SpotCore doesn't model (CO § 25-2-332, NCCD, CURE, …).
+
+| pipeline                                   | accuracy | confident wrong |
+|--------------------------------------------|---------:|----------------:|
+| Base district only (`base_only`, before)   | 25.0%    | 18              |
+| **Overlay-aware (`table`)**                | **100%** | **0**           |
+
+The 100% is partly built in: these cases were written from the same reading of the code as the
+implementation. The citywide numbers below don't depend on these cases.
+
+**Citywide impact** (all 9,373 Austin zoning polygons with a current base district, 2026-10-01):
+- 76.5% carry at least one overlay; 45.5% carry a CO.
+- For common questions, the base-only engine gave a definite answer that overlays actually
+  make uncertain on 42–60% of polygons (gas station 49.8%, liquor store 51.1%, coffee shop 59.8%,
+  bar 47.8%, self storage 42.2%).
+- It gave a definitely wrong answer on 486 polygons for "gas station" and 326 for "self storage"
+  (ETOD Table D prohibits both).
+- Tradeoff: about half of answers are now "unclear". Reading each parcel's CO ordinance is the
+  way to bring that down.
+
+Address lookup: `/zoning-ask` with `lat`/`lon` now reads the zoning on record at that point
+(`zoning_geo.resolve_zoning_at_point`) instead of trusting a user-supplied district. This found
+that the demo's "South Congress" preset, labeled CS-1, is actually `CS-MU-CO-ETOD-DBETOD-NP`.
 
 ### LLM explanation vs. rules-engine status (`v2`)
 The LLM's prose agreed with the code-decided status in 78 of 81 answers (96.3%). In all 3

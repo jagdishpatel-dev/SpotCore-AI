@@ -125,8 +125,8 @@ export default function DemandCharts({ result }: DemandChartsProps) {
               <svg viewBox={`0 0 ${W} ${H}`} className="h-44 w-full md:h-48">
                 <defs>
                   <linearGradient id="gs-hist-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.45" />
-                    <stop offset="100%" stopColor="#38bdf8" stopOpacity="0" />
+                    <stop offset="0%" stopColor="#0f6f68" stopOpacity="0.22" />
+                    <stop offset="100%" stopColor="#0f6f68" stopOpacity="0" />
                   </linearGradient>
                 </defs>
                 {gridYs.map((y) => (
@@ -136,7 +136,7 @@ export default function DemandCharts({ result }: DemandChartsProps) {
                     x2={W - PAD.right}
                     y1={y}
                     y2={y}
-                    stroke="rgba(148,163,184,0.08)"
+                    stroke="rgba(52,44,30,0.08)"
                     strokeDasharray="2 4"
                   />
                 ))}
@@ -144,7 +144,7 @@ export default function DemandCharts({ result }: DemandChartsProps) {
                 <path
                   d={hist.line}
                   fill="none"
-                  stroke="#38bdf8"
+                  stroke="#0f6f68"
                   strokeWidth="1.8"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -179,8 +179,8 @@ export default function DemandCharts({ result }: DemandChartsProps) {
               <svg viewBox={`0 0 ${W} ${H}`} className="h-44 w-full md:h-48">
                 <defs>
                   <linearGradient id="gs-fc-band" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.32" />
-                    <stop offset="100%" stopColor="#22d3ee" stopOpacity="0.06" />
+                    <stop offset="0%" stopColor="#0f6f68" stopOpacity="0.32" />
+                    <stop offset="100%" stopColor="#0f6f68" stopOpacity="0.06" />
                   </linearGradient>
                 </defs>
 
@@ -191,7 +191,7 @@ export default function DemandCharts({ result }: DemandChartsProps) {
                     x2={W - PAD.right}
                     y1={y}
                     y2={y}
-                    stroke="rgba(148,163,184,0.08)"
+                    stroke="rgba(52,44,30,0.08)"
                     strokeDasharray="2 4"
                   />
                 ))}
@@ -199,7 +199,7 @@ export default function DemandCharts({ result }: DemandChartsProps) {
                 <path
                   d={hist.line}
                   fill="none"
-                  stroke="rgba(148,163,184,0.45)"
+                  stroke="rgba(52,44,30,0.35)"
                   strokeWidth="1.4"
                   strokeLinecap="round"
                 />
@@ -210,13 +210,13 @@ export default function DemandCharts({ result }: DemandChartsProps) {
                   x2={fc.divider.x}
                   y1={fc.divider.top}
                   y2={fc.divider.bottom}
-                  stroke="rgba(34,211,238,0.4)"
+                  stroke="rgba(15,111,104,0.4)"
                   strokeDasharray="3 4"
                 />
                 <path
                   d={fc.mid}
                   fill="none"
-                  stroke="#22d3ee"
+                  stroke="#0f6f68"
                   strokeWidth="1.9"
                   strokeLinecap="round"
                   strokeLinejoin="round"

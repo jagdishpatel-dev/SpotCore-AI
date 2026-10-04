@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import BrandMark from './BrandMark';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -18,12 +19,10 @@ export default function AppFooter() {
       <div className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-10">
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <Link to="/" className="group flex items-center gap-3">
-            <div className="grid h-8 w-8 place-items-center rounded-lg border border-spotcore-accent/35 bg-gradient-to-b from-spotcore-accent-soft to-spotcore-accent text-[10px] font-bold tracking-tight text-white shadow-[0_0_0_1px_rgba(15,124,117,0.2)]">
-              GS
-            </div>
+            <BrandMark className="h-8 w-8" />
             <div className="leading-tight">
-              <p className="text-sm font-semibold text-text-primary">SpotCore</p>
-              <p className="text-[11px] text-text-muted">Location intelligence for operators</p>
+              <p className="font-display text-base font-semibold tracking-[-0.03em] text-text-primary">SpotCore</p>
+              <p className="text-[12px] text-text-muted">Zoning and location pre-screen</p>
             </div>
           </Link>
 
@@ -42,9 +41,10 @@ export default function AppFooter() {
 
         <div className="mt-6 flex flex-col items-start justify-between gap-2 border-t border-[var(--border-soft)] pt-6 text-[12px] text-text-muted md:flex-row md:items-center">
           <p className="max-w-xl leading-relaxed">
-            SpotCore · Premium location intelligence · Not financial or legal advice.
+            Results are preliminary pre-screens, not legal advice or approval from any authority.
+            Confirm with the local zoning office before you sign.
           </p>
-          <p>Built with React + FastAPI</p>
+          <p className="font-mono">© {new Date().getFullYear()} SpotCore</p>
         </div>
       </div>
     </footer>
