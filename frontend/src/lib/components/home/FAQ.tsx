@@ -13,12 +13,15 @@ export default function FAQ() {
   const ref = useReveal();
   return (
     <section id="faq" className="scroll-mt-24 bg-spotcore-surface-soft" aria-labelledby="faq-heading" ref={ref}>
-      <div className="geo-section">
-        <p className="geo-label">FAQ</p>
-        <h2 id="faq-heading" className="geo-section-title mt-3">Common questions</h2>
-        <div className="mt-8 rounded-2xl border border-spotcore-border bg-spotcore-surface px-2 py-1 md:px-4">
-          <Accordion items={items} />
+      <div className="geo-section grid gap-10 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-20">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <p className="geo-label">FAQ</p>
+          <h2 id="faq-heading" className="geo-section-title mt-4">Common questions</h2>
+          <p className="geo-section-lead mt-4">
+            Something else on your mind? Run a sample address and read the report—every source is named inside.
+          </p>
         </div>
+        <Accordion items={items} className="border-y border-spotcore-border" />
       </div>
     </section>
   );

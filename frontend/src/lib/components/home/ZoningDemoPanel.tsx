@@ -133,23 +133,23 @@ export default function ZoningDemoPanel() {
   }
 
   return (
-    <div className="geo-glass-soft rounded-2xl p-6 md:p-8">
+    <div className="geo-card p-6 hover:!translate-y-0 md:p-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="geo-label">Live · Austin, TX pilot</p>
-          <h3 className="mt-1.5 text-lg font-medium text-[var(--gs-text)] md:text-xl">
+          <h3 className="mt-2 text-lg text-[var(--gs-text)] md:text-xl">
             Ask what you can build, get a cited answer
           </h3>
         </div>
-        <div className="flex items-center gap-1.5 rounded-full border border-white/60 bg-white/50 px-3 py-1.5 text-xs text-[var(--gs-text-muted)]">
+        <div className="flex items-center gap-1.5 rounded-xl border border-[var(--gs-border)] bg-[var(--gs-surface-soft)] px-2 py-1.5 text-xs text-[var(--gs-text-muted)]">
           <MapPin className="h-3.5 w-3.5 text-accent-cyan" />
           {LOCATIONS.map((loc, i) => (
             <button
               key={loc.label}
               type="button"
               className={cn(
-                'rounded-full px-2 py-0.5 transition-colors',
-                i === locationIdx ? 'bg-accent-cyan/20 font-medium text-[var(--gs-text)]' : 'hover:text-[var(--gs-text)]',
+                'rounded-lg px-2 py-0.5 transition-colors',
+                i === locationIdx ? 'bg-[var(--gs-surface)] font-medium text-[var(--gs-text)] shadow-sm' : 'hover:text-[var(--gs-text)]',
               )}
               onClick={() => setLocationIdx(i)}
             >
@@ -161,7 +161,7 @@ export default function ZoningDemoPanel() {
 
       <div className="mt-5 grid gap-5 lg:grid-cols-[1fr_1.1fr]">
         <div>
-          <div className="overflow-hidden rounded-xl border border-white/60">
+          <div className="overflow-hidden rounded-xl border border-[var(--gs-border)]">
             <SiteMap
               lat={location.lat}
               lon={location.lon}
@@ -218,7 +218,7 @@ export default function ZoningDemoPanel() {
           </div>
 
           {phase !== 'idle' ? (
-            <div className="mt-6 border-t border-white/50 pt-5">
+            <div className="mt-6 border-t border-[var(--gs-border)] pt-5">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
                 {STEPS.map((step, i) => (
                   <div
@@ -246,11 +246,31 @@ export default function ZoningDemoPanel() {
                 ))}
               </div>
 
-              {phase === 'error' ? <p className="mt-4 text-sm text-danger">{errorMsg}</p> : null}
+              {isRunning ? (
+                <div className="mt-4 space-y-2.5 rounded-xl border border-[var(--gs-border)] p-4" aria-hidden="true">
+                  <div className="geo-skeleton h-4 w-40" />
+                  <div className="geo-skeleton h-3 w-full" />
+                  <div className="geo-skeleton h-3 w-[92%]" />
+                  <div className="geo-skeleton h-3 w-[78%]" />
+                  <div className="flex gap-1.5 pt-1.5">
+                    <div className="geo-skeleton h-5 w-20 !rounded-md" />
+                    <div className="geo-skeleton h-5 w-24 !rounded-md" />
+                  </div>
+                </div>
+              ) : null}
+
+              {phase === 'error' ? (
+                <p
+                  role="alert"
+                  className="mt-4 rounded-xl border border-[rgba(180,65,47,0.22)] bg-[rgba(180,65,47,0.06)] px-4 py-3 text-sm text-danger"
+                >
+                  {errorMsg}
+                </p>
+              ) : null}
 
               {phase === 'done' && result ? (
-                <div className="mt-4 rounded-xl border border-white/60 bg-white/40 p-4">
-                  <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b border-white/50 pb-3">
+                <div className="mt-4 rounded-xl border border-[var(--gs-border)] bg-[color-mix(in_srgb,var(--gs-surface-soft)_50%,transparent)] p-4">
+                  <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b border-[var(--gs-border)] pb-3">
                     <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--gs-text)]">
                       <span
                         className="inline-block h-2.5 w-2.5 rounded-full"
@@ -277,7 +297,7 @@ export default function ZoningDemoPanel() {
                       {result.citations.slice(0, 6).map((c) => (
                         <span
                           key={c.citation}
-                          className="rounded-full border border-white/60 bg-white/60 px-2 py-0.5 text-[11px] text-[var(--gs-text-muted)]"
+                          className="rounded-md border border-[var(--gs-border)] bg-[var(--gs-surface)] px-2 py-0.5 font-mono text-[11px] text-[var(--gs-text-muted)]"
                           title={c.title}
                         >
                           § {c.citation}

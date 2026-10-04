@@ -6,7 +6,7 @@ export default function RootLayout() {
   return (
     <div className="flex min-h-screen flex-col bg-spotcore-bg text-spotcore-text">
       <AppChrome />
-      <main className="flex flex-1 flex-col">
+      <main id="main" className="flex flex-1 flex-col">
         <Outlet />
       </main>
       <AppFooter />

@@ -21,8 +21,8 @@ export default function FooterCTA({
             className="pointer-events-none absolute inset-0"
             style={{
               background: `
-          radial-gradient(60% 80% at 50% 0%, rgba(34, 211, 238, 0.18), transparent 60%),
-          radial-gradient(50% 60% at 100% 100%, rgba(56, 189, 248, 0.10), transparent 60%)`,
+          radial-gradient(60% 80% at 50% 0%, rgba(15, 111, 104, 0.12), transparent 60%),
+          radial-gradient(50% 60% at 100% 100%, rgba(184, 160, 120, 0.14), transparent 60%)`,
             }}
           ></div>
           <div className="relative">
@@ -39,7 +39,7 @@ export default function FooterCTA({
               <button
                 type="button"
                 onClick={onAnalyzeAnother}
-                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-b from-cyan-400 to-cyan-600 px-7 py-3.5 text-sm font-semibold text-slate-950 shadow-[0_0_0_1px_rgba(34,211,238,0.3),0_18px_48px_-12px_rgba(34,211,238,0.45)] transition-transform duration-200 hover:scale-[1.02] active:scale-[0.99]"
+                className="geo-btn-primary group !px-7 !py-3.5"
               >
                 Run another analysis
                 <span className="transition-transform duration-200 group-hover:translate-x-0.5">
@@ -50,7 +50,7 @@ export default function FooterCTA({
                 <button
                   type="button"
                   onClick={onSecondary}
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white/[0.02] px-6 py-3.5 text-sm font-medium text-ink transition hover:border-accent/40 hover:bg-white/[0.04]"
+                  className="geo-btn-ghost !px-6 !py-3.5"
                 >
                   {secondaryLabel}
                 </button>

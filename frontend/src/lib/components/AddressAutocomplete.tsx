@@ -8,7 +8,7 @@ const DEBOUNCE_MS = 320;
 const MIN_CHARS = 3;
 
 const defaultInputClass =
-  'mt-1 w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink shadow-sm ring-1 ring-slate-900/[0.02] placeholder:text-muted/45 transition focus:border-teal-600/40 focus:outline-none focus:ring-4 focus:ring-teal-600/15 disabled:cursor-not-allowed disabled:opacity-50';
+  'mt-1 w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink shadow-sm ring-1 ring-slate-900/[0.02] placeholder:text-muted/45 transition focus:border-spotcore-accent/50 focus:outline-none focus:ring-4 focus:ring-spotcore-accent/15 disabled:cursor-not-allowed disabled:opacity-50';
 
 export interface AddressAutocompleteProps {
   value: string;
@@ -153,7 +153,7 @@ export default function AddressAutocomplete({
       />
       {loading ? (
         <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 pt-1">
-          <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-line border-t-teal-700"></span>
+          <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-line border-t-spotcore-accent"></span>
         </div>
       ) : null}
 
@@ -179,7 +179,7 @@ export default function AddressAutocomplete({
                 aria-selected={i === active}
               >
                 <span
-                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-700"
+                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-spotcore-accent"
                   aria-hidden="true"
                 ></span>
                 <span className="leading-snug">{s.label}</span>

@@ -34,7 +34,11 @@ export default function CountUp({
 
   useEffect(() => {
     if (immediate) start();
-    return () => cancelRef.current?.();
+    return () => {
+      cancelRef.current?.();
+      // Allow a restart after cleanup (StrictMode remounts effects in dev).
+      startedRef.current = false;
+    };
   }, [immediate, from, to, duration]);
 
   useEffect(() => {

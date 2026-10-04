@@ -34,20 +34,16 @@ export default function ReportPage() {
   }
 
   if (!ready || !result) {
-    return (
-      <div className="mx-auto max-w-lg flex-1 px-4 py-24 text-center text-muted md:py-32">
-        <p className="text-sm">Loading report…</p>
-      </div>
-    );
+    return <ReportSkeleton />;
   }
 
   return (
     <>
       {viewingSample ? (
         <div className="mx-auto max-w-6xl px-4 pt-6 md:px-6">
-          <div className="flex flex-col gap-3 rounded-2xl border border-accent/30 bg-cyan-950/20 px-4 py-3 text-sm text-ink md:flex-row md:items-center md:justify-between md:px-5">
+          <div className="flex flex-col gap-3 rounded-xl border border-[rgba(15,111,104,0.2)] bg-spotcore-accent-soft px-4 py-3 text-sm text-ink md:flex-row md:items-center md:justify-between md:px-5">
             <p className="leading-relaxed">
-              <span className="font-semibold text-accent">Sample report.</span>
+              <span className="mr-1 rounded bg-spotcore-accent px-1.5 py-0.5 font-mono text-[11px] text-white">Sample</span>
               {' '}
               Illustrative scores so you can see the layout. Run
               {' '}
@@ -59,7 +55,7 @@ export default function ReportPage() {
             </p>
             <button
               type="button"
-              className="shrink-0 rounded-full border border-line bg-white/[0.02] px-3.5 py-1.5 text-xs font-medium text-ink transition hover:border-accent/40"
+              className="geo-btn-ghost shrink-0 !px-3.5 !py-1.5 !text-xs"
               onClick={dismissSample}
             >
               Back to form
@@ -75,5 +71,40 @@ export default function ReportPage() {
         onSecondary={viewingSample ? null : analyzeAnother}
       />
     </>
+  );
+}
+
+/** Layout-shaped placeholder shown while the saved report hydrates. */
+function ReportSkeleton() {
+  return (
+    <div className="mx-auto w-full max-w-6xl flex-1 px-4 pb-16 pt-8 md:px-6" role="status" aria-label="Loading report">
+      <div className="flex flex-wrap gap-2">
+        {[180, 96, 140, 120].map((w) => (
+          <div key={w} className="geo-skeleton h-7 !rounded-lg" style={{ width: w }} />
+        ))}
+      </div>
+      <div className="mx-auto mt-14 flex max-w-3xl flex-col items-center gap-6 rounded-[20px] border border-spotcore-border bg-spotcore-surface px-6 py-14">
+        <div className="geo-skeleton h-3 w-32" />
+        <div className="geo-skeleton h-20 w-48 !rounded-2xl" />
+        <div className="flex gap-2">
+          <div className="geo-skeleton h-7 w-28 !rounded-lg" />
+          <div className="geo-skeleton h-7 w-32 !rounded-lg" />
+        </div>
+        <div className="w-full max-w-md space-y-2">
+          <div className="geo-skeleton h-3 w-full" />
+          <div className="geo-skeleton mx-auto h-3 w-4/5" />
+        </div>
+      </div>
+      <div className="mt-12 grid gap-4 md:grid-cols-3">
+        {[0, 1, 2].map((i) => (
+          <div key={i} className="space-y-3 rounded-[20px] border border-spotcore-border bg-spotcore-surface p-6">
+            <div className="geo-skeleton h-3 w-24" />
+            <div className="geo-skeleton h-8 w-20" />
+            <div className="geo-skeleton h-2 w-full" />
+          </div>
+        ))}
+      </div>
+      <span className="sr-only">Loading report…</span>
+    </div>
   );
 }

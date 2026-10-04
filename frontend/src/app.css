@@ -4,7 +4,7 @@
 @import '@fontsource/geist-sans/700.css';
 @import '@fontsource/geist-mono/400.css';
 @import '@fontsource/geist-mono/500.css';
-@import './lib/fonts/false.css';
+@import '@fontsource-variable/bricolage-grotesque/opsz.css';
 @import 'leaflet/dist/leaflet.css';
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -12,6 +12,9 @@
 :root {
   --font-geist-sans: 'Geist Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-geist-mono: 'Geist Mono', ui-monospace, monospace;
+  --font-display: 'Bricolage Grotesque Variable', 'Geist Sans', system-ui, sans-serif;
+  /* Legacy alias: the old "False" hero face now resolves to the display face. */
+  --font-false: var(--font-display);
 }
 
 @tailwind base;
@@ -29,18 +32,25 @@
 
 :root {
   /* SpotCore marketing palette (homepage + shared utilities) */
-  --gs-bg: #f6f2ea;
-  --gs-surface: #ffffff;
-  --gs-surface-soft: #f1ece4;
-  --gs-text: #1e2430;
-  --gs-text-lead: #525b6b;
-  --gs-text-muted: #6b7280;
-  --gs-accent: #0f7c75;
-  --gs-accent-hover: #0c615c;
-  --gs-accent-soft: #d8eee9;
-  --gs-accent-rgb: 15, 124, 117;
-  --gs-accent-2: #2563eb;
-  --gs-border: #e6ded2;
+  --gs-bg: #f5f1e9;
+  --gs-surface: #fffdf9;
+  --gs-surface-soft: #efe9df;
+  --gs-text: #17201e;
+  --gs-text-lead: #4b524f;
+  --gs-text-muted: #6d716c;
+  --gs-accent: #0f6f68;
+  --gs-accent-hover: #0a5550;
+  --gs-accent-soft: #dcebe6;
+  --gs-accent-rgb: 15, 111, 104;
+  /* Single-accent system: the old secondary blue now resolves to a deeper teal. */
+  --gs-accent-2: #0a4f4a;
+  --gs-border: #e3dbcd;
+  --gs-shadow-rgb: 52, 44, 30;
+
+  /* z-index scale */
+  --z-nav: 50;
+  --z-overlay: 100;
+  --z-intro: 200;
 }
 
 :root,
@@ -54,28 +64,28 @@
   --color-muted-2: #64748b;
   --color-line: rgba(15, 23, 42, 0.1);
 
-  --bg-base: #f6f2ea;
-  --bg-surface: #ffffff;
-  --bg-surface-2: #f1ece4;
-  --border-soft: #e6ded2;
-  --text-primary: #1e2430;
-  --text-secondary: #6b7280;
-  --text-muted: #6b7280;
+  --bg-base: #f5f1e9;
+  --bg-surface: #fffdf9;
+  --bg-surface-2: #efe9df;
+  --border-soft: #e3dbcd;
+  --text-primary: #17201e;
+  --text-secondary: #5f645f;
+  --text-muted: #6d716c;
 
-  --accent-cyan: #0f7c75;
-  --accent-blue: #2563eb;
-  --accent-purple: #6366f1;
-  --positive: #16a34a;
-  --warning: #ea580c;
-  --danger: #dc2626;
+  --accent-cyan: #0f6f68;
+  --accent-blue: #0a4f4a;
+  --accent-purple: #0a4f4a;
+  --positive: #2f7d4f;
+  --warning: #b8641c;
+  --danger: #b4412f;
 
-  --glow-cyan: rgba(15, 124, 117, 0.1);
-  --glow-blue: rgba(37, 99, 235, 0.05);
+  --glow-cyan: rgba(15, 111, 104, 0.1);
+  --glow-blue: rgba(10, 79, 74, 0.05);
 
-  --mesh-1: #f3efe6;
-  --mesh-2: #e8f4f1;
-  --mesh-3: #dceee9;
-  --mesh-4: #f1ece4;
+  --mesh-1: #f2ede3;
+  --mesh-2: #e6efe9;
+  --mesh-3: #dbe9e3;
+  --mesh-4: #efe9df;
 }
 
 /* Native in-page anchor scrolling (nav section links). */
@@ -107,8 +117,33 @@ html {
       color 300ms ease;
   }
   ::selection {
-    background-color: rgba(15, 124, 117, 0.2);
-    color: #1e2430;
+    background-color: rgba(15, 111, 104, 0.18);
+    color: #17201e;
+  }
+  :focus-visible {
+    outline: 2px solid var(--gs-accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  /* Fixed film-grain layer: breaks the flat digital look without costing contrast. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.32;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.32 0 0 0 0 0.27 0 0 0 0 0.2 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  p,
+  li,
+  blockquote {
+    text-wrap: pretty;
+  }
+  .tabular-nums,
+  .gs-num {
+    font-variant-numeric: tabular-nums;
   }
   body {
     @apply font-sans font-normal text-[15px] leading-[1.65] tracking-body bg-background text-foreground;
@@ -118,9 +153,12 @@ html {
   h2,
   h3,
   h4 {
-    @apply font-sans font-medium tracking-heading;
-    line-height: 1.15;
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+    text-wrap: balance;
   }
   .theme {
     --font-heading: var(--font-sans);
@@ -199,18 +237,20 @@ html {
 }
 
 @layer utilities {
-  /* Hero H1 — False display accent (homepage only) */
+  /* Hero H1 — Bricolage display face */
   .type-hero {
-    @apply font-display font-medium tracking-hero text-spotcore-text;
-    line-height: 1.12;
-    font-weight: 500;
+    @apply font-display text-spotcore-text;
+    font-weight: 620;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
   }
 
   /* Section headings — Geist, restrained hierarchy */
   .type-display {
-    @apply font-sans font-medium tracking-heading text-spotcore-text;
-    line-height: 1.18;
-    font-weight: 500;
+    @apply font-display text-spotcore-text;
+    font-weight: 600;
+    letter-spacing: -0.032em;
+    line-height: 1.06;
   }
 
   .type-body {
@@ -234,19 +274,17 @@ html {
   /* Legacy chrome retained for analyze + report screens. */
   .gs-page-bg {
     background:
-      radial-gradient(1100px 600px at 50% -10%, rgba(34, 211, 238, 0.08), transparent 60%),
-      radial-gradient(900px 500px at 100% 10%, rgba(56, 189, 248, 0.06), transparent 60%),
-      radial-gradient(700px 600px at 0% 30%, rgba(2, 6, 23, 0.6), transparent 60%),
+      radial-gradient(1100px 600px at 50% -10%, rgba(15, 111, 104, 0.07), transparent 60%),
+      radial-gradient(900px 500px at 100% 10%, rgba(184, 160, 120, 0.1), transparent 60%),
       var(--bg-base);
   }
   .gs-card {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0))
-      var(--bg-surface);
+    background: var(--bg-surface);
     border: 1px solid var(--border-soft);
-    border-radius: 22px;
+    border-radius: 20px;
     box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.04) inset,
-      0 18px 60px -24px rgba(2, 6, 23, 0.9);
+      0 1px 2px rgba(var(--gs-shadow-rgb), 0.05),
+      0 12px 40px -28px rgba(var(--gs-shadow-rgb), 0.18);
   }
   :root.light .gs-card {
     background: var(--bg-surface);
@@ -263,7 +301,7 @@ html {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    border-radius: 9999px;
+    border-radius: 8px;
     padding: 0.35rem 0.7rem;
     font-size: 0.75rem;
     font-weight: 500;
@@ -289,10 +327,10 @@ html {
     font-feature-settings: 'tnum' 1, 'lnum' 1;
   }
   .gs-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    font-family: var(--font-geist-mono);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     color: var(--text-muted);
   }
   .gs-grad-text {
@@ -308,7 +346,7 @@ html {
     color: transparent;
   }
   .gs-cyan-text {
-    background: linear-gradient(180deg, #67e8f9, #22d3ee 60%, #0891b2);
+    background: linear-gradient(180deg, #1b8a81, #0f6f68 55%, #0a4f4a);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -320,11 +358,11 @@ html {
       border-color 0.25s ease;
   }
   .gs-card-hover:hover {
-    transform: translateY(-4px);
-    border-color: rgba(34, 211, 238, 0.35);
+    transform: translateY(-3px);
+    border-color: rgba(var(--gs-accent-rgb), 0.3);
     box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.05) inset,
-      0 28px 80px -28px rgba(34, 211, 238, 0.22);
+      0 1px 0 rgba(255, 255, 255, 0.9) inset,
+      0 28px 64px -32px rgba(var(--gs-accent-rgb), 0.3);
   }
 
   /* ── Homepage helpers ───────────────────────────────────────────────── */
@@ -353,37 +391,68 @@ html {
   }
 
   .geo-section {
-    max-width: 1100px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 1rem;
     padding-right: 1rem;
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
+    padding-top: 4rem;
+    padding-bottom: 4.5rem;
   }
   @media (min-width: 768px) {
     .geo-section {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-      padding-top: 5rem;
-      padding-bottom: 5rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      padding-top: 6rem;
+      padding-bottom: 6.75rem;
     }
   }
 
+  /* Cards: surface + hairline + warm-tinted shadow. Elevation, not decoration. */
   .geo-card {
-    border-radius: 1rem;
+    position: relative;
+    border-radius: 1.25rem;
     background: var(--gs-surface);
     border: 1px solid var(--gs-border);
-    box-shadow: 0 1px 2px rgba(30, 36, 48, 0.05);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.9) inset,
+      0 1px 2px rgba(var(--gs-shadow-rgb), 0.05);
     transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease,
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
       border-color 0.25s ease;
   }
   .geo-card:hover {
-    transform: translateY(-2px);
-    border-color: color-mix(in srgb, var(--gs-accent) 28%, var(--gs-border));
-    box-shadow: 0 12px 32px -16px rgba(var(--gs-accent-rgb), 0.14);
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--gs-accent) 24%, var(--gs-border));
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.9) inset,
+      0 24px 48px -28px rgba(var(--gs-shadow-rgb), 0.28);
+  }
+
+  /* Spotlight border: follows the cursor via --mx/--my (set by useSpotlight). */
+  .geo-spotlight::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    background: radial-gradient(
+      260px circle at var(--mx, 50%) var(--my, -20%),
+      rgba(var(--gs-accent-rgb), 0.55),
+      transparent 70%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .geo-spotlight:hover::before {
+    opacity: 1;
   }
 
   .geo-metric-card {
@@ -393,106 +462,192 @@ html {
     padding: 0.75rem 1rem;
   }
 
+  /* Square-cornered tag — reads as a data label, not a marketing pill. */
   .geo-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.375rem;
-    border-radius: 9999px;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.75rem;
+    gap: 0.5rem;
+    border-radius: 6px;
+    padding: 0.3rem 0.6rem 0.3rem 0.5rem;
+    font-family: var(--font-geist-mono);
+    font-size: 0.71875rem;
     font-weight: 500;
-    letter-spacing: 0.02em;
-    color: var(--gs-text);
-    background: var(--gs-surface-soft);
+    letter-spacing: 0.01em;
+    color: var(--gs-text-lead);
+    background: color-mix(in srgb, var(--gs-surface) 70%, transparent);
     border: 1px solid var(--gs-border);
   }
+  .geo-badge__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: var(--gs-accent);
+    box-shadow: 0 0 0 3px rgba(var(--gs-accent-rgb), 0.16);
+  }
 
-  .geo-btn-primary {
+  .geo-btn-primary,
+  .geo-btn-ghost {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border-radius: 9999px;
-    padding: 0.625rem 1.25rem;
+    border-radius: 0.75rem;
+    padding: 0.7rem 1.15rem;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 550;
     letter-spacing: -0.01em;
+    transition:
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.25s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .geo-btn-primary {
     color: #fff;
     background: var(--gs-accent);
     border: 0;
-    box-shadow: 0 8px 24px -8px rgba(var(--gs-accent-rgb), 0.38);
-    transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease,
-      background-color 0.2s ease;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.18) inset,
+      0 0 0 1px rgba(10, 79, 74, 0.9),
+      0 10px 24px -10px rgba(var(--gs-accent-rgb), 0.55);
   }
   .geo-btn-primary:hover {
     transform: translateY(-1px);
     background: var(--gs-accent-hover);
-    box-shadow: 0 12px 28px -8px rgba(var(--gs-accent-rgb), 0.42);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.18) inset,
+      0 0 0 1px rgba(10, 79, 74, 0.95),
+      0 16px 30px -12px rgba(var(--gs-accent-rgb), 0.6);
   }
-
   .geo-btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    border-radius: 9999px;
-    padding: 0.625rem 1.25rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: -0.01em;
     color: var(--gs-text);
-    background: transparent;
+    background: color-mix(in srgb, var(--gs-surface) 60%, transparent);
     border: 1px solid var(--gs-border);
-    transition:
-      transform 0.2s ease,
-      border-color 0.2s ease,
-      background-color 0.2s ease;
   }
   .geo-btn-ghost:hover {
     transform: translateY(-1px);
     border-color: color-mix(in srgb, var(--gs-accent) 35%, var(--gs-border));
-    background: var(--gs-surface-soft);
+    background: var(--gs-surface);
+  }
+  .geo-btn-primary:active,
+  .geo-btn-ghost:active {
+    transform: translateY(0) scale(0.98);
+    transition-duration: 0.08s;
+  }
+  .geo-btn-primary:disabled,
+  .geo-btn-ghost:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .geo-btn-arrow {
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .geo-btn-primary:hover .geo-btn-arrow,
+  .geo-btn-ghost:hover .geo-btn-arrow {
+    transform: translateX(3px);
+  }
+
+  /* Plain text link with an animated underline (tertiary action). */
+  .geo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 550;
+    color: var(--gs-accent);
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0% 1px no-repeat;
+    transition: background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s ease;
+  }
+  .geo-link:hover {
+    color: var(--gs-accent-hover);
+    background-size: 100% 1px;
   }
 
   .geo-glass {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 253, 249, 0.72);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 14px 40px rgba(var(--gs-accent-rgb), 0.1);
+    box-shadow: 0 14px 40px rgba(var(--gs-shadow-rgb), 0.1);
   }
 
   .geo-glass-soft {
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 253, 249, 0.56);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 10px 32px rgba(var(--gs-accent-rgb), 0.08);
+    box-shadow: 0 10px 32px rgba(var(--gs-shadow-rgb), 0.08);
   }
 
+  /* Section eyebrow: mono, sentence case, with an index marker. */
   .geo-label {
-    font-size: 0.6875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-geist-mono);
+    font-size: 0.75rem;
     font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gs-text-muted);
+    letter-spacing: 0.02em;
+    color: var(--gs-accent);
+  }
+  .geo-label::before {
+    content: '';
+    width: 1.25rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.6;
+  }
+  .geo-label--plain::before {
+    display: none;
   }
 
   .geo-section-title {
-    @apply font-sans font-medium tracking-heading;
-    font-size: 1.5rem;
-    line-height: 1.2;
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
     color: var(--gs-text);
+    text-wrap: balance;
   }
   @media (min-width: 768px) {
     .geo-section-title {
-      font-size: 1.75rem;
-      line-height: 1.18;
-      letter-spacing: -0.022em;
+      font-size: 2.75rem;
+      letter-spacing: -0.04em;
     }
+  }
+  .geo-section-lead {
+    max-width: 34rem;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--gs-text-lead);
+  }
+
+  /* Faint survey grid — the visual motif for a zoning / parcel product. */
+  .geo-grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(var(--gs-shadow-rgb), 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(var(--gs-shadow-rgb), 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 75%);
+  }
+
+  /* Shimmering skeleton block shared by every loading state. */
+  .geo-skeleton {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--gs-surface-soft) 85%, var(--gs-border));
+  }
+  .geo-skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+    animation: gs-progress-shimmer 1.6s ease-in-out infinite;
   }
 
   /* ── Intro overlay (first visit) ─────────────────────────────────────── */
@@ -536,7 +691,7 @@ html {
   .intro-overlay {
     position: fixed;
     inset: 0;
-    z-index: 200;
+    z-index: var(--z-intro);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -557,8 +712,32 @@ html {
     opacity: 0;
     animation: intro-wordmark-in 620ms cubic-bezier(0.22, 1, 0.36, 1) 100ms forwards;
   }
+  .intro-overlay__bar {
+    margin-top: 2rem;
+    width: 160px;
+    height: 2px;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: var(--gs-border);
+  }
+  .intro-overlay__bar span {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform-origin: left;
+    background: var(--gs-accent);
+    animation: intro-bar 1000ms cubic-bezier(0.65, 0, 0.35, 1) 100ms both;
+  }
+  @keyframes intro-bar {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
   .intro-overlay__city {
-    margin-top: 2.5rem;
+    margin-top: 2.25rem;
     padding-inline: 1.5rem;
     opacity: 0;
     transform-origin: center top;
@@ -599,7 +778,7 @@ html {
       90deg,
       var(--accent-cyan) 0%,
       var(--accent-blue) 25%,
-      #a5f3fc 50%,
+      #5fb3a9 50%,
       var(--accent-blue) 75%,
       var(--accent-cyan) 100%
     );
@@ -712,7 +891,7 @@ html {
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.05) inset,
       0 0 0 1px rgba(255, 255, 255, 0.015) inset,
-      0 36px 90px -32px rgba(2, 6, 23, 0.85);
+      0 36px 90px -40px rgba(var(--gs-shadow-rgb), 0.3);
     backdrop-filter: blur(14px) saturate(140%);
     -webkit-backdrop-filter: blur(14px) saturate(140%);
   }
@@ -779,11 +958,6 @@ html {
     color: var(--gs-accent-hover);
     background: var(--gs-accent-soft);
     border-color: rgba(var(--gs-accent-rgb), 0.45);
-  }
-  :root.dark .gs-chip[aria-pressed='true'],
-  :root:not(.light) .gs-chip[aria-pressed='true'] {
-    color: var(--accent-cyan);
-    background: rgba(34, 211, 238, 0.14);
   }
 
   /* Progress rail step row used in AnalysisProgress */
@@ -953,7 +1127,7 @@ html {
     );
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.05) inset,
-      0 6px 18px -10px rgba(34, 211, 238, 0.5);
+      0 6px 18px -10px rgba(var(--gs-shadow-rgb), 0.25);
   }
   :root.light .gs-tab[aria-selected='true'] {
     background: var(--bg-surface);
@@ -1033,4 +1207,21 @@ html {
   .gs-progress-fill::after {
     animation: none !important;
   }
+}
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 300;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  background: var(--gs-text);
+  color: var(--gs-surface);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
 }

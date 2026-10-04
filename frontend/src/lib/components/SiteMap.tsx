@@ -116,7 +116,7 @@ export default function SiteMap({
 
       const subjectIcon = L.divIcon({
         className: 'gs-marker',
-        html: `<span class="gs-pin gs-pin-subject" style="--c:#22D3EE;--g:rgba(34,211,238,0.6);"></span>`,
+        html: `<span class="gs-pin gs-pin-subject" style="--c:#0f6f68;--g:rgba(15,111,104,0.45);"></span>`,
         iconSize: [18, 18],
         iconAnchor: [9, 9],
       });

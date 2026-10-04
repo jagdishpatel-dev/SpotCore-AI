@@ -1,126 +1,136 @@
-
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { cn } from '$lib/utils/cn';
 import './loading-overlay.css';
 
 export interface LoadingOverlayProps {
   active?: boolean;
+  address?: string;
+  businessType?: string;
 }
 
-const dataPoints = [
-  { label: 'Census API', x: -150, y: -100 },
-  { label: 'OSM POIs', x: 150, y: -120 },
-  { label: 'Transit Flows', x: -180, y: 80 },
-  { label: 'Zoning Laws', x: 120, y: 150 },
-  { label: 'Retail Trends', x: 0, y: -200 },
-  { label: 'Demographics', x: -100, y: 0 },
-  { label: 'POI Clusters', x: 100, y: 0 },
-  { label: 'Traffic Density', x: 0, y: 180 },
+/** The stages the backend works through. Timing is approximate, so the last stage holds until the request resolves. */
+const STAGES = [
+  'Locating the address',
+  'Pulling census demographics',
+  'Mapping nearby competitors',
+  'Scoring demand and fit',
+  'Writing the readout',
+];
+const STAGE_MS = 1600;
+
+/** Parcel blocks for the scan map: [x, y, w, h] in a 240×240 viewBox. */
+const BLOCKS: [number, number, number, number][] = [
+  [12, 12, 60, 44], [80, 12, 70, 44], [158, 12, 70, 44],
+  [12, 64, 60, 52], [80, 64, 32, 52], [118, 64, 32, 52], [158, 64, 70, 52],
+  [12, 124, 60, 46], [80, 124, 70, 46], [158, 124, 34, 46], [196, 124, 32, 46],
+  [12, 178, 60, 50], [80, 178, 70, 50], [158, 178, 70, 50],
+];
+const PINS: [number, number, number][] = [
+  [46, 36, 0.4], [182, 92, 1.1], [58, 148, 1.8], [196, 198, 2.5], [108, 202, 3.2], [204, 30, 3.9],
 ];
 
-export default function LoadingOverlay({ active = false }: LoadingOverlayProps) {
-  const [stage, setStage] = useState<'gathering' | 'condensing' | 'ready'>('gathering');
+export default function LoadingOverlay({ active = false, address, businessType }: LoadingOverlayProps) {
+  const [stage, setStage] = useState(0);
   const [progress, setProgress] = useState(0);
-  const rainItems = useMemo(
-    () =>
-      Array.from({ length: 20 }, (_, i) => ({
-        id: i,
-        left: `${Math.random() * 100}%`,
-        duration: `${Math.random() * 3 + 2}s`,
-        delay: `${Math.random() * 5}s`,
-      })),
-    [],
-  );
 
   useEffect(() => {
     if (!active) return;
-
-    setStage('gathering');
+    setStage(0);
     setProgress(0);
 
-    const t1 = setTimeout(() => setStage('condensing'), 2000);
-    const t2 = setTimeout(() => setStage('ready'), 3500);
-    const progInterval = setInterval(() => {
-      setProgress((p) => (p < 100 ? p + 0.5 : p));
-    }, 30);
+    const stageTimer = window.setInterval(() => {
+      setStage((s) => Math.min(s + 1, STAGES.length - 1));
+    }, STAGE_MS);
+    // Eases toward 94% and never claims completion before the response arrives.
+    const progressTimer = window.setInterval(() => {
+      setProgress((p) => p + (94 - p) * 0.012);
+    }, 60);
 
     return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-      clearInterval(progInterval);
+      window.clearInterval(stageTimer);
+      window.clearInterval(progressTimer);
     };
   }, [active]);
 
   if (!active) return null;
 
   return (
-    <div className="loading-overlay fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-teal-900/20 via-transparent to-transparent"></div>
-
-      <div className="relative flex items-center justify-center">
-        <div className="absolute h-32 w-32 animate-ping rounded-full border border-teal-500/20"></div>
-        <div className="absolute h-64 w-64 animate-pulse rounded-full border border-teal-500/10"></div>
-
-        <div
-          className={cn(
-            'relative flex h-20 w-20 items-center justify-center rounded-full bg-teal-500 shadow-[0_0_50px_rgba(20,184,166,0.6)] transition-all duration-500',
-            stage === 'condensing' ? 'scale-125' : 'scale-100',
-          )}
-        >
-          <div className="text-xl font-bold text-white">AI</div>
+    <div className="loading-overlay" role="status" aria-live="polite" aria-label="Analyzing location">
+      <div className="loading-overlay__card">
+        <div className="loading-overlay__map" aria-hidden="true">
+          <svg viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice" className="h-full w-full">
+            <rect width="240" height="240" fill="var(--gs-surface-soft)" />
+            {BLOCKS.map(([x, y, w, h], i) => (
+              <rect
+                key={i}
+                x={x}
+                y={y}
+                width={w}
+                height={h}
+                rx="3"
+                className="loading-overlay__block"
+                style={{ animationDelay: `${i * 70}ms` }}
+              />
+            ))}
+            <rect x="80" y="64" width="32" height="52" rx="3" className="loading-overlay__target" />
+            {PINS.map(([cx, cy, delay], i) => (
+              <circle
+                key={i}
+                cx={cx}
+                cy={cy}
+                r="3.2"
+                className="loading-overlay__pin"
+                style={{ animationDelay: `${delay}s` }}
+              />
+            ))}
+            <circle cx="96" cy="90" r="46" className="loading-overlay__ring" />
+          </svg>
+          <div className="loading-overlay__sweep" />
         </div>
 
-        {stage === 'gathering'
-          ? dataPoints.map((point) => (
-              <div
-                key={point.label}
-                className="absolute transition-all duration-[2000ms] ease-in-out"
-                style={{ transform: `translate(${point.x}px, ${point.y}px)` }}
-              >
-                <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-medium text-white backdrop-blur-md">
-                  <div className="h-1 w-1 rounded-full bg-teal-400"></div>
-                  {point.label}
-                </div>
-              </div>
-            ))
-          : null}
-
-        {stage === 'condensing' ? (
-          <div className="absolute -bottom-20 w-64 text-center">
-            <p className="animate-pulse font-mono text-xs uppercase tracking-widest text-teal-400">
-              Synthesizing Data Streams...
+        <div className="loading-overlay__body">
+          <p className="font-mono text-[11px] text-spotcore-accent">Analysis in progress</p>
+          <h2 className="mt-2 font-display text-2xl font-semibold tracking-[-0.03em] text-spotcore-text">
+            Building your site brief
+          </h2>
+          {address ? (
+            <p className="mt-1.5 truncate text-sm text-spotcore-text-muted">
+              {businessType ? `${businessType} · ` : ''}
+              {address}
             </p>
-            <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-white/10">
-              <div
-                className="h-full bg-teal-500 transition-all duration-300"
-                style={{ width: `${progress}%` }}
-              ></div>
+          ) : null}
+
+          <div className="mt-6 flex items-center gap-3">
+            <div className="gs-progress-track flex-1">
+              <div className="gs-progress-fill" style={{ width: `${progress}%` }} />
             </div>
+            <span className="w-9 text-right font-mono text-xs tabular-nums text-spotcore-text-muted">
+              {Math.round(progress)}%
+            </span>
           </div>
-        ) : null}
 
-        {stage === 'ready' ? (
-          <div className="absolute -bottom-20 text-center">
-            <p className="text-lg font-bold tracking-tight text-white">Intelligence Ready</p>
-            <p className="text-xs font-medium text-teal-500">Analyzing site viability...</p>
-          </div>
-        ) : null}
-      </div>
+          <ol className="mt-6 space-y-1">
+            {STAGES.map((label, i) => {
+              const state = i < stage ? 'done' : i === stage ? 'active' : 'pending';
+              return (
+                <li key={label} className={cn('loading-overlay__step', `is-${state}`)}>
+                  <span className="loading-overlay__marker" aria-hidden="true">
+                    {state === 'done' ? (
+                      <svg viewBox="0 0 12 12" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M2.5 6.5l2.2 2.2L9.5 3.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    ) : null}
+                  </span>
+                  <span>{label}</span>
+                </li>
+              );
+            })}
+          </ol>
 
-      <div className="pointer-events-none absolute inset-0 opacity-10">
-        {rainItems.map((item) => (
-          <div
-            key={item.id}
-            className="loading-overlay-fall absolute font-mono text-[8px] text-teal-500"
-            style={{
-              left: item.left,
-              animationDuration: item.duration,
-              animationDelay: item.delay,
-            }}
-          >
-            0101101001
-          </div>
-        ))}
+          <p className="mt-6 border-t border-spotcore-border pt-4 text-xs leading-relaxed text-spotcore-text-muted">
+            Results are a preliminary pre-screen. Keep this tab open—your report loads automatically.
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -31,9 +31,9 @@ export default function ThreadsBg({ intensity = 0.45, count = 18 }: ThreadsBgPro
         className="absolute inset-0"
         style={{
           background: `
-      radial-gradient(60% 50% at 50% 0%, rgba(34, 211, 238, 0.18), transparent 60%),
-      radial-gradient(50% 60% at 90% 30%, rgba(56, 189, 248, 0.14), transparent 60%),
-      radial-gradient(40% 40% at 0% 80%, rgba(34, 211, 238, 0.08), transparent 60%)`,
+      radial-gradient(60% 50% at 50% 0%, rgba(15, 111, 104, 0.14), transparent 60%),
+      radial-gradient(50% 60% at 90% 30%, rgba(184, 160, 120, 0.16), transparent 60%),
+      radial-gradient(40% 40% at 0% 80%, rgba(15, 111, 104, 0.07), transparent 60%)`,
           opacity: intensity,
         }}
       />
@@ -46,9 +46,9 @@ export default function ThreadsBg({ intensity = 0.45, count = 18 }: ThreadsBgPro
       >
         <defs>
           <linearGradient id="gs-thread-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
-            <stop offset="50%" stopColor="#22d3ee" stopOpacity="0.55" />
-            <stop offset="100%" stopColor="#38bdf8" stopOpacity="0" />
+            <stop offset="0%" stopColor="#0f6f68" stopOpacity="0" />
+            <stop offset="50%" stopColor="#0f6f68" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#0f6f68" stopOpacity="0" />
           </linearGradient>
         </defs>
         {paths.map((p) => (
@@ -67,7 +67,7 @@ export default function ThreadsBg({ intensity = 0.45, count = 18 }: ThreadsBgPro
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(180deg, rgba(2,6,23,0.0) 0%, rgba(2,6,23,0.0) 60%, rgba(2,6,23,0.85) 100%)',
+            'linear-gradient(180deg, transparent 0%, transparent 60%, var(--bg-base) 100%)',
         }}
       />
     </div>

@@ -34,6 +34,7 @@ export default function AnalyzePage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [pending, setPending] = useState<AnalysisIntakeValues | null>(null);
 
   function loadSampleReport(values: AnalysisIntakeValues) {
     const businessType = values.businessType || 'Coffee shop';
@@ -47,6 +48,7 @@ export default function AnalyzePage() {
 
   async function submit(values: AnalysisIntakeValues) {
     setLoading(true);
+    setPending(values);
     setError(null);
     try {
       const result = await analyzeSite({
@@ -70,7 +72,9 @@ export default function AnalyzePage() {
 
   return (
     <>
-      {loading ? <LoadingOverlay active /> : null}
+      {loading ? (
+        <LoadingOverlay active address={pending?.address} businessType={pending?.businessType} />
+      ) : null}
       <section className="analyze-page mx-auto grid w-full max-w-7xl flex-1 gap-8 px-4 py-10 md:grid-cols-[minmax(0,1fr)_minmax(360px,1.05fr)] md:items-stretch md:gap-8 md:px-6 md:py-14 lg:gap-10">
         <InquiryVisualPanel className="md:sticky md:top-24 md:self-start" />
         <div className="analyze-page__form-card overflow-visible p-6 md:p-8 lg:p-9">
@@ -82,12 +86,12 @@ export default function AnalyzePage() {
               Back to Home
             </Link>
             <span className="analyze-page__crumb">/</span>
-            <p className="analyze-page__eyebrow-accent text-[11px] font-semibold uppercase tracking-[0.14em]">
+            <p className="analyze-page__eyebrow-accent font-mono text-[11px] font-medium">
               Run an analysis
             </p>
           </div>
           <div className="mt-4 max-w-3xl">
-            <h1 className="analyze-page__title text-3xl font-semibold tracking-tight md:text-[2.35rem] md:leading-tight">
+            <h1 className="analyze-page__title text-[2rem] md:text-[2.6rem] md:leading-[1.04]">
               Build a sharper location brief in under a minute.
             </h1>
             <p className="analyze-page__lead mt-3 max-w-2xl text-base leading-relaxed md:text-[15.5px]">

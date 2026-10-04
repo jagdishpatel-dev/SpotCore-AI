@@ -118,7 +118,7 @@ export default function LocationIntel({ result, businessType = '' }: LocationInt
                 <p className="gs-label text-muted-2">Trade area &amp; nearby POIs</p>
                 <div className="flex flex-wrap items-center gap-3 text-[11px] text-muted">
                   <span className="inline-flex items-center gap-1.5">
-                    <span className="inline-block h-2 w-2 rounded-full bg-accent shadow-[0_0_8px_rgba(34,211,238,0.6)]"></span>
+                    <span className="inline-block h-2 w-2 rounded-full bg-accent shadow-[0_0_0_3px_rgba(15,111,104,0.14)]"></span>
                     Subject site
                   </span>
                   <span className="inline-flex items-center gap-1.5">
