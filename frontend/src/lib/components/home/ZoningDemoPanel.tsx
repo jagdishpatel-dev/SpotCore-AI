@@ -15,11 +15,13 @@ interface LocationPreset {
   lon: number;
 }
 
-// Real Austin coordinates, verified against the live /zoning-map endpoint to
-// actually fall in the district each preset claims (not just plausible-looking).
+// Real Austin coordinates. The backend looks up the zoning on record at lat/lon
+// (base district + overlays); `district` is only a fallback if that lookup fails.
+// Checked 2026-10-01: Downtown = CBD-CURE-DDB400, South Congress =
+// CS-MU-CO-ETOD-DBETOD-NP, Residential block = SF-3-H.
 const LOCATIONS: LocationPreset[] = [
   { label: 'Downtown', district: 'CBD', address: 'Downtown Austin, TX', lat: 30.2645, lon: -97.743 },
-  { label: 'South Congress', district: 'CS-1', address: 'South Congress Ave, Austin, TX', lat: 30.25, lon: -97.7505 },
+  { label: 'South Congress', district: 'CS', address: 'South Congress Ave, Austin, TX', lat: 30.25, lon: -97.7505 },
   {
     label: 'Residential block',
     district: 'SF-3',
@@ -36,14 +38,21 @@ const QUESTION_CHIPS = ['a restaurant', 'a bar', 'a gas station', 'a daycare', '
 const STEPS = [
   { label: 'Parsing the question', detail: 'What use is being asked about, and where.' },
   { label: 'Retrieving matching code sections', detail: 'Embedding search over Austin’s Land Development Code.' },
-  { label: 'Grounding the answer', detail: 'Cross-checked against the actual permitted-use table.' },
+  { label: 'Checking the rules', detail: 'Status from the permitted-use table and the parcel’s overlay districts.' },
 ] as const;
+
+const STATUS_STYLE: Record<ZoningAnswerResponse['status'], { label: string; color: string }> = {
+  permitted: { label: 'Permitted', color: '#22C55E' },
+  conditional: { label: 'Conditional use', color: '#F59E0B' },
+  not_permitted: { label: 'Not permitted', color: '#EF4444' },
+  unclear: { label: 'Unclear: verify with the city', color: '#6B7280' },
+};
 
 const ZONING_LEGEND: { permission: ZoningMapFeature['permission']; label: string; color: string }[] = [
   { permission: 'permitted', label: 'Permitted', color: '#22C55E' },
   { permission: 'conditional', label: 'Conditional', color: '#F59E0B' },
   { permission: 'prohibited', label: 'Not permitted', color: '#EF4444' },
-  { permission: 'unknown', label: 'Unclassified', color: '#6B7280' },
+  { permission: 'unknown', label: 'Unclear', color: '#6B7280' },
 ];
 
 type Phase = 'idle' | 'loading' | 'done' | 'error';
@@ -101,6 +110,8 @@ export default function ZoningDemoPanel() {
         question: fullQuestion,
         zoning_district: location.district,
         address: location.address,
+        lat: location.lat,
+        lon: location.lon,
       });
       setResult(res);
       setPhase('done');
@@ -161,7 +172,7 @@ export default function ZoningDemoPanel() {
             />
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-3 text-[11px] text-[var(--gs-text-muted)]">
-            <span>{mapBusinessType ? `Zoning for: ${mapBusinessType}` : `${location.label} (${location.district})`}</span>
+            <span>{mapBusinessType ? `Zoning for: ${mapBusinessType}` : location.label}</span>
             {ZONING_LEGEND.map((item) => (
               <span key={item.permission} className="inline-flex items-center gap-1.5">
                 <span className="inline-block h-2 w-2 rounded-full" style={{ backgroundColor: item.color }} />
@@ -176,7 +187,7 @@ export default function ZoningDemoPanel() {
             <input
               type="text"
               className="gs-input flex-1"
-              placeholder={`e.g. "Can I open a bar here?" (${location.district} district)`}
+              placeholder={`e.g. "Can I open a bar here?" (${location.label})`}
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               disabled={isRunning}
@@ -239,6 +250,27 @@ export default function ZoningDemoPanel() {
 
               {phase === 'done' && result ? (
                 <div className="mt-4 rounded-xl border border-white/60 bg-white/40 p-4">
+                  <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 border-b border-white/50 pb-3">
+                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--gs-text)]">
+                      <span
+                        className="inline-block h-2.5 w-2.5 rounded-full"
+                        style={{ backgroundColor: STATUS_STYLE[result.status].color }}
+                      />
+                      {STATUS_STYLE[result.status].label}
+                    </span>
+                    {result.zoning_code ? (
+                      <span className="font-mono text-[11px] text-[var(--gs-text-muted)]" title={result.zoning_data_source ?? undefined}>
+                        {result.zoning_code}
+                        {result.district_source === 'parcel' ? ' · city zoning records' : ''}
+                      </span>
+                    ) : null}
+                    {result.status_citations.length ? (
+                      <span className="text-[11px] text-[var(--gs-text-muted)]">Decided by {result.status_citations.join(', ')}</span>
+                    ) : null}
+                    {result.status === 'unclear' && result.case_numbers.length ? (
+                      <span className="text-[11px] text-[var(--gs-text-muted)]">Zoning case {result.case_numbers.join(', ')}</span>
+                    ) : null}
+                  </div>
                   <MarkdownLite text={result.answer} className="text-sm leading-relaxed text-[var(--gs-text)]" />
                   {result.citations.length ? (
                     <div className="mt-3 flex flex-wrap gap-1.5">

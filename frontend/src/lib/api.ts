@@ -124,6 +124,8 @@ export async function zoningAsk(payload: {
   jurisdiction?: string;
   zoning_district?: string | null;
   address?: string | null;
+  lat?: number | null;
+  lon?: number | null;
 }): Promise<ZoningAnswerResponse> {
   const res = await fetch(`${baseUrl()}/zoning-ask`, {
     method: 'POST',
@@ -133,6 +135,8 @@ export async function zoningAsk(payload: {
       jurisdiction: payload.jurisdiction ?? 'austin_tx',
       zoning_district: payload.zoning_district ?? null,
       address: payload.address ?? null,
+      lat: payload.lat ?? null,
+      lon: payload.lon ?? null,
     }),
   });
   if (!res.ok) {

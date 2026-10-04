@@ -17,7 +17,7 @@ const ZONING_LEGEND: { permission: ZoningMapFeature['permission']; label: string
   { permission: 'permitted', label: 'Permitted', color: '#22C55E' },
   { permission: 'conditional', label: 'Conditional', color: '#F59E0B' },
   { permission: 'prohibited', label: 'Not permitted', color: '#EF4444' },
-  { permission: 'unknown', label: 'Unclassified', color: '#6B7280' },
+  { permission: 'unknown', label: 'Unclear', color: '#6B7280' },
 ];
 
 function fmtN(n?: number | null): string {

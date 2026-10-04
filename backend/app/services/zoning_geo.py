@@ -8,32 +8,39 @@ polygon geometry has nothing to do with the legal-text RAG pipeline in
 zoning_rag.py, and Austin's dataset is already the authoritative, current source.
 
 Each polygon's raw district code (e.g. "CS-MU-NCCD-NP", a base district plus
-combining/overlay suffixes) is reduced to a base code matching
-zoning_tables.AUSTIN_DISTRICT_COLUMNS by progressively stripping trailing
-"-SUFFIX" segments. Older parcels can carry pre-1980s codes (e.g. "C-2-H")
-that don't reduce to any current base code — these are returned tagged
-base_district=None, permission="unknown" rather than dropped, since the
+combining/overlay suffixes) is split by zoning_overlays.parse_zoning_code(), and
+map colors come from zoning_overlays.pre_screen_zoning() — the same status logic
+as the text answer, overlays included. Older parcels can carry pre-1980s codes
+(e.g. "C-2-H") that don't reduce to any current base code — these are returned
+tagged base_district=None, permission="unknown" rather than dropped, since the
 polygon shape itself is still useful context on the map.
+
+resolve_zoning_at_point() answers "what is this address zoned?" with a
+point-in-polygon query against the same dataset.
 """
 
 from __future__ import annotations
 
 import logging
 import math
+from datetime import datetime, timezone
 
 import httpx
 
-from app.services.zoning_tables import AUSTIN_DISTRICT_COLUMNS, lookup as table_lookup
+from app.services.zoning_overlays import parse_zoning_code, pre_screen_zoning
 
 logger = logging.getLogger(__name__)
 
 _SOCRATA_URL = "https://data.austintexas.gov/resource/xt8n-xrjg.geojson"
-_KNOWN_BASE_CODES = set(AUSTIN_DISTRICT_COLUMNS)
+_SOCRATA_JSON_URL = "https://data.austintexas.gov/resource/xt8n-xrjg.json"
+ZONING_DATA_SOURCE = "City of Austin Zoning Ordinance boundaries (data.austintexas.gov/d/xt8n-xrjg)"
 
-# A weak fuzzy match mis-coloring an entire visible zone on the map is a much
-# more visible/confident-looking mistake than a hedged sentence in the text
-# Q&A, so map coloring requires a much stronger word-overlap match.
-_MAP_MIN_MATCH_SCORE = 0.5
+_STATUS_TO_PERMISSION = {
+    "permitted": "permitted",
+    "conditional": "conditional",
+    "not_permitted": "prohibited",
+    "unclear": "unknown",
+}
 
 _PERMISSION_COLORS = {
     "permitted": "#22C55E",
@@ -41,19 +48,6 @@ _PERMISSION_COLORS = {
     "prohibited": "#EF4444",
     "unknown": "#6B7280",
 }
-
-
-def _extract_base_district(ztype: str) -> str | None:
-    """Reduce a compound zoning code to a known base district by stripping
-    trailing "-SEGMENT" suffixes, e.g. "CS-MU-NCCD-NP" -> "CS"."""
-    if not ztype:
-        return None
-    segments = ztype.strip().upper().split("-")
-    for i in range(len(segments), 0, -1):
-        candidate = "-".join(segments[:i])
-        if candidate in _KNOWN_BASE_CODES:
-            return candidate
-    return None
 
 
 def _bbox_wkt(lat: float, lon: float, radius_m: float) -> str:
@@ -107,24 +101,14 @@ async def fetch_zoning_polygons(
             continue
         props = feat.get("properties", {})
         ztype = props.get("zoning_ordinance_ztype", "") or ""
-        base = _extract_base_district(ztype)
+        base, _ = parse_zoning_code(ztype)
 
         permission = "unknown"
         matched_use = None
         if base and business_query:
-            results = table_lookup(
-                business_query, base, jurisdiction=jurisdiction, top_n=1, min_score=_MAP_MIN_MATCH_SCORE
-            )
-            if results:
-                value = results[0]["value"]
-                matched_use = results[0]["use"]
-                if value == "P":
-                    permission = "permitted"
-                elif value == "C":
-                    permission = "conditional"
-                elif value == "—":
-                    permission = "prohibited"
-                # else: footnote refs / PC-CP combos / empty -> leave "unknown"
+            pre = pre_screen_zoning(business_query, ztype, jurisdiction=jurisdiction)
+            permission = _STATUS_TO_PERMISSION[pre["status"]]
+            matched_use = pre["matched_use"]
 
         features_out.append(
             {
@@ -138,3 +122,57 @@ async def fetch_zoning_polygons(
             }
         )
     return features_out
+
+
+async def resolve_zoning_at_point(lat: float, lon: float) -> dict | None:
+    """
+    Look up the zoning on record at (lat, lon) with a point-in-polygon query.
+
+    One point can sit inside several ordinance records (amended cases, overlay-only
+    records such as "NP"). They are combined conservatively: overlays from every
+    record are kept, and if records disagree on the base district, base_district is
+    None and conflicting_bases lists them.
+
+    Returns None if the lookup fails, otherwise:
+      {"zoning_code", "base_district", "overlays", "case_numbers", "records",
+       "conflicting_bases", "source", "retrieved_at"}
+    where zoning_code is None when no record had a recognizable base district.
+    """
+    params = {
+        "$select": "zoning_ordinance_ztype,case_number",
+        "$where": f"intersects(the_geom, 'POINT ({lon} {lat})')",
+        "$limit": "50",
+    }
+    async with httpx.AsyncClient(timeout=15.0) as client:
+        try:
+            resp = await client.get(_SOCRATA_JSON_URL, params=params)
+            resp.raise_for_status()
+            rows = resp.json()
+        except Exception as exc:
+            logger.error("zoning_geo.resolve_zoning_at_point error: %s", exc)
+            return None
+
+    records = [
+        {"ztype": r["zoning_ordinance_ztype"].strip().upper(), "case_number": r.get("case_number")}
+        for r in rows
+        if (r.get("zoning_ordinance_ztype") or "").strip()
+    ]
+    bases: list[str] = []
+    overlays: list[str] = []
+    for record in records:
+        base, record_overlays = parse_zoning_code(record["ztype"])
+        if base and base not in bases:
+            bases.append(base)
+        overlays += [o for o in record_overlays if o not in overlays]
+
+    base = bases[0] if len(bases) == 1 else None
+    return {
+        "zoning_code": "-".join([base, *overlays]) if base else None,
+        "base_district": base,
+        "overlays": overlays,
+        "case_numbers": [r["case_number"] for r in records if r["case_number"]],
+        "records": records,
+        "conflicting_bases": bases if len(bases) > 1 else [],
+        "source": ZONING_DATA_SOURCE,
+        "retrieved_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    }

@@ -128,11 +128,33 @@ export interface ZoningCitation {
   score: number;
 }
 
+export type ZoningStatus = 'permitted' | 'conditional' | 'not_permitted' | 'unclear';
+
+export interface ZoningOverlayNote {
+  code: string;
+  effect: string;
+  citation: string;
+  changed: boolean;
+}
+
 export interface ZoningAnswerResponse {
   answer: string;
   citations: ZoningCitation[];
   jurisdiction: string;
   disclaimer: string;
+  /** Decided by SpotCore's rules engine from the use table and the parcel's overlays, not by the LLM. */
+  status: ZoningStatus;
+  status_reason: string;
+  matched_use: string | null;
+  table_value: string | null;
+  status_citations: string[];
+  zoning_code: string | null;
+  overlays: string[];
+  overlay_notes: ZoningOverlayNote[];
+  district_source: 'parcel' | 'user' | 'none';
+  case_numbers: string[];
+  zoning_data_source: string | null;
+  zoning_data_retrieved_at: string | null;
 }
 
 export type ZoningPermission = 'permitted' | 'conditional' | 'prohibited' | 'unknown';

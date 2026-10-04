@@ -205,9 +205,50 @@ _STATUS_LABELS = {
 }
 
 
+_OVERLAY_EFFECT_TEXT = {
+    "restricts": "can prohibit uses or make permitted uses conditional on this specific property",
+    "modifies": "can add or remove allowed uses on this specific property",
+    "adds_residential": "can allow residential uses the base district does not",
+    "adds_uses": "can allow uses the base district does not",
+    "adds_non_etod": "allows uses not prohibited by the ETOD district",
+    "unknown": "is not modeled by SpotCore",
+}
+
+
+def _overlay_reason(pre: dict) -> str:
+    changed = [n for n in pre.get("overlay_notes", []) if n["changed"] and n["effect"] != "modeled"]
+    parts = [
+        f"{n['code']} ({n['citation'] or 'not modeled'}) {_OVERLAY_EFFECT_TEXT.get(n['effect'], 'is not modeled')}"
+        for n in changed
+    ]
+    cases = pre.get("case_numbers") or []
+    case_text = f" Check the ordinance for zoning case{'s' if len(cases) > 1 else ''} {', '.join(cases)}." if cases else ""
+    return (
+        f"The base-district answer would be decided by the § 25-2-491 table, but the parcel's overlay "
+        f"{'; '.join(parts)}. SpotCore does not read parcel-specific zoning ordinances yet.{case_text}"
+    )
+
+
+def _etod_reason(pre: dict) -> str:
+    use = pre.get("matched_use")
+    if pre.get("status") == "not_permitted":
+        return (
+            f'"{use}" is a prohibited use on property with ETOD combining district zoning (§ 25-2-653(D)), '
+            "which governs over the base-district table (§ 25-2-653(B))."
+        )
+    return (
+        f'"{use}" is a conditional use on property with ETOD combining district zoning when the base '
+        "zoning permits it (§ 25-2-653(E))."
+    )
+
+
 def _pre_screen_reason(pre: dict) -> str:
     district = pre.get("district") or "the property's district"
     use, value = pre.get("matched_use"), pre.get("value")
+    if pre.get("reason") == "overlay_not_modeled":
+        return _overlay_reason(pre)
+    if pre.get("reason") == "overlay_table":
+        return _etod_reason(pre)
     return {
         "table": f'"{use}" is marked "{value}" for {district} in the § 25-2-491 use table.',
         "endnote": (
@@ -224,6 +265,14 @@ def _pre_screen_reason(pre: dict) -> str:
         ),
         "unknown_district": f'"{district}" is not a zoning district column in the § 25-2-491 use table.',
         "no_district": "The property's zoning district was not provided.",
+        "unrecognized_zoning_code": (
+            f'The zoning on record ("{pre.get("zoning_code")}") does not reduce to a current base district '
+            "in the § 25-2-491 table (it may be a pre-1980s code)."
+        ),
+        "conflicting_zoning_records": (
+            "The city's zoning records at this location list different base districts "
+            f"({', '.join(pre.get('candidates', []))})."
+        ),
     }.get(pre.get("reason", ""), "The rules engine could not determine a status.")
 
 
@@ -245,7 +294,10 @@ def zoning_qa_user_prompt_v2(
     if address:
         context_lines.append(f"Property address : {address}")
     if zoning_district:
-        context_lines.append(f"Known zoning district : {zoning_district}")
+        source = {"parcel": " (city zoning records for this location)", "user": " (provided by the user)"}.get(
+            pre_screen.get("district_source", ""), ""
+        )
+        context_lines.append(f"Zoning : {zoning_district}{source}")
     context_block = ("\n".join(context_lines) + "\n\n") if context_lines else ""
 
     excerpts_block = "\n\n".join(

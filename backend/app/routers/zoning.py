@@ -30,11 +30,15 @@ async def post_zoning_ask(body: ZoningQuestionRequest) -> ZoningAnswerResponse:
                 f"Run: python -m app.services.zoning_rag --jurisdiction {body.jurisdiction}"
             ),
         )
+    parcel = None
+    if body.lat is not None and body.lon is not None and body.jurisdiction in _MAP_SUPPORTED_JURISDICTIONS:
+        parcel = await zoning_geo.resolve_zoning_at_point(body.lat, body.lon)
     return await ai_consultant.get_zoning_answer(
         question=body.question,
         jurisdiction=body.jurisdiction,
         zoning_district=body.zoning_district,
         address=body.address,
+        parcel=parcel,
     )
 
 
