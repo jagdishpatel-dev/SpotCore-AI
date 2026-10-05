@@ -5,7 +5,6 @@ import LoadingOverlay from '$lib/components/LoadingOverlay';
 import AnalysisIntakeForm from '$lib/components/analysis/AnalysisIntakeForm';
 import type { AnalysisIntakeValues } from '$lib/components/analysis/analysisIntakeFormConfig';
 import InquiryVisualPanel from '$lib/components/inquiry/InquiryVisualPanel';
-import { SAMPLE_ANALYZE_SITE_RESPONSE } from '$lib/sampleReport';
 import { saveReportSession } from '$lib/reportSession';
 import './analyze-page.css';
 
@@ -36,14 +35,8 @@ export default function AnalyzePage() {
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState<AnalysisIntakeValues | null>(null);
 
-  function loadSampleReport(values: AnalysisIntakeValues) {
-    const businessType = values.businessType || 'Coffee shop';
-    saveReportSession({
-      result: SAMPLE_ANALYZE_SITE_RESPONSE,
-      businessType,
-      viewingSample: true,
-    });
-    navigate('/report');
+  function loadSampleReport() {
+    navigate('/sample');
   }
 
   async function submit(values: AnalysisIntakeValues) {

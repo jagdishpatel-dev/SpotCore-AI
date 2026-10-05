@@ -4,7 +4,7 @@ import BrandMark from './BrandMark';
 const links = [
   { href: '/', label: 'Home' },
   { href: '/analyze', label: 'Analyze' },
-  { href: '/report', label: 'Map' },
+  { href: '/sample', label: 'Sample report' },
 ] as const;
 
 export default function AppFooter() {

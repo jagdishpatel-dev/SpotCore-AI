@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useReveal } from '$lib/hooks/useReveal';
 
 export interface SampleReportProps {
@@ -87,9 +88,9 @@ export default function SampleReport({ startHref = '/analyze' }: SampleReportPro
                 Analyze a location
                 <span className="geo-btn-arrow" aria-hidden="true">→</span>
               </a>
-              <a href="#demo" className="geo-btn-ghost">
-                View live demo
-              </a>
+              <Link to="/sample" className="geo-btn-ghost">
+                Open the full sample
+              </Link>
             </div>
           </div>
         </div>

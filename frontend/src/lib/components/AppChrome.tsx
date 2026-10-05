@@ -20,7 +20,7 @@ const sectionLinks = [
 const routeLinks = [
   { href: '/', label: 'Home' },
   { href: '/analyze', label: 'Analyze' },
-  { href: '/report', label: 'Map' },
+  { href: '/sample', label: 'Sample' },
 ] as const;
 
 function sectionHref(path: string, id: string) {
@@ -142,7 +142,7 @@ export default function AppChrome({
               key={link.href}
               href={link.href}
               active={path === link.href}
-              className={link.href === '/report' ? 'hidden lg:inline-flex' : 'inline-flex'}
+              className={link.href === '/sample' ? 'hidden lg:inline-flex' : 'inline-flex'}
               router
             >
               {link.label}
