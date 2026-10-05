@@ -136,16 +136,27 @@ async def _analyze_site_live(
             )
         return tract, None
 
-    (tract_info, demo_raw), pois, demand_signals = await asyncio.gather(
+    async def _get_pois() -> list[dict] | None:
+        # Public Overpass mirrors are often rate-limited or down. Without POIs the
+        # report is incomplete, not wrong, so continue and flag it instead of failing.
+        try:
+            return await overpass.fetch_nearby_pois(lat, lon, effective_radius)
+        except Exception as e:
+            log_event("analyze_site.overpass.unavailable", error_type=type(e).__name__)
+            return None
+
+    (tract_info, demo_raw), pois_or_none, demand_signals = await asyncio.gather(
         _get_census(),
-        overpass.fetch_nearby_pois(lat, lon, effective_radius),
+        _get_pois(),
         fetch_soft_demand_signals(address, business_type, geo, label),
     )
+    pois_available = pois_or_none is not None
+    pois = pois_or_none or []
 
     if tract_info and tract_info.get("geoid") and demo_raw is None:
         log_event("analyze_site.census.no_demographics", geoid=tract_info.get("geoid"))
 
-    if len(pois) < LOW_POI_THRESHOLD:
+    if pois_available and len(pois) < LOW_POI_THRESHOLD:
         log_event(
             "analyze_site.overpass.low_poi_count",
             poi_count=len(pois),
@@ -280,6 +291,12 @@ async def _analyze_site_live(
         ai_insights = None
 
     bullets = build_summary_bullets(signals, scores.model_dump(), business_type)
+    if not pois_available:
+        bullets.insert(
+            0,
+            "Nearby business data (OpenStreetMap) was unavailable for this run, so competitor "
+            "counts and the competition and access scores are incomplete. Run it again to fill them in.",
+        )
 
     addr = geo.get("address") or {}
     state_abbr = resolve_us_state_code(addr) or fips_state_to_code((tract_info or {}).get("state"))
@@ -296,7 +313,7 @@ async def _analyze_site_live(
 
     data_sources: dict = {
         "geocoder": geo.get("source") or "nominatim",
-        "pois": "overpass",
+        "pois": "overpass" if pois_available else "unavailable",
         "demographics": "census_acs5" if demo_raw else None,
         "radius_m": effective_radius,
         "scoring_profile": profile.key,

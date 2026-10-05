@@ -9,12 +9,17 @@ from app.observability.pipeline_events import log_event
 
 logger = logging.getLogger(__name__)
 
-# Mirrors tried in order when the primary OVERPASS_URL fails.
+# Mirrors tried in order when the primary OVERPASS_URL fails. overpass-api.de is the
+# main public instance; the others are community mirrors that go down without notice.
 _OVERPASS_FALLBACK_URLS = (
-    "https://overpass.kumi.systems/api/interpreter",
     "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
     "https://overpass.openstreetmap.ru/api/interpreter",
 )
+
+# A dead mirror should fail fast so the next one gets a turn; a live one may take a
+# while to answer a query (the query itself asks for at most 25s).
+_OVERPASS_TIMEOUT = httpx.Timeout(30.0, connect=5.0)
 
 
 def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -86,7 +91,7 @@ async def fetch_nearby_pois(lat: float, lon: float, radius_m: int | None = None)
     headers = _overpass_headers()
     last_err: Exception | None = None
     data = None
-    async with httpx.AsyncClient(timeout=35.0) as client:
+    async with httpx.AsyncClient(timeout=_OVERPASS_TIMEOUT) as client:
         for url in _overpass_urls():
             try:
                 resp = await client.post(url, content=query.encode("utf-8"), headers=headers)
