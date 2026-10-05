@@ -57,7 +57,16 @@ export default function AnalyzePage() {
       });
       navigate('/report');
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Something went wrong.');
+      // fetch() rejects with a bare TypeError ("Failed to fetch") when the server is
+      // unreachable or errors without CORS headers; say that in plain words.
+      const unreachable = e instanceof TypeError;
+      setError(
+        unreachable
+          ? "We couldn't get a response from SpotCore's server. Please try again in a moment."
+          : e instanceof Error
+            ? e.message
+            : 'Something went wrong.',
+      );
     } finally {
       setLoading(false);
     }
