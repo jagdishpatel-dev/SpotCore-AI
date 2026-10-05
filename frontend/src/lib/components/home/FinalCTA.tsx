@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useReveal } from '$lib/hooks/useReveal';
 
 export interface FinalCTAProps {
@@ -40,9 +41,9 @@ export default function FinalCTA({ startHref = '/analyze' }: FinalCTAProps) {
                 Analyze a location
                 <span className="geo-btn-arrow" aria-hidden="true">→</span>
               </a>
-              <a href="#sample-report" className="geo-btn-ghost !px-5 !py-3">
+              <Link to="/sample" className="geo-btn-ghost !px-5 !py-3">
                 View sample report
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import RootLayout from './layouts/RootLayout';
 import AnalyzePage from './pages/AnalyzePage';
 import HomePage from './pages/HomePage';
 import ReportPage from './pages/ReportPage';
+import SamplePage from './pages/SamplePage';
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="analyze" element={<AnalyzePage />} />
         <Route path="report" element={<ReportPage />} />
+        <Route path="sample" element={<SamplePage />} />
       </Route>
     </Routes>
   );

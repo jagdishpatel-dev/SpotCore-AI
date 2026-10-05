@@ -50,17 +50,20 @@ export default function SiteMap({
 
       map = L.map(el, { zoomControl: true, attributionControl: true }).setView([lat, lon], 16);
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+      // Esri Light Gray Canvas: keyless, built as a quiet backdrop for data overlays.
+      // (CARTO basemaps now watermark tiles without an API key.)
+      const esri = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas';
+      L.tileLayer(`${esri}/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`, {
         maxZoom: 19,
-        subdomains: 'abcd',
+        maxNativeZoom: 16,
         attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> · &copy; <a href="https://carto.com/attributions">CARTO</a>',
+          'Tiles &copy; <a href="https://www.esri.com">Esri</a> · &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png', {
+      L.tileLayer(`${esri}/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}`, {
         maxZoom: 19,
-        subdomains: 'abcd',
-        opacity: 0.85,
+        maxNativeZoom: 16,
+        opacity: 0.9,
       }).addTo(map);
 
       if (zoningFeatures?.length) {
@@ -98,10 +101,10 @@ export default function SiteMap({
 
       L.circle([lat, lon], {
         radius: radiusM,
-        color: '#22D3EE',
+        color: '#0f6f68',
         weight: 1,
         opacity: 0.55,
-        fillColor: '#22D3EE',
+        fillColor: '#0f6f68',
         fillOpacity: 0.06,
         dashArray: '3 4',
       }).addTo(map);

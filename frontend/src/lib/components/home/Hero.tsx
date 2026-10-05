@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import BlurText from '$lib/components/ui/BlurText';
 import { cn } from '$lib/utils/cn';
 
@@ -64,9 +65,9 @@ export default function Hero({
               Analyze a location
               <span className="geo-btn-arrow" aria-hidden="true">→</span>
             </a>
-            <a href="#sample-report" className="geo-btn-ghost !px-5 !py-3">
+            <Link to="/sample" className="geo-btn-ghost !px-5 !py-3">
               View sample report
-            </a>
+            </Link>
           </div>
 
           <p className="hero-reveal-item mt-5 text-sm text-spotcore-text-muted" style={revealDelay(400)}>
