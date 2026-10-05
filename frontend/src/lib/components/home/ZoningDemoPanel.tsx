@@ -48,6 +48,22 @@ const STATUS_STYLE: Record<ZoningAnswerResponse['status'], { label: string; colo
   unclear: { label: 'Unclear: verify with the city', color: '#6B7280' },
 };
 
+/**
+ * Fill any fields an older or partial backend response leaves out. A missing or
+ * unrecognized status becomes `unclear` rather than crashing the panel.
+ */
+function normalizeAnswer(res: ZoningAnswerResponse): ZoningAnswerResponse {
+  return {
+    ...res,
+    status: res.status && res.status in STATUS_STYLE ? res.status : 'unclear',
+    citations: res.citations ?? [],
+    status_citations: res.status_citations ?? [],
+    case_numbers: res.case_numbers ?? [],
+    overlays: res.overlays ?? [],
+    overlay_notes: res.overlay_notes ?? [],
+  };
+}
+
 const ZONING_LEGEND: { permission: ZoningMapFeature['permission']; label: string; color: string }[] = [
   { permission: 'permitted', label: 'Permitted', color: '#22C55E' },
   { permission: 'conditional', label: 'Conditional', color: '#F59E0B' },
@@ -113,7 +129,7 @@ export default function ZoningDemoPanel() {
         lat: location.lat,
         lon: location.lon,
       });
-      setResult(res);
+      setResult(normalizeAnswer(res));
       setPhase('done');
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : 'Something went wrong.');
